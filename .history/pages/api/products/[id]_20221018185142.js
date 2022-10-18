@@ -1,5 +1,6 @@
 import Product from "../../../models/Product";
 import { ObjectId } from "mongodb";
+import { connectToDatabase } from "../../../util/mongodb2";
 import dbConnect from "../../../util/mongodb";
 // this one is for update, delete, get a single Product or Post by id
 
@@ -8,12 +9,14 @@ export default async function handler(req, res) {
     method,
     query: { id },
   } = req;
-
+  const { db } = await connectToDatabase();
   dbConnect();
 
   if (method === "GET") {
     try {
-      const product = await Product.findById(id);
+      const product = await db
+        .collection("products")
+        .findOne({ _id: new ObjectId(id) });
       res.status(201).json({ success: true, data: product });
     } catch (err) {
       res.status(500).json(err);
@@ -31,11 +34,13 @@ export default async function handler(req, res) {
 
   if (method === "PUT") {
     try {
-      const post = await Product.findById(id);
+      const post = await db
+        .collection("products")
+        .findById({ _id: new ObjectId(id) });
       if (post.username === req.body.username) {
         try {
           const updatedPost = await Product.findByIdAndUpdate(
-            id,
+            { _id: new ObjectId(id) },
             {
               $set: req.body,
             },
@@ -79,10 +84,14 @@ export default async function handler(req, res) {
 
   if (method === "DELETE") {
     try {
-      const post = await Product.findById(id);
+      const post = await db
+        .collection("products")
+        .findById({ _id: new ObjectId(id) });
       if (post.username === req.body.username) {
         try {
-          await Product.findByIdAndDelete(id);
+          await db
+            .collection("products")
+            .findByIdAndDelete({ _id: new ObjectId(id) });
           res.status(200).json("your post is deleted");
         } catch (err) {
           res.status(500).json(err);

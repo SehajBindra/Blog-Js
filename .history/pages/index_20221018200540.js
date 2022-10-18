@@ -9,6 +9,7 @@ import Products from "../components/Products";
 import ProductSection from "../components/ProductSection";
 import Sidebar from "../components/Sidebar";
 import Widgets from "../components/Widgets";
+import { connectToDatabase } from "../util/mongodb2";
 
 export default function Home({ products }) {
   console.log(products);
@@ -53,13 +54,26 @@ export default function Home({ products }) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch("http://localhost:3000/api/products").then((res) =>
-    res.json()
-  );
+  const { db } = await connectToDatabase();
+  const products = await db
+    .collection("products")
+    .find()
+    .sort({ timestamp: 1 })
+    .toArray();
+  // const res = await fetch("http://localhost:3000/api/products").then((res) =>
+  //   res.json()
+  // );
 
   return {
     props: {
-      products: res.data,
+      products: products.map((product) => ({
+        _id: product._id.toString(),
+        title: product.title,
+        desc: product.desc,
+        img: product.img,
+        username: product.username,
+        userimg: product.userimg,
+      })),
     },
   };
 }

@@ -1,6 +1,7 @@
 import dbConnect from "../../../util/mongodb";
 import Product from "../../../models/Product";
 import { connectToDatabase } from "../../../util/mongodb2";
+import { Timestamp } from "mongodb";
 
 // this one is for creating a single post and getting all posts
 
@@ -14,7 +15,11 @@ export default async function handler(req, res) {
   // get all posts
   if (method === "GET") {
     try {
-      const post = await Product.find({}).sort({ createdAt: -1 }).limit(20);
+      const post = await db
+        .collection("products")
+        .find({})
+        .sort({ createdAt: -1 })
+        .toArray();
       res.status(200).json({ sucess: true, data: post });
     } catch (err) {
       res.status(500).json(err);
@@ -36,12 +41,24 @@ export default async function handler(req, res) {
   if (method === "POST") {
     const newPost = new Product(req.body);
     try {
-      const savedPost = await newPost.save();
+      const savedPost = await db
+        .collection("products")
+        .insertOne({ ...req.body });
       res.status(201).json({ success: true, data: savedPost });
     } catch (err) {
       res.status(500).json(err);
     }
   }
+
+  // if (method === "POST") {
+  //   const newPost = new Product(req.body);
+  //   try {
+  //     const savedPost = await newPost.save();
+  //     res.status(201).json({ success: true, data: savedPost });
+  //   } catch (err) {
+  //     res.status(500).json(err);
+  //   }
+  // }
 
   if (method === "DELETE") {
     try {
