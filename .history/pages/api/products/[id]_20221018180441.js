@@ -14,7 +14,7 @@ export default async function handler(req, res) {
 
   if (method === "GET") {
     try {
-      const product = await Product.findById({ _id: new ObjectId(id) });
+      const product = await Product.findById(id);
       res.status(201).json({ success: true, data: product });
     } catch (err) {
       res.status(500).json(err);
