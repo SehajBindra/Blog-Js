@@ -18,7 +18,7 @@ export default async function handler(req, res) {
       const post = await db
         .collection("products")
         .find()
-        .sort({ createdAt: -1 })
+        .sort({ timestamp: -1 })
         .toArray();
       res.status(200).json({ sucess: true, data: post });
     } catch (err) {

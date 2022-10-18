@@ -72,8 +72,8 @@ export async function getServerSideProps() {
         desc: product.desc,
         img: product.img,
         username: product.username,
-        userimg: product.userimg,
-        createdAt: product.createdAt.toString(),
+        userImg: product.userimg,
+        createdAt: product.createdAt,
       })),
     },
   };
