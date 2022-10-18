@@ -51,9 +51,9 @@ function ProductDetails(product) {
 export default ProductDetails;
 
 export async function getServerSideProps({ params }) {
-  const res = await fetch(
-    `http://localhost:3000/api/products/${params.id}`
-  ).then((res) => res.json());
+  const res = await axios
+    .get(`http://localhost:3000/api/products/${params.id}`)
+    .then((res) => res.json());
 
   return {
     props: {

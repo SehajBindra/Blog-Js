@@ -52,7 +52,7 @@ export default ProductDetails;
 
 export async function getServerSideProps({ params }) {
   const res = await fetch(
-    `http://localhost:3000/api/products/${params.id}`
+    `http://localhost:3000/api/products/${params._id}`
   ).then((res) => res.json());
 
   return {

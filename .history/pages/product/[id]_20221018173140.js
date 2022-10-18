@@ -11,8 +11,8 @@ function ProductDetails(product) {
   // console.log(product.product._id);
   console.log(product);
   // const [post, setPost] = useState(Products);
-  // const user = useSelector(User);
-  // console.log(user);
+  const user = useSelector(User);
+  console.log(user);
   const router = useRouter();
   const handleDelete = async (id) => {
     console.log(id);
