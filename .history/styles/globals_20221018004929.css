@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&family=Source+Sans+Pro:wght@200&display=swap');
+
+
+
+*{
+    font-family: 'Source Code Pro', monospace;
+    -webkit-tap-highlight-color: transparent;
+   overflow-y: scroll;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

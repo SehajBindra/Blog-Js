@@ -1,0 +1,62 @@
+import { BookmarkSlashIcon } from "@heroicons/react/24/outline";
+import React from "react";
+import toast from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
+import Header from "../components/Header";
+import Modal from "../components/Modal";
+
+import Sidebar from "../components/Sidebar";
+import { removefromBasket, selectItems } from "../redux/slices/basketSlice";
+
+function saved() {
+  const items = useSelector(selectItems);
+  const dispatch = useDispatch();
+  console.log(items);
+
+  const RemoveItemFromBasket = () => {
+    // removing the item from Redux
+    dispatch(removefromBasket({ id: items._id }));
+
+    toast.error("Removed from saved");
+  };
+  return (
+    <>
+      <div>
+        <Header />
+        {/* <Sidebar /> */}
+      </div>
+      <div className="flex flex-row overflow-x-scroll  scrollbar-hide sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
+        {items.map((item) => (
+          <div className="flex flex-col px-8  my-8 " key={item._id}>
+            <div className=" my-24 h-60 w-72 md:h-80 md:w-80    sm:my-8">
+              <img
+                className="rounded-md  hover:opacity-80 hover:shadow-lg w-[20rem] h-[20rem] transition duration-200 ease-out  cursor-pointer object-cover flex-shrink-0"
+                src={item.image}
+                alt=""
+              />
+            </div>
+
+            <h2 className="line-clamp-1 "> {item.title} </h2>
+            <h3 className="line-clamp-2 text-xs text-gray-500 my-2">
+              {item.description}
+            </h3>
+
+            <div className="flex flex-row items-center space-x-2">
+              <img className="rounded-full h-8" src={item.userimg} alt="" />
+              <p className="flex-1 text-base ">{item.username}</p>
+
+              <BookmarkSlashIcon
+                onClick={() => RemoveItemFromBasket()}
+                className="h-8"
+              />
+            </div>
+          </div>
+        ))}
+
+        <Modal />
+      </div>
+    </>
+  );
+}
+
+export default saved;
