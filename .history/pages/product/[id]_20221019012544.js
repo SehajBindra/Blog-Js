@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import Header from "../../components/Header";
 import SingleProduct from "../../components/SingleProduct";
 import { User } from "../../redux/slices/userSlice";
+import { connectToDatabase } from "../../util/mongodb2";
 
 function ProductDetails(product) {
   console.log(product);
@@ -34,14 +35,16 @@ function ProductDetails(product) {
 export default ProductDetails;
 
 export async function getServerSideProps({ params }) {
-  const res = await fetch(
-    `http://localhost:3000/api/products/${params.id} ` ||
-      `https://blog-beta-hazel.vercel.app/products/${params.id}`
-  ).then((res) => res.json());
+  const { db } = await connectToDatabase();
+  const product = await db.collection("products").findOne({ id: params._id });
+
+  // const res = await fetch(
+  //   `http://localhost:3000/api/products/${params.id}`
+  // ).then((res) => res.json());
 
   return {
     props: {
-      product: res.data,
+      product: product.data,
     },
   };
 }

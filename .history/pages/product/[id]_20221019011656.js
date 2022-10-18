@@ -34,14 +34,21 @@ function ProductDetails(product) {
 export default ProductDetails;
 
 export async function getServerSideProps({ params }) {
-  const res = await fetch(
-    `http://localhost:3000/api/products/${params.id} ` ||
-      `https://blog-beta-hazel.vercel.app/products/${params.id}`
+  const product = await fetch(
+    `http://localhost:3000/api/products/${params.id}`
   ).then((res) => res.json());
 
   return {
     props: {
-      product: res.data,
+      product: product.map((post) => ({
+        _id: post._id.toString(),
+        title: post.title,
+        desc: post.desc,
+        img: post.img,
+        username: post.username,
+        userimg: post.userimg,
+        createdAt: `${post.createdAt}`,
+      })),
     },
   };
 }
