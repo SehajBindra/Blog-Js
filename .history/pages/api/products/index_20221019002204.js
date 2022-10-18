@@ -43,7 +43,7 @@ export default async function handler(req, res) {
     try {
       const savedPost = await db
         .collection("products")
-        .insertOne({ ...req.body, createdAt: new Date() });
+        .insertOne({ ...req.body });
       res.status(201).json({ success: true, data: savedPost });
     } catch (err) {
       res.status(500).json(err);

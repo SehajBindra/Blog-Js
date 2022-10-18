@@ -34,7 +34,7 @@ const ProductSchema = new mongoose.Schema(
       unique: true,
     },
   },
-  { timestamps: true }
+  { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
 );
 
 export default mongoose.models.Product ||

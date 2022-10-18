@@ -41,9 +41,7 @@ export default async function handler(req, res) {
   if (method === "POST") {
     const newPost = new Product(req.body);
     try {
-      const savedPost = await db
-        .collection("products")
-        .insertOne({ ...req.body, createdAt: new Date() });
+      const savedPost = await db.collection("products").save({ ...req.body });
       res.status(201).json({ success: true, data: savedPost });
     } catch (err) {
       res.status(500).json(err);

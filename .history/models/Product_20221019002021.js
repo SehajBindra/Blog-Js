@@ -5,6 +5,7 @@ const ProductSchema = new mongoose.Schema(
     title: {
       type: String,
       required: true,
+      unique: true,
     },
 
     desc: {
@@ -16,9 +17,19 @@ const ProductSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    userimg: {
+      type: String,
+      unique: true,
+      required: true,
+    },
 
-    date: {
-      type: [Number],
+    category: {
+      type: Array,
+      required: true,
+    },
+
+    username: {
+      type: String,
       required: true,
       unique: true,
     },

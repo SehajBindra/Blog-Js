@@ -11,21 +11,30 @@ const ProductSchema = new mongoose.Schema(
     desc: {
       type: String,
       required: true,
-      unique: true,
     },
 
     img: {
       type: String,
       required: true,
     },
+    userimg: {
+      type: String,
+      unique: true,
+      required: true,
+    },
 
-    date: {
-      type: [Number],
+    category: {
+      type: Array,
+      required: true,
+    },
+
+    username: {
+      type: String,
       required: true,
       unique: true,
     },
   },
-  { timestamps: true }
+  { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
 );
 
 export default mongoose.models.Product ||
