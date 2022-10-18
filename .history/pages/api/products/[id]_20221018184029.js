@@ -9,14 +9,12 @@ export default async function handler(req, res) {
     method,
     query: { id },
   } = req;
-  const { db } = await connectToDatabase();
+
   dbConnect();
 
   if (method === "GET") {
     try {
-      const product = await db
-        .collection("products")
-        .findOne({ _id: new ObjectId(id) });
+      const product = await Product.findOne({ _id: new ObjectId(id) });
       res.status(201).json({ success: true, data: product });
     } catch (err) {
       res.status(500).json(err);
@@ -34,9 +32,7 @@ export default async function handler(req, res) {
 
   if (method === "PUT") {
     try {
-      const post = await db
-        .collection("products")
-        .findById({ _id: new ObjectId(id) });
+      const post = await Product.findById({ _id: new ObjectId(id) });
       if (post.username === req.body.username) {
         try {
           const updatedPost = await Product.findByIdAndUpdate(
@@ -84,14 +80,10 @@ export default async function handler(req, res) {
 
   if (method === "DELETE") {
     try {
-      const post = await db
-        .collection("products")
-        .findById({ _id: new ObjectId(id) });
+      const post = await Product.findById({ _id: new ObjectId(id) });
       if (post.username === req.body.username) {
         try {
-          await db
-            .collection("products")
-            .findByIdAndDelete({ _id: new ObjectId(id) });
+          await Product.findByIdAndDelete({ _id: new ObjectId(id) });
           res.status(200).json("your post is deleted");
         } catch (err) {
           res.status(500).json(err);
