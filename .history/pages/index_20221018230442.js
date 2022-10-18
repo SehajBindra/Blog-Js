@@ -57,7 +57,10 @@ export async function getServerSideProps() {
   const { db } = await connectToDatabase();
   const products = await db
     .collection("products")
-    .find({})
+    .find(
+      {},
+      { $dateToString: { format: "%Y-%m-%d", createdAt: "$createdAt" } }
+    )
     .sort({ $natural: -1 })
     .toArray();
 
@@ -74,7 +77,7 @@ export async function getServerSideProps() {
         img: product.img,
         username: product.username,
         userimg: product.userimg,
-        // createdAt: product.createdAt,
+        createdAt: product.createdAt,
       })),
     },
   };

@@ -20,7 +20,7 @@ export default async function handler(req, res) {
         .find({})
         .sort({ createdAt: -1 })
         .toArray();
-      res.status(200).json({ success: true, data: post });
+      res.status(200).json({ sucess: true, data: post });
     } catch (err) {
       res.status(500).json(err);
     }
@@ -43,7 +43,7 @@ export default async function handler(req, res) {
     try {
       const savedPost = await db
         .collection("products")
-        .insertOne({ ...req.body });
+        .insertOne({ ...req.body, timestamp: new Timestamp() });
       res.status(201).json({ success: true, data: savedPost });
     } catch (err) {
       res.status(500).json(err);
