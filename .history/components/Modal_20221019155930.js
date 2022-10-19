@@ -50,13 +50,6 @@ function Modal() {
 
   const filePickerRef = useRef(null);
   const [loading, setLoading] = useState(false);
-  const config = {
-    headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "POST,GET,OPTIONS, PUT, DELETE",
-    },
-  };
 
   const uploadPost = async (e) => {
     if (loading) return;
@@ -65,19 +58,14 @@ function Modal() {
 
     try {
       const res = await axios
-        .post(
-          !"https://blog-beta-hazel.vercel.app/api/products" ||
-            "http://localhost:3000/api/products",
-          {
-            config,
-            title,
-            desc,
-            img,
-            category: selectedPeople,
-            username: session?.user.name,
-            userimg: session?.user.image,
-          }
-        )
+        .post("https://blog-beta-hazel.vercel.app/api/products", {
+          title,
+          desc,
+          img,
+          category: selectedPeople,
+          username: session?.user.name,
+          userimg: session?.user.image,
+        })
         .then((res) => {
           router.push("/");
           toast.success("Posted!");

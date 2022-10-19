@@ -54,7 +54,6 @@ function Modal() {
     headers: {
       "Content-Type": "application/json",
       "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "POST,GET,OPTIONS, PUT, DELETE",
     },
   };
 
@@ -65,19 +64,15 @@ function Modal() {
 
     try {
       const res = await axios
-        .post(
-          !"https://blog-beta-hazel.vercel.app/api/products" ||
-            "http://localhost:3000/api/products",
-          {
-            config,
-            title,
-            desc,
-            img,
-            category: selectedPeople,
-            username: session?.user.name,
-            userimg: session?.user.image,
-          }
-        )
+        .post("https://blog-beta-hazel.vercel.app/api/products", {
+          config,
+          title,
+          desc,
+          img,
+          category: selectedPeople,
+          username: session?.user.name,
+          userimg: session?.user.image,
+        })
         .then((res) => {
           router.push("/");
           toast.success("Posted!");
