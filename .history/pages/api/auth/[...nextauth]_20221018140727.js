@@ -12,12 +12,10 @@ export default NextAuth({
     }),
   ],
 
-  adapter: MongoDBAdapter(clientPromise, {
-    databaseName: process.env.MONGODB_DB,
-  }),
+  adapter: MongoDBAdapter(clientPromise),
   pages: {
     signIn: "/login",
   },
 
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.NEXT_AUTH_SECRET,
 });
