@@ -73,7 +73,7 @@ export async function getStaticProps({ params }) {
 
   return {
     props: {
-      product: res.data,
+      product: JSON.parse(JSON.stringify(product)),
     },
 
     revalidate: 1,

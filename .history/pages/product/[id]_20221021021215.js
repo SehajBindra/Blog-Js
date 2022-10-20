@@ -7,7 +7,7 @@ import React, { useEffect, useState } from "react";
 
 import Header from "../../components/Header";
 import SingleProduct from "../../components/SingleProduct";
-// import { connectToDatabase } from "../../util/mongodb2";
+import { connectToDatabase } from "../../util/mongodb2";
 
 function ProductDetails(product) {
   console.log(product);
@@ -73,7 +73,7 @@ export async function getStaticProps({ params }) {
 
   return {
     props: {
-      product: res.data,
+      product: JSON.parse(JSON.stringify(product)),
     },
 
     revalidate: 1,

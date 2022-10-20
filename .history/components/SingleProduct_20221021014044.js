@@ -92,19 +92,19 @@ function Post({ product }) {
   };
 
   return (
-    <div className=" my-8    text-white">
+    <div className=" my-7   text-white">
       {/* header */}
 
       <div className="flex items-center mr-12 p-5 ">
         <div className="flex flex-1 items-center">
           <img
             className="rounded-full h-12 w-12 object-cover  mr-3 pointer-events-none"
-            src={product.product.userimg}
+            src={product.userimg}
             alt=""
           />
 
           <p className="  capitalize font-normal truncate">
-            {product.product.username}
+            {product.username}
           </p>
         </div>
 
@@ -122,7 +122,7 @@ function Post({ product }) {
                       onClick={() => setIsOpen(!isOpen)}
                       whileTap={{ scale: 0.97 }}
                     >
-                      <EllipsisHorizontalIcon className=" flex space-x-2 h-8 w-8 ml-4 items-center animate-pulse text-[#ACe5ff]" />
+                      <EllipsisHorizontalIcon className=" flex space-x-2 h-8 w-8 ml-2 items-center animate-pulse text-[#ACe5ff]" />
                     </motion.button>
                   </Menu.Button>
                 </div>
@@ -236,7 +236,7 @@ function Post({ product }) {
         <>
           <img
             className="object-cover w-52 h-52 rounded-md flex flex-col justify-center align-middle mx-auto  items-center"
-            src={product.product.img}
+            src={product.img}
             alt=""
           />
           <input
@@ -250,7 +250,7 @@ function Post({ product }) {
       ) : (
         <img
           className=" rounded-md pointer-events-none  object-contain w-[40rem] "
-          src={product.product.img}
+          src={product.img}
           alt=""
         />
       )}
@@ -292,7 +292,7 @@ function Post({ product }) {
       {updateMode ? (
         <input
           type="text"
-          placeholder={product.product.title}
+          placeholder={product.title}
           value={title}
           className=" my-2  text-center focus-within:outline-none  w-full border-1 border-b bg-transparent"
           onChange={(e) => setTitle(e.target.value)}
@@ -300,7 +300,7 @@ function Post({ product }) {
       ) : (
         <h2 className="text-xl text-center my-2 max-w-2xl">
           {" "}
-          {product.product.title}{" "}
+          {product.title}{" "}
         </h2>
       )}
 
@@ -309,14 +309,14 @@ function Post({ product }) {
           cols="30"
           rows="16"
           value={desc}
-          placeholder={product.product.desc}
+          placeholder={product.desc}
           onChange={(e) => setDesc(e.target.value)}
           className=" resize-none  text-center focus-within:outline-none  w-full border-1 border-b bg-transparent"
         ></textarea>
       ) : (
         <p className="text-base break-words my-4 max-w-2xl ">
           {" "}
-          {product.product.desc}{" "}
+          {product.desc}{" "}
         </p>
       )}
 
@@ -390,7 +390,7 @@ function Post({ product }) {
         <div onClick={updated}>
           <button
             className="text-sm cursor-pointer py-2 px-4 rounded-lg bg-blue-400 text-white"
-            onClick={() => handleupdate(product.product._id)}
+            onClick={() => handleupdate(product._id)}
           >
             {" "}
             Publish{" "}

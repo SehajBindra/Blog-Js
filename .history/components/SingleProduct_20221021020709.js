@@ -99,12 +99,12 @@ function Post({ product }) {
         <div className="flex flex-1 items-center">
           <img
             className="rounded-full h-12 w-12 object-cover  mr-3 pointer-events-none"
-            src={product.product.userimg}
+            src={product.userimg}
             alt=""
           />
 
           <p className="  capitalize font-normal truncate">
-            {product.product.username}
+            {product.username}
           </p>
         </div>
 
@@ -195,7 +195,7 @@ function Post({ product }) {
                       <Menu.Item>
                         {({ active }) => (
                           <div
-                            onClick={() => handleDelete(product.product._id)}
+                            onClick={() => handleDelete(product._id)}
                             className="flex items-center flex-row"
                           >
                             <TrashIcon
@@ -244,13 +244,13 @@ function Post({ product }) {
             onChange={(e) => setImg(e.target.value)}
             className=" bg-transparent border-1 py-2 px-4 border-b my-2 focus:ring-0 focus-within:outline-none w-full "
             type="text"
-            placeholder={`${product.product.img}`}
+            placeholder={`${product.img}`}
           />
         </>
       ) : (
         <img
           className=" rounded-md pointer-events-none  object-contain w-[40rem] "
-          src={product.product.img}
+          src={product.img}
           alt=""
         />
       )}
@@ -292,7 +292,7 @@ function Post({ product }) {
       {updateMode ? (
         <input
           type="text"
-          placeholder={product.product.title}
+          placeholder={product.title}
           value={title}
           className=" my-2  text-center focus-within:outline-none  w-full border-1 border-b bg-transparent"
           onChange={(e) => setTitle(e.target.value)}
@@ -300,7 +300,7 @@ function Post({ product }) {
       ) : (
         <h2 className="text-xl text-center my-2 max-w-2xl">
           {" "}
-          {product.product.title}{" "}
+          {product.title}{" "}
         </h2>
       )}
 
@@ -309,14 +309,14 @@ function Post({ product }) {
           cols="30"
           rows="16"
           value={desc}
-          placeholder={product.product.desc}
+          placeholder={product.desc}
           onChange={(e) => setDesc(e.target.value)}
           className=" resize-none  text-center focus-within:outline-none  w-full border-1 border-b bg-transparent"
         ></textarea>
       ) : (
         <p className="text-base break-words my-4 max-w-2xl ">
           {" "}
-          {product.product.desc}{" "}
+          {product.desc}{" "}
         </p>
       )}
 
@@ -390,7 +390,7 @@ function Post({ product }) {
         <div onClick={updated}>
           <button
             className="text-sm cursor-pointer py-2 px-4 rounded-lg bg-blue-400 text-white"
-            onClick={() => handleupdate(product.product._id)}
+            onClick={() => handleupdate(product._id)}
           >
             {" "}
             Publish{" "}

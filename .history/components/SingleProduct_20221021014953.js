@@ -122,7 +122,7 @@ function Post({ product }) {
                       onClick={() => setIsOpen(!isOpen)}
                       whileTap={{ scale: 0.97 }}
                     >
-                      <EllipsisHorizontalIcon className=" flex space-x-2 h-8 w-8 ml-4 items-center animate-pulse text-[#ACe5ff]" />
+                      <EllipsisHorizontalIcon className=" flex space-x-2 h-8 w-8 ml-2 items-center animate-pulse text-[#ACe5ff]" />
                     </motion.button>
                   </Menu.Button>
                 </div>

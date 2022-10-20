@@ -7,10 +7,10 @@ import React, { useEffect, useState } from "react";
 
 import Header from "../../components/Header";
 import SingleProduct from "../../components/SingleProduct";
-// import { connectToDatabase } from "../../util/mongodb2";
+import { connectToDatabase } from "../../util/mongodb2";
 
 function ProductDetails(product) {
-  console.log(product);
+  // console.log(product);
   const router = useRouter();
   useEffect(() => {
     router.prefetch(`/product/${product._id}`);
@@ -41,41 +41,32 @@ export default ProductDetails;
 //   "User-Agent": "*",
 // },
 
-export async function getStaticPaths() {
-  return {
-    paths: [],
-    fallback: true,
-  };
-}
-
-export async function getStaticProps({ params }) {
-  // const { db } = await connectToDatabase();
-  // const product = await db.collection("products").findOne(
-  //   { _id: params.id },
-  //   {
-  //     projection: {
-  //       title: 1,
-  //       desc: 1,
-  //       userimg: 1,
-  //       username: 1,
-  //       img: 1,
-  //       category: 1,
-  //     },
-  //   }
-  // );
-
-  let dev = process.env.NODE_ENV !== "production";
-  const baseUrl = "http://localhost:3000/api/products/";
-  const url = "https://blog-beta-hazel.vercel.app/api/products/";
-  const res = await fetch(`${dev ? baseUrl : url}${params.id}`).then((res) =>
-    res.json()
+export async function getServerSideProps({ params }) {
+  const { db } = await connectToDatabase();
+  const product = await db.collection("products").findOne(
+    { id: params.id },
+    {
+      projection: {
+        title: 1,
+        desc: 1,
+        userimg: 1,
+        username: 1,
+        img: 1,
+        category: 1,
+      },
+    }
   );
+
+  // let dev = process.env.NODE_ENV !== "production";
+  // const baseUrl = "http://localhost:3000/api/products/";
+  // const url = "https://blog-beta-hazel.vercel.app/api/products/";
+  // const res = await fetch(`${dev ? baseUrl : url}${params.id}`).then((res) =>
+  //   res.json()
+  // );
 
   return {
     props: {
-      product: res.data,
+      product: JSON.parse(JSON.stringify(product)),
     },
-
-    revalidate: 1,
   };
 }

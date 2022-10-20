@@ -99,7 +99,7 @@ function Post({ product }) {
         <div className="flex flex-1 items-center">
           <img
             className="rounded-full h-12 w-12 object-cover  mr-3 pointer-events-none"
-            src={product.product.userimg}
+            src={product?.product.userimg}
             alt=""
           />
 

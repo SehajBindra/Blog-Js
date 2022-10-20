@@ -7,10 +7,9 @@ import React, { useEffect, useState } from "react";
 
 import Header from "../../components/Header";
 import SingleProduct from "../../components/SingleProduct";
-// import { connectToDatabase } from "../../util/mongodb2";
 
 function ProductDetails(product) {
-  console.log(product);
+  // console.log(product);
   const router = useRouter();
   useEffect(() => {
     router.prefetch(`/product/${product._id}`);
@@ -19,7 +18,7 @@ function ProductDetails(product) {
   return (
     <>
       <Head>
-        <title>{product?.product.title} </title>
+        <title>{product?.product?.title} </title>
         <link
           rel="icon"
           href="https://img.myloview.com/stickers/bm-b-m-letter-logo-design-initial-letter-bm-monogram-on-black-background-b-m-logo-bm-icon-logo-mb-logo-template-mb-alphabet-letter-icon-mb-icon-mb-letter-design-on-black-background-400-210159654.jpg"
@@ -41,29 +40,7 @@ export default ProductDetails;
 //   "User-Agent": "*",
 // },
 
-export async function getStaticPaths() {
-  return {
-    paths: [],
-    fallback: true,
-  };
-}
-
-export async function getStaticProps({ params }) {
-  // const { db } = await connectToDatabase();
-  // const product = await db.collection("products").findOne(
-  //   { _id: params.id },
-  //   {
-  //     projection: {
-  //       title: 1,
-  //       desc: 1,
-  //       userimg: 1,
-  //       username: 1,
-  //       img: 1,
-  //       category: 1,
-  //     },
-  //   }
-  // );
-
+export async function getServerSideProps({ params }) {
   let dev = process.env.NODE_ENV !== "production";
   const baseUrl = "http://localhost:3000/api/products/";
   const url = "https://blog-beta-hazel.vercel.app/api/products/";
@@ -75,7 +52,5 @@ export async function getStaticProps({ params }) {
     props: {
       product: res.data,
     },
-
-    revalidate: 1,
   };
 }
