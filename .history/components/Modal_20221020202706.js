@@ -250,7 +250,7 @@ function Modal() {
                     type="button"
                     disabled={!img || !title || !desc}
                     onClick={uploadPost}
-                    className=" inline-flex  justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-400 font-medium text-base text-white  focus:outline-none  sm:text-sm disabled:bg-gray-300 disabled:cursor-not-allowed hover:disabled:bg-gray-300"
+                    className=" inline-flex  justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-[#4D80E4] font-medium text-base text-white  focus:outline-none  sm:text-sm disabled:bg-gray-300 disabled:cursor-not-allowed hover:disabled:bg-gray-300"
                   >
                     {loading ? "Uploading..." : " Post"}
                   </button>

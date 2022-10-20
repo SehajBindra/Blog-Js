@@ -92,7 +92,7 @@ function Post({ product }) {
   };
 
   return (
-    <div className=" my-7   text-white">
+    <div className=" my-7  h-screen  text-white">
       {/* header */}
 
       <div className="flex items-center mr-12 p-5 ">
