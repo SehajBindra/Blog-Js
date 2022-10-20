@@ -19,7 +19,7 @@ function ProductDetails(product) {
   return (
     <>
       <Head>
-        <title>{product.product.title} </title>
+        <title>{product?.product.title} </title>
         <link
           rel="icon"
           href="https://img.myloview.com/stickers/bm-b-m-letter-logo-design-initial-letter-bm-monogram-on-black-background-b-m-logo-bm-icon-logo-mb-logo-template-mb-alphabet-letter-icon-mb-icon-mb-letter-design-on-black-background-400-210159654.jpg"
@@ -41,41 +41,40 @@ export default ProductDetails;
 //   "User-Agent": "*",
 // },
 
-export async function getServerSideProps({ params }) {
-  // const { db } = await connectToDatabase();
-  // const products = await db.collection("products").findOne(
-  //   { _id: params.id },
+export async function getStaticPaths() {
+  return {
+    paths: [],
+    fallback: true,
+  };
+}
 
-  //   {
-  //     projection: {
-  //       title: 1,
-  //       desc: 1,
-  //       userimg: 1,
-  //       username: 1,
-  //       img: 1,
-  //     },
-  //   }
-  // );
-
-  // const posts = products.map((product) => ({
-  //   _id: product.product._id.toString(),
-  //   title: product.product.title,
-  //   desc: product.product.desc,
-  //   img: product.product.img,
-  //   username: product.product.username,
-  //   userimg: product.product.userimg,
-  // }));
-
-  let dev = process.env.NODE_ENV !== "production";
-  const baseUrl = "http://localhost:3000/api/products/";
-  const url = "https://blog-beta-hazel.vercel.app/api/products/";
-  const res = await fetch(`${dev ? baseUrl : url}${params.id}`).then((res) =>
-    res.json()
+export async function getStaticProps({ params }) {
+  const { db } = await connectToDatabase();
+  const res = await db.collection("products").findOne(
+    { _id: params.id }
+    // {
+    //   projection: {
+    //     title: 1,
+    //     desc: 1,
+    //     userimg: 1,
+    //     username: 1,
+    //     img: 1,
+    //   },
+    // }
   );
+
+  // let dev = process.env.NODE_ENV !== "production";
+  // const baseUrl = "http://localhost:3000/api/products/";
+  // const url = "https://blog-beta-hazel.vercel.app/api/products/";
+  // const res = await fetch(`${dev ? baseUrl : url}${params.id}`).then((res) =>
+  //   res.json()
+  // );
 
   return {
     props: {
       product: res.data,
     },
+
+    revalidate: 1,
   };
 }

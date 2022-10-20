@@ -19,7 +19,7 @@ function ProductDetails(product) {
   return (
     <>
       <Head>
-        <title>{product.product.title} </title>
+        <title>{product?.product.title} </title>
         <link
           rel="icon"
           href="https://img.myloview.com/stickers/bm-b-m-letter-logo-design-initial-letter-bm-monogram-on-black-background-b-m-logo-bm-icon-logo-mb-logo-template-mb-alphabet-letter-icon-mb-icon-mb-letter-design-on-black-background-400-210159654.jpg"
@@ -41,11 +41,17 @@ export default ProductDetails;
 //   "User-Agent": "*",
 // },
 
-export async function getServerSideProps({ params }) {
-  // const { db } = await connectToDatabase();
-  // const products = await db.collection("products").findOne(
-  //   { _id: params.id },
+export async function getStaticPaths() {
+  return {
+    paths: [],
+    fallback: true,
+  };
+}
 
+export async function getStaticProps({ params }) {
+  // const { db } = await connectToDatabase();
+  // const product = await db.collection("products").findOne(
+  //   { _id: params.id },
   //   {
   //     projection: {
   //       title: 1,
@@ -53,18 +59,10 @@ export async function getServerSideProps({ params }) {
   //       userimg: 1,
   //       username: 1,
   //       img: 1,
+  //       category: 1,
   //     },
   //   }
   // );
-
-  // const posts = products.map((product) => ({
-  //   _id: product.product._id.toString(),
-  //   title: product.product.title,
-  //   desc: product.product.desc,
-  //   img: product.product.img,
-  //   username: product.product.username,
-  //   userimg: product.product.userimg,
-  // }));
 
   let dev = process.env.NODE_ENV !== "production";
   const baseUrl = "http://localhost:3000/api/products/";
@@ -77,5 +75,7 @@ export async function getServerSideProps({ params }) {
     props: {
       product: res.data,
     },
+
+    revalidate: 1,
   };
 }
