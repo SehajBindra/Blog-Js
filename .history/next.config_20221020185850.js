@@ -22,14 +22,14 @@ module.exports = {
   },
 };
 
-// // next.config.js
-// module.exports = {
-//   async rewrites() {
-//     return [
-//       {
-//         source: "/api/products",
-//         destination: "https://blog-beta-hazel.vercel.app",
-//       },
-//     ];
-//   },
-// };
+// next.config.js
+module.exports = {
+  async rewrites() {
+    return [
+      {
+        source: "/api/products",
+        destination: "https://blog-beta-hazel.vercel.app",
+      },
+    ];
+  },
+};

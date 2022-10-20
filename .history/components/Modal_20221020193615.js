@@ -67,7 +67,7 @@ function Modal() {
       const dev = process.env.NODE_ENV !== "production";
 
       const res = await axios
-        .post(`${dev ? baseUrl : url}`, {
+        .post(`${dev ? baseUrl : url}/api/products`, {
           title,
           desc,
           img,

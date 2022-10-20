@@ -30,8 +30,6 @@ const people = [
   { id: 7, name: "Business" },
   { id: 8, name: "Stock market" },
 ];
-const baseUrl = "http://localhost:3000/api/products";
-const url = "https://blog-beta-hazel.vercel.app/api/products";
 
 function Modal() {
   const { data: session, status } = useSession();
@@ -60,21 +58,20 @@ function Modal() {
     setLoading(true);
     dispatch(FetchStart());
 
-    let DEV_URL = process.env.DEV_URL;
-    let PROD_URL = process.env.PROD_URL;
-
     try {
-      const dev = process.env.NODE_ENV !== "production";
-
       const res = await axios
-        .post(`${dev ? baseUrl : url}`, {
-          title,
-          desc,
-          img,
-          category: selectedPeople,
-          username: session?.user.name,
-          userimg: session?.user.image,
-        })
+        .post(
+          "http://localhost:3000/api/products",
+          {
+            title,
+            desc,
+            img,
+            category: selectedPeople,
+            username: session?.user.name,
+            userimg: session?.user.image,
+          },
+          { headers }
+        )
         .then((res) => {
           router.push("/");
           toast.success("Posted!");
