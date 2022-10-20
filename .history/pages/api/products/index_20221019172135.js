@@ -16,7 +16,7 @@ export default async function handler(req, res) {
   // get all posts
   if (method === "GET") {
     try {
-      res.header("Access-Control-Allow-Origin", "*");
+      res.setHeader("Allow", "GET");
       const post = await db
         .collection("products")
         .find()

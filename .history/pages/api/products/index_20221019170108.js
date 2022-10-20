@@ -16,7 +16,6 @@ export default async function handler(req, res) {
   // get all posts
   if (method === "GET") {
     try {
-      res.header("Access-Control-Allow-Origin", "*");
       const post = await db
         .collection("products")
         .find()
@@ -42,9 +41,7 @@ export default async function handler(req, res) {
   // }
   if (method === "POST") {
     const newPost = new Product(req.body);
-
     try {
-      res.header("Access-Control-Allow-Origin", "*");
       const savedPost = await db
         .collection("products")
         .insertOne({ ...req.body, createdAt: new Date() });

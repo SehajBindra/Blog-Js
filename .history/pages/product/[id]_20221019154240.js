@@ -34,10 +34,9 @@ function ProductDetails(product) {
 export default ProductDetails;
 
 export async function getServerSideProps({ params }) {
-  let dev = process.env.NODE_ENV !== "production";
-  let { DEV_URL, PROD_URL } = process.env;
   const res = await fetch(
-    `${dev ? DEV_URL : PROD_URL}/api/products/${params.id}`
+    `http://localhost:3000/api/products/${params.id} ` ||
+      `https://blog-beta-hazel.vercel.app/products/${params.id}`
   ).then((res) => res.json());
 
   return {

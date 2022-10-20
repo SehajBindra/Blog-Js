@@ -15,7 +15,7 @@ export default function Home({ products }) {
   console.log(products);
 
   return (
-    <div className="bg-black text-white overflow-y-scroll h-screen  mx-auto">
+    <div className="bg-black text-white overflow-y-scroll  mx-auto">
       <Head>
         <title>Blog JS | Home</title>
         <link

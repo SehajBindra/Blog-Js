@@ -6,6 +6,18 @@ import { Timestamp } from "mongodb";
 // this one is for creating a single post and getting all posts
 
 export default async function handler(req, res) {
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  // another common pattern
+  // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET,OPTIONS,PATCH,DELETE,POST,PUT"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
+  );
   const {
     method,
     query: { id },
@@ -16,7 +28,6 @@ export default async function handler(req, res) {
   // get all posts
   if (method === "GET") {
     try {
-      res.header("Access-Control-Allow-Origin", "*");
       const post = await db
         .collection("products")
         .find()
@@ -42,9 +53,7 @@ export default async function handler(req, res) {
   // }
   if (method === "POST") {
     const newPost = new Product(req.body);
-
     try {
-      res.header("Access-Control-Allow-Origin", "*");
       const savedPost = await db
         .collection("products")
         .insertOne({ ...req.body, createdAt: new Date() });

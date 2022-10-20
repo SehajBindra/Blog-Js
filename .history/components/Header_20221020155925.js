@@ -70,7 +70,7 @@ function Header() {
 
           <div
             onClick={!session ? signIn : signOut}
-            className=" hidden  sm:inline  truncate  sm:text-base  text-white"
+            className="hidden sm:inline  truncate  sm:text-base  text-white"
           >
             <p className="">{session ? `${session.user.name}` : "Sign In"}</p>
           </div>

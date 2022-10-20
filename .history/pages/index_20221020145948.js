@@ -15,7 +15,7 @@ export default function Home({ products }) {
   console.log(products);
 
   return (
-    <div className="bg-black text-white overflow-y-scroll h-screen  mx-auto">
+    <div className="bg-black text-white overflow-y-scroll  mx-auto">
       <Head>
         <title>Blog JS | Home</title>
         <link
@@ -43,7 +43,7 @@ export default function Home({ products }) {
         </div>
         <Widgets />
       </main>
-      <div className=" flex flex-col overflow-x-hidden sm:border-x sm:border-gray-800 mx-auto items-center justify-center pr-10  max-w-[63.4rem]  align-middle   ">
+      <div className=" flex flex-col overflow-x-hidden sm:border-x sm:border-gray-800 mx-auto items-center justify-center pr-10  max-w-[63.4rem]  align-middle  overflow-y-scroll  ">
         {products.slice(4, 20).map((product) => (
           <ProductSection key={product._id} product={product} />
         ))}

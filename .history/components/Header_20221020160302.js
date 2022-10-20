@@ -68,6 +68,8 @@ function Header() {
             />
           )}
 
+          <p onClick={!session ? signIn : signOut}> Sign In</p>
+
           <div
             onClick={!session ? signIn : signOut}
             className=" hidden  sm:inline  truncate  sm:text-base  text-white"

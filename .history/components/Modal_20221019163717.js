@@ -66,6 +66,7 @@ function Modal() {
     try {
       const res = await axios
         .post("https://blog-beta-hazel.vercel.app/api/products", {
+          config,
           title,
           desc,
           img,
@@ -110,7 +111,7 @@ function Modal() {
         className=" fixed z-10 inset-0 overflow-y-auto"
         onClose={Setopen}
       >
-        <div className=" flex items-end justify-center  min-h-[800px] sm:min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+        <div className=" flex items-end justify-center  min-h-[700px] sm:min-h-screen pt-4 px-8 pb-20 text-center sm:block sm:p-0">
           <Transition.Child
             as={Fragment}
             enter=" ease-out duration-300"
