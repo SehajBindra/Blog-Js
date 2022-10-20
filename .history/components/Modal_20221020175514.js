@@ -59,10 +59,12 @@ function Modal() {
     dispatch(FetchStart());
 
     try {
-      // const dev = process.env.NODE_ENV !== "production";
-      // const { DEV_URL, PROD_URL } = process.env;
+      let dev = process.env.NODE_ENV !== "production";
+      let { DEV_URL, PROD_URL } = process.env;
+
       const res = await axios
-        .post(`http://localhost:3000/api/products`, {
+
+        .post(`${dev ? DEV_URL : PROD_URL}/api/products`, {
           title,
           desc,
           img,
@@ -70,11 +72,19 @@ function Modal() {
           username: session?.user.name,
           userimg: session?.user.image,
         })
-        .then((res) => {
-          router.push("/");
-          toast.success("Posted!");
-          dispatch(FetchSuccess(res));
-        });
+        .then(
+          (res) => {
+            router.push("/");
+            toast.success("Posted!");
+            dispatch(FetchSuccess(res));
+          },
+          {
+            headers: {
+              Accept: "application/json, text/plain, */*",
+              "User-Agent": "*",
+            },
+          }
+        );
 
       console.log(res);
 

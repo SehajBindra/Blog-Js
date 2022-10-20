@@ -43,6 +43,7 @@ export default async function handler(req, res) {
     const newPost = new Product(req.body);
 
     try {
+      res.header("Access-Control-Allow-Origin", "*");
       const savedPost = await db
         .collection("products")
         .insertOne({ ...req.body, createdAt: new Date() });

@@ -59,10 +59,8 @@ function Modal() {
     dispatch(FetchStart());
 
     try {
-      // const dev = process.env.NODE_ENV !== "production";
-      // const { DEV_URL, PROD_URL } = process.env;
       const res = await axios
-        .post(`http://localhost:3000/api/products`, {
+        .post("http://localhost:3000/api/products", {
           title,
           desc,
           img,

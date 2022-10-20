@@ -1,12 +1,16 @@
+import axios from "axios";
 import Head from "next/head";
-
+import { useRouter } from "next/router";
 import React, { useState } from "react";
-
+import { useSelector } from "react-redux";
 import Header from "../../components/Header";
 import SingleProduct from "../../components/SingleProduct";
+import { User } from "../../redux/slices/userSlice";
 
 function ProductDetails(product) {
-  // console.log(product);
+  console.log(product);
+
+  const router = useRouter();
 
   return (
     <>

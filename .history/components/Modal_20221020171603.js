@@ -16,7 +16,7 @@ import {
   FetchSuccess,
 } from "../redux/slices/postSlice";
 
-import Router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 
 import { useSession } from "next-auth/react";
 import toast from "react-hot-toast";
@@ -59,24 +59,33 @@ function Modal() {
     dispatch(FetchStart());
 
     try {
-      // const dev = process.env.NODE_ENV !== "production";
-      // const { DEV_URL, PROD_URL } = process.env;
+      let dev = process.env.NODE_ENV !== "production";
+      let { DEV_URL, PROD_URL } = process.env;
       const res = await axios
-        .post(`http://localhost:3000/api/products`, {
-          title,
-          desc,
-          img,
-          category: selectedPeople,
-          username: session?.user.name,
-          userimg: session?.user.image,
-        })
+        .post(
+          `${dev ? DEV_URL : PROD_URL}/api/products/`,
+          {
+            title,
+            desc,
+            img,
+            category: selectedPeople,
+            username: session?.user.name,
+            userimg: session?.user.image,
+          },
+          {
+            headers: {
+              Accept: "application/json, text/plain, */*",
+              "User-Agent": "*",
+            },
+          }
+        )
         .then((res) => {
           router.push("/");
           toast.success("Posted!");
           dispatch(FetchSuccess(res));
         });
 
-      console.log(res);
+      // console.log(res);
 
       setTitle("");
       setDesc("");
