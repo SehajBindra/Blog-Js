@@ -74,7 +74,6 @@ function Post({ product }) {
         });
       // console.log(res);
     } catch (error) {
-      toast.error("You can only Edit your post!");
       alert("You can only Edit your post!");
       // console.log(error);
     }

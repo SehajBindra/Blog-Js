@@ -32,15 +32,12 @@ function Post({ product }) {
   const [comment, setComment] = useState("");
   const [likes, setLikes] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
-  const baseUrl = "http://localhost:3000/api/products";
-  const url = "https://blog-beta-hazel.vercel.app/api/products";
+
   const handleDelete = async (id) => {
     // console.log(id);
     try {
-      const dev = process.env.NODE_ENV !== "production";
-
       const res = await axios
-        .delete(`${dev ? baseUrl : url}/${id}`, {
+        .delete(`http://localhost:3000/api/products/${id}`, {
           data: { username: session?.user.name },
         })
         .then((res) => {
@@ -57,9 +54,8 @@ function Post({ product }) {
   const handleupdate = async (id) => {
     // console.log(id);
     try {
-      const dev = process.env.NODE_ENV !== "production";
       const res = await axios
-        .put(`${dev ? baseUrl : url}/${id}`, {
+        .put(`http://localhost:3000/api/products/${id}`, {
           username: session?.user.name,
           title,
           desc,
@@ -75,7 +71,6 @@ function Post({ product }) {
       // console.log(res);
     } catch (error) {
       toast.error("You can only Edit your post!");
-      alert("You can only Edit your post!");
       // console.log(error);
     }
   };
