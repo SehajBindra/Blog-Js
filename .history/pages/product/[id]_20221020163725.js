@@ -15,7 +15,7 @@ function ProductDetails(product) {
   return (
     <>
       <Head>
-        <title>{product.product.title}</title>
+        <title>{product.title}</title>
         <link
           rel="icon"
           href="https://img.myloview.com/stickers/bm-b-m-letter-logo-design-initial-letter-bm-monogram-on-black-background-b-m-logo-bm-icon-logo-mb-logo-template-mb-alphabet-letter-icon-mb-icon-mb-letter-design-on-black-background-400-210159654.jpg"
@@ -37,13 +37,7 @@ export async function getServerSideProps({ params }) {
   let dev = process.env.NODE_ENV !== "production";
   let { DEV_URL, PROD_URL } = process.env;
   const res = await fetch(
-    `${dev ? DEV_URL : PROD_URL}/api/products/${params.id}`,
-    {
-      headers: {
-        Accept: "application/json, text/plain, */*",
-        "User-Agent": "*",
-      },
-    }
+    `${dev ? DEV_URL : PROD_URL}/api/products/${params.id}`
   ).then((res) => res.json());
 
   return {
