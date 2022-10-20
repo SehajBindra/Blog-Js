@@ -1,24 +1,19 @@
 import axios from "axios";
 
 import Head from "next/head";
-import { useRouter } from "next/router";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import Header from "../../components/Header";
 import SingleProduct from "../../components/SingleProduct";
 
 function ProductDetails(product) {
   // console.log(product);
-  const router = useRouter();
-  useEffect(() => {
-    router.prefetch(`/product/${product._id}`);
-  }, []);
 
   return (
     <>
       <Head>
-        <title>{product?.product.title} </title>
+        <title>{product.product.title} </title>
         <link
           rel="icon"
           href="https://img.myloview.com/stickers/bm-b-m-letter-logo-design-initial-letter-bm-monogram-on-black-background-b-m-logo-bm-icon-logo-mb-logo-template-mb-alphabet-letter-icon-mb-icon-mb-letter-design-on-black-background-400-210159654.jpg"
