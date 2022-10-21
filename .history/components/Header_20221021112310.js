@@ -69,7 +69,7 @@ function Header() {
           )}
 
           <p className="sm:hidden" onClick={!session ? signIn : signOut}>
-            {!session ? "Sign In" : "Sign Out"}
+            {!session ? "Sign Out" : "Sign In"}
           </p>
 
           <div
