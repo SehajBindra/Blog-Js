@@ -28,7 +28,7 @@ function ProductDetails({ product }) {
 
       <Header />
 
-      <main className=" py-8  px-12  bg-black  flex-col  flex align-middle  items-center">
+      <main className=" min-h-screen py-8  px-12  bg-black  flex-col  flex align-middle  items-center">
         <SingleProduct product={product} />
       </main>
     </>
