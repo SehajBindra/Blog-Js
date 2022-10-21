@@ -62,7 +62,7 @@ function Header() {
           {session && (
             <img
               onClick={!session ? signIn : signOut}
-              className="   w-8 p-1  sm:h-10 sm:w-10 rounded-full object-cover"
+              className="   w-8   sm:h-10 sm:w-10 rounded-full object-cover"
               src={session.user.image}
               alt=""
             />
@@ -72,7 +72,7 @@ function Header() {
             className="sm:hidden text-sm truncate"
             onClick={!session ? signIn : signOut}
           >
-            {!session ? "Sign In" : "Sign Out"}
+            {!session ? "SignIn" : "SignOut"}
           </p>
 
           <div

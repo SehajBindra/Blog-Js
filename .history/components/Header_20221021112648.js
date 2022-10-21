@@ -58,21 +58,21 @@ function Header() {
             </div>
           )}
         </div>
-        <div className="flex items-center space-x-2 mx-2   whitespace-nowrap ">
+        <div className="flex items-center space-x-2 mr-2   whitespace-nowrap ">
           {session && (
             <img
               onClick={!session ? signIn : signOut}
-              className="   w-8 p-1  sm:h-10 sm:w-10 rounded-full object-cover"
+              className="   w-8   sm:h-10 sm:w-10 rounded-full object-cover"
               src={session.user.image}
               alt=""
             />
           )}
 
           <p
-            className="sm:hidden text-sm truncate"
+            className="sm:hidden text-sm"
             onClick={!session ? signIn : signOut}
           >
-            {!session ? "Sign In" : "Sign Out"}
+            {!session ? "SignIn" : "SignOut"}
           </p>
 
           <div
