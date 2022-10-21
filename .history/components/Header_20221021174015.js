@@ -6,7 +6,6 @@ import { BsFillPatchPlusFill, BsPatchPlus } from "react-icons/bs";
 
 import {
   BookmarkIcon,
-  GlobeAltIcon,
   HashtagIcon,
   HomeModernIcon,
   MagnifyingGlassIcon,
@@ -68,7 +67,7 @@ function Header() {
               </div>
 
               <div className="flex items-center flex-row space-x-2">
-                <GlobeAltIcon className="h-5 w-5 text-[#E23E57] animate-spin" />
+                <HashtagIcon className="h-5 w-5 text-[#E23E57]" />
                 <li> Explore </li>
               </div>
 
@@ -76,7 +75,7 @@ function Header() {
                 onClick={() => router.push("/saved")}
                 className="flex space-x-2 items-center "
               >
-                <BookmarkIcon className="h-5 w-5 text-[#E23E57] animate-pulse" />
+                <BookmarkIcon className="h-5 w-5 text-[#E23E57]" />
                 <li> Saved</li>
               </div>
             </ul>

@@ -76,7 +76,7 @@ function Header() {
                 onClick={() => router.push("/saved")}
                 className="flex space-x-2 items-center "
               >
-                <BookmarkIcon className="h-5 w-5 text-[#E23E57] animate-pulse" />
+                <BookmarkIcon className="h-5 w-5 text-[#E23E57]" />
                 <li> Saved</li>
               </div>
             </ul>

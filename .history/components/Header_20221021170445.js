@@ -5,10 +5,6 @@ import { modalState } from "../atoms/modalAtom";
 import { BsFillPatchPlusFill, BsPatchPlus } from "react-icons/bs";
 
 import {
-  BookmarkIcon,
-  GlobeAltIcon,
-  HashtagIcon,
-  HomeModernIcon,
   MagnifyingGlassIcon,
   PencilSquareIcon,
 } from "@heroicons/react/24/outline";
@@ -43,50 +39,26 @@ function Header() {
             <MagnifyingGlassIcon className="h-5  w-5 text-white" />
           </div>
           <input
-            className="bg-transparent   placeholder:text-white border-gray-800  w-full pl-12 px-4 py-2 border-2 focus-within:outline-none    rounded-full"
+            className="bg-transparent flex-1  placeholder:text-white border-gray-800  w-full pl-12 px-4 py-2 border-2 focus-within:outline-none    rounded-full"
             type="text"
             placeholder="Search"
           />
         </div>
       </div>
 
-      {session && (
-        <div className=" md:hidden  w-full z-50 fixed left-0 bottom-0">
-          <div className="flex bg-black h-16 rounded-t-md  text-white px-16  justify-evenly  flex-row items-center ">
-            <ul className=" list-none text-sm flex justify-between space-x-4 py-2 px-4 sm:px-8 sm:space-x-8 ">
-              <div
-                onClick={() => router.push("/")}
-                className="flex flex-row items-center space-x-2"
-              >
-                <HomeModernIcon className="h-5 w-5  text-[#E23E57] animate-pulse" />
-                <li> Home</li>
-              </div>
-
-              <div className="flex flex-row items-center space-x-2">
-                <PencilSquareIcon className="h-5 w-5 text-[#E23E57] animate-bounce " />
-                <li onClick={() => Setopen(true)}> Write</li>
-              </div>
-
-              <div className="flex items-center flex-row space-x-2">
-                <GlobeAltIcon className="h-5 w-5 text-[#E23E57] animate-spin" />
-                <li> Explore </li>
-              </div>
-
-              <div
-                onClick={() => router.push("/saved")}
-                className="flex space-x-2 items-center "
-              >
-                <BookmarkIcon className="h-5 w-5 text-[#E23E57] animate-pulse" />
-                <li> Saved</li>
-              </div>
-            </ul>
-          </div>
+      <div className=" md:hidden w-full  fixed left-0 bottom-0">
+        <div className="flex bg-black h-24  text-white  flex-row items-center justify-between">
+          <ul className=" list-none text-sm flex space-x-4">
+            <li> Heloo</li>
+            <li> Heloo</li>
+            <li> Heloo</li>
+          </ul>
         </div>
-      )}
+      </div>
 
       {/* right */}
       <div className=" flex items-center mx-4 cursor-pointer">
-        {/* <div className="flex cursor-pointer items-center space-x-2 ">
+        <div className="flex cursor-pointer items-center space-x-2 ">
           {session && (
             <div
               className="flex items-center space-x-2"
@@ -95,19 +67,19 @@ function Header() {
               <PencilSquareIcon className="h-8 w-8 text-[#E23E57] animate-bounce " />
             </div>
           )}
-        </div> */}
-        <div className="flex items-center space-x-2 mx-2 mr-8  whitespace-nowrap ">
+        </div>
+        <div className="flex items-center space-x-2 mx-2   whitespace-nowrap ">
           {session && (
             <img
               onClick={!session ? signIn : signOut}
-              className="   w-8  sm:h-10 sm:w-10 rounded-full object-cover"
+              className="   w-8 p-1  sm:h-10 sm:w-10 rounded-full object-cover"
               src={session.user.image}
               alt=""
             />
           )}
 
           <p
-            className="sm:hidden text-sm "
+            className="sm:hidden text-sm truncate"
             onClick={!session ? signIn : signOut}
           >
             {!session ? "Sign In" : "LogOut"}
