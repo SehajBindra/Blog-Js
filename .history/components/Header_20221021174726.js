@@ -51,7 +51,7 @@ function Header() {
       </div>
 
       {session && (
-        <div className=" md:hidden    w-full  fixed left-0 bottom-0">
+        <div className=" md:hidden    w-full z-50 fixed left-0 bottom-0">
           <div className="flex bg-black h-16  rounded-t-md  text-white px-16  justify-evenly  flex-row items-center ">
             <ul className=" list-none text-sm flex justify-between space-x-4 py-2 px-4 sm:px-8 sm:space-x-8 ">
               <div
