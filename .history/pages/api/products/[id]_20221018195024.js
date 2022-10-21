@@ -1,6 +1,5 @@
 import Product from "../../../models/Product";
 import { ObjectId } from "mongodb";
-import { connectToDatabase } from "../../../util/mongodb2";
 import dbConnect from "../../../util/mongodb";
 // this one is for update, delete, get a single Product or Post by id
 
@@ -11,12 +10,10 @@ export default async function handler(req, res) {
   } = req;
 
   dbConnect();
-  const { db } = await connectToDatabase();
+
   if (method === "GET") {
     try {
-      const product = await db
-        .collection("products")
-        .findOne({ _id: new ObjectId(id) });
+      const product = await Product.findById(id);
       res.status(201).json({ success: true, data: product });
     } catch (err) {
       res.status(500).json(err);

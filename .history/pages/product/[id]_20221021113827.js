@@ -4,13 +4,13 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 
 import React, { useEffect, useState } from "react";
-import { ObjectId } from "mongodb";
+
 import Header from "../../components/Header";
 import SingleProduct from "../../components/SingleProduct";
 import { connectToDatabase } from "../../util/mongodb2";
 
 function ProductDetails({ product }) {
-  console.log(product);
+  // console.log(product);
   const router = useRouter();
   useEffect(() => {
     router.prefetch(`/product/${product._id}`);
@@ -43,9 +43,8 @@ export default ProductDetails;
 
 export async function getServerSideProps({ params }) {
   const { db } = await connectToDatabase();
-  const id = params.id;
-  const products = await db.collection("products").findOne(
-    { _id: new ObjectId(id) },
+  const products = await db.collection("products").findById(
+    { _id: params.id },
 
     {
       projection: {
@@ -76,7 +75,7 @@ export async function getServerSideProps({ params }) {
 
   return {
     props: {
-      product: JSON.parse(JSON.stringify(products)),
+      product: products,
     },
   };
 }

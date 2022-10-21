@@ -4,7 +4,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 
 import React, { useEffect, useState } from "react";
-import { ObjectId } from "mongodb";
+
 import Header from "../../components/Header";
 import SingleProduct from "../../components/SingleProduct";
 import { connectToDatabase } from "../../util/mongodb2";
@@ -43,9 +43,8 @@ export default ProductDetails;
 
 export async function getServerSideProps({ params }) {
   const { db } = await connectToDatabase();
-  const id = params.id;
-  const products = await db.collection("products").findOne(
-    { _id: new ObjectId(id) },
+  const products = await db.collection("products").find(
+    { _id: params.id },
 
     {
       projection: {
@@ -58,14 +57,14 @@ export async function getServerSideProps({ params }) {
     }
   );
 
-  // const posts = products.map((product) => ({
-  //   _id: product.product._id.toString(),
-  //   title: product.product.title,
-  //   desc: product.product.desc,
-  //   img: product.product.img,
-  //   username: product.product.username,
-  //   userimg: product.product.userimg,
-  // }));
+  const posts = products.map((product) => ({
+    _id: product.product._id.toString(),
+    title: product.product.title,
+    desc: product.product.desc,
+    img: product.product.img,
+    username: product.product.username,
+    userimg: product.product.userimg,
+  }));
 
   // let dev = process.env.NODE_ENV !== "production";
   // const baseUrl = "http://localhost:3000/api/products/";
@@ -76,7 +75,7 @@ export async function getServerSideProps({ params }) {
 
   return {
     props: {
-      product: JSON.parse(JSON.stringify(products)),
+      product: JSON.parse(JSON.stringify(posts)),
     },
   };
 }

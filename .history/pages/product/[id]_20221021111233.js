@@ -4,13 +4,13 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 
 import React, { useEffect, useState } from "react";
-import { ObjectId } from "mongodb";
+
 import Header from "../../components/Header";
 import SingleProduct from "../../components/SingleProduct";
-import { connectToDatabase } from "../../util/mongodb2";
+// import { connectToDatabase } from "../../util/mongodb2";
 
 function ProductDetails({ product }) {
-  console.log(product);
+  // console.log(product);
   const router = useRouter();
   useEffect(() => {
     router.prefetch(`/product/${product._id}`);
@@ -42,21 +42,20 @@ export default ProductDetails;
 // },
 
 export async function getServerSideProps({ params }) {
-  const { db } = await connectToDatabase();
-  const id = params.id;
-  const products = await db.collection("products").findOne(
-    { _id: new ObjectId(id) },
+  // const { db } = await connectToDatabase();
+  // const products = await db.collection("products").findOne(
+  //   { _id: params.id },
 
-    {
-      projection: {
-        title: 1,
-        desc: 1,
-        userimg: 1,
-        username: 1,
-        img: 1,
-      },
-    }
-  );
+  //   {
+  //     projection: {
+  //       title: 1,
+  //       desc: 1,
+  //       userimg: 1,
+  //       username: 1,
+  //       img: 1,
+  //     },
+  //   }
+  // );
 
   // const posts = products.map((product) => ({
   //   _id: product.product._id.toString(),
@@ -67,16 +66,16 @@ export async function getServerSideProps({ params }) {
   //   userimg: product.product.userimg,
   // }));
 
-  // let dev = process.env.NODE_ENV !== "production";
-  // const baseUrl = "http://localhost:3000/api/products/";
-  // const url = "https://blog-beta-hazel.vercel.app/api/products/";
-  // const res = await fetch(`${dev ? baseUrl : url}${params.id}`).then((res) =>
-  //   res.json()
-  // );
+  let dev = process.env.NODE_ENV !== "production";
+  const baseUrl = "http://localhost:3000/api/products/";
+  const url = "https://blog-beta-hazel.vercel.app/api/products/";
+  const res = await fetch(`${dev ? baseUrl : url}${params.id}`).then((res) =>
+    res.json()
+  );
 
   return {
     props: {
-      product: JSON.parse(JSON.stringify(products)),
+      product: res.data,
     },
   };
 }
