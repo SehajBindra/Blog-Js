@@ -70,7 +70,7 @@ function Post({ product }) {
         .then((res) => {
           res && toast.success("updated");
           setUpdateMode(false);
-          router.push(`/product/${product._id}`);
+          router.push(`/product/${product.product._id}`);
         });
       // console.log(res);
     } catch (error) {
