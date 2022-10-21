@@ -10,7 +10,7 @@ import SingleProduct from "../../components/SingleProduct";
 import { connectToDatabase } from "../../util/mongodb2";
 
 function ProductDetails({ product }) {
-  // console.log(product);
+  console.log(product);
   const router = useRouter();
   useEffect(() => {
     router.prefetch(`/product/${product._id}`);
