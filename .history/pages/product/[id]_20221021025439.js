@@ -9,7 +9,7 @@ import Header from "../../components/Header";
 import SingleProduct from "../../components/SingleProduct";
 // import { connectToDatabase } from "../../util/mongodb2";
 
-function ProductDetails({ product }) {
+function ProductDetails(product) {
   console.log(product);
   const router = useRouter();
   useEffect(() => {
@@ -19,7 +19,7 @@ function ProductDetails({ product }) {
   return (
     <>
       <Head>
-        <title>{product.title} </title>
+        <title>{product.product.title} </title>
         <link
           rel="icon"
           href="https://img.myloview.com/stickers/bm-b-m-letter-logo-design-initial-letter-bm-monogram-on-black-background-b-m-logo-bm-icon-logo-mb-logo-template-mb-alphabet-letter-icon-mb-icon-mb-letter-design-on-black-background-400-210159654.jpg"
