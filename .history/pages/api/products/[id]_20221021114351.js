@@ -34,13 +34,11 @@ export default async function handler(req, res) {
 
   if (method === "PUT") {
     try {
-      const post = await db
-        .collection("products")
-        .findOne({ _id: new ObjectId(id) });
+      const post = await Product.findById(id);
       if (post.username === req.body.username) {
         try {
-          const updatedPost = await db.collection("products").findOneAndUpdate(
-            { _id: new ObjectId(id) },
+          const updatedPost = await Product.findByIdAndUpdate(
+            id,
             {
               $set: req.body,
             },
@@ -84,10 +82,10 @@ export default async function handler(req, res) {
 
   if (method === "DELETE") {
     try {
-      const post = await Product.findOne({ _id: new ObjectId(id) });
+      const post = await Product.findById(id);
       if (post.username === req.body.username) {
         try {
-          await Product.findOneAndDelete({ _id: new ObjectId(id) });
+          await Product.findByIdAndDelete(id);
           res.status(200).json("your post is deleted");
         } catch (err) {
           res.status(500).json(err);
