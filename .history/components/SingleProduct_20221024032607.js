@@ -318,7 +318,7 @@ function Post({ product }) {
           onChange={(e) => setTitle(e.target.value)}
         />
       ) : (
-        <h2 className="text-2xl text-center my-2 max-w-xl sm:max-w-2xl ">
+        <h2 className="text-2xl text-center my-2 max-w-xl">
           {" "}
           {product.title}{" "}
         </h2>
@@ -343,22 +343,10 @@ function Post({ product }) {
           {/* {Parser(`${desc}`)} */}
         </>
       ) : (
-        <p className="text-base break-all my-4 max-w-xl sm:max-w-2xl ">
+        <p className="text-base break-all my-4 max-w-xl ">
           {" "}
           {Parser(`${product.desc}`)}{" "}
         </p>
-      )}
-
-      {updateMode && (
-        <div onClick={updated}>
-          <button
-            className="text-sm cursor-pointer py-2 px-4 rounded-lg bg-blue-400 text-white"
-            onClick={() => handleupdate(product._id)}
-          >
-            {" "}
-            Publish{" "}
-          </button>
-        </div>
       )}
 
       {/* {updateMode ? (
@@ -425,6 +413,18 @@ function Post({ product }) {
             Post
           </button>
         </form>
+      )}
+
+      {updateMode && (
+        <div onClick={updated}>
+          <button
+            className="text-sm cursor-pointer py-2 px-4 rounded-lg bg-blue-400 text-white"
+            onClick={() => handleupdate(product._id)}
+          >
+            {" "}
+            Publish{" "}
+          </button>
+        </div>
       )}
 
       <Modal />
