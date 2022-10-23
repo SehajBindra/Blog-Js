@@ -334,7 +334,7 @@ function Post({ product }) {
           <ReactQuill
             modules={modules}
             theme="snow"
-            placeholder="lets edit something"
+            placeholder={product.desc}
             value={desc}
             onChange={setDesc}
           />
