@@ -28,7 +28,7 @@ function ProductDetails({ product }) {
 
       <Header />
 
-      <main className="h-screen overflow-x-hidden   scrollbar-hide  overflow-y-auto  py-8  px-12  bg-black  flex-col  flex align-middle  items-center">
+      <main className="h-screen max-w-xl  scrollbar-hide  overflow-y-auto  py-8  px-12  bg-black  flex-col  flex align-middle  items-center">
         <SingleProduct product={product} />
       </main>
     </>

@@ -112,7 +112,7 @@ function Post({ product }) {
   };
 
   return (
-    <div className=" my-16 max-w-xs overflow-x-hidden    text-white">
+    <div className=" my-16 max-w-xs    text-white">
       {/* header */}
 
       <div className="flex items-center mr-12 p-5 ">
@@ -318,7 +318,7 @@ function Post({ product }) {
           onChange={(e) => setTitle(e.target.value)}
         />
       ) : (
-        <h2 className="text-xl text-center my-2 max-w-xl sm:max-w-2xl ">
+        <h2 className="text-2xl text-center my-2 max-w-xl sm:max-w-2xl ">
           {" "}
           {product.title}{" "}
         </h2>
