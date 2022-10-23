@@ -1,4 +1,4 @@
-import React, { Fragment, useMemo, useRef, useState } from "react";
+import React, { Fragment, useRef, useState } from "react";
 import { useRecoilState } from "recoil";
 
 import { CameraIcon, ChevronUpDownIcon } from "@heroicons/react/24/outline";
@@ -39,10 +39,6 @@ const baseUrl = "http://localhost:3000/api/products";
 const url = "https://blog-beta-hazel.vercel.app/api/products";
 
 function Modal() {
-  const ReactQuill = useMemo(
-    () => dynamic(() => import("react-quill"), { ssr: false }),
-    []
-  );
   const modules = {
     toolbar: [
       ["bold", "italic", "underline", "strike"],
