@@ -112,7 +112,7 @@ function Post({ product }) {
   };
 
   return (
-    <div className="mt-2 max-w-xs sm:max-w-xl md:max-w-2xl xl:w-5xl scrollbar-hide overflow-x-hidden sm:overflow-visible    text-white">
+    <div className=" my-16 max-w-xs sm:max-w-xl md:max-w-2xl xl:w-5xl scrollbar-hide overflow-x-hidden sm:overflow-visible    text-white">
       {/* header */}
 
       <div className="flex items-center mr-12 p-5 ">
