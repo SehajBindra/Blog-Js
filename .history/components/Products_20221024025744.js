@@ -20,6 +20,15 @@ import {
 
 function Products({ product }) {
   const [hasliked, sethasliked] = useState(false);
+  useEffect(() => {
+    {
+      hasliked ? (
+        <BookmarkSlashIcon onClick={RemoveItemFromBasket} className="h-5" />
+      ) : (
+        <BookmarkIcon onClick={addItemToBasket} className="h-5  " />
+      );
+    }
+  }, [sethasliked]);
 
   const router = useRouter();
   const dispatch = useDispatch();

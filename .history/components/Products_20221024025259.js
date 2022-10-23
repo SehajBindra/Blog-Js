@@ -20,6 +20,15 @@ import {
 
 function Products({ product }) {
   const [hasliked, sethasliked] = useState(false);
+  useEffect(() => {
+    {
+      hasliked ? (
+        <BookmarkSlashIcon onClick={RemoveItemFromBasket} className="h-5" />
+      ) : (
+        <BookmarkIcon onClick={addItemToBasket} className="h-5  " />
+      );
+    }
+  }, [sethasliked]);
 
   const router = useRouter();
   const dispatch = useDispatch();
@@ -84,24 +93,24 @@ function Products({ product }) {
       <div className="flex flex-col flex-grow   pl-2">
         <div className="flex justify-between items-center"></div>
 
-        <h4 className="text-lg line-clamp-1 max-w-xs flex-grow mt-2 text-left sm:text-left">
+        <h4 className="text-lg line-clamp-1 flex-grow mt-2 text-left sm:text-left">
           {product.title}{" "}
         </h4>
 
         {/* <div className="border-b w-10 pt-2" /> */}
 
-        <p className=" max-w-xs  text-xs text-gray-500 flex-grow line-clamp-2 sm:text-base">
+        <p className="  text-xs text-gray-500 flex-grow line-clamp-2 sm:text-base">
           {" "}
           {Parser(`${product.desc}`)}{" "}
         </p>
 
-        <div className="flex max-w-xs items-center my-2 space-x-2">
+        <div className="flex  items-center my-2 space-x-2">
           <img
             className="h-8 w-8 rounded-full  p-1 object-cover"
             src={product.userimg}
             alt=""
           />
-          <p className="flex-1">{product.username}</p>
+          <p className="">{product.username}</p>
 
           {session && (
             <div

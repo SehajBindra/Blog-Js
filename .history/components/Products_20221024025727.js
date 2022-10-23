@@ -20,6 +20,15 @@ import {
 
 function Products({ product }) {
   const [hasliked, sethasliked] = useState(false);
+  useEffect(() => {
+    {
+      hasliked ? (
+        <BookmarkSlashIcon onClick={RemoveItemFromBasket} className="h-5" />
+      ) : (
+        <BookmarkIcon onClick={addItemToBasket} className="h-5  " />
+      );
+    }
+  }, [sethasliked]);
 
   const router = useRouter();
   const dispatch = useDispatch();
@@ -101,7 +110,7 @@ function Products({ product }) {
             src={product.userimg}
             alt=""
           />
-          <p className="flex-1">{product.username}</p>
+          <p className="">{product.username}</p>
 
           {session && (
             <div
