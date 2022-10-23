@@ -68,13 +68,13 @@ function ProductSection({ product }) {
       </div>
 
       <div className="flex flex-col flex-grow  pl-2">
-        <h4 className="text-base md:max-w-2xl line-clamp-1 flex-grow mt-2 text-left sm:text-left">
+        <h4 className="text-base line-clamp-1 flex-grow mt-2 text-left sm:text-left">
           {product.title}{" "}
         </h4>
 
         {/* <div className="border-b w-10 pt-2" /> */}
 
-        <p className="text-xs md:max-w-2xl text-gray-500 flex-grow line-clamp-2 sm:text-base">
+        <p className="text-xs max-w-xs text-gray-500 flex-grow line-clamp-2 sm:text-base">
           {" "}
           {Parser(`${product.desc}`)}{" "}
         </p>
