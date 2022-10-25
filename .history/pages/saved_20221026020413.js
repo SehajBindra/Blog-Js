@@ -10,7 +10,6 @@ import Modal from "../components/Modal";
 import Parser from "html-react-parser";
 import Sidebar from "../components/Sidebar";
 import { removefromBasket, selectItems } from "../redux/slices/basketSlice";
-import Link from "next/link";
 
 function saved() {
   const router = useRouter();
@@ -46,13 +45,11 @@ function saved() {
         {items.map((item) => (
           <div className="flex flex-col px-8  my-8 " key={item._id}>
             <div className=" my-4 h-20 w-72 md:h-80 md:w-80    sm:my-8">
-              <Link href={`/`}>
-                <img
-                  className="rounded-lg  hover:opacity-80 hover:shadow-lg w-[20rem] h-[20rem] transition duration-200 ease-out  cursor-pointer object-cover flex-shrink-0"
-                  src={item.image}
-                  alt=""
-                />
-              </Link>
+              <img
+                className="rounded-lg  hover:opacity-80 hover:shadow-lg w-[20rem] h-[20rem] transition duration-200 ease-out  cursor-pointer object-cover flex-shrink-0"
+                src={item.image}
+                alt=""
+              />
             </div>
 
             <div className="mt-[16rem] md:mt-4">

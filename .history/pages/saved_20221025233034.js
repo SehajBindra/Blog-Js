@@ -2,19 +2,20 @@ import { BookmarkSlashIcon } from "@heroicons/react/24/outline";
 import Head from "next/head";
 import Router, { useRouter } from "next/router";
 import React from "react";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import Header from "../components/Header";
 import Modal from "../components/Modal";
 
-import Parser from "html-react-parser";
 import Sidebar from "../components/Sidebar";
 import { removefromBasket, selectItems } from "../redux/slices/basketSlice";
-import Link from "next/link";
 
 function saved() {
   const router = useRouter();
-
+  const notify = () =>
+    toast.error("Removed from Saved", {
+      duration: 1000,
+    });
   const items = useSelector(selectItems);
   const dispatch = useDispatch();
   // console.log(items);
@@ -24,9 +25,9 @@ function saved() {
     dispatch(removefromBasket({ id: id }));
 
     router.push("/saved");
+
     toast.error("Removed from saved");
   };
-
   return (
     <>
       <Head>
@@ -38,28 +39,23 @@ function saved() {
       </Head>
       <div>
         <Header />
-        <Toaster />
         {/* <Sidebar /> */}
       </div>
-
       <div className="flex bg-black text-white h-screen flex-row overflow-x-scroll  scrollbar-hide sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
         {items.map((item) => (
-          <div className="flex flex-col px-8  my-8 " key={item._id}>
+          <div className="flex flex-col px-8  my-8 " key={i}>
             <div className=" my-4 h-20 w-72 md:h-80 md:w-80    sm:my-8">
-              <Link href={`/`}>
-                <img
-                  className="rounded-lg  hover:opacity-80 hover:shadow-lg w-[20rem] h-[20rem] transition duration-200 ease-out  cursor-pointer object-cover flex-shrink-0"
-                  src={item.image}
-                  alt=""
-                />
-              </Link>
+              <img
+                className="rounded-lg  hover:opacity-80 hover:shadow-lg w-[20rem] h-[20rem] transition duration-200 ease-out  cursor-pointer object-cover flex-shrink-0"
+                src={item.image}
+                alt=""
+              />
             </div>
 
             <div className="mt-[16rem] md:mt-4">
               <h2 className="line-clamp-1 "> {item.title} </h2>
               <h3 className="line-clamp-2 text-xs text-gray-500 my-2">
-                {" "}
-                {Parser(`${item.description}`)}
+                {item.description}
               </h3>
             </div>
 
@@ -67,7 +63,7 @@ function saved() {
               <img className="rounded-full h-8" src={item.userimg} alt="" />
               <p className="flex-1 text-base ">{item.username}</p>
 
-              <div>
+              <div onClick={notify}>
                 <BookmarkSlashIcon
                   onClick={() => RemoveItemFromBasket(item._id)}
                   className="h-4 cursor-pointer"

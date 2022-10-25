@@ -47,6 +47,14 @@ function Post({ product }) {
     ],
   };
 
+  const notify = () =>
+    toast.success("Deleted", {
+      duration: 2000,
+    });
+  const updated = () =>
+    toast.success("Updated", {
+      duration: 4000,
+    });
   const [title, setTitle] = useState();
   const [desc, setDesc] = useState();
   const [img, setImg] = useState();
@@ -73,7 +81,6 @@ function Post({ product }) {
         })
         .then((res) => {
           res && router.push("/");
-          toast.success("Deleted");
         });
     } catch (error) {
       error && toast.error("You can only delete your post!");
@@ -99,9 +106,9 @@ function Post({ product }) {
           userimg: session?.user.image,
         })
         .then((res) => {
+          toast.success("updated");
           setUpdateMode(false);
           router.push(`/product/${product._id}`);
-          res && toast.success("updated");
         });
       // console.log(res);
     } catch (error) {
@@ -257,6 +264,7 @@ function Post({ product }) {
                             />
 
                             <motion.li
+                              onClick={notify}
                               className={`${
                                 active
                                   ? "flex items-center space-x-2 text-red-500 transition-all duration-150 ease-in  py-2 px-4 cursor-pointer"
@@ -371,7 +379,7 @@ function Post({ product }) {
       )}
 
       {updateMode && (
-        <div>
+        <div onClick={updated}>
           <button
             className="text-sm cursor-pointer my-4 mx-auto  justify-items-center  py-2 px-4 flex flex-col  align-middle rounded-lg bg-blue-400 text-white"
             onClick={() => handleupdate(product._id)}

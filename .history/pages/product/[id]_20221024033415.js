@@ -8,7 +8,6 @@ import { ObjectId } from "mongodb";
 import Header from "../../components/Header";
 import SingleProduct from "../../components/SingleProduct";
 import { connectToDatabase } from "../../util/mongodb2";
-import { Toaster } from "react-hot-toast";
 
 function ProductDetails({ product }) {
   // console.log(product);
@@ -28,7 +27,7 @@ function ProductDetails({ product }) {
       </Head>
 
       <Header />
-      <Toaster />
+
       <main className="h-screen overflow-x-hidden   scrollbar-hide  overflow-y-auto  py-8  px-12  bg-black  flex-col  flex align-middle  items-center">
         <SingleProduct product={product} />
       </main>

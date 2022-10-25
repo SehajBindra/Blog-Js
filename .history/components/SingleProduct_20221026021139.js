@@ -73,7 +73,6 @@ function Post({ product }) {
         })
         .then((res) => {
           res && router.push("/");
-          toast.success("Deleted");
         });
     } catch (error) {
       error && toast.error("You can only delete your post!");
@@ -99,9 +98,9 @@ function Post({ product }) {
           userimg: session?.user.image,
         })
         .then((res) => {
+          toast.success("updated");
           setUpdateMode(false);
           router.push(`/product/${product._id}`);
-          res && toast.success("updated");
         });
       // console.log(res);
     } catch (error) {
@@ -371,7 +370,7 @@ function Post({ product }) {
       )}
 
       {updateMode && (
-        <div>
+        <div onClick={updated}>
           <button
             className="text-sm cursor-pointer my-4 mx-auto  justify-items-center  py-2 px-4 flex flex-col  align-middle rounded-lg bg-blue-400 text-white"
             onClick={() => handleupdate(product._id)}

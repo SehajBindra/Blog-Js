@@ -10,11 +10,13 @@ import Modal from "../components/Modal";
 import Parser from "html-react-parser";
 import Sidebar from "../components/Sidebar";
 import { removefromBasket, selectItems } from "../redux/slices/basketSlice";
-import Link from "next/link";
 
 function saved() {
   const router = useRouter();
-
+  const notify = () =>
+    toast.error("Removed from Saved", {
+      duration: 1000,
+    });
   const items = useSelector(selectItems);
   const dispatch = useDispatch();
   // console.log(items);
@@ -46,13 +48,11 @@ function saved() {
         {items.map((item) => (
           <div className="flex flex-col px-8  my-8 " key={item._id}>
             <div className=" my-4 h-20 w-72 md:h-80 md:w-80    sm:my-8">
-              <Link href={`/`}>
-                <img
-                  className="rounded-lg  hover:opacity-80 hover:shadow-lg w-[20rem] h-[20rem] transition duration-200 ease-out  cursor-pointer object-cover flex-shrink-0"
-                  src={item.image}
-                  alt=""
-                />
-              </Link>
+              <img
+                className="rounded-lg  hover:opacity-80 hover:shadow-lg w-[20rem] h-[20rem] transition duration-200 ease-out  cursor-pointer object-cover flex-shrink-0"
+                src={item.image}
+                alt=""
+              />
             </div>
 
             <div className="mt-[16rem] md:mt-4">
@@ -67,7 +67,7 @@ function saved() {
               <img className="rounded-full h-8" src={item.userimg} alt="" />
               <p className="flex-1 text-base ">{item.username}</p>
 
-              <div>
+              <div onClick={notify}>
                 <BookmarkSlashIcon
                   onClick={() => RemoveItemFromBasket(item._id)}
                   className="h-4 cursor-pointer"

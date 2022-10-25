@@ -46,7 +46,7 @@ function saved() {
         {items.map((item) => (
           <div className="flex flex-col px-8  my-8 " key={item._id}>
             <div className=" my-4 h-20 w-72 md:h-80 md:w-80    sm:my-8">
-              <Link href={`/`}>
+              <Link href={`/product/${product._id}`}>
                 <img
                   className="rounded-lg  hover:opacity-80 hover:shadow-lg w-[20rem] h-[20rem] transition duration-200 ease-out  cursor-pointer object-cover flex-shrink-0"
                   src={item.image}

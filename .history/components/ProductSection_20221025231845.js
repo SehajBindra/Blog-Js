@@ -56,9 +56,9 @@ function ProductSection({ product }) {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       key={product._id}
-      className="flex flex-row   justify-center align-middle cursor-pointer  items-center sm:flex-row py-8 px-8  pr-2 "
+      className="flex flex-row  max-w-xs justify-center align-middle cursor-pointer  items-center sm:flex-row py-8 px-8  pr-1 "
     >
-      <div className=" my-4 mx-auto flex-shrink-0   sm:my-8">
+      <div className=" my-4  flex-shrink-0 max-w-sm   sm:my-8">
         <Link href={`/product/${product._id}`}>
           <img
             className="rounded-md h-[10rem]   w-[10rem] hover:opacity-80 hover:shadow-lg  transition duration-200 ease-out  cursor-pointer object-cover flex-shrink-0"

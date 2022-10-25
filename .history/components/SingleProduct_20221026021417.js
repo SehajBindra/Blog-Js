@@ -371,7 +371,7 @@ function Post({ product }) {
       )}
 
       {updateMode && (
-        <div>
+        <div onClick={updated}>
           <button
             className="text-sm cursor-pointer my-4 mx-auto  justify-items-center  py-2 px-4 flex flex-col  align-middle rounded-lg bg-blue-400 text-white"
             onClick={() => handleupdate(product._id)}
