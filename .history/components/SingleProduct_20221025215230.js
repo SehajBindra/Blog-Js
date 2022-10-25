@@ -233,18 +233,19 @@ function Post({ product }) {
                                     : " text-gray-400 h-4 w-4 cursor-pointer"
                                 }`}
                               />
-
-                              <motion.li
+                              <a
                                 className={`${
                                   active
                                     ? " hover:text-red-400 rounded-md py-2 px-4 cursor-pointer transition duration-150 active:scale-90"
                                     : "  text-white px-4 py-1   cursor-pointer"
                                 }`}
-                                variants={itemVariants}
+                                // href="/account-settings"
                               >
-                                {" "}
-                                Edit{" "}
-                              </motion.li>
+                                <motion.li variants={itemVariants}>
+                                  {" "}
+                                  Edit{" "}
+                                </motion.li>
+                              </a>
                             </div>
                           </>
                         )}

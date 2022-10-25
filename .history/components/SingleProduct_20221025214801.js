@@ -233,18 +233,19 @@ function Post({ product }) {
                                     : " text-gray-400 h-4 w-4 cursor-pointer"
                                 }`}
                               />
-
-                              <motion.li
+                              <a
                                 className={`${
                                   active
                                     ? " hover:text-red-400 rounded-md py-2 px-4 cursor-pointer transition duration-150 active:scale-90"
                                     : "  text-white px-4 py-1   cursor-pointer"
                                 }`}
-                                variants={itemVariants}
+                                // href="/account-settings"
                               >
-                                {" "}
-                                Edit{" "}
-                              </motion.li>
+                                <motion.li variants={itemVariants}>
+                                  {" "}
+                                  Edit{" "}
+                                </motion.li>
+                              </a>
                             </div>
                           </>
                         )}
@@ -263,19 +264,19 @@ function Post({ product }) {
                                   : " text-gray-400 h-4 w-4"
                               }`}
                             />
-
-                            <motion.li
+                            <a
                               onClick={notify}
                               className={`${
                                 active
                                   ? "flex items-center space-x-2 text-red-500 transition-all duration-150 ease-in  py-2 px-4 cursor-pointer"
                                   : "  text-white rounded-md py-2 px-4 cursor-pointer"
                               }`}
-                              variants={itemVariants}
                             >
-                              {" "}
-                              Delete{" "}
-                            </motion.li>
+                              <motion.li variants={itemVariants}>
+                                {" "}
+                                Delete{" "}
+                              </motion.li>
+                            </a>
                           </div>
                         )}
                       </Menu.Item>
@@ -352,7 +353,7 @@ function Post({ product }) {
           type="text"
           placeholder={product.title}
           value={title}
-          className=" my-2 sm:max-w-2xl text-center focus-within:outline-none  w-full border-1 border-b bg-transparent"
+          className=" my-2  text-center focus-within:outline-none  w-full border-1 border-b bg-transparent"
           onChange={(e) => setTitle(e.target.value)}
         />
       ) : (
@@ -382,35 +383,13 @@ function Post({ product }) {
       {updateMode && (
         <div onClick={updated}>
           <button
-            className="text-sm cursor-pointer my-4 mx-auto  justify-items-center  py-2 px-4 flex flex-col  align-middle rounded-lg bg-blue-400 text-white"
+            className="text-sm cursor-pointer my-4  justify-items-center  py-2 px-4 flex flex-col justify-center items-center align-middle rounded-lg bg-blue-400 text-white"
             onClick={() => handleupdate(product._id)}
           >
             {" "}
             Publish{" "}
           </button>
         </div>
-      )}
-
-      {/* input box */}
-
-      {session && (
-        <form className="flex items-center p-4">
-          <input
-            type="text"
-            value={comment}
-            onChange={(e) => setComment(e.target.value)}
-            placeholder="Add a comment..."
-            className="border border-gray-800 bg-transparent rounded-full px-4 py-2 mr-2 flex-1 focus:ring-0 outline-none"
-          />
-          <button
-            type="submit"
-            disabled={!comment.trim()}
-            onClick={sendComment}
-            className=" font-light text-blue-400"
-          >
-            Post
-          </button>
-        </form>
       )}
       {session && (
         <div className="ml-5 max-h-20 bg-black text-white overflow-y-scroll  scrollbar-hide">
@@ -437,6 +416,27 @@ function Post({ product }) {
             </div>
           ))}
         </div>
+      )}
+      {/* input box */}
+
+      {session && (
+        <form className="flex items-center p-4">
+          <input
+            type="text"
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+            placeholder="Add a comment..."
+            className="border border-gray-800 bg-transparent rounded-full px-4 py-2 mr-2 flex-1 focus:ring-0 outline-none"
+          />
+          <button
+            type="submit"
+            disabled={!comment.trim()}
+            onClick={sendComment}
+            className=" font-light text-blue-400"
+          >
+            Post
+          </button>
+        </form>
       )}
 
       <Modal />

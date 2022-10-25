@@ -233,18 +233,19 @@ function Post({ product }) {
                                     : " text-gray-400 h-4 w-4 cursor-pointer"
                                 }`}
                               />
-
-                              <motion.li
+                              <a
                                 className={`${
                                   active
                                     ? " hover:text-red-400 rounded-md py-2 px-4 cursor-pointer transition duration-150 active:scale-90"
                                     : "  text-white px-4 py-1   cursor-pointer"
                                 }`}
-                                variants={itemVariants}
+                                // href="/account-settings"
                               >
-                                {" "}
-                                Edit{" "}
-                              </motion.li>
+                                <motion.li variants={itemVariants}>
+                                  {" "}
+                                  Edit{" "}
+                                </motion.li>
+                              </a>
                             </div>
                           </>
                         )}
@@ -263,19 +264,19 @@ function Post({ product }) {
                                   : " text-gray-400 h-4 w-4"
                               }`}
                             />
-
-                            <motion.li
+                            <a
                               onClick={notify}
                               className={`${
                                 active
                                   ? "flex items-center space-x-2 text-red-500 transition-all duration-150 ease-in  py-2 px-4 cursor-pointer"
                                   : "  text-white rounded-md py-2 px-4 cursor-pointer"
                               }`}
-                              variants={itemVariants}
                             >
-                              {" "}
-                              Delete{" "}
-                            </motion.li>
+                              <motion.li variants={itemVariants}>
+                                {" "}
+                                Delete{" "}
+                              </motion.li>
+                            </a>
                           </div>
                         )}
                       </Menu.Item>
@@ -298,8 +299,8 @@ function Post({ product }) {
             alt=""
           />
           <input
-            value={img}
-            onChange={(e) => setImg(e.target.value)}
+            value={`${product.img}`}
+            onChange={(e) => setImg(`${product.img}`)}
             className=" bg-transparent border-1 py-2 px-4 border-b my-2 focus:ring-0 focus-within:outline-none w-full "
             type="text"
             placeholder={`${product.img}`}
@@ -352,7 +353,7 @@ function Post({ product }) {
           type="text"
           placeholder={product.title}
           value={title}
-          className=" my-2 sm:max-w-2xl text-center focus-within:outline-none  w-full border-1 border-b bg-transparent"
+          className=" my-2  text-center focus-within:outline-none  w-full border-1 border-b bg-transparent"
           onChange={(e) => setTitle(e.target.value)}
         />
       ) : (
@@ -382,7 +383,7 @@ function Post({ product }) {
       {updateMode && (
         <div onClick={updated}>
           <button
-            className="text-sm cursor-pointer my-4 mx-auto  justify-items-center  py-2 px-4 flex flex-col  align-middle rounded-lg bg-blue-400 text-white"
+            className="text-sm cursor-pointer py-2 px-4 rounded-lg bg-blue-400 text-white"
             onClick={() => handleupdate(product._id)}
           >
             {" "}
@@ -390,6 +391,29 @@ function Post({ product }) {
           </button>
         </div>
       )}
+
+      <div className=" max-h-20 bg-black text-white overflow-y-scroll  scrollbar-hide">
+        {comments.map((comment) => (
+          <div
+            className=" flex items-center justify-start space-x-2 mb-3 "
+            key={comment.id}
+          >
+            <img
+              className=" pointer-events-none h-7 rounded-full "
+              src={comment.data().userImage}
+              alt=""
+            />
+            <p className=" text-xs sm:text-sm  flex-1 items-start break-all">
+              <span className=" font-semibold">{comment.data().username} </span>
+              {comment.data().comment}
+            </p>
+
+            <Moment className="hidden sm:pr-5 sm:text-sm " fromNow>
+              {comment.data().timestamp?.toDate()}
+            </Moment>
+          </div>
+        ))}
+      </div>
 
       {/* input box */}
 
@@ -411,32 +435,6 @@ function Post({ product }) {
             Post
           </button>
         </form>
-      )}
-      {session && (
-        <div className="ml-5 max-h-20 bg-black text-white overflow-y-scroll  scrollbar-hide">
-          {comments.map((comment) => (
-            <div
-              className=" flex items-center justify-start space-x-2 mb-3 "
-              key={comment.id}
-            >
-              <img
-                className=" pointer-events-none h-7 rounded-full "
-                src={comment.data().userImage}
-                alt=""
-              />
-              <p className=" text-xs sm:text-sm  flex-1 items-start break-all">
-                <span className=" font-semibold">
-                  {comment.data().username}{" "}
-                </span>
-                {comment.data().comment}
-              </p>
-
-              <Moment className="hidden sm:pr-5 sm:text-sm " fromNow>
-                {comment.data().timestamp?.toDate()}
-              </Moment>
-            </div>
-          ))}
-        </div>
       )}
 
       <Modal />

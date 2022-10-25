@@ -90,8 +90,6 @@ function Post({ product }) {
     }
   };
 
-  useEffect(() => {}, []);
-
   // logic for updating a single post
   const handleupdate = async (id) => {
     // console.log(id);
@@ -120,9 +118,8 @@ function Post({ product }) {
   };
   // logic for comments
   useEffect(() => {
-    const id = `/product/${product._id}`;
     onSnapshot(
-      query(collection(db, id, "comments"), orderBy("timestamp", "desc")),
+      query(collection(db, "comments"), orderBy("timestamp", "desc")),
       (snapshot) => setComments(snapshot.docs)
     );
   }, [db]);
@@ -132,8 +129,8 @@ function Post({ product }) {
 
     const commentToSend = comment;
     setComment("");
-    const id = `/product/${product._id}`;
-    const docref = await addDoc(collection(db, id, "comments"), {
+
+    await addDoc(collection(db, "comments"), {
       comment: commentToSend,
       username: session?.user.name,
       userImage: session?.user.image,
@@ -158,14 +155,14 @@ function Post({ product }) {
       {/* header */}
 
       <div className="flex items-center mr-12 p-5 ">
-        <div className="  flex flex-1 items-center">
+        <div className="flex flex-1 items-center">
           <img
             className="rounded-full h-12 w-12 object-cover  pointer-events-none"
             src={product.userimg}
             alt=""
           />
 
-          <p className="ml-3  capitalize font-normal truncate">
+          <p className="  capitalize font-normal truncate">
             {product.username}
           </p>
         </div>
@@ -178,14 +175,16 @@ function Post({ product }) {
           >
             <Menu className="relative" as="div">
               <>
-                <motion.div
-                  onClick={() => setIsOpen(!isOpen)}
-                  whileTap={{ scale: 0.96 }}
-                >
+                <div>
                   <Menu.Button className="flex flex-row items-center">
-                    <EllipsisHorizontalIcon className=" flex space-x-2 h-8 w-8 ml-4 items-center animate-pulse text-[#ACe5ff]" />
+                    <motion.button
+                      onClick={() => setIsOpen(!isOpen)}
+                      whileTap={{ scale: 0.97 }}
+                    >
+                      <EllipsisHorizontalIcon className=" flex space-x-2 h-8 w-8 ml-4 items-center animate-pulse text-[#ACe5ff]" />
+                    </motion.button>
                   </Menu.Button>
-                </motion.div>
+                </div>
 
                 <motion.ul
                   variants={{
@@ -202,7 +201,7 @@ function Post({ product }) {
                         clipPath: "inset(0% 0% 0% 0% round 10px)",
                         transition: {
                           type: "spring",
-                          bounce: 0.8,
+                          bounce: 0,
                           duration: 0.8,
                           delayChildren: 0.3,
                           staggerChildren: 0.05,
@@ -212,11 +211,12 @@ function Post({ product }) {
                         clipPath: "inset(10% 50% 90% 50% round 10px)",
                         transition: {
                           type: "spring",
-                          bounce: 0.8,
+                          bounce: 0,
                           duration: 0.4,
                         },
                       },
                     }}
+                    style={{ pointerEvents: isOpen ? "auto" : "none" }}
                   >
                     <Menu.Items className="flex flex-col flex-grow-0 w-30 mr-8  sm:w-40 py-2 px-2 border border-gray-800  my-1 bg-black text-white te shadow-lg rounded-lg  ">
                       <Menu.Item>
@@ -233,18 +233,19 @@ function Post({ product }) {
                                     : " text-gray-400 h-4 w-4 cursor-pointer"
                                 }`}
                               />
-
-                              <motion.li
+                              <a
                                 className={`${
                                   active
                                     ? " hover:text-red-400 rounded-md py-2 px-4 cursor-pointer transition duration-150 active:scale-90"
                                     : "  text-white px-4 py-1   cursor-pointer"
                                 }`}
-                                variants={itemVariants}
+                                // href="/account-settings"
                               >
-                                {" "}
-                                Edit{" "}
-                              </motion.li>
+                                <motion.li variants={itemVariants}>
+                                  {" "}
+                                  Edit{" "}
+                                </motion.li>
+                              </a>
                             </div>
                           </>
                         )}
@@ -263,19 +264,19 @@ function Post({ product }) {
                                   : " text-gray-400 h-4 w-4"
                               }`}
                             />
-
-                            <motion.li
+                            <a
                               onClick={notify}
                               className={`${
                                 active
                                   ? "flex items-center space-x-2 text-red-500 transition-all duration-150 ease-in  py-2 px-4 cursor-pointer"
                                   : "  text-white rounded-md py-2 px-4 cursor-pointer"
                               }`}
-                              variants={itemVariants}
                             >
-                              {" "}
-                              Delete{" "}
-                            </motion.li>
+                              <motion.li variants={itemVariants}>
+                                {" "}
+                                Delete{" "}
+                              </motion.li>
+                            </a>
                           </div>
                         )}
                       </Menu.Item>
@@ -352,7 +353,7 @@ function Post({ product }) {
           type="text"
           placeholder={product.title}
           value={title}
-          className=" my-2 sm:max-w-2xl text-center focus-within:outline-none  w-full border-1 border-b bg-transparent"
+          className=" my-2  text-center focus-within:outline-none  w-full border-1 border-b bg-transparent"
           onChange={(e) => setTitle(e.target.value)}
         />
       ) : (
@@ -382,7 +383,7 @@ function Post({ product }) {
       {updateMode && (
         <div onClick={updated}>
           <button
-            className="text-sm cursor-pointer my-4 mx-auto  justify-items-center  py-2 px-4 flex flex-col  align-middle rounded-lg bg-blue-400 text-white"
+            className="text-sm cursor-pointer py-2 px-4 rounded-lg bg-blue-400 text-white"
             onClick={() => handleupdate(product._id)}
           >
             {" "}
@@ -390,6 +391,29 @@ function Post({ product }) {
           </button>
         </div>
       )}
+
+      <div className=" max-h-20 bg-black text-white overflow-y-scroll  scrollbar-hide">
+        {comments.map((comment) => (
+          <div
+            className=" flex items-center justify-start space-x-2 mb-3 "
+            key={comment.id}
+          >
+            <img
+              className=" pointer-events-none h-7 rounded-full "
+              src={comment.data().userImage}
+              alt=""
+            />
+            <p className=" text-xs sm:text-sm  flex-1 items-start break-all">
+              <span className=" font-semibold">{comment.data().username} </span>
+              {comment.data().comment}
+            </p>
+
+            <Moment className="hidden sm:pr-5 sm:text-sm " fromNow>
+              {comment.data().timestamp?.toDate()}
+            </Moment>
+          </div>
+        ))}
+      </div>
 
       {/* input box */}
 
@@ -411,32 +435,6 @@ function Post({ product }) {
             Post
           </button>
         </form>
-      )}
-      {session && (
-        <div className="ml-5 max-h-20 bg-black text-white overflow-y-scroll  scrollbar-hide">
-          {comments.map((comment) => (
-            <div
-              className=" flex items-center justify-start space-x-2 mb-3 "
-              key={comment.id}
-            >
-              <img
-                className=" pointer-events-none h-7 rounded-full "
-                src={comment.data().userImage}
-                alt=""
-              />
-              <p className=" text-xs sm:text-sm  flex-1 items-start break-all">
-                <span className=" font-semibold">
-                  {comment.data().username}{" "}
-                </span>
-                {comment.data().comment}
-              </p>
-
-              <Moment className="hidden sm:pr-5 sm:text-sm " fromNow>
-                {comment.data().timestamp?.toDate()}
-              </Moment>
-            </div>
-          ))}
-        </div>
       )}
 
       <Modal />
