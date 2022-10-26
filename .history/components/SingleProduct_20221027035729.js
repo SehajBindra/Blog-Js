@@ -412,7 +412,7 @@ function Post({ product }) {
       {/* input box */}
 
       {session && (
-        <form className="flex items-center my-5 p-4">
+        <form className="flex items-center my-4 p-4">
           <input
             type="text"
             value={comment}

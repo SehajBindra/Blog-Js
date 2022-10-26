@@ -61,20 +61,20 @@ function ProductSection({ product }) {
       <div className=" my-4  flex-shrink-0  sm:my-8">
         <Link href={`/product/${product._id}`}>
           <img
-            className="rounded-md w-[10rem] h-[10rem] hover:opacity-80 hover:shadow-lg  transition duration-200 ease-out  cursor-pointer  object-cover  flex-shrink-0 "
+            className="rounded-md h-[8rem]    w-[8rem] sm:w-[10rem] sm:h-[10rem] hover:opacity-80 hover:shadow-lg  transition duration-200 ease-out  cursor-pointer  object-cover  flex-shrink-0 "
             src={product.img}
           />
         </Link>
       </div>
 
-      <div className="flex flex-col  pl-2">
-        <h4 className="text-base max-w-[10rem] sm:text-lg   sm:max-w-2xl line-clamp-1  mt-2 text-left sm:text-left">
+      <div className="flex flex-col flex-grow  pl-2">
+        <h4 className="text-base  sm:max-w-2xl line-clamp-1 break-all  mt-2 text-left sm:text-left">
           {product.title}{" "}
         </h4>
 
         {/* <div className="border-b w-10 pt-2" /> */}
 
-        <div className="text-xs max-w-[10rem]   sm:max-w-2xl text-gray-500  line-clamp-2 sm:text-base">
+        <div className="text-xs max-w-xs   sm:max-w-2xl text-gray-500  line-clamp-2 sm:text-base">
           {" "}
           {Parser(`${product.desc}`)}{" "}
         </div>

@@ -90,7 +90,7 @@ function ProductSection({ product }) {
           </p>
 
           <div
-            className=" items-center my-2 hidden sm:inline-flex"
+            className=" items-center my-2  sm:inline-flex"
             onClick={() => (hasliked ? sethasliked(false) : sethasliked(true))}
           >
             {hasliked ? (

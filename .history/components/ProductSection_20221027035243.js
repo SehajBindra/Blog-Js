@@ -68,7 +68,7 @@ function ProductSection({ product }) {
       </div>
 
       <div className="flex flex-col  pl-2">
-        <h4 className="text-base max-w-[10rem] sm:text-lg   sm:max-w-2xl line-clamp-1  mt-2 text-left sm:text-left">
+        <h4 className="text-base  sm:max-w-2xl line-clamp-1  mt-2 text-left sm:text-left">
           {product.title}{" "}
         </h4>
 
