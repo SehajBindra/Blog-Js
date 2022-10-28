@@ -31,7 +31,7 @@ import Moment from "react-moment";
 
 function Post({ product }) {
   // React quill
-  // console.log(product);
+  console.log(product);
   const ReactQuill = useMemo(
     () => dynamic(() => import("react-quill"), { ssr: false }),
     []
@@ -87,10 +87,10 @@ function Post({ product }) {
     const getpost = async (id) => {
       const id2 = `${product._id}`;
       const dev = process.env.NODE_ENV !== "production";
-      const data = await axios.get(`${dev ? baseUrl : url}/${id2}`, {});
-      setDesc(data.data.data.desc);
-      setTitle(data.data.data.title);
-      setImg(data.data.data.img);
+      const res = await axios.get(`${dev ? baseUrl : url}/${id2}`, {});
+      setDesc(res.desc);
+      console.log(res);
+      console.log(res.desc);
     };
     getpost();
   }, []);

@@ -31,7 +31,7 @@ import Moment from "react-moment";
 
 function Post({ product }) {
   // React quill
-  // console.log(product);
+  console.log(product);
   const ReactQuill = useMemo(
     () => dynamic(() => import("react-quill"), { ssr: false }),
     []
@@ -93,7 +93,7 @@ function Post({ product }) {
       setImg(data.data.data.img);
     };
     getpost();
-  }, []);
+  }, [id2]);
 
   // logic for updating a single post
   const handleupdate = async (id) => {

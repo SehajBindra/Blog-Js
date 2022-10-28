@@ -31,7 +31,7 @@ import Moment from "react-moment";
 
 function Post({ product }) {
   // React quill
-  // console.log(product);
+  console.log(product);
   const ReactQuill = useMemo(
     () => dynamic(() => import("react-quill"), { ssr: false }),
     []
