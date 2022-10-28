@@ -422,7 +422,7 @@ function Post({ product }) {
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
               >
-                <Listbox.Options className="bg-gray-100 rounded-md py-1 px-4 my-2 h-32 overflow-y-scroll scrollbar-thin  scrollbar-thumb-gray-400 scrollbar-thumb-rounded-lg">
+                <Listbox.Options className="bg-gray-100 rounded-md py-1 px-4 my-2 max-h-[4.4rem] overflow-y-scroll scrollbar-thin  scrollbar-thumb-black scrollbar-thumb-rounded-md">
                   {people.map((person) => (
                     <Listbox.Option
                       key={person.id}

@@ -406,11 +406,11 @@ function Post({ product }) {
         >
           {({ open }) => (
             <>
-              <Listbox.Button className=" text-center bg-gray-100 text-black my-2 rounded-md py-2 px-4 flex flex-row items-center space-x-2 justify-center align-middle mx-auto  ">
+              <Listbox.Button className=" text-center bg-gray-100 rounded-md py-2 px-4 flex flex-row items-center space-x-2 justify-center align-middle mx-auto  ">
                 {selectedPeople.map((person) => person.name).join(", ")}
                 <div className="flex flex-row items-center">
                   <ChevronUpDownIcon
-                    className="h-5  w-5 text-gray-400"
+                    className="h-5  w-5 text-black"
                     aria-hidden="true"
                   />
                 </div>
@@ -422,7 +422,7 @@ function Post({ product }) {
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
               >
-                <Listbox.Options className="bg-gray-100 rounded-md py-1 px-4 my-2 h-32 overflow-y-scroll scrollbar-thin  scrollbar-thumb-gray-400 scrollbar-thumb-rounded-lg">
+                <Listbox.Options className="bg-black text-white rounded-md py-1 px-4 my-2 max-h-[4.4rem] overflow-y-scroll scrollbar-hide">
                   {people.map((person) => (
                     <Listbox.Option
                       key={person.id}
