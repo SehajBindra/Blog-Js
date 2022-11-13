@@ -1,4 +1,4 @@
-import { ArrowRightIcon, BookmarkSlashIcon } from "@heroicons/react/24/outline";
+import { BookmarkSlashIcon } from "@heroicons/react/24/outline";
 import Head from "next/head";
 import Router, { useRouter } from "next/router";
 import React from "react";
@@ -47,21 +47,21 @@ function saved({ products }) {
       <div className="flex bg-black text-white h-screen flex-col overflow-x-scroll  scrollbar-hide sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
         {items.map((item, i) => (
           <div className="flex flex-row px-8  my-8 " key={i}>
-            <div className=" cursor-pointer md:mt-4">
+            <div className=" md:mt-4">
               <h2 className="line-clamp-1 "> {item.title} </h2>
-
               <h3 className="line-clamp-2 text-xs text-gray-500 my-2">
                 {" "}
                 {Parser(`${item.description}`)}
               </h3>
 
               <div className="flex flex-row items-center space-x-2">
-                <img className="rounded-full h-5" src={item.userimg} alt="" />
-                <p className="flex-1 text-base whitespace-nowrap ">
-                  {item.username}
-                </p>
+                <div>
+                  <h2>Read</h2>
+                </div>
+                <img className="rounded-full h-8" src={item.userimg} alt="" />
+                <p className="flex-1 text-base ">{item.username}</p>
 
-                <div className="flex ">
+                <div>
                   <BookmarkSlashIcon
                     onClick={() => RemoveItemFromBasket(item._id)}
                     className="h-4 cursor-pointer"
@@ -87,6 +87,7 @@ export async function getServerSideProps() {
     .collection("products")
     .find({ category: { name: "Programing" } })
     .sort({ $natural: -1 })
+
     .toArray();
 
   return {

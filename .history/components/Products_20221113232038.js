@@ -20,9 +20,9 @@ import {
   selectItems,
 } from "../redux/slices/basketSlice";
 
-function Products({ product }) {
+function Products({ product, Products }) {
   const [hasliked, sethasliked] = useState(false);
-
+  console.log(Products);
   const router = useRouter();
   const dispatch = useDispatch();
   const items = useSelector(selectItems);
@@ -51,6 +51,23 @@ function Products({ product }) {
     toast.error("Removed from saved");
   };
   const { data: session, status } = useSession();
+
+  // const handleDelete = async (id) => {
+  //   console.log(id);
+  //   try {
+  //     const res = await axios
+  //       .delete(`http://localhost:3000/api/products/${id}`, {
+  //         data: { username: session?.user.name },
+  //       })
+  //       .then((res) => {
+  //         res && router.push("/");
+  //         toast.success("Deleted");
+  //       });
+  //   } catch (error) {
+  //     toast.error("You can only delete your post!");
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <>

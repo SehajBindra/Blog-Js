@@ -390,7 +390,7 @@ function Post({ product }) {
           />
         </>
       ) : (
-        <p className="text-base my-4 max-w-xl sm:max-w-2xl ">
+        <p className="text-base break-all my-4 max-w-xl sm:max-w-2xl ">
           {" "}
           {Parser(`${product.desc}`)}{" "}
         </p>
@@ -451,7 +451,7 @@ function Post({ product }) {
       )}
 
       {session && (
-        <div className="ml-5 max-h-20 bg-black text-white overflow-y-scroll my-2  scrollbar-hide">
+        <div className="ml-5 max-h-20 bg-black text-white overflow-y-scroll my-10  scrollbar-hide">
           {comments.map((comment) => (
             <div
               className=" flex items-center justify-start space-x-2 mb-3 "

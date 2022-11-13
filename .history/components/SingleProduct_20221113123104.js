@@ -390,7 +390,7 @@ function Post({ product }) {
           />
         </>
       ) : (
-        <p className="text-base my-4 max-w-xl sm:max-w-2xl ">
+        <p className="text-base break-all my-4 max-w-xl sm:max-w-2xl ">
           {" "}
           {Parser(`${product.desc}`)}{" "}
         </p>

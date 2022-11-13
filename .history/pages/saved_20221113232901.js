@@ -13,8 +13,8 @@ import { removefromBasket, selectItems } from "../redux/slices/basketSlice";
 import Link from "next/link";
 import { connectToDatabase } from "../util/mongodb2";
 
-function saved({ products }) {
-  console.log(products);
+function saved({ product }) {
+  console.log(product);
   const router = useRouter();
 
   const items = useSelector(selectItems);
@@ -47,28 +47,30 @@ function saved({ products }) {
       <div className="flex bg-black text-white h-screen flex-col overflow-x-scroll  scrollbar-hide sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
         {items.map((item, i) => (
           <div className="flex flex-row px-8  my-8 " key={i}>
-            <div className=" cursor-pointer md:mt-4">
-              <h2 className="line-clamp-1 "> {item.title} </h2>
+            <Link href={`/product/${product._id}`}>
+              <div className=" md:mt-4">
+                <h2 className="line-clamp-1 "> {item.title} </h2>
 
-              <h3 className="line-clamp-2 text-xs text-gray-500 my-2">
-                {" "}
-                {Parser(`${item.description}`)}
-              </h3>
+                <h3 className="line-clamp-2 text-xs text-gray-500 my-2">
+                  {" "}
+                  {Parser(`${item.description}`)}
+                </h3>
 
-              <div className="flex flex-row items-center space-x-2">
-                <img className="rounded-full h-5" src={item.userimg} alt="" />
-                <p className="flex-1 text-base whitespace-nowrap ">
-                  {item.username}
-                </p>
+                <div className="flex flex-row items-center space-x-2">
+                  <img className="rounded-full h-5" src={item.userimg} alt="" />
+                  <p className="flex-1 text-base whitespace-nowrap ">
+                    {item.username}
+                  </p>
 
-                <div className="flex ">
-                  <BookmarkSlashIcon
-                    onClick={() => RemoveItemFromBasket(item._id)}
-                    className="h-4 cursor-pointer"
-                  />
+                  <div className="flex ">
+                    <BookmarkSlashIcon
+                      onClick={() => RemoveItemFromBasket(item._id)}
+                      className="h-4 cursor-pointer"
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
         ))}
 
@@ -83,15 +85,16 @@ export default saved;
 export async function getServerSideProps() {
   const { db } = await connectToDatabase();
 
-  const products = await db
+  const product = await db
     .collection("products")
     .find({ category: { name: "Programing" } })
     .sort({ $natural: -1 })
+
     .toArray();
 
   return {
     props: {
-      products: products.map((product) => ({
+      product: product.map((product) => ({
         _id: product._id.toString(),
         title: product.title,
         // desc: product.desc,

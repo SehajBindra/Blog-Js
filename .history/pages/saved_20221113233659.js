@@ -52,7 +52,9 @@ function saved({ products }) {
 
               <h3 className="line-clamp-2 text-xs text-gray-500 my-2">
                 {" "}
-                {Parser(`${item.description}`)}
+                <Link href={`/product/${product._id}`}>
+                  {Parser(`${item.description}`)}
+                </Link>
               </h3>
 
               <div className="flex flex-row items-center space-x-2">

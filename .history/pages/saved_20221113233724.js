@@ -52,7 +52,9 @@ function saved({ products }) {
 
               <h3 className="line-clamp-2 text-xs text-gray-500 my-2">
                 {" "}
-                {Parser(`${item.description}`)}
+                <Link href={`/product/${product._id}`}>
+                  {Parser(`${item.description}`)}
+                </Link>
               </h3>
 
               <div className="flex flex-row items-center space-x-2">
@@ -83,7 +85,7 @@ export default saved;
 export async function getServerSideProps() {
   const { db } = await connectToDatabase();
 
-  const products = await db
+  const product = await db
     .collection("products")
     .find({ category: { name: "Programing" } })
     .sort({ $natural: -1 })
@@ -91,7 +93,7 @@ export async function getServerSideProps() {
 
   return {
     props: {
-      products: products.map((product) => ({
+      products: product.map((product) => ({
         _id: product._id.toString(),
         title: product.title,
         // desc: product.desc,

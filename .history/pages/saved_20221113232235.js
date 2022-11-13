@@ -47,7 +47,7 @@ function saved({ products }) {
       <div className="flex bg-black text-white h-screen flex-col overflow-x-scroll  scrollbar-hide sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
         {items.map((item, i) => (
           <div className="flex flex-row px-8  my-8 " key={i}>
-            <div className=" cursor-pointer md:mt-4">
+            <div className=" md:mt-4">
               <h2 className="line-clamp-1 "> {item.title} </h2>
 
               <h3 className="line-clamp-2 text-xs text-gray-500 my-2">
@@ -68,6 +68,10 @@ function saved({ products }) {
                   />
                 </div>
               </div>
+              <div className="flex items-center space-x-2 my-2">
+                <h2 className="whitespace-nowrap">Read more</h2>
+                <ArrowRightIcon className="h-4 text-red-400 hover:animate-pulse" />
+              </div>
             </div>
           </div>
         ))}
@@ -87,6 +91,7 @@ export async function getServerSideProps() {
     .collection("products")
     .find({ category: { name: "Programing" } })
     .sort({ $natural: -1 })
+
     .toArray();
 
   return {
