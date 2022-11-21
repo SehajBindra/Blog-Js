@@ -21,7 +21,7 @@ function Sidebar() {
   const [open, Setopen] = useRecoilState(modalState);
 
   return (
-    <div className="border-r  bg-black border-gray-800 hidden sm:col-span-2 items-center px-4 md:col-span-2 lg:col-span-2 md:items-start   sm:inline-flex flex-col">
+    <div className="border-r sticky top-20  z-0 bg-black border-gray-800 hidden sm:col-span-2 items-center px-4 md:col-span-2 lg:col-span-2 md:items-start   sm:inline-flex flex-col">
       <img
         className="hidden mx-4 sm:inline-flex h-20 w-20 object cover"
         src="https://img.myloview.com/stickers/bm-b-m-letter-logo-design-initial-letter-bm-monogram-on-black-background-b-m-logo-bm-icon-logo-mb-logo-template-mb-alphabet-letter-icon-mb-icon-mb-letter-design-on-black-background-400-210159654.jpg"
