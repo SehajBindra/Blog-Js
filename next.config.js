@@ -22,14 +22,17 @@ module.exports = {
   },
 };
 
-// // next.config.js
-// module.exports = {
-//   async rewrites() {
-//     return [
-//       {
-//         source: "/api/products",
-//         destination: "https://blog-beta-hazel.vercel.app",
-//       },
-//     ];
-//   },
-// };
+//lh3.googleusercontent.com
+
+module.exports = {
+  images: {
+    domains: [
+      "lh3.googleusercontent.com",
+      "variety.com",
+      "play-lh.googleusercontent.com",
+      "upload.wikimedia.org",
+      "c.tenor.com",
+      "i.pinimg.com",
+    ],
+  },
+};

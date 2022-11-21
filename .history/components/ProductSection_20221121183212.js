@@ -75,7 +75,7 @@ function ProductSection({ product }) {
 
         {/* <div className="border-b w-10 pt-2" /> */}
 
-        <div className="text-xs max-w-[10rem] mt-2  sm:max-w-2xl text-gray-500  line-clamp-2 sm:text-base">
+        <div className="text-xs max-w-[10rem] pb-2  sm:max-w-2xl text-gray-500  line-clamp-2 sm:text-base">
           {" "}
           {Parser(`${product.desc}`)}{" "}
         </div>
@@ -91,7 +91,7 @@ function ProductSection({ product }) {
           </p>
 
           <div
-            className=" items-center my-1 hidden sm:inline-flex"
+            className=" items-center my-2 hidden sm:inline-flex"
             onClick={() => (hasliked ? sethasliked(false) : sethasliked(true))}
           >
             {hasliked ? (
@@ -107,7 +107,7 @@ function ProductSection({ product }) {
 
         <div className="flex justify-between items-center">
           <Moment
-            className="flex-1 text-gray-500 ml-2 my-1 truncate pr-5 text-xs sm:text-sm "
+            className="flex-1 text-gray-500 ml-2 my-2 truncate pr-5 text-xs sm:text-sm "
             fromNow
           >
             {product.createdAt}

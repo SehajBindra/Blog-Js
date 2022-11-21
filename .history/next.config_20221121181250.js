@@ -3,7 +3,7 @@ module.exports = {
     return [
       {
         // matching all API routes
-        source: "/api/:path*",
+        source: "/api/products",
         headers: [
           { key: "Access-Control-Allow-Credentials", value: "true" },
           { key: "Access-Control-Allow-Origin", value: "*" },
@@ -22,14 +22,17 @@ module.exports = {
   },
 };
 
-// next.config.js
+//lh3.googleusercontent.com
+
 module.exports = {
-  async rewrites() {
-    return [
-      {
-        source: "https://blog-beta-hazel.vercel.app",
-        destination: "/api/products",
-      },
-    ];
+  images: {
+    domains: [
+      "lh3.googleusercontent.com",
+      "variety.com",
+      "play-lh.googleusercontent.com",
+      "upload.wikimedia.org",
+      "c.tenor.com",
+      "i.pinimg.com",
+    ],
   },
 };
