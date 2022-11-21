@@ -24,7 +24,7 @@ function programing({ product }) {
         {" "}
         Programing
       </h2>
-      <div className="flex bg-black text-white h-screen flex-col overflow-x-scroll  scrollbar-hide pb-[8rem]">
+      <div className="flex bg-black text-white h-screen flex-col overflow-x-scroll  scrollbar-hide pb-20">
         {product.map((product) => (
           <div
             key={product._id}

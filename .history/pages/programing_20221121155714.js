@@ -24,7 +24,7 @@ function programing({ product }) {
         {" "}
         Programing
       </h2>
-      <div className="flex bg-black text-white h-screen flex-col overflow-x-scroll  scrollbar-hide pb-[8rem]">
+      <div className="flex bg-black text-white h-screen flex-col overflow-x-scroll  scrollbar-hide ">
         {product.map((product) => (
           <div
             key={product._id}
@@ -32,7 +32,7 @@ function programing({ product }) {
           >
             <Link href={`/product/${product._id}`}>
               <div className=" cursor-pointer md:mt-2">
-                <h2 className="line-clamp-2 max-w-xs sm:max-w-sm md:max-w-2xl placeholder: font-semibold">
+                <h2 className="line-clamp-3 max-w-xs sm:max-w-sm md:max-w-2xl placeholder: font-semibold">
                   {" "}
                   {product.title}{" "}
                 </h2>
@@ -48,7 +48,7 @@ function programing({ product }) {
                     src={product.userimg}
                     alt=""
                   />
-                  <p className="flex-1 font-extralight text-sm sm:text-base whitespace-nowrap ">
+                  <p className="flex-1 font-extralight text-base whitespace-nowrap ">
                     {product.username}
                   </p>
 
