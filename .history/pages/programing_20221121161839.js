@@ -25,7 +25,7 @@ function programing({ product }) {
         {" "}
         Programing
       </h2>
-      <div className="flex bg-black text-white h-screen flex-col overflow-x-auto overflow-y-auto  scrollbar-hide pb-[8rem]">
+      <div className="flex bg-black text-white h-screen flex-col overflow-x-scroll overflow-y-scroll  scrollbar-hide pb-[8rem]">
         {product.map((product) => (
           <div
             key={product._id}
@@ -60,10 +60,10 @@ function programing({ product }) {
                 </div>
               </div>
             </Link>
+            <Modal />
           </div>
         ))}
       </div>
-      <Modal />
     </div>
   );
 }

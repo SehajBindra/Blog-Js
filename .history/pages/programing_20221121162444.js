@@ -60,10 +60,10 @@ function programing({ product }) {
                 </div>
               </div>
             </Link>
+            <Modal />
           </div>
         ))}
       </div>
-      <Modal />
     </div>
   );
 }

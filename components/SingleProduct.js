@@ -33,13 +33,12 @@ import Moment from "react-moment";
 const people = [
   { name: "Technology" },
   { name: "Programing" },
-  { name: "Art & Entertainment" },
+  { name: "Entertainment" },
+  { name: "Gaming" },
   { name: "Sports" },
-  { name: "Science" },
   { name: "crypto" },
-  { name: "Business" },
   { name: "Stock market" },
-  { name: "Web-3" },
+  { name: "Web-Development" },
   { name: "others" },
 ];
 
