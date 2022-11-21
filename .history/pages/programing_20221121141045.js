@@ -37,7 +37,7 @@ function programing({ product }) {
                   {product.title}{" "}
                 </h2>
 
-                <h3 className="line-clamp-2 text-xs text-gray-300  my-3 max-w-xs lg:max-w-2xl">
+                <h3 className="line-clamp-2 text-xs text-gray-300  my-2 max-w-xs lg:max-w-2xl">
                   {" "}
                   {Parser(`${product.desc}`)}
                 </h3>
@@ -53,7 +53,7 @@ function programing({ product }) {
                   </p>
 
                   <div className="flex flex-row items-center space-x-2">
-                    <p className="font-light">Read more</p>
+                    <p>Read more</p>
                     <ArrowRightIcon className="h-4 animate-pulse" />
                   </div>
                 </div>

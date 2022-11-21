@@ -20,24 +20,21 @@ function programing({ product }) {
         <Header />
         <Toaster />
       </div>
-      <h2 className="flex items-center justify-center text-3xl font-semibold text-[#E23E57] top-0 sticky z-50 bg-black text-center  py-4">
+      <h2 className=" text-2xl font-semibold text-[#E23E57] top-0 sticky z-50 bg-black text-center  py-4">
         {" "}
         Programing
       </h2>
-      <div className="flex bg-black text-white h-screen flex-col overflow-x-scroll  scrollbar-hide ">
+      <div className="flex bg-black text-white h-screen flex-col overflow-x-scroll  scrollbar-hide sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3">
         {product.map((product) => (
-          <div
-            key={product._id}
-            className="flex flex-row mx-auto bg-black  my-4 "
-          >
+          <div key={product._id} className="flex flex-row px-8 bg-black  my-8 ">
             <Link href={`/product/${product._id}`}>
-              <div className=" cursor-pointer md:mt-2">
-                <h2 className="line-clamp-3 max-w-xs sm:max-w-sm md:max-w-2xl placeholder: font-semibold">
+              <div className=" cursor-pointer md:mt-4">
+                <h2 className="line-clamp-1 max-w-sm font-semibold">
                   {" "}
                   {product.title}{" "}
                 </h2>
 
-                <h3 className="line-clamp-2 text-xs text-gray-300  my-3 max-w-xs lg:max-w-2xl">
+                <h3 className="line-clamp-2 text-xs text-gray-500 my-2 max-w-xs">
                   {" "}
                   {Parser(`${product.desc}`)}
                 </h3>
@@ -48,12 +45,12 @@ function programing({ product }) {
                     src={product.userimg}
                     alt=""
                   />
-                  <p className="flex-1 font-extralight text-base whitespace-nowrap ">
+                  <p className="flex-1 text-base whitespace-nowrap ">
                     {product.username}
                   </p>
 
                   <div className="flex flex-row items-center space-x-2">
-                    <p className="font-light">Read more</p>
+                    <p>Read more</p>
                     <ArrowRightIcon className="h-4 animate-pulse" />
                   </div>
                 </div>

@@ -28,16 +28,16 @@ function programing({ product }) {
         {product.map((product) => (
           <div
             key={product._id}
-            className="flex flex-row mx-auto bg-black  my-4 "
+            className="flex flex-row mx-auto bg-black  my-2 "
           >
             <Link href={`/product/${product._id}`}>
               <div className=" cursor-pointer md:mt-2">
-                <h2 className="line-clamp-3 max-w-xs sm:max-w-sm md:max-w-2xl placeholder: font-semibold">
+                <h2 className="line-clamp-2 max-w-xs sm:max-w-sm md:max-w-2xl placeholder: font-semibold">
                   {" "}
                   {product.title}{" "}
                 </h2>
 
-                <h3 className="line-clamp-2 text-xs text-gray-300  my-3 max-w-xs lg:max-w-2xl">
+                <h3 className="line-clamp-2 text-xs text-gray-500  my-2 max-w-xs">
                   {" "}
                   {Parser(`${product.desc}`)}
                 </h3>
@@ -53,7 +53,7 @@ function programing({ product }) {
                   </p>
 
                   <div className="flex flex-row items-center space-x-2">
-                    <p className="font-light">Read more</p>
+                    <p>Read more</p>
                     <ArrowRightIcon className="h-4 animate-pulse" />
                   </div>
                 </div>
