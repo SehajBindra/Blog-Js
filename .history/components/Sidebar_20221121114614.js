@@ -1,6 +1,5 @@
 import {
   BookmarkIcon,
-  HashtagIcon,
   HomeIcon,
   PencilSquareIcon,
   UserIcon,
@@ -37,7 +36,7 @@ function Sidebar() {
       {session && (
         <div
           onClick={() => Setopen(true)}
-          className="flex flex-row items-center text-[#E23E57]  py-3 px-4 rounded-full cursor-pointer"
+          className="flex flex-row items-center  py-3 px-4 rounded-full cursor-pointer"
         >
           <PencilSquareIcon className="h-7" />
           <p className=" text-base text-left hidden md:inline-flex  ml-2 lg:text-xl group-hover:text-twitter">

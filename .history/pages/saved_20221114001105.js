@@ -10,8 +10,11 @@ import Modal from "../components/Modal";
 import Parser from "html-react-parser";
 
 import { removefromBasket, selectItems } from "../redux/slices/basketSlice";
+import Link from "next/link";
+import { connectToDatabase } from "../util/mongodb2";
 
-function saved() {
+function saved({ products }) {
+  console.log(products);
   const router = useRouter();
 
   const items = useSelector(selectItems);
@@ -57,7 +60,7 @@ function saved() {
                 <p className="flex-1 text-base whitespace-nowrap ">
                   {item.username}
                 </p>
-
+                <a href={`/product/${products._id}`}>click here</a>
                 <div className="flex ">
                   <BookmarkSlashIcon
                     onClick={() => RemoveItemFromBasket(item._id)}
@@ -76,3 +79,27 @@ function saved() {
 }
 
 export default saved;
+
+export async function getServerSideProps() {
+  const { db } = await connectToDatabase();
+
+  const products = await db
+    .collection("products")
+    .find({ category: { name: "Programing" } })
+    .sort({ $natural: -1 })
+    .toArray();
+
+  return {
+    props: {
+      products: products.map((product) => ({
+        _id: product._id.toString(),
+        title: product.title,
+        // desc: product.desc,
+        img: product.img,
+        username: product.username,
+        userimg: product.userimg,
+        createdAt: product.createdAt.toISOString(),
+      })),
+    },
+  };
+}

@@ -10,10 +10,10 @@ function SidebarRow({ Icon, title, onclick }) {
   return (
     <div
       onClick={() => onclick?.()}
-      className="flex  text-red-400   max-w-fit items-center space-x-2 py-3 px-4 rounded-full cursor-pointer transition-all duration-200  group "
+      className="flex    max-w-fit items-center space-x-2 py-3 px-4 rounded-full cursor-pointer transition-all duration-200  group "
     >
       {Icon && <Icon className=" h-7 w-7" />}
-      <p className=" text-base text-left hidden md:inline-flex  lg:text-xl group">
+      <p className=" text-base text-red-400 text-left hidden md:inline-flex  lg:text-xl group">
         {" "}
         {title}
       </p>
