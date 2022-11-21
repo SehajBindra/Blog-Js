@@ -37,13 +37,13 @@ function Header() {
       </div>
       {/* center */}
 
-      <div className=" flex-grow sm:flex-grow-0 ml-2 ">
+      <div className=" flex-grow sm:flex-grow-0 ml-2">
         <div className=" relative  rounded-md ">
           <div className=" absolute inset-y-3  pl-2 flex items-center pointer-events-none ">
             <MagnifyingGlassIcon className="h-5  w-5 text-[#E23E57]" />
           </div>
           <input
-            className="bg-transparent   placeholder:text-white border-gray-800  w-full pl-12 mx-auto py-2 border-2 focus-within:outline-none    rounded-full"
+            className="bg-transparent   placeholder:text-white border-gray-800  w-full pl-12 px-4 py-2 border-2 focus-within:outline-none    rounded-full"
             type="text"
             placeholder="Search..."
           />

@@ -58,18 +58,18 @@ function ProductSection({ product }) {
       key={product._id}
       className="flex flex-row   justify-center align-middle cursor-pointer  items-center sm:flex-row py-8 px-8  pr-2 "
     >
-      <div className=" my-4  justify-end  flex-shrink-0  sm:my-8">
+      <div className=" my-4  flex-shrink-0  sm:my-8">
         <Link href={`/product/${product._id}`}>
           <img
             loading="lazy"
-            className="rounded-md  w-[10rem] h-[10rem] hover:opacity-80 hover:shadow-lg  transition duration-200 ease-out  cursor-pointer  object-cover  flex-shrink-0 "
+            className="rounded-md w-[10rem] h-[10rem] hover:opacity-80 hover:shadow-lg  transition duration-200 ease-out  cursor-pointer  object-cover  flex-shrink-0 "
             src={product.img}
           />
         </Link>
       </div>
 
       <div className="flex flex-col  pl-2">
-        <h4 className="text-base max-w-xs sm:text-lg  font-semibold sm:max-w-lg  line-clamp-2  mt-2 ">
+        <h4 className="text-base max-w-xs sm:text-lg  font-semibold  sm:max-w-3xl line-clamp-2  mt-2 text-left sm:text-left">
           {product.title}{" "}
         </h4>
 
@@ -115,7 +115,7 @@ function ProductSection({ product }) {
 
           <Link href={`/product/${product._id}`}>
             <div className="flex flex-row space-x-2 items-center cursor-pointer">
-              <p className="text-sm sm:text-base">Read more</p>
+              <p className="text-xs sm:text-base">Read more</p>
               <ArrowLongRightIcon className="h-4 w-4 mr-4 animate-pulse" />
             </div>
           </Link>

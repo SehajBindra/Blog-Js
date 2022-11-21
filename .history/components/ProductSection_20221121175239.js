@@ -68,8 +68,8 @@ function ProductSection({ product }) {
         </Link>
       </div>
 
-      <div className="flex flex-col  pl-2">
-        <h4 className="text-base max-w-xs sm:text-lg  font-semibold sm:max-w-lg  line-clamp-2  mt-2 ">
+      <div className="flex flex-col max-w-xl pl-2">
+        <h4 className="text-base max-w-xs sm:text-lg  font-semibold sm:max-w-xl  line-clamp-2  mt-2 ">
           {product.title}{" "}
         </h4>
 

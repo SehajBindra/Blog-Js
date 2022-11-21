@@ -56,7 +56,7 @@ function ProductSection({ product }) {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       key={product._id}
-      className="flex flex-row   justify-center align-middle cursor-pointer  items-center sm:flex-row py-8 px-8  pr-2 "
+      className="flex flex-row   "
     >
       <div className=" my-4  justify-end  flex-shrink-0  sm:my-8">
         <Link href={`/product/${product._id}`}>
@@ -69,7 +69,7 @@ function ProductSection({ product }) {
       </div>
 
       <div className="flex flex-col  pl-2">
-        <h4 className="text-base max-w-xs sm:text-lg  font-semibold sm:max-w-lg  line-clamp-2  mt-2 ">
+        <h4 className="text-base max-w-xs sm:text-lg  font-semibold sm:max-w-xl  line-clamp-2  mt-2 ">
           {product.title}{" "}
         </h4>
 

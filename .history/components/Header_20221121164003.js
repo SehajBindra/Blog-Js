@@ -37,7 +37,7 @@ function Header() {
       </div>
       {/* center */}
 
-      <div className=" flex-grow sm:flex-grow-0 ml-2 ">
+      <div className=" flex-grow sm:flex-grow-0 ml-2 mx-auto">
         <div className=" relative  rounded-md ">
           <div className=" absolute inset-y-3  pl-2 flex items-center pointer-events-none ">
             <MagnifyingGlassIcon className="h-5  w-5 text-[#E23E57]" />
