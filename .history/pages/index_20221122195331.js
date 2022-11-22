@@ -34,7 +34,7 @@ export default function Home({ products }) {
   };
 
   return (
-    <div className="bg-black text-white overflow-y-scroll h-screen snap-y snap-mandatory z-0  mx-auto">
+    <div className="bg-black text-white overflow-y-scroll h-screen snap-y snap-mandatory  mx-auto">
       <Head>
         <title>Blog JS | Home</title>
         <meta

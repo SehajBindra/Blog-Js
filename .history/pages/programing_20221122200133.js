@@ -15,7 +15,7 @@ function programing({ product }) {
   const [text] = useTypewriter({
     words: ["Programing"],
     loop: true,
-    delaySpeed: 2600,
+    delaySpeed: 2000,
   });
   return (
     <div>

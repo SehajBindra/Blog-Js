@@ -26,7 +26,11 @@ function Header() {
   return (
     <div className="top-0 sticky z-50 flex  h-20  justify-between bg-black overflow-y-auto  border-b border-gray-800  py-4 text-white border-1 ">
       {/* left */}
-
+      <img
+        className=" object-fill"
+        src="https://img.freepik.com/premium-vector/hand-drawn-collection-startup_7243-321.jpg?w=2000"
+        alt=""
+      />
       <div className=" hidden sm:inline-flex items-center ">
         <p
           onClick={() => router.push("/")}

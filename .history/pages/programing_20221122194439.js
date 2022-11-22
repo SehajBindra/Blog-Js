@@ -8,15 +8,7 @@ import Header from "../components/Header";
 import { Toaster } from "react-hot-toast";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 import Modal from "../components/Modal";
-
-import { useTypewriter, Cursor } from "react-simple-typewriter";
-
 function programing({ product }) {
-  const [text] = useTypewriter({
-    words: ["Programing"],
-    loop: true,
-    delaySpeed: 2600,
-  });
   return (
     <div>
       <Head>
@@ -34,25 +26,23 @@ function programing({ product }) {
         {" "}
         <h2 className="text-3xl font-semibold text-[#E23E57] text-center ">
           {" "}
-          <span>{text}</span>
-          <Cursor cursorColor="#E23E57" />
+          Programing
         </h2>
       </div>
-      <div className="flex bg-black text-white h-screen flex-col overflow-x-auto overflow-y-auto  scrollbar-hide pb-[8rem]">
+      <motion.div className="flex bg-black text-white h-screen flex-col overflow-x-auto overflow-y-auto  scrollbar-hide pb-[8rem]">
         {product.map((product) => (
           <motion.div
             initial={{
-              x: -500,
-              scale: 0.8,
-              opacity: 0,
+              x: -10,
+              scale: 0.5,
             }}
             animate={{
-              x: 0,
+              y: 0,
               scale: 1,
-              opacity: 1,
             }}
             transition={{
               duration: 0.8,
+              delay: 0.8,
             }}
             key={product._id}
             className="flex flex-row mx-auto bg-black  my-4 "
@@ -88,7 +78,7 @@ function programing({ product }) {
             </Link>
           </motion.div>
         ))}
-      </div>
+      </motion.div>
       <Modal />
     </div>
   );
