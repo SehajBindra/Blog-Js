@@ -1,42 +1,59 @@
-import React, { Fragment, useRef, useState } from "react";
+import React, { Fragment, useMemo, useRef, useState } from "react";
 import { useRecoilState } from "recoil";
 
-import {
-  CameraIcon,
-  ChevronUpDownIcon,
-  VideoCameraIcon,
-} from "@heroicons/react/24/outline";
+import { CameraIcon, ChevronUpDownIcon } from "@heroicons/react/24/outline";
 
 import { Listbox } from "@headlessui/react";
 
+import dynamic from "next/dynamic";
+import "react-quill/dist/quill.snow.css";
 import { Dialog, Transition } from "@headlessui/react";
 import { modalState } from "../atoms/modalAtom";
-import { useDispatch, useSelector, useStore } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import axios from "axios";
 import {
-  currentPost,
   FetchFaliure,
   FetchStart,
   FetchSuccess,
 } from "../redux/slices/postSlice";
 
 import Router, { useRouter } from "next/router";
-import { User } from "../redux/slices/userSlice";
+
 import { useSession } from "next-auth/react";
 import toast from "react-hot-toast";
+
 const people = [
-  { id: 1, name: "Technology" },
-  { id: 2, name: "Sports" },
-  { id: 3, name: "Art & Entertainment" },
-  { id: 4, name: "Science" },
-  { id: 5, name: "others" },
-  { id: 6, name: "crypto" },
-  { id: 7, name: "Business" },
-  { id: 8, name: "Stock market" },
+  { name: "Technology" },
+  { name: "Programing" },
+  { name: "Data Science" },
+  { name: "Web-Development" },
+  { name: "Artificial Intelligence" },
+  { name: "Entertainment" },
+  { name: "Gaming" },
+  { name: "Sports" },
+  { name: "crypto" },
+  { name: "Stock market" },
+  { name: "others" },
 ];
+const baseUrl = "http://localhost:3000/api/products";
+const url = "https://blog-beta-hazel.vercel.app/api/products";
 
 function Modal() {
+  const ReactQuill = useMemo(
+    () => dynamic(() => import("react-quill"), { ssr: false }),
+    []
+  );
+  const modules = {
+    toolbar: [
+      ["bold", "italic", "underline", "strike"],
+      [{ color: [] }, { background: [] }],
+      [{ script: "sub" }, { script: "super" }],
+
+      ["link", "image", "video"],
+      ["clean"],
+    ],
+  };
   const { data: session, status } = useSession();
   const [selectedPeople, setSelectedPeople] = useState([people[0]]);
 
@@ -50,6 +67,13 @@ function Modal() {
 
   const filePickerRef = useRef(null);
   const [loading, setLoading] = useState(false);
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST,GET,OPTIONS, PUT, DELETE",
+    },
+  };
 
   const uploadPost = async (e) => {
     if (loading) return;
@@ -57,8 +81,10 @@ function Modal() {
     dispatch(FetchStart());
 
     try {
+      const dev = process.env.NODE_ENV !== "production";
+
       const res = await axios
-        .post("http://localhost:3000/api/products", {
+        .post(`${dev ? baseUrl : url}`, {
           title,
           desc,
           img,
@@ -82,6 +108,7 @@ function Modal() {
       setLoading(false);
       setSelectedfile(null);
     } catch (error) {
+      alert(error);
       dispatch(FetchFaliure());
     }
   };
@@ -103,7 +130,7 @@ function Modal() {
         className=" fixed z-10 inset-0 overflow-y-auto"
         onClose={Setopen}
       >
-        <div className=" flex items-end justify-center  min-h-[700px] sm:min-h-screen pt-4 px-8 pb-20 text-center sm:block sm:p-0">
+        <div className=" flex items-end justify-center  min-h-[800px] sm:min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
           <Transition.Child
             as={Fragment}
             enter=" ease-out duration-300"
@@ -146,7 +173,7 @@ function Modal() {
                     onClick={() => filePickerRef.current.click()}
                     className=" mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-white cursor-pointer"
                   >
-                    <CameraIcon className=" h-6 w-6 text-purple-600" />
+                    <CameraIcon className=" h-6 w-6 text-blue-400" />
                   </div>
                 )}
 
@@ -179,12 +206,13 @@ function Modal() {
                   </div>
 
                   <div className="mt-2">
-                    <textarea
-                      value={desc}
+                    <ReactQuill
+                      modules={modules}
+                      theme="snow"
                       placeholder={`Hey ${session?.user.name}`}
-                      onChange={(e) => setDesc(e.target.value)}
-                      className=" resize-none  text-center focus-within:outline-none  w-full border-1 border-b bg-transparent"
-                    ></textarea>
+                      value={desc}
+                      onChange={setDesc}
+                    />
                   </div>
 
                   <div className="mt-2">
@@ -197,53 +225,56 @@ function Modal() {
                     />
                   </div>
                 </div>
-                <Listbox
-                  className="bg-gray-100 rounded-md"
-                  value={selectedPeople}
-                  onChange={setSelectedPeople}
-                  by="id"
-                  multiple
-                >
-                  {({ open }) => (
-                    <>
-                      <Listbox.Button className=" text-center bg-gray-100 rounded-md py-2 px-4 flex flex-row items-center space-x-2 justify-center align-middle mx-auto  ">
-                        {selectedPeople.map((person) => person.name).join(", ")}
-                        <div className="flex flex-row items-center">
-                          <ChevronUpDownIcon
-                            className="h-5  w-5 text-gray-400"
-                            aria-hidden="true"
-                          />
-                        </div>
-                      </Listbox.Button>
-                      <Transition
-                        show={open}
-                        as={Fragment}
-                        leave="transition ease-in duration-100"
-                        leaveFrom="opacity-100"
-                        leaveTo="opacity-0"
-                      >
-                        <Listbox.Options className="bg-gray-100 rounded-md py-1 px-4 my-2 max-h-[4rem] mb-2 overflow-y-scroll scrollbar-hide">
-                          {people.map((person) => (
-                            <Listbox.Option
-                              key={person.id}
-                              value={person}
-                              className="active:bg-gray-100  my-2 rounded-sm  transition-all   flex flex-col justify-center align-middle mx-auto duration-200 active:text-black active:rounded-md  text-black"
-                            >
-                              <p className=" cursor-pointer"> {person.name} </p>
-                            </Listbox.Option>
-                          ))}
-                        </Listbox.Options>
-                      </Transition>
-                    </>
-                  )}
-                </Listbox>
-
+                <h2 className="border-1 py-2 px-4 border-b my-2 mb-6 focus:ring-0 focus-within:outline-none text-gray-400 w-full text-center">
+                  Select the Category below :
+                  <Listbox
+                    className="bg-gray-100 rounded-md"
+                    value={selectedPeople}
+                    onChange={setSelectedPeople}
+                  >
+                    {({ open }) => (
+                      <>
+                        <Listbox.Button className=" text-center bg-gray-100 rounded-md py-2 px-4 flex flex-row items-center space-x-2 justify-center align-middle mx-auto  ">
+                          {selectedPeople.name}
+                          <div className="flex flex-row items-center">
+                            <ChevronUpDownIcon
+                              className="h-5  w-5 text-gray-400"
+                              aria-hidden="true"
+                            />
+                          </div>
+                        </Listbox.Button>
+                        <Transition
+                          show={open}
+                          as={Fragment}
+                          leave="transition ease-in duration-100"
+                          leaveFrom="opacity-100"
+                          leaveTo="opacity-0"
+                        >
+                          <Listbox.Options className="bg-gray-100 rounded-md py-1 px-4 my-2 max-h-[4.4rem] overflow-y-scroll scrollbar-hide">
+                            {people.map((person, i) => (
+                              <Listbox.Option
+                                key={i}
+                                value={person}
+                                className="active:bg-gray-100  my-2 rounded-sm  transition-all   flex flex-col justify-center align-middle mx-auto duration-200 active:text-black active:rounded-md  text-black"
+                              >
+                                <p className=" cursor-pointer">
+                                  {" "}
+                                  {person.name}{" "}
+                                </p>
+                              </Listbox.Option>
+                            ))}
+                          </Listbox.Options>
+                        </Transition>
+                      </>
+                    )}
+                  </Listbox>
+                </h2>
                 <div className="mt-5  sm:mt-6">
                   <button
                     type="button"
-                    disabled={!title}
+                    disabled={!img || !title || !desc || !selectedPeople}
                     onClick={uploadPost}
-                    className=" inline-flex  justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-500 font-medium text-base text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:text-sm disabled:bg-gray-300 disabled:cursor-not-allowed hover:disabled:bg-gray-300"
+                    className=" inline-flex  justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-400 font-medium text-base text-white  focus:outline-none  sm:text-sm disabled:bg-gray-300 disabled:cursor-not-allowed hover:disabled:bg-gray-300"
                   >
                     {loading ? "Uploading..." : " Post"}
                   </button>

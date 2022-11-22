@@ -26,15 +26,14 @@ import toast from "react-hot-toast";
 const people = [
   { name: "Technology" },
   { name: "Programing" },
-  { name: "Art & Entertainment" },
-  { name: "Sports" },
-  { name: "Science" },
-  { name: "crypto" },
-  { name: "Business" },
-  { name: "Stock market" },
-  { name: "Web-3" },
-  { name: "AI" },
   { name: "Data Science" },
+  { name: "Web-Development" },
+  { name: "Artificial Intelligence" },
+  { name: "Entertainment" },
+  { name: "Gaming" },
+  { name: "Sports" },
+  { name: "crypto" },
+  { name: "Stock market" },
   { name: "others" },
 ];
 const baseUrl = "http://localhost:3000/api/products";
