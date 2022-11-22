@@ -52,7 +52,7 @@ function ProductSection({ product }) {
 
   return (
     <>
-      <Zoom direction="down">
+      <Zoom duration={1000} triggerOnce={true} direction="down">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
