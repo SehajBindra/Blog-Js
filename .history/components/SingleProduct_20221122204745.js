@@ -375,7 +375,8 @@ function Post({ product }) {
           onChange={(e) => setTitle(e.target.value)}
         />
       ) : (
-        <Fade cascade damping={1e-1}>
+        <Fade delay={1e3} cascade damping={1e-1}>
+          hello world yss
           <h2 className="text-xl text-center my-2 max-w-xl sm:max-w-2xl ">
             {" "}
             {product.title}{" "}
