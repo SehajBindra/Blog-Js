@@ -55,7 +55,7 @@ function Products({ product }) {
 
   return (
     <>
-      <Slide direction="right">
+      <Slide direction="left">
         <div
           key={product._id}
           className="flex flex-col  justify-center align-middle    items-center sm:flex-col py-8 px-8  pr-2 "
