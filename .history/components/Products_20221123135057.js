@@ -61,7 +61,7 @@ function Products({ product }) {
         className="flex flex-col  justify-center align-middle    items-center sm:flex-col py-8 px-8  pr-2 "
       >
         <Zoom>
-          <div className="mt-2 h-[272px] w-64 md:h-64 md:w-80  sm:my-4">
+          <div className="mt-2 h-64 w-64 md:h-64 md:w-80  sm:my-4">
             <Link href={`/product/${product._id}`}>
               <img
                 className="rounded-md  hover:opacity-80 hover:shadow-lg w-[440px]  h-[260px]  transition duration-200 ease-out  cursor-pointer object-cover flex-shrink-0"
