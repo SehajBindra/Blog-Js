@@ -63,6 +63,7 @@ function Products({ product }) {
           <div className=" my-20 h-60 w-72 md:h-80 md:w-80    sm:my-8">
             <Link href={`/product/${product._id}`}>
               <img
+                loaing="lazy"
                 className="rounded-md  hover:opacity-80 hover:shadow-lg w-[30rem] h-[20rem] transition duration-200 ease-out  cursor-pointer object-cover flex-shrink-0"
                 src={product.img}
                 alt="something went wrong"
