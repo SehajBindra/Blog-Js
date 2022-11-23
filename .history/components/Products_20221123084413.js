@@ -60,7 +60,7 @@ function Products({ product }) {
           key={product._id}
           className="flex flex-col  justify-center align-middle    items-center sm:flex-col py-8 px-8  pr-2 "
         >
-          <div className=" my-20 h-60 w-72 md:h-80 md:w-80    sm:my-8">
+          <div className=" my-20 h-60 w-72 md:h-80 md:w-80    sm:my-4">
             <Link href={`/product/${product._id}`}>
               <img
                 className="rounded-md  hover:opacity-80 hover:shadow-lg w-[30rem] h-[20rem] transition duration-200 ease-out  cursor-pointer object-cover flex-shrink-0"
@@ -70,7 +70,7 @@ function Products({ product }) {
           </div>
 
           <div className="flex flex-col flex-grow    pl-2">
-            <h4 className="text-lg font-semibold line-clamp-1 max-w-xs flex-grow mt-2">
+            <h4 className="text-lg font-semibold line-clamp-1 max-w-xs flex-grow my-2">
               {product.title}{" "}
             </h4>
 

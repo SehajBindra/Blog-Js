@@ -39,27 +39,26 @@ function programing({ product }) {
           <Cursor cursorColor="#E23E57" />
         </h2>
       </div>
-
-      <div className="flex bg-black text-white h-screen flex-col overflow-x-auto overflow-y-auto  scrollbar-hide pb-[8rem]">
-        {product.map((product) => (
-          <motion.div
-            initial={{
-              x: -500,
-              scale: 0.5,
-              opacity: 0,
-            }}
-            animate={{
-              x: 0,
-              scale: 1,
-              opacity: 1,
-            }}
-            transition={{
-              duration: 0.8,
-            }}
-            key={product._id}
-            className="flex flex-row mx-auto bg-black  my-4 "
-          >
-            <Zoom>
+      <Zoom>
+        <div className="flex bg-black text-white h-screen flex-col overflow-x-auto overflow-y-auto  scrollbar-hide pb-[8rem]">
+          {product.map((product) => (
+            <motion.div
+              initial={{
+                x: -500,
+                scale: 0.5,
+                opacity: 0,
+              }}
+              animate={{
+                x: 0,
+                scale: 1,
+                opacity: 1,
+              }}
+              transition={{
+                duration: 0.8,
+              }}
+              key={product._id}
+              className="flex flex-row mx-auto bg-black  my-4 "
+            >
               <Link href={`/product/${product._id}`}>
                 <div className=" cursor-pointer md:mt-2">
                   <h2 className="line-clamp-2 max-w-xs sm:max-w-sm md:max-w-2xl placeholder: font-semibold text-lg">
@@ -91,11 +90,10 @@ function programing({ product }) {
                   </div>
                 </div>
               </Link>
-            </Zoom>
-          </motion.div>
-        ))}
-      </div>
-
+            </motion.div>
+          ))}
+        </div>
+      </Zoom>
       <Modal />
     </div>
   );

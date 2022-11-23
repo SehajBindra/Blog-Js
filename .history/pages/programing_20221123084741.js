@@ -10,7 +10,6 @@ import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 import Modal from "../components/Modal";
 
 import { useTypewriter, Cursor } from "react-simple-typewriter";
-import { Zoom } from "react-awesome-reveal";
 
 function programing({ product }) {
   const [text] = useTypewriter({
@@ -39,13 +38,12 @@ function programing({ product }) {
           <Cursor cursorColor="#E23E57" />
         </h2>
       </div>
-
       <div className="flex bg-black text-white h-screen flex-col overflow-x-auto overflow-y-auto  scrollbar-hide pb-[8rem]">
         {product.map((product) => (
           <motion.div
             initial={{
               x: -500,
-              scale: 0.5,
+              scale: 0.8,
               opacity: 0,
             }}
             animate={{
@@ -59,43 +57,38 @@ function programing({ product }) {
             key={product._id}
             className="flex flex-row mx-auto bg-black  my-4 "
           >
-            <Zoom>
-              <Link href={`/product/${product._id}`}>
-                <div className=" cursor-pointer md:mt-2">
-                  <h2 className="line-clamp-2 max-w-xs sm:max-w-sm md:max-w-2xl placeholder: font-semibold text-lg">
-                    {" "}
-                    {product.title}{" "}
-                  </h2>
+            <Link href={`/product/${product._id}`}>
+              <div className=" cursor-pointer md:mt-2">
+                <h2 className="line-clamp-2 max-w-xs sm:max-w-sm md:max-w-2xl placeholder: font-semibold text-lg">
+                  {" "}
+                  {product.title}{" "}
+                </h2>
 
-                  <h3 className="line-clamp-2 text-xs text-gray-300 sm:text-lg  my-3 max-w-xs lg:max-w-2xl">
-                    {" "}
-                    {Parser(`${product.desc}`)}
-                  </h3>
+                <h3 className="line-clamp-2 text-xs text-gray-300 sm:text-lg  my-3 max-w-xs lg:max-w-2xl">
+                  {" "}
+                  {Parser(`${product.desc}`)}
+                </h3>
+
+                <div className="flex flex-row items-center space-x-2">
+                  <img
+                    className="rounded-full h-5"
+                    src={product.userimg}
+                    alt=""
+                  />
+                  <p className="flex-1 font-extralight text-sm sm:text-base whitespace-nowrap ">
+                    {product.username}
+                  </p>
 
                   <div className="flex flex-row items-center space-x-2">
-                    <img
-                      className="rounded-full h-5"
-                      src={product.userimg}
-                      alt=""
-                    />
-                    <p className="flex-1 font-extralight text-sm sm:text-base whitespace-nowrap ">
-                      {product.username}
-                    </p>
-
-                    <div className="flex flex-row items-center space-x-2">
-                      <p className="font-light text-sm sm:text-base">
-                        Read more
-                      </p>
-                      <ArrowRightIcon className="h-4 animate-pulse" />
-                    </div>
+                    <p className="font-light text-sm sm:text-base">Read more</p>
+                    <ArrowRightIcon className="h-4 animate-pulse" />
                   </div>
                 </div>
-              </Link>
-            </Zoom>
+              </div>
+            </Link>
           </motion.div>
         ))}
       </div>
-
       <Modal />
     </div>
   );

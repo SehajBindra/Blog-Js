@@ -70,6 +70,8 @@ function Products({ product }) {
           </div>
 
           <div className="flex flex-col flex-grow    pl-2">
+            <div className="flex justify-between items-center"></div>
+
             <h4 className="text-lg font-semibold line-clamp-1 max-w-xs flex-grow mt-2">
               {product.title}{" "}
             </h4>

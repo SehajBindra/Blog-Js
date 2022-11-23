@@ -55,7 +55,7 @@ function Products({ product }) {
 
   return (
     <>
-      <Zoom direction="left">
+      <Zoom direction="Left">
         <div
           key={product._id}
           className="flex flex-col  justify-center align-middle    items-center sm:flex-col py-8 px-8  pr-2 "
@@ -69,12 +69,14 @@ function Products({ product }) {
             </Link>
           </div>
 
-          <div className="flex flex-col flex-grow    pl-2">
-            <h4 className="text-lg font-semibold line-clamp-1 max-w-xs flex-grow mt-2">
+          <div className="flex flex-col flex-grow   pl-2">
+            <div className="flex justify-between items-center"></div>
+
+            <h4 className="text-lg font-semibold line-clamp-1 max-w-xs flex-grow mt-2 text-left sm:text-left">
               {product.title}{" "}
             </h4>
 
-            <p className=" max-w-xs  text-xs text-gray-500 flex-grow line-clamp-2 my-2 sm:text-base">
+            <p className=" max-w-xs  text-xs text-gray-500 flex-grow line-clamp-2 my-2  sm:text-base">
               {" "}
               {Parser(`${product.desc}`)}{" "}
             </p>
