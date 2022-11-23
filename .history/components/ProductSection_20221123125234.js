@@ -18,7 +18,6 @@ import {
   selectItems,
 } from "../redux/slices/basketSlice";
 import { motion } from "framer-motion";
-import Image from "next/image";
 
 function ProductSection({ product }) {
   const [hasliked, sethasliked] = useState(true);
