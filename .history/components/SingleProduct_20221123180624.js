@@ -178,16 +178,14 @@ function Post({ product }) {
       <div className="flex items-center mr-12 p-5 ">
         <div className="  flex flex-1 items-center">
           <Image
-            height={24}
-            width={24}
-            className="rounded-full   object-cover  pointer-events-none"
+            height={48}
+            width={48}
+            className="rounded-full  object-cover  pointer-events-none"
             src={product.userimg}
             alt="unknown error"
           />
 
-          <p className="ml-3  truncate capitalize font-normal ">
-            {product.username}
-          </p>
+          <p className="ml-3  capitalize font-normal ">{product.username}</p>
         </div>
 
         {session && (

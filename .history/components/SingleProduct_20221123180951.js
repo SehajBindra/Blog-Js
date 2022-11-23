@@ -185,7 +185,7 @@ function Post({ product }) {
             alt="unknown error"
           />
 
-          <p className="ml-3  truncate capitalize font-normal ">
+          <p className="ml-3 whitespace-nowrap capitalize font-normal ">
             {product.username}
           </p>
         </div>

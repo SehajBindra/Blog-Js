@@ -3,10 +3,10 @@ import {
   BookmarkIcon,
   BookmarkSlashIcon,
 } from "@heroicons/react/24/outline";
-import { Zoom } from "react-awesome-reveal";
+import { Fade, Zoom } from "react-awesome-reveal";
 import Moment from "react-moment";
 import Parser from "html-react-parser";
-
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
@@ -18,7 +18,6 @@ import {
   selectItems,
 } from "../redux/slices/basketSlice";
 import { motion } from "framer-motion";
-import Image from "next/image";
 
 function ProductSection({ product }) {
   const [hasliked, sethasliked] = useState(true);
@@ -49,6 +48,7 @@ function ProductSection({ product }) {
     // removing the item from Redux
     dispatch(removefromBasket({ id: product._id }));
   };
+  const { data: session, status } = useSession();
 
   return (
     <>
@@ -62,39 +62,33 @@ function ProductSection({ product }) {
         >
           <div className=" my-4  flex-shrink-0  sm:my-8">
             <Link href={`/product/${product._id}`}>
-              <Image
-                height={160}
-                width={160}
-                className="rounded-md hover:opacity-80   transition duration-200 ease-out  cursor-pointer  object-cover  flex-shrink-0 "
+              <img
+                className="rounded-md w-[160px] h-[160px] hover:opacity-80 hover:shadow-lg  transition duration-200 ease-out  cursor-pointer  object-cover  flex-shrink-0 "
                 src={product.img}
                 alt="something went wrong"
               />
             </Link>
           </div>
 
-          <div className="flex flex-col  pl-2">
-            <h4 className="text-base max-w-[10rem] sm:text-lg  font-semibold  sm:max-w-2xl line-clamp-2  mt-2 ">
+          <div className="flex flex-col max-w-xs  sm:max-w-2xl pl-2">
+            <h4 className="text-base  sm:text-lg  font-semibold   line-clamp-2  mt-2 ">
               {product.title}{" "}
             </h4>
 
             {/* <div className="border-b w-10 pt-2" /> */}
 
-            <div className="  text-xs max-w-[10rem] mt-2  sm:max-w-2xl text-gray-300  line-clamp-2 sm:text-base">
+            <div className="  text-xs  mt-2   text-gray-500  line-clamp-2 sm:text-base">
               {" "}
               {Parser(`${product.desc}`)}{" "}
             </div>
 
-            <div className="flex items-center space-x-2 my-2">
-              <Image
-                height={24}
-                width={24}
-                className="rounded-full   p-1 object-cover"
+            <div className="flex items-center space-x-2 my-2 whitespace-nowrap text-sm sm:text-base">
+              <img
+                className="h-8 w-8 rounded-full   p-1 object-cover"
                 src={product.userimg}
                 alt="something went wrong"
               />
-              <p className="flex-1 whitespace-nowrap text-sm sm:text-base">
-                {product.username}
-              </p>
+              <p className="flex-1 ">{product.username}</p>
 
               <div
                 className=" items-center my-1 hidden sm:inline-flex"

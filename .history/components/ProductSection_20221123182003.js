@@ -3,10 +3,10 @@ import {
   BookmarkIcon,
   BookmarkSlashIcon,
 } from "@heroicons/react/24/outline";
-import { Zoom } from "react-awesome-reveal";
+import { Fade, Zoom } from "react-awesome-reveal";
 import Moment from "react-moment";
 import Parser from "html-react-parser";
-
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
@@ -49,6 +49,7 @@ function ProductSection({ product }) {
     // removing the item from Redux
     dispatch(removefromBasket({ id: product._id }));
   };
+  const { data: session, status } = useSession();
 
   return (
     <>

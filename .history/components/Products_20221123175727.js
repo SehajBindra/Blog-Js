@@ -88,7 +88,7 @@ function Products({ product }) {
               src={product.userimg}
               alt="something went wrong"
             />
-            <p className="flex-1 whitespace-normal">{product.username}</p>
+            <p className="flex-1">{product.username}</p>
 
             {session && (
               <div

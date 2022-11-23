@@ -3,10 +3,10 @@ import {
   BookmarkIcon,
   BookmarkSlashIcon,
 } from "@heroicons/react/24/outline";
-import { Zoom } from "react-awesome-reveal";
+import { Fade, Zoom } from "react-awesome-reveal";
 import Moment from "react-moment";
 import Parser from "html-react-parser";
-
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
@@ -49,6 +49,7 @@ function ProductSection({ product }) {
     // removing the item from Redux
     dispatch(removefromBasket({ id: product._id }));
   };
+  const { data: session, status } = useSession();
 
   return (
     <>
@@ -62,10 +63,8 @@ function ProductSection({ product }) {
         >
           <div className=" my-4  flex-shrink-0  sm:my-8">
             <Link href={`/product/${product._id}`}>
-              <Image
-                height={160}
-                width={160}
-                className="rounded-md hover:opacity-80   transition duration-200 ease-out  cursor-pointer  object-cover  flex-shrink-0 "
+              <img
+                className="rounded-md w-[160px] h-[160px] hover:opacity-80 hover:shadow-lg  transition duration-200 ease-out  cursor-pointer  object-cover  flex-shrink-0 "
                 src={product.img}
                 alt="something went wrong"
               />

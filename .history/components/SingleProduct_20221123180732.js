@@ -180,14 +180,12 @@ function Post({ product }) {
           <Image
             height={24}
             width={24}
-            className="rounded-full   object-cover  pointer-events-none"
+            className="rounded-full whitespace-nowrap  object-cover  pointer-events-none"
             src={product.userimg}
             alt="unknown error"
           />
 
-          <p className="ml-3  truncate capitalize font-normal ">
-            {product.username}
-          </p>
+          <p className="ml-3  capitalize font-normal ">{product.username}</p>
         </div>
 
         {session && (
