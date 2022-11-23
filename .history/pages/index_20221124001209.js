@@ -61,7 +61,7 @@ export default function Home({ products }) {
       <main className=" sm:grid sm:grid-cols-12 ">
         <Sidebar />
 
-        <div className=" flex flex-row col-span-11  max-h-screen sm:col-span-8 overflow-x-scroll overflow-y-scroll scrollbar-hide">
+        <div className=" flex flex-row col-span-12  max-h-screen sm:col-span-8 overflow-x-scroll overflow-y-scroll scrollbar-hide">
           {products.slice(0, 4).map((product) => (
             <Products key={product._id} product={product} />
           ))}
@@ -69,7 +69,7 @@ export default function Home({ products }) {
         <Widgets />
       </main>
 
-      <div className=" flex flex-col overflow-x-hidden sm:border-x sm:border-gray-800 mx-auto items-center  justify-center pr-10  xl:max-w-[63.4rem] lg:max-w-[42.8rem] md:max-w-[32.1rem]  align-middle   ">
+      <div className=" flex flex-col overflow-x-hidden sm:border-x sm:border-gray-800 mx-auto items-center justify-center pr-10  xl:max-w-[63.4rem] lg:max-w-[42.8rem] md:max-w-[32.1rem]  align-middle   ">
         {products.slice(4, visible).map((product) => (
           <ProductSection key={product._id} product={product} />
         ))}

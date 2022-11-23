@@ -107,7 +107,7 @@ function Header() {
               onClick={!session ? signIn : signOut}
               className="    rounded-full object-cover"
               src={session.user.image}
-              alt="Refresh.."
+              alt=""
             />
           )}
 

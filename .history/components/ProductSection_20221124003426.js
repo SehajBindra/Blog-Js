@@ -58,7 +58,7 @@ function ProductSection({ product }) {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           key={product._id}
-          className="flex flex-row   justify-center align-middle cursor-pointer  items-center sm:flex-row py-8 px-8  pr-2 "
+          className="flex flex-row   justify-center align-middle cursor-pointer  items-center sm:flex-row py-8 px-8 sm:px-10 pr-2 "
         >
           <div className=" my-4  flex-shrink-0  sm:my-8">
             <Image

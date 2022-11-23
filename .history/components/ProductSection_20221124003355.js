@@ -64,7 +64,7 @@ function ProductSection({ product }) {
             <Image
               height={150}
               width={160}
-              className="rounded-md hover:opacity-80   transition duration-200 ease-out  cursor-pointer  object-cover  flex-shrink-0 "
+              className="rounded-md hover:opacity-80  sm:hidden  transition duration-200 ease-out  cursor-pointer  object-cover  flex-shrink-0 "
               src={product.img}
               alt="something went wrong"
             />

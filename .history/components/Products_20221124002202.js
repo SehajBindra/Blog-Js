@@ -58,9 +58,9 @@ function Products({ product }) {
     <>
       <div
         key={product._id}
-        className="flex flex-col  justify-center align-middle     items-center sm:flex-col py-8 px-4 sm:px-4 md:px-8   "
+        className="flex flex-col  justify-center align-middle    items-center sm:flex-col py-8 px-8  pr-2 "
       >
-        <div className="mt-2 h-40 w-64 sm:w-52 sm:h-28 md:h-48 md:w-80  sm:my-4">
+        <div className="mt-2 h-40 w-64 md:h-48 md:w-80 sm:px-4 sm:my-4">
           <Link href={`/product/${product._id}`}>
             <Image
               height={260}
@@ -72,7 +72,7 @@ function Products({ product }) {
           </Link>
         </div>
 
-        <div className="flex flex-col flex-grow   max-w-xs  pl-2">
+        <div className="flex flex-col flex-grow  max-w-xs  pl-2">
           <h4 className="text-lg font-semibold line-clamp-1   mt-2">
             {product.title}{" "}
           </h4>
@@ -119,7 +119,7 @@ function Products({ product }) {
               {product.createdAt}
             </Moment>
             <Link href={`/product/${product._id}`}>
-              <div className="flex flex-row whitespace-nowrap space-x-2 items-center cursor-pointer">
+              <div className="flex flex-row space-x-2 items-center cursor-pointer">
                 <p>Read more</p>
                 <ArrowLongRightIcon className="h-4 w-4 animate-pulse" />
               </div>

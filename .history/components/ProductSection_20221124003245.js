@@ -77,7 +77,7 @@ function ProductSection({ product }) {
 
             {/* <div className="border-b w-10 pt-2" /> */}
 
-            <div className="hidden sm:inline  text-xs max-w-[10rem] mt-2 sm:max-w-xs  md:max-w-2xl text-gray-300  sm:line-clamp-2 sm:text-base">
+            <div className="hidden sm:inline  text-xs max-w-[10rem] mt-2  sm:max-w-2xl text-gray-300  sm:line-clamp-2 sm:text-base">
               {" "}
               {Parser(`${product.desc}`)}{" "}
             </div>

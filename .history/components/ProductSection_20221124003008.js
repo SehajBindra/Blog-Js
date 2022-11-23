@@ -70,14 +70,14 @@ function ProductSection({ product }) {
             />
           </div>
 
-          <div className="flex flex-col  pl-4">
-            <h4 className="text-base max-w-[10rem] sm:text-lg  font-semibold sm:max-w-xs  md:max-w-2xl line-clamp-2  mt-2 ">
+          <div className="flex flex-col max-w-xl pl-4">
+            <h4 className="text-base max-w-[10rem] sm:text-lg  font-semibold  sm:max-w-2xl line-clamp-2  mt-2 ">
               {product.title}{" "}
             </h4>
 
             {/* <div className="border-b w-10 pt-2" /> */}
 
-            <div className="hidden sm:inline  text-xs max-w-[10rem] mt-2 sm:max-w-xs  md:max-w-2xl text-gray-300  sm:line-clamp-2 sm:text-base">
+            <div className="hidden sm:inline  text-xs max-w-[10rem] mt-2  sm:max-w-2xl text-gray-300  sm:line-clamp-2 sm:text-base">
               {" "}
               {Parser(`${product.desc}`)}{" "}
             </div>

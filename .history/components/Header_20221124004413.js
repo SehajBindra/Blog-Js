@@ -13,7 +13,6 @@ import {
 import { useRouter } from "next/router";
 import { signIn, signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
-import Image from "next/image";
 
 function Header() {
   const { data: session, status } = useSession();
@@ -101,13 +100,11 @@ function Header() {
         </div> */}
         <div className="flex items-center space-x-2 mx-2 mr-8  whitespace-nowrap ">
           {session && (
-            <Image
-              height={28}
-              width={28}
+            <img
               onClick={!session ? signIn : signOut}
-              className="    rounded-full object-cover"
+              className="   w-8  sm:h-10 sm:w-10 rounded-full object-cover"
               src={session.user.image}
-              alt="Refresh.."
+              alt=""
             />
           )}
 

@@ -22,7 +22,7 @@ function Sidebar() {
   const [open, Setopen] = useRecoilState(modalState);
 
   return (
-    <div className=" md:border-r   bg-black border-gray-800 hidden sm:col-span-2 items-center px-4 md:col-span-2 lg:col-span-2 md:items-start   sm:inline-flex flex-col">
+    <div className="border-r   bg-black border-gray-800 hidden sm:col-span-2 items-center px-4 md:col-span-2 lg:col-span-2 md:items-start   sm:inline-flex flex-col">
       <Image
         height={80}
         width={80}
@@ -40,7 +40,7 @@ function Sidebar() {
       {session && (
         <div
           onClick={() => Setopen(true)}
-          className="flex flex-row items-center md:px-2   py-3 lg:px-4 rounded-full cursor-pointer"
+          className="flex flex-row items-center   py-3 px-4 rounded-full cursor-pointer"
         >
           <PencilSquareIcon className="h-7  text-[#E23E57]" />
           <p className=" text-base text-left hidden md:inline-flex  ml-2 lg:text-xl group-hover:text-twitter">

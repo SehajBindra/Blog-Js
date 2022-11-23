@@ -22,7 +22,7 @@ function Sidebar() {
   const [open, Setopen] = useRecoilState(modalState);
 
   return (
-    <div className=" md:border-r   bg-black border-gray-800 hidden sm:col-span-2 items-center px-4 md:col-span-2 lg:col-span-2 md:items-start   sm:inline-flex flex-col">
+    <div className="border-r   bg-black border-gray-800 hidden sm:col-span-2 items-center px-4 md:col-span-2 lg:col-span-2 md:items-start   sm:inline-flex flex-col">
       <Image
         height={80}
         width={80}
