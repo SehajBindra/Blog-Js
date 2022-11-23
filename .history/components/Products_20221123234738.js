@@ -60,7 +60,7 @@ function Products({ product }) {
         key={product._id}
         className="flex flex-col  justify-center align-middle    items-center sm:flex-col py-8 px-8  pr-2 "
       >
-        <div className="mt-2 h-40 w-64 md:h-48 md:w-80  sm:my-4">
+        <div className="mt-2 h-[272px] w-64 md:h-64 md:w-80  sm:my-4">
           <Link href={`/product/${product._id}`}>
             <Image
               height={260}
@@ -77,7 +77,7 @@ function Products({ product }) {
             {product.title}{" "}
           </h4>
 
-          <p className="   text-xs text-gray-300  line-clamp-2 my-2 sm:text-base">
+          <p className="   text-xs text-gray-500  line-clamp-2 my-2 sm:text-base">
             {" "}
             {Parser(`${product.desc}`)}{" "}
           </p>

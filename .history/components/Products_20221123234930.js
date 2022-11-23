@@ -64,7 +64,7 @@ function Products({ product }) {
           <Link href={`/product/${product._id}`}>
             <Image
               height={260}
-              width={440}
+              width={350}
               className="rounded-md  hover:opacity-80  transition duration-200 ease-out  cursor-pointer object-cover flex-shrink-0"
               src={product.img}
               alt="something went wrong"
@@ -77,7 +77,7 @@ function Products({ product }) {
             {product.title}{" "}
           </h4>
 
-          <p className="   text-xs text-gray-300  line-clamp-2 my-2 sm:text-base">
+          <p className="   text-xs text-gray-500  line-clamp-2 my-2 sm:text-base">
             {" "}
             {Parser(`${product.desc}`)}{" "}
           </p>
