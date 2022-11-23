@@ -102,8 +102,8 @@ function Header() {
         <div className="flex items-center space-x-2  mr-8  whitespace-nowrap ">
           {session && (
             <Image
-              height={32}
-              width={32}
+              height={}
+              width={28}
               onClick={!session ? signIn : signOut}
               className="    rounded-full object-cover"
               src={session.user.image}
