@@ -61,13 +61,15 @@ function ProductSection({ product }) {
           className="flex flex-row   justify-center align-middle cursor-pointer  items-center sm:flex-row py-8 px-8  pr-2 "
         >
           <div className=" my-4  flex-shrink-0  sm:my-8">
-            <Image
-              height={150}
-              width={160}
-              className="rounded-md hover:opacity-80   transition duration-200 ease-out  cursor-pointer  object-cover  flex-shrink-0 "
-              src={product.img}
-              alt="something went wrong"
-            />
+            <Link href={`/product/${product._id}`}>
+              <Image
+                height={150}
+                width={160}
+                className="rounded-md hover:opacity-80   transition duration-200 ease-out  cursor-pointer  object-cover  flex-shrink-0 "
+                src={product.img}
+                alt="something went wrong"
+              />
+            </Link>
           </div>
 
           <div className="flex flex-col  pl-4">

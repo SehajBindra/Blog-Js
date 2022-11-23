@@ -61,23 +61,25 @@ function ProductSection({ product }) {
           className="flex flex-row   justify-center align-middle cursor-pointer  items-center sm:flex-row py-8 px-8  pr-2 "
         >
           <div className=" my-4  flex-shrink-0  sm:my-8">
-            <Image
-              height={150}
-              width={160}
-              className="rounded-md hover:opacity-80   transition duration-200 ease-out  cursor-pointer  object-cover  flex-shrink-0 "
-              src={product.img}
-              alt="something went wrong"
-            />
+            <Link href={`/product/${product._id}`}>
+              <Image
+                height={160}
+                width={160}
+                className="rounded-md hover:opacity-80   transition duration-200 ease-out  cursor-pointer  object-cover  flex-shrink-0 "
+                src={product.img}
+                alt="something went wrong"
+              />
+            </Link>
           </div>
 
-          <div className="flex flex-col  pl-4">
+          <div className="flex flex-col  pl-2">
             <h4 className="text-base max-w-[10rem] sm:text-lg  font-semibold  sm:max-w-2xl line-clamp-2  mt-2 ">
               {product.title}{" "}
             </h4>
 
             {/* <div className="border-b w-10 pt-2" /> */}
 
-            <div className="hidden sm:inline  text-xs max-w-[10rem] mt-2  sm:max-w-2xl text-gray-300  sm:line-clamp-2 sm:text-base">
+            <div className="hidden sm:inline-block  text-xs max-w-[10rem] mt-2  sm:max-w-2xl text-gray-300  line-clamp-2 sm:text-base">
               {" "}
               {Parser(`${product.desc}`)}{" "}
             </div>
@@ -121,7 +123,7 @@ function ProductSection({ product }) {
 
               <Link href={`/product/${product._id}`}>
                 <div className="flex flex-row space-x-2 items-center cursor-pointer">
-                  <p className="text-sm sm:text-base">Read more</p>
+                  <p className="text-xs sm:text-base">Read more</p>
                   <ArrowLongRightIcon className="h-4 w-4 mr-4 animate-pulse" />
                 </div>
               </Link>
