@@ -24,21 +24,29 @@ module.exports = {
 
 //lh3.googleusercontent.com
 
+// module.exports = {
+//   images: {
+//     domains: [
+//       "lh3.googleusercontent.com",
+//       "www.blogjs.tech",
+//       "blogjs.tech",
+//       "blog-beta-hazel.vercel.app",
+//       "play-lh.googleusercontent.com",
+//       "upload.wikimedia.org",
+//       "c.tenor.com",
+//       "i.pinimg.com",
+//     ],
+//   },
+// };
+
+// next.config.js
 module.exports = {
   images: {
-    domains: [
-      "lh3.googleusercontent.com",
-      "www.blogjs.tech",
-      "blogjs.tech",
-      "blog-beta-hazel.vercel.app",
-      "play-lh.googleusercontent.com",
-      "upload.wikimedia.org",
-      "c.tenor.com",
-      "blog-c7ff.kxcdn.com",
-      "imageio.forbes.com",
-      "qph.cf2.quoracdn.net",
-      "encrypted-tbn0.gstatic.com",
-      "i.pinimg.com",
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "blog-beta-hazel.vercel.app",
+      },
     ],
   },
 };

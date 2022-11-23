@@ -56,19 +56,19 @@ function Products({ product }) {
 
   return (
     <>
-      <Zoom>
+      <Zoom direction="left">
         <div
           key={product._id}
           className="flex flex-col  justify-center align-middle    items-center sm:flex-col py-8 px-8  pr-2 "
         >
-          <div className="  h-50 w-80 md:h-56 md:w-80 ">
+          <div className="  h-50 w-80 md:h-60 md:w-80 ">
             <Link href={`/product/${product._id}`}>
               <Image
                 width={480}
                 height={320}
-                className="rounded-md  hover:opacity-80 hover:shadow-lg  transition duration-200 ease-out  cursor-pointer object-cover flex-shrink-0"
+                className="rounded-md  hover:opacity-80 hover:shadow-lg w-[30rem] h-[20rem] transition duration-200 ease-out  cursor-pointer object-cover flex-shrink-0"
                 src={product.img}
-                alt="try again.."
+                alt="something went wrong"
               />
             </Link>
           </div>
@@ -84,9 +84,7 @@ function Products({ product }) {
             </p>
 
             <div className="flex  items-center my-2 space-x-2">
-              <Image
-                height={24}
-                width={24}
+              <img
                 className="h-8 w-8 rounded-full  p-1 object-cover"
                 src={product.userimg}
                 alt="something went wrong"

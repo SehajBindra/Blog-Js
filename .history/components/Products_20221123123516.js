@@ -68,7 +68,7 @@ function Products({ product }) {
                 height={320}
                 className="rounded-md  hover:opacity-80 hover:shadow-lg  transition duration-200 ease-out  cursor-pointer object-cover flex-shrink-0"
                 src={product.img}
-                alt="try again.."
+                alt="something went wrong"
               />
             </Link>
           </div>

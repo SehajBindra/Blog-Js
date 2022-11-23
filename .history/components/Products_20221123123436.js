@@ -56,7 +56,7 @@ function Products({ product }) {
 
   return (
     <>
-      <Zoom>
+      <Zoom direction="left">
         <div
           key={product._id}
           className="flex flex-col  justify-center align-middle    items-center sm:flex-col py-8 px-8  pr-2 "
@@ -68,7 +68,7 @@ function Products({ product }) {
                 height={320}
                 className="rounded-md  hover:opacity-80 hover:shadow-lg  transition duration-200 ease-out  cursor-pointer object-cover flex-shrink-0"
                 src={product.img}
-                alt="try again.."
+                alt="something went wrong"
               />
             </Link>
           </div>
