@@ -98,7 +98,6 @@ export async function getServerSideProps() {
     .collection("products")
     .find({})
     .sort({ $natural: -1 })
-
     .toArray();
 
   return {
@@ -108,7 +107,7 @@ export async function getServerSideProps() {
         title: product.title,
         desc: product.desc.trim(),
         img: product.img,
-        username: product.username,
+        username: product.username.trim(),
         userimg: product.userimg,
         createdAt: product.createdAt.toISOString(),
       })),

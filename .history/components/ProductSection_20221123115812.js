@@ -86,7 +86,7 @@ function ProductSection({ product }) {
             <img
               className="h-8 w-8 rounded-full   p-1 object-cover"
               src={product.userimg}
-              alt="something went wrong"
+              alt=""
             />
             <p className="flex-1 whitespace-nowrap text-sm sm:text-base">
               {product.username}

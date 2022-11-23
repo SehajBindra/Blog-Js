@@ -30,7 +30,7 @@ function Header() {
       <div className=" hidden sm:inline-flex items-center ">
         <p
           onClick={() => router.push("/")}
-          className=" sm:text-3xl animate-pulse whitespace-nowrap cursor-pointer py-2 px-4"
+          className=" sm:text-3xl hover:animate-pulse whitespace-nowrap cursor-pointer py-2 px-4"
         >
           {" "}
           BLOG JS

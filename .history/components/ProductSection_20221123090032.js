@@ -65,7 +65,6 @@ function ProductSection({ product }) {
               loading="lazy"
               className="rounded-md w-[10rem] h-[10rem] hover:opacity-80 hover:shadow-lg  transition duration-200 ease-out  cursor-pointer  object-cover  flex-shrink-0 "
               src={product.img}
-              alt="something went wrong"
             />
           </Link>
         </div>
@@ -77,7 +76,7 @@ function ProductSection({ product }) {
 
           {/* <div className="border-b w-10 pt-2" /> */}
 
-          <div className="text-xs max-w-[10rem] mt-2  sm:max-w-2xl text-gray-500  line-clamp-2 sm:text-base">
+          <div className="text-sm max-w-[10rem] mt-2  sm:max-w-2xl text-gray-500  line-clamp-2 sm:text-base">
             {" "}
             {Parser(`${product.desc}`)}{" "}
           </div>
@@ -86,7 +85,7 @@ function ProductSection({ product }) {
             <img
               className="h-8 w-8 rounded-full   p-1 object-cover"
               src={product.userimg}
-              alt="something went wrong"
+              alt=""
             />
             <p className="flex-1 whitespace-nowrap text-sm sm:text-base">
               {product.username}
@@ -119,7 +118,7 @@ function ProductSection({ product }) {
 
             <Link href={`/product/${product._id}`}>
               <div className="flex flex-row space-x-2 items-center cursor-pointer">
-                <p className="text-xs sm:text-base">Read more</p>
+                <p className="text-sm sm:text-base">Read more</p>
                 <ArrowLongRightIcon className="h-4 w-4 mr-4 animate-pulse" />
               </div>
             </Link>

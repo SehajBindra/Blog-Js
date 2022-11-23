@@ -26,10 +26,11 @@ function Header() {
   return (
     <div className="top-0 sticky z-50 flex  h-20  justify-between bg-black overflow-y-auto  border-b border-gray-800  py-4 text-white border-1 ">
       {/* left */}
+
       <div className=" hidden sm:inline-flex items-center ">
         <p
           onClick={() => router.push("/")}
-          className=" sm:text-3xl animate-pulse whitespace-nowrap cursor-pointer py-2 px-4"
+          className=" sm:text-3xl hover:animate-pulse whitespace-nowrap cursor-pointer py-2 px-4"
         >
           {" "}
           BLOG JS
@@ -37,22 +38,22 @@ function Header() {
       </div>
       {/* center */}
 
-      <div className=" flex-grow sm:flex-grow-0 ml-2">
+      <div className=" flex-grow sm:flex-grow-0 ml-2 ">
         <div className=" relative  rounded-md ">
           <div className=" absolute inset-y-3  pl-2 flex items-center pointer-events-none ">
-            <MagnifyingGlassIcon className="h-5  w-5 text-white" />
+            <MagnifyingGlassIcon className="h-5  w-5 text-[#E23E57]" />
           </div>
           <input
-            className="bg-transparent   placeholder:text-white border-gray-800  w-full pl-12 px-4 py-2 border-2 focus-within:outline-none    rounded-full"
+            className="bg-transparent   placeholder:text-white border-gray-800  w-full pl-12 mx-auto py-2 border-2 focus-within:outline-none    rounded-full"
             type="text"
-            placeholder="Search"
+            placeholder="Search..."
           />
         </div>
       </div>
 
       {session && (
         <div className=" md:hidden    w-full  fixed left-0 bottom-0">
-          <div className="flex bg-black h-16  rounded-t-md  text-white px-16  justify-evenly  flex-row items-center ">
+          <div className="flex bg-black h-16  rounded-t-md  text-white px-16  justify-evenly cursor-pointer  flex-row items-center ">
             <ul className=" list-none text-sm flex justify-between space-x-4 py-2 px-4 sm:px-8 sm:space-x-8 ">
               <div
                 onClick={() => router.push("/")}
@@ -67,7 +68,10 @@ function Header() {
                 <li onClick={() => Setopen(true)}> Write</li>
               </div>
 
-              <div className="flex items-center flex-row space-x-2">
+              <div
+                onClick={() => router.push("/programing")}
+                className="flex items-center flex-row space-x-2"
+              >
                 <GlobeAltIcon className="h-5 w-5 text-[#E23E57] animate-spin" />
                 <li> Explore </li>
               </div>

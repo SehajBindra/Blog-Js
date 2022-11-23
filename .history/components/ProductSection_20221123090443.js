@@ -65,7 +65,6 @@ function ProductSection({ product }) {
               loading="lazy"
               className="rounded-md w-[10rem] h-[10rem] hover:opacity-80 hover:shadow-lg  transition duration-200 ease-out  cursor-pointer  object-cover  flex-shrink-0 "
               src={product.img}
-              alt="something went wrong"
             />
           </Link>
         </div>
@@ -86,7 +85,7 @@ function ProductSection({ product }) {
             <img
               className="h-8 w-8 rounded-full   p-1 object-cover"
               src={product.userimg}
-              alt="something went wrong"
+              alt=""
             />
             <p className="flex-1 whitespace-nowrap text-sm sm:text-base">
               {product.username}
