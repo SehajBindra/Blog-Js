@@ -3,24 +3,27 @@ import {
   BookmarkIcon,
   BookmarkSlashIcon,
 } from "@heroicons/react/24/outline";
-import { Fade, Zoom } from "react-awesome-reveal";
+
 import Moment from "react-moment";
 import Parser from "html-react-parser";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+
 import { useDispatch, useSelector } from "react-redux";
 import {
   addtoBasket,
   removefromBasket,
   selectItems,
 } from "../redux/slices/basketSlice";
-import { motion } from "framer-motion";
+import { Zoom } from "react-awesome-reveal";
+import Image from "next/image";
 
-function ProductSection({ product }) {
-  const [hasliked, sethasliked] = useState(true);
+function Products({ product }) {
+  const [hasliked, sethasliked] = useState(false);
 
   const router = useRouter();
   const dispatch = useDispatch();
@@ -33,7 +36,7 @@ function ProductSection({ product }) {
       id: product._id,
       title: product.title,
       description: product.desc,
-      image: product.img,
+
       userimg: product.userimg,
       username: product.username,
       category: product.category,
@@ -47,79 +50,87 @@ function ProductSection({ product }) {
   const RemoveItemFromBasket = () => {
     // removing the item from Redux
     dispatch(removefromBasket({ id: product._id }));
+    toast.error("Removed from saved");
   };
   const { data: session, status } = useSession();
 
   return (
     <>
       <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
+        initial={{
+          x: -500,
+          scale: 0.5,
+          opacity: 0,
+        }}
+        animate={{
+          x: 0,
+          scale: 1,
+          opacity: 1,
+        }}
+        transition={{
+          duration: 0.8,
+        }}
         key={product._id}
-        className="flex flex-row   justify-center align-middle cursor-pointer  items-center sm:flex-row py-8 mx-auto  pr-2 "
+        className="flex flex-col  justify-center align-middle    items-center sm:flex-col py-8 px-8  pr-2 "
       >
-        <div className=" my-4  flex-shrink-0  sm:my-8">
+        <div className="mt-16 h-50 w-64 md:h-60 md:w-80  sm:my-4">
           <Link href={`/product/${product._id}`}>
             <img
-              className="rounded-md w-[160px] h-[160px] hover:opacity-80 hover:shadow-lg  transition duration-200 ease-out  cursor-pointer  object-cover  flex-shrink-0 "
+              className="rounded-md  hover:opacity-80 hover:shadow-lg w-[440px]  h-[260px]  transition duration-200 ease-out  cursor-pointer object-cover flex-shrink-0"
               src={product.img}
               alt="something went wrong"
             />
           </Link>
         </div>
 
-        <div className="flex flex-col  pl-2">
-          <h4 className="text-base max-w-[10rem] sm:text-lg  font-semibold  sm:max-w-2xl line-clamp-2  mt-2 text-left sm:text-left">
+        <div className="flex flex-col flex-grow  max-w-xs  pl-2">
+          <h4 className="text-lg font-semibold line-clamp-1   mt-2">
             {product.title}{" "}
           </h4>
 
-          {/* <div className="border-b w-10 pt-2" /> */}
-
-          <div className="text-xs max-w-[10rem] mt-2  sm:max-w-2xl text-gray-500  line-clamp-2 sm:text-base">
+          <p className="   text-xs text-gray-500  line-clamp-2 my-2 sm:text-base">
             {" "}
             {Parser(`${product.desc}`)}{" "}
-          </div>
+          </p>
 
-          <div className="flex items-center space-x-2 my-2">
+          <div className="flex  items-center my-2 space-x-2">
             <img
-              className="h-8 w-8 rounded-full   p-1 object-cover"
+              className="h-8 w-8 rounded-full  p-1 object-cover"
               src={product.userimg}
               alt="something went wrong"
             />
-            <p className="flex-1 whitespace-nowrap text-sm sm:text-base">
-              {product.username}
-            </p>
+            <p className="flex-1">{product.username}</p>
 
-            <div
-              className=" items-center my-1 hidden sm:inline-flex"
-              onClick={() =>
-                hasliked ? sethasliked(false) : sethasliked(true)
-              }
-            >
-              {hasliked ? (
-                <BookmarkIcon onClick={addItemToBasket} className=" h-5" />
-              ) : (
-                <BookmarkSlashIcon
-                  onClick={RemoveItemFromBasket}
-                  className="h-5 "
-                />
-              )}
-            </div>
+            {session && (
+              <div
+                className="cursor-pointer"
+                onClick={() =>
+                  hasliked ? sethasliked(false) : sethasliked(true)
+                }
+              >
+                {hasliked ? (
+                  <BookmarkSlashIcon
+                    onClick={RemoveItemFromBasket}
+                    className="h-5"
+                  />
+                ) : (
+                  <BookmarkIcon onClick={addItemToBasket} className="h-5  " />
+                )}
+              </div>
+            )}
           </div>
 
           <div className="flex justify-between items-center">
             <Moment
-              className="flex-1 text-gray-500 ml-2 my-1 truncate pr-5 text-sm sm:text-sm "
+              className=" text-gray-500 my-2 truncate pr-5 text-sm "
               fromNow
             >
               {product.createdAt}
             </Moment>
-
             <Link href={`/product/${product._id}`}>
               <div className="flex flex-row space-x-2 items-center cursor-pointer">
-                <p className="text-xs sm:text-base">Read more</p>
-                <ArrowLongRightIcon className="h-4 w-4 mr-4 animate-pulse" />
+                <p>Read more</p>
+                <ArrowLongRightIcon className="h-4 w-4 animate-pulse" />
               </div>
             </Link>
           </div>
@@ -129,4 +140,4 @@ function ProductSection({ product }) {
   );
 }
 
-export default ProductSection;
+export default Products;

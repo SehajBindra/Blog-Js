@@ -53,9 +53,19 @@ function ProductSection({ product }) {
   return (
     <>
       <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
+        initial={{
+          x: 500,
+          scale: 0.5,
+          opacity: 0,
+        }}
+        animate={{
+          x: 0,
+          scale: 1,
+          opacity: 1,
+        }}
+        transition={{
+          duration: 0.8,
+        }}
         key={product._id}
         className="flex flex-row   justify-center align-middle cursor-pointer  items-center sm:flex-row py-8 mx-auto  pr-2 "
       >

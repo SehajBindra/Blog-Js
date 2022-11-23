@@ -8,7 +8,7 @@ import Moment from "react-moment";
 import Parser from "html-react-parser";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
@@ -56,27 +56,14 @@ function Products({ product }) {
 
   return (
     <>
-      <motion.div
-        initial={{
-          x: -500,
-          scale: 0.5,
-          opacity: 0,
-        }}
-        animate={{
-          x: 0,
-          scale: 1,
-          opacity: 1,
-        }}
-        transition={{
-          duration: 0.8,
-        }}
+      <div
         key={product._id}
         className="flex flex-col  justify-center align-middle    items-center sm:flex-col py-8 px-8  pr-2 "
       >
-        <div className="mt-2 h-50 w-64 md:h-60 md:w-80  sm:my-4">
+        <div className="my-16 h-50 w-80 md:h-60 md:w-80  sm:my-8">
           <Link href={`/product/${product._id}`}>
             <img
-              className="rounded-md  hover:opacity-80 hover:shadow-lg w-[440px]  h-[260px]  transition duration-200 ease-out  cursor-pointer object-cover flex-shrink-0"
+              className="rounded-md  hover:opacity-80 hover:shadow-lg w-[480px]  h-[260px]  transition duration-200 ease-out  cursor-pointer object-cover flex-shrink-0"
               src={product.img}
               alt="something went wrong"
             />
@@ -135,7 +122,7 @@ function Products({ product }) {
             </Link>
           </div>
         </div>
-      </motion.div>
+      </div>
     </>
   );
 }
