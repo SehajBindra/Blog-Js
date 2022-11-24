@@ -5,6 +5,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { Zoom } from "react-awesome-reveal";
 import Moment from "react-moment";
+import Parser from "html-react-parser";
 
 import Link from "next/link";
 import { useRouter } from "next/router";

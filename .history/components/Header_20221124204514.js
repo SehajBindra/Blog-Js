@@ -58,7 +58,7 @@ function Header() {
                 onClick={() => router.push("/")}
                 className="flex flex-row items-center space-x-2"
               >
-                <HomeModernIcon className="navBtn animate-pulse" />
+                <HomeModernIcon className="navBtn" />
                 <li> Home</li>
               </div>
 

@@ -10,7 +10,7 @@ import Sidebar from "../components/Sidebar";
 import Widgets from "../components/Widgets";
 import { connectToDatabase } from "../util/mongodb2";
 import { useEffect, useState } from "react";
-import { ArrowDownIcon } from "@heroicons/react/24/outline";
+import ArrowDownIcon from "@heroicons/react/24/outline";
 
 export default function Home({ products }) {
   // console.log(products);
@@ -74,12 +74,15 @@ export default function Home({ products }) {
           <ProductSection key={product._id} product={product} />
         ))}
         <div className="flex items-center justify-center text-center flex-row mx-auto space-x-2 pb-16">
-          <button onClick={showmoreItems} className="loadMore">
+          <button
+            onClick={showmoreItems}
+            className="text-white flex items-center justify-center text-center text-md sm:text-xl "
+          >
             {" "}
             Load more{" "}
           </button>
 
-          <ArrowDownIcon className="arrow" />
+          <ArrowDownIcon className="text-[#E23E57] h-5 cursor-pointer animate-bounce" />
         </div>
       </div>
 

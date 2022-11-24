@@ -17,11 +17,7 @@
     }
   
     .loadMore{
-      @apply text-white flex items-center justify-center text-center text-base sm:text-xl ;
-    }
-
-    .arrow {
-        @apply text-[#E23E57] h-4 cursor-pointer animate-bounce;
+      @apply text-white flex items-center justify-center text-center text-md sm:text-xl ;
     }
   }
 

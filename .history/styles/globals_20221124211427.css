@@ -21,7 +21,7 @@
     }
 
     .arrow {
-        @apply text-[#E23E57] h-4 cursor-pointer animate-bounce;
+        @apply text-[#E23E57] h-5 cursor-pointer animate-bounce;
     }
   }
 

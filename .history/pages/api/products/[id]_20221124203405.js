@@ -1,3 +1,4 @@
+import Product from "../../../models/Product";
 import { ObjectId } from "mongodb";
 import { connectToDatabase } from "../../../util/mongodb2";
 import dbConnect from "../../../util/mongodb";

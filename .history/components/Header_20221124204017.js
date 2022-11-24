@@ -58,12 +58,12 @@ function Header() {
                 onClick={() => router.push("/")}
                 className="flex flex-row items-center space-x-2"
               >
-                <HomeModernIcon className="navBtn animate-pulse" />
+                <HomeModernIcon className="h-5 w-5  text-[#E23E57] animate-pulse" />
                 <li> Home</li>
               </div>
 
               <div className="flex flex-row items-center space-x-2">
-                <PencilSquareIcon className="navBtn " />
+                <PencilSquareIcon className="h-5 w-5 text-[#E23E57] animate-bounce " />
                 <li onClick={() => Setopen(true)}> Write</li>
               </div>
 
@@ -71,7 +71,7 @@ function Header() {
                 onClick={() => router.push("/programing")}
                 className="flex items-center flex-row space-x-2"
               >
-                <GlobeAltIcon className="navBtn animate-spin" />
+                <GlobeAltIcon className="h-5 w-5 text-[#E23E57] animate-spin" />
                 <li> Explore </li>
               </div>
 
@@ -79,7 +79,7 @@ function Header() {
                 onClick={() => router.push("/saved")}
                 className="flex space-x-2 items-center "
               >
-                <BookmarkIcon className="navBtn animate-pulse" />
+                <BookmarkIcon className="h-5 w-5 text-[#E23E57] animate-pulse" />
                 <li> Saved</li>
               </div>
             </ul>

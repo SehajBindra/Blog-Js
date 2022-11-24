@@ -113,7 +113,7 @@ function Products({ product }) {
 
           <div className="flex justify-between items-center">
             <Moment
-              className=" text-gray-300 my-2 truncate pr-5 text-sm "
+              className=" text-gray-500 my-2 truncate pr-5 text-sm "
               fromNow
             >
               {product.createdAt}
@@ -121,7 +121,7 @@ function Products({ product }) {
             <Link href={`/product/${product._id}`}>
               <div className="flex flex-row whitespace-nowrap space-x-2 items-center cursor-pointer">
                 <h2>Read more</h2>
-                <ArrowLongRightIcon className="arrow animate-pulse" />
+                <ArrowLongRightIcon className="h-4 w-4 animate-pulse" />
               </div>
             </Link>
           </div>

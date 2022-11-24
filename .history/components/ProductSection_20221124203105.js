@@ -5,6 +5,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { Zoom } from "react-awesome-reveal";
 import Moment from "react-moment";
+import Parser from "html-react-parser";
 
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -123,7 +124,7 @@ function ProductSection({ product }) {
               <Link href={`/product/${product._id}`}>
                 <div className="flex flex-row space-x-2 items-center cursor-pointer">
                   <h2 className="text-sm sm:text-base">Read more</h2>
-                  <ArrowLongRightIcon className="arrow mr-4 animate-pulse" />
+                  <ArrowLongRightIcon className="h-4 w-4 mr-4 animate-pulse" />
                 </div>
               </Link>
             </div>

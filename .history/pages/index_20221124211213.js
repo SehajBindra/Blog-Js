@@ -79,7 +79,7 @@ export default function Home({ products }) {
             Load more{" "}
           </button>
 
-          <ArrowDownIcon className="arrow" />
+          <ArrowDownIcon className="text-[#E23E57] h-5 cursor-pointer animate-bounce" />
         </div>
       </div>
 

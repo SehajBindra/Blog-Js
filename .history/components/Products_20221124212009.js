@@ -113,7 +113,7 @@ function Products({ product }) {
 
           <div className="flex justify-between items-center">
             <Moment
-              className=" text-gray-300 my-2 truncate pr-5 text-sm "
+              className=" text-gray-500 my-2 truncate pr-5 text-sm "
               fromNow
             >
               {product.createdAt}

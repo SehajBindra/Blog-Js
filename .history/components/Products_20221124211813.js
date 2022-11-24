@@ -5,12 +5,12 @@ import {
 } from "@heroicons/react/24/outline";
 
 import Moment from "react-moment";
-
+import Parser from "html-react-parser";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-
+import { motion } from "framer-motion";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -19,7 +19,7 @@ import {
   removefromBasket,
   selectItems,
 } from "../redux/slices/basketSlice";
-
+import { Zoom } from "react-awesome-reveal";
 import Image from "next/image";
 
 function Products({ product }) {
@@ -73,7 +73,7 @@ function Products({ product }) {
         </div>
 
         <div className="flex flex-col   max-w-xs  pl-4">
-          <h4 className="text-base font-semibold line-clamp-1  sm:text-lg   my-2">
+          <h4 className="text-base font-semibold line-clamp-1     my-2">
             {product.title}{" "}
           </h4>
 
@@ -113,7 +113,7 @@ function Products({ product }) {
 
           <div className="flex justify-between items-center">
             <Moment
-              className=" text-gray-300 my-2 truncate pr-5 text-sm "
+              className=" text-gray-500 my-2 truncate pr-5 text-sm "
               fromNow
             >
               {product.createdAt}
@@ -121,7 +121,7 @@ function Products({ product }) {
             <Link href={`/product/${product._id}`}>
               <div className="flex flex-row whitespace-nowrap space-x-2 items-center cursor-pointer">
                 <h2>Read more</h2>
-                <ArrowLongRightIcon className="arrow animate-pulse" />
+                <ArrowLongRightIcon className="h-4 w-4 animate-pulse" />
               </div>
             </Link>
           </div>

@@ -5,6 +5,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { Zoom } from "react-awesome-reveal";
 import Moment from "react-moment";
+import Parser from "html-react-parser";
 
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -59,8 +60,8 @@ function ProductSection({ product }) {
           key={product._id}
           className="flex flex-row   justify-center align-middle cursor-pointer  items-center sm:flex-row py-8 px-8 sm:pr-4 pr-2 "
         >
-          <Link href={`/product/${product._id}`}>
-            <div className=" my-4  flex-shrink-0  sm:my-8">
+          <div className=" my-4  flex-shrink-0  sm:my-8">
+            <Link href={`/product/${product._id}`}>
               <Image
                 height={150}
                 width={160}
@@ -68,11 +69,11 @@ function ProductSection({ product }) {
                 src={product.img}
                 alt="something went wrong"
               />
-            </div>
-          </Link>
+            </Link>
+          </div>
 
           <div className="flex flex-col  pl-4">
-            <h4 className="text-base max-w-[10rem] tracking-normal leading-relaxed sm:text-lg  font-semibold sm:max-w-xs  md:max-w-sm line-clamp-2  mt-2 ">
+            <h4 className="text-base max-w-[10rem] sm:text-lg  font-semibold sm:max-w-xs  md:max-w-sm line-clamp-2  mt-2 ">
               {product.title}{" "}
             </h4>
 
@@ -114,7 +115,7 @@ function ProductSection({ product }) {
 
             <div className="flex justify-between items-center">
               <Moment
-                className="flex-1 text-gray-300 font-extralight ml-2 my-1 truncate pr-5 text-sm sm:text-sm "
+                className="flex-1 text-gray-500 ml-2 my-1 truncate pr-5 text-sm sm:text-sm "
                 fromNow
               >
                 {product.createdAt}
@@ -123,7 +124,7 @@ function ProductSection({ product }) {
               <Link href={`/product/${product._id}`}>
                 <div className="flex flex-row space-x-2 items-center cursor-pointer">
                   <h2 className="text-sm sm:text-base">Read more</h2>
-                  <ArrowLongRightIcon className="arrow mr-4 animate-pulse" />
+                  <ArrowLongRightIcon className="h-4 w-4 mr-4 animate-pulse" />
                 </div>
               </Link>
             </div>

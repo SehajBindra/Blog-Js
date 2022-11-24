@@ -16,12 +16,8 @@
       @apply h-5 w-5  text-[#E23E57] animate-bounce;
     }
   
-    .loadMore{
-      @apply text-white flex items-center justify-center text-center text-base sm:text-xl ;
-    }
-
-    .arrow {
-        @apply text-[#E23E57] h-4 cursor-pointer animate-bounce;
+    .btn{
+      @apply h-7 hover:scale-125 cursor-pointer transition-all duration-150 ease-out;
     }
   }
 
