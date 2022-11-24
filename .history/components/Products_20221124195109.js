@@ -72,8 +72,8 @@ function Products({ product }) {
           </Link>
         </div>
 
-        <div className="flex flex-col   max-w-xs  pl-4">
-          <h4 className="text-lg font-semibold line-clamp-1     my-2">
+        <div className="flex flex-col   max-w-xs  pl-2">
+          <h4 className="text-lg font-semibold line-clamp-1  text-left   my-2">
             {product.title}{" "}
           </h4>
 
