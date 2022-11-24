@@ -123,7 +123,7 @@ function ProductSection({ product }) {
 
               <Link href={`/product/${product._id}`}>
                 <div className="flex flex-row space-x-2 items-center cursor-pointer">
-                  <h2 className="text-sm sm:text-base">Read more</h2>
+                  <p className="text-sm sm:text-base">Read more</p>
                   <ArrowLongRightIcon className="h-4 w-4 mr-4 animate-pulse" />
                 </div>
               </Link>

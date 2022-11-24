@@ -77,10 +77,10 @@ function Products({ product }) {
             {product.title}{" "}
           </h4>
 
-          <h2 className="text-xs text-gray-300  line-clamp-2 my-2 sm:text-base">
+          <p className="   text-xs text-gray-300  line-clamp-2 my-2 sm:text-base">
             {" "}
-            {Parser(`${product.desc}`)}{" "}
-          </h2>
+            {/* {Parser(`${product.desc}`)}{" "} */}
+          </p>
 
           <div className="flex  items-center my-2 space-x-2">
             <Image
@@ -90,7 +90,7 @@ function Products({ product }) {
               src={product.userimg}
               alt="something went wrong"
             />
-            <h2 className="flex-1 whitespace-normal">{product.username}</h2>
+            <p className="flex-1 whitespace-normal">{product.username}</p>
 
             {session && (
               <div
@@ -120,7 +120,7 @@ function Products({ product }) {
             </Moment>
             <Link href={`/product/${product._id}`}>
               <div className="flex flex-row whitespace-nowrap space-x-2 items-center cursor-pointer">
-                <h2>Read more</h2>
+                <p>Read more</p>
                 <ArrowLongRightIcon className="h-4 w-4 animate-pulse" />
               </div>
             </Link>

@@ -58,31 +58,29 @@ function ProductSection({ product }) {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           key={product._id}
-          className="flex flex-row   justify-center align-middle cursor-pointer  items-center sm:flex-row py-8 px-8 sm:pr-4 pr-2 "
+          className="flex flex-row   justify-center align-middle cursor-pointer  items-center sm:flex-row py-8 px-8  pr-2 "
         >
-          <Link href={`/product/${product._id}`}>
-            <div className=" my-4  flex-shrink-0  sm:my-8">
-              <Image
-                height={150}
-                width={160}
-                className="rounded-md hover:opacity-80   transition duration-200 ease-out  cursor-pointer  object-cover  flex-shrink-0 "
-                src={product.img}
-                alt="something went wrong"
-              />
-            </div>
-          </Link>
+          <div className=" my-4  flex-shrink-0  sm:my-8">
+            <Image
+              height={150}
+              width={160}
+              className="rounded-md hover:opacity-80   transition duration-200 ease-out  cursor-pointer  object-cover  flex-shrink-0 "
+              src={product.img}
+              alt="something went wrong"
+            />
+          </div>
 
           <div className="flex flex-col  pl-4">
-            <h4 className="text-base max-w-[10rem] sm:text-lg  font-semibold sm:max-w-xs  md:max-w-2xl line-clamp-2  mt-2 ">
+            <h4 className="text-base max-w-[10rem] sm:text-lg  font-semibold sm:max-w-[4rem]  md:max-w-xl  line-clamp-1 mt-2 ">
               {product.title}{" "}
             </h4>
 
-            {/* <div className="border-b w-10 pt-2" /> */}
+            <div className="hidden sm:inline  text-xs max-w-[10rem] mt-2 sm:max-w-xs  md:max-w-2xl text-gray-300  sm:line-clamp-2 sm:text-base" />
 
-            <div className="hidden sm:inline  text-xs max-w-[10rem] mt-2 sm:max-w-xs  md:max-w-2xl text-gray-300  sm:line-clamp-2 sm:text-base">
+            {/* <div className="hidden sm:inline  text-xs max-w-[10rem] mt-2 sm:max-w-xs  md:max-w-2xl text-gray-300  sm:line-clamp-2 sm:text-base">
               {" "}
               {Parser(`${product.desc}`)}{" "}
-            </div>
+            </div> */}
 
             <div className="flex items-center space-x-2 my-2">
               <Image
@@ -92,9 +90,9 @@ function ProductSection({ product }) {
                 src={product.userimg}
                 alt="something went wrong"
               />
-              <h2 className="flex-1 whitespace-nowrap text-sm sm:text-base">
+              <p className="flex-1 whitespace-nowrap text-sm sm:text-base">
                 {product.username}
-              </h2>
+              </p>
 
               <div
                 className=" items-center my-1 hidden sm:inline-flex"
@@ -123,7 +121,7 @@ function ProductSection({ product }) {
 
               <Link href={`/product/${product._id}`}>
                 <div className="flex flex-row space-x-2 items-center cursor-pointer">
-                  <h2 className="text-sm sm:text-base">Read more</h2>
+                  <p className="text-sm sm:text-base">Read more</p>
                   <ArrowLongRightIcon className="h-4 w-4 mr-4 animate-pulse" />
                 </div>
               </Link>

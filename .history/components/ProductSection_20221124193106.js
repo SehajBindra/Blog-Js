@@ -92,9 +92,9 @@ function ProductSection({ product }) {
                 src={product.userimg}
                 alt="something went wrong"
               />
-              <h2 className="flex-1 whitespace-nowrap text-sm sm:text-base">
+              <p className="flex-1 whitespace-nowrap text-sm sm:text-base">
                 {product.username}
-              </h2>
+              </p>
 
               <div
                 className=" items-center my-1 hidden sm:inline-flex"
@@ -123,7 +123,7 @@ function ProductSection({ product }) {
 
               <Link href={`/product/${product._id}`}>
                 <div className="flex flex-row space-x-2 items-center cursor-pointer">
-                  <h2 className="text-sm sm:text-base">Read more</h2>
+                  <p className="text-sm sm:text-base">Read more</p>
                   <ArrowLongRightIcon className="h-4 w-4 mr-4 animate-pulse" />
                 </div>
               </Link>

@@ -105,7 +105,7 @@ export async function getServerSideProps() {
       products: products.map((product) => ({
         _id: product._id.toString(),
         title: product.title,
-        // desc: product.desc.trim(),
+        desc: product.desc.trim(),
         img: product.img,
         username: product.username.trim(),
         userimg: product.userimg,

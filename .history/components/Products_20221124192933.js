@@ -77,7 +77,7 @@ function Products({ product }) {
             {product.title}{" "}
           </h4>
 
-          <h2 className="text-xs text-gray-300  line-clamp-2 my-2 sm:text-base">
+          <h2 className="   text-xs text-gray-300  line-clamp-2 my-2 sm:text-base">
             {" "}
             {Parser(`${product.desc}`)}{" "}
           </h2>
