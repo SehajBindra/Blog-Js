@@ -196,7 +196,7 @@ function Post({ product }) {
             animate={isOpen ? "open" : "closed"}
             className="menu"
           >
-            <Menu className="relative z-50" as="div">
+            <Menu className="relative" as="div">
               <>
                 <motion.div
                   onClick={() => setIsOpen(!isOpen)}
@@ -248,13 +248,17 @@ function Post({ product }) {
                             >
                               <PencilSquareIcon
                                 className={`${
-                                  active ? "activeIcon" : "notActiveIcon"
+                                  active
+                                    ? "  text-red-500 transition-all duration-150 ease-in h-4 w-4 cursor-pointer"
+                                    : " text-gray-400 h-4 w-4 cursor-pointer"
                                 }`}
                               />
 
                               <motion.li
                                 className={`${
-                                  active ? "activeBtn " : "notActiveBtn"
+                                  active
+                                    ? " hover:text-red-400 rounded-md py-2 px-4 cursor-pointer transition duration-150 active:scale-90"
+                                    : "  text-white px-4 py-1   cursor-pointer"
                                 }`}
                                 variants={itemVariants}
                               >
@@ -274,15 +278,17 @@ function Post({ product }) {
                           >
                             <TrashIcon
                               className={`${
-                                active ? "activeIcon" : "notActiveIcon"
+                                active
+                                  ? " text-red-500 transition-all duration-150 ease-in h-4 w-4 cursor-pointer"
+                                  : " text-gray-400 h-4 w-4"
                               }`}
                             />
 
                             <motion.li
                               className={`${
                                 active
-                                  ? "activeBtn"
-                                  : "  notActiveBtn py-2 px-4 "
+                                  ? "flex items-center space-x-2 text-red-500 transition-all duration-150 ease-in  py-2 px-4 cursor-pointer"
+                                  : "  text-white rounded-md py-2 px-4 cursor-pointer"
                               }`}
                               variants={itemVariants}
                             >
@@ -305,30 +311,26 @@ function Post({ product }) {
       {/* img */}
       {updateMode ? (
         <>
-          <div className="flex justify-center items-center mx-auto">
-            <Image
-              width={208}
-              height={208}
-              className="object-cover  rounded-full   "
-              src={product.img}
-              alt="unknown error"
-            />
-          </div>
-
+          <Image
+            width={208}
+            height={208}
+            className="object-cover w-52 h-52 rounded-md flex flex-col justify-center align-middle mx-auto  items-center"
+            src={product.img}
+            alt="unknown error"
+          />
           <input
             value={img}
             onChange={(e) => setImg(e.target.value)}
             className=" bg-transparent border-1 py-2 px-4 border-b my-2 focus:ring-0 focus-within:outline-none w-full "
             type="text"
+            placeholder={`${product.img}`}
           />
         </>
       ) : (
-        <Image
-          width={640}
-          height={400}
-          className="relative rounded-lg pointer-events-none  object-cover  "
+        <img
+          className=" rounded-md pointer-events-none  object-contain w-[40rem] "
           src={product.img}
-          alt="use unsplash.com for image!"
+          alt="unknown error"
         />
       )}
 
@@ -376,7 +378,7 @@ function Post({ product }) {
         />
       ) : (
         <Fade cascade damping={1e-1}>
-          <h2 className="text-xl font-semibold text-center my-2 max-w-xl sm:max-w-2xl ">
+          <h2 className="text-xl text-center my-2 max-w-xl sm:max-w-2xl ">
             {" "}
             {product.title}{" "}
           </h2>
@@ -388,6 +390,7 @@ function Post({ product }) {
           <ReactQuill
             modules={modules}
             theme="snow"
+            placeholder="lets edit something"
             value={desc}
             onChange={setDesc}
           />

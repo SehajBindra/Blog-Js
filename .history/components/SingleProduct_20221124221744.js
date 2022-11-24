@@ -254,7 +254,9 @@ function Post({ product }) {
 
                               <motion.li
                                 className={`${
-                                  active ? "activeBtn " : "notActiveBtn"
+                                  active
+                                    ? " hover:text-red-400 rounded-md py-2 px-4 cursor-pointer transition duration-150 active:scale-90"
+                                    : "  text-white px-4 py-1   cursor-pointer"
                                 }`}
                                 variants={itemVariants}
                               >
@@ -281,8 +283,8 @@ function Post({ product }) {
                             <motion.li
                               className={`${
                                 active
-                                  ? "activeBtn"
-                                  : "  notActiveBtn py-2 px-4 "
+                                  ? "flex items-center space-x-2 text-red-500 transition-all duration-150 ease-in  py-2 px-4 cursor-pointer"
+                                  : "  text-white rounded-md py-2 px-4 cursor-pointer"
                               }`}
                               variants={itemVariants}
                             >

@@ -254,7 +254,9 @@ function Post({ product }) {
 
                               <motion.li
                                 className={`${
-                                  active ? "activeBtn " : "notActiveBtn"
+                                  active
+                                    ? "activeBtn "
+                                    : "  text-white px-4 py-1   cursor-pointer"
                                 }`}
                                 variants={itemVariants}
                               >
@@ -282,7 +284,7 @@ function Post({ product }) {
                               className={`${
                                 active
                                   ? "activeBtn"
-                                  : "  notActiveBtn py-2 px-4 "
+                                  : "  text-white rounded-md py-2 px-4 cursor-pointer"
                               }`}
                               variants={itemVariants}
                             >

@@ -65,7 +65,7 @@ function Products({ product }) {
             <Image
               height={260}
               width={440}
-              className="image"
+              className="rounded-md pointer-events-none  hover:opacity-80  transition duration-200 ease-out  cursor-pointer object-cover flex-shrink-0"
               src={product.img}
               alt="something went wrong"
             />
@@ -73,9 +73,9 @@ function Products({ product }) {
         </div>
 
         <div className="flex flex-col   max-w-xs  pl-4">
-          <h2 className="text-base font-semibold line-clamp-1  sm:text-lg   my-2">
+          <h4 className="text-base font-semibold line-clamp-1  sm:text-lg   my-2">
             {product.title}{" "}
-          </h2>
+          </h4>
 
           {/* <h2 className="text-xs text-gray-300  line-clamp-2 my-2 sm:text-base">
             {" "}
@@ -90,7 +90,7 @@ function Products({ product }) {
               src={product.userimg}
               alt="something went wrong"
             />
-            <h3 className="flex-1 whitespace-normal">{product.username}</h3>
+            <h2 className="flex-1 whitespace-normal">{product.username}</h2>
 
             {session && (
               <div
@@ -120,7 +120,7 @@ function Products({ product }) {
             </Moment>
             <Link href={`/product/${product._id}`}>
               <div className="flex flex-row whitespace-nowrap space-x-2 items-center cursor-pointer">
-                <h4>Read more</h4>
+                <h2>Read more</h2>
                 <ArrowLongRightIcon className="arrow animate-pulse" />
               </div>
             </Link>

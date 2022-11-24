@@ -20,21 +20,6 @@ module.exports = {
       },
     ];
   },
-
-  async headers() {
-    return [
-      {
-        source: "/:all*(svg|jpg|png)",
-        locale: false,
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=9999999999, must-revalidate",
-          },
-        ],
-      },
-    ];
-  },
 };
 
 //lh3.googleusercontent.com
@@ -79,5 +64,21 @@ module.exports = {
       "encrypted-tbn0.gstatic.com",
       "i.pinimg.com",
     ],
+  },
+};
+module.exports = {
+  async headers() {
+    return [
+      {
+        source: "/:all*(svg|jpg|png)",
+        locale: false,
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=9999999999, must-revalidate",
+          },
+        ],
+      },
+    ];
   },
 };

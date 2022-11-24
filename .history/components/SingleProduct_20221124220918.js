@@ -196,7 +196,7 @@ function Post({ product }) {
             animate={isOpen ? "open" : "closed"}
             className="menu"
           >
-            <Menu className="relative z-50" as="div">
+            <Menu className="relative" as="div">
               <>
                 <motion.div
                   onClick={() => setIsOpen(!isOpen)}
@@ -248,13 +248,17 @@ function Post({ product }) {
                             >
                               <PencilSquareIcon
                                 className={`${
-                                  active ? "activeIcon" : "notActiveIcon"
+                                  active
+                                    ? "  text-red-500 transition-all duration-150 ease-in h-4 w-4 cursor-pointer"
+                                    : " text-gray-400 h-4 w-4 cursor-pointer"
                                 }`}
                               />
 
                               <motion.li
                                 className={`${
-                                  active ? "activeBtn " : "notActiveBtn"
+                                  active
+                                    ? " hover:text-red-400 rounded-md py-2 px-4 cursor-pointer transition duration-150 active:scale-90"
+                                    : "  text-white px-4 py-1   cursor-pointer"
                                 }`}
                                 variants={itemVariants}
                               >
@@ -274,15 +278,17 @@ function Post({ product }) {
                           >
                             <TrashIcon
                               className={`${
-                                active ? "activeIcon" : "notActiveIcon"
+                                active
+                                  ? " text-red-500 transition-all duration-150 ease-in h-4 w-4 cursor-pointer"
+                                  : " text-gray-400 h-4 w-4"
                               }`}
                             />
 
                             <motion.li
                               className={`${
                                 active
-                                  ? "activeBtn"
-                                  : "  notActiveBtn py-2 px-4 "
+                                  ? "flex items-center space-x-2 text-red-500 transition-all duration-150 ease-in  py-2 px-4 cursor-pointer"
+                                  : "  text-white rounded-md py-2 px-4 cursor-pointer"
                               }`}
                               variants={itemVariants}
                             >
@@ -323,13 +329,15 @@ function Post({ product }) {
           />
         </>
       ) : (
-        <Image
-          width={640}
-          height={400}
-          className="relative rounded-lg pointer-events-none  object-cover  "
-          src={product.img}
-          alt="use unsplash.com for image!"
-        />
+        <div className="absolute">
+          <Image
+            width={640}
+            height={400}
+            className=" absolute rounded-lg pointer-events-none  object-cover  "
+            src={product.img}
+            alt="use unsplash.com for image!"
+          />
+        </div>
       )}
 
       {/* Buttons */}

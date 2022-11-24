@@ -39,10 +39,6 @@
     .notActiveBtn {
         @apply  text-white px-4 py-1   cursor-pointer;
     }
-
-    .image {
-        @apply rounded-md hover:opacity-80  pointer-events-none  transition duration-200 ease-out  cursor-pointer  object-cover  flex-shrink-0;
-    }
   }
 
 @tailwind base;

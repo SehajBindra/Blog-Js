@@ -72,9 +72,9 @@ function ProductSection({ product }) {
           </Link>
 
           <div className="flex flex-col  pl-4">
-            <h2 className="text-base max-w-[10rem] tracking-normal leading-relaxed sm:text-lg  font-semibold sm:max-w-xs  md:max-w-sm line-clamp-2  mt-2 ">
+            <h4 className="text-base max-w-[10rem] tracking-normal leading-relaxed sm:text-lg  font-semibold sm:max-w-xs  md:max-w-sm line-clamp-2  mt-2 ">
               {product.title}{" "}
-            </h2>
+            </h4>
 
             {/* <div className="border-b w-10 pt-2" /> */}
 
@@ -91,9 +91,9 @@ function ProductSection({ product }) {
                 src={product.userimg}
                 alt="something went wrong"
               />
-              <h3 className="flex-1 whitespace-nowrap text-sm sm:text-base">
+              <h2 className="flex-1 whitespace-nowrap text-sm sm:text-base">
                 {product.username}
-              </h3>
+              </h2>
 
               <div
                 className=" items-center my-1 hidden sm:inline-flex"
@@ -122,7 +122,7 @@ function ProductSection({ product }) {
 
               <Link href={`/product/${product._id}`}>
                 <div className="flex flex-row space-x-2 items-center cursor-pointer">
-                  <h4 className="text-sm sm:text-base">Read more</h4>
+                  <h2 className="text-sm sm:text-base">Read more</h2>
                   <ArrowLongRightIcon className="arrow mr-4 animate-pulse" />
                 </div>
               </Link>
