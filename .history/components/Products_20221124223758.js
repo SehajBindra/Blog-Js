@@ -61,7 +61,7 @@ function Products({ product }) {
         className="flex flex-col  justify-center align-middle     items-center sm:flex-col py-8 px-4 sm:px-4 md:px-8   "
       >
         <Link href={`/product/${product._id}`}>
-          <div className="mt-2 h-40 w-64 sm:w-52 sm:h-28 cursor-pointer md:h-48 md:w-80  sm:my-4">
+          <div className="mt-2 h-40 w-64 sm:w-52 sm:h-28 md:h-48 md:w-80  sm:my-4">
             <Image
               height={260}
               width={440}
