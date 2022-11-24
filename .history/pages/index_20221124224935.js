@@ -40,7 +40,7 @@ export default function Home({ products }) {
         <element lang="en" />
         <meta
           name="google-site-verification"
-          content="G7ytNgKJpYbuIlMLvcDW4lq9h1FZC6ez3XPjL2EgwSg"
+          content="28jDfp2oEibVP-WSNODioOCe6YuLFPgLOREq-GD87Uw"
         />
 
         <link
