@@ -4,23 +4,21 @@ import { Toaster } from "react-hot-toast";
 import Header from "../components/Header";
 
 import dynamic from "next/dynamic";
-import ProductSection from "../components/ProductSection";
+
+import Products from "../components/Products";
+
+import Sidebar from "../components/Sidebar";
+import Widgets from "../components/Widgets";
 import { connectToDatabase } from "../util/mongodb2";
 import { useEffect, useState } from "react";
 import { ArrowDownIcon } from "@heroicons/react/24/outline";
 
 export default function Home({ products }) {
-  const Modal = dynamic(() => import("../components/Modal"), {
+  const Modal = dynamic(() => import("../components/ProductSection"), {
     ssr: false,
   });
 
-  const Widgets = dynamic(() => import("../components/Widgets"), {
-    ssr: false,
-  });
-  const Sidebar = dynamic(() => import("../components/Sidebar"), {
-    ssr: false,
-  });
-  const Products = dynamic(() => import("../components/Products"), {
+  const ProductSection = dynamic(() => import("../components/Modal"), {
     ssr: false,
   });
 
@@ -41,7 +39,7 @@ export default function Home({ products }) {
     fetchdata();
   }, []);
   const showmoreItems = () => {
-    setVisible((prevValue) => prevValue + 8);
+    setVisible((prevValue) => prevValue + 10);
   };
 
   return (

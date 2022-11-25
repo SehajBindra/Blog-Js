@@ -4,7 +4,7 @@ import { Toaster } from "react-hot-toast";
 import Header from "../components/Header";
 
 import dynamic from "next/dynamic";
-import ProductSection from "../components/ProductSection";
+
 import { connectToDatabase } from "../util/mongodb2";
 import { useEffect, useState } from "react";
 import { ArrowDownIcon } from "@heroicons/react/24/outline";
@@ -21,6 +21,10 @@ export default function Home({ products }) {
     ssr: false,
   });
   const Products = dynamic(() => import("../components/Products"), {
+    ssr: false,
+  });
+
+  const ProductSection = dynamic(() => import("../components/ProductSection"), {
     ssr: false,
   });
 
