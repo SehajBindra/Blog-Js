@@ -1,18 +1,19 @@
 import React from "react";
 import { connectToDatabase } from "../util/mongodb2";
-
+import Parser from "html-react-parser";
+import Link from "next/link";
 import Head from "next/head";
-
+import { motion } from "framer-motion";
 import Header from "../components/Header";
 import { Toaster } from "react-hot-toast";
-
+import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 import Modal from "../components/Modal";
 
 import { useTypewriter, Cursor } from "react-simple-typewriter";
+import { Zoom } from "react-awesome-reveal";
+import Technology from "../components/Technology";
 
-import Category from "../components/Category";
-
-function programing({ category }) {
+function programing({ product }) {
   const [text] = useTypewriter({
     words: ["Programing"],
     loop: true,
@@ -41,8 +42,8 @@ function programing({ category }) {
       </div>
 
       <div className="flex bg-black text-white h-screen flex-col overflow-x-auto overflow-y-auto  scrollbar-hide pb-[8rem]">
-        {category.map((category) => (
-          <Category category={category} />
+        {tech.map((tech) => (
+          <Technology tech={tech} />
         ))}
       </div>
 
@@ -56,7 +57,7 @@ export default programing;
 export async function getServerSideProps() {
   const { db } = await connectToDatabase();
 
-  const category = await db
+  const tech = await db
     .collection("products")
     .find({ category: { name: "Programing" } })
     .sort({ $natural: -1 })
@@ -64,13 +65,12 @@ export async function getServerSideProps() {
 
   return {
     props: {
-      category: category.map((category) => ({
-        _id: category._id.toString(),
-        title: category.title.trim(),
-        img: category.img,
-        username: category.username,
-        userimg: category.userimg,
-        createdAt: category.createdAt.toISOString(),
+      tech: tech.map((tech) => ({
+        _id: tech._id.toString(),
+        title: tech.title.trim(),
+        img: tech.img,
+        username: tech.username,
+        userimg: tech.userimg,
       })),
     },
   };

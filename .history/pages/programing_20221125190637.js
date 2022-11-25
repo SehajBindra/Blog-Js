@@ -1,15 +1,17 @@
 import React from "react";
 import { connectToDatabase } from "../util/mongodb2";
-
+import Parser from "html-react-parser";
+import Link from "next/link";
 import Head from "next/head";
-
+import { motion } from "framer-motion";
 import Header from "../components/Header";
 import { Toaster } from "react-hot-toast";
-
+import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 import Modal from "../components/Modal";
 
 import { useTypewriter, Cursor } from "react-simple-typewriter";
-
+import { Zoom } from "react-awesome-reveal";
+import Technology from "../components/Category";
 import Category from "../components/Category";
 
 function programing({ category }) {
@@ -70,7 +72,6 @@ export async function getServerSideProps() {
         img: category.img,
         username: category.username,
         userimg: category.userimg,
-        createdAt: category.createdAt.toISOString(),
       })),
     },
   };
