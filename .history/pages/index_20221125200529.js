@@ -6,6 +6,7 @@ import Modal from "../components/Modal";
 import Widgets from "../components/Widgets";
 import Products from "../components/Products";
 import Sidebar from "../components/Sidebar";
+
 import ProductSection from "../components/ProductSection";
 import { connectToDatabase } from "../util/mongodb2";
 import { useEffect, useState } from "react";
