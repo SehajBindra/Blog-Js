@@ -14,9 +14,8 @@ function Widgets() {
           placeholder="Search "
         />
       </div> */}
-      <div className="">
-        <CategoryBtns />
-      </div>
+
+      <CategoryBtns />
     </div>
   );
 }

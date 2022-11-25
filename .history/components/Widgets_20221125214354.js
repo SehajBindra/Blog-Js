@@ -4,7 +4,7 @@ import CategoryBtns from "./CategoryBtns";
 
 function Widgets() {
   return (
-    <div className="md:col-span-2 border-l border-gray-800 mt-2 px-2 hidden md:inline  lg:inline">
+    <div className="md:col-span-1 border-l border-gray-800 mt-2 px-2 hidden md:inline  lg:inline">
       {/* Search */}
       {/* <div className="flex items-center space-x-2 bg-transparent  rounded-full mt-2 mb-2">
         <MagnifyingGlassIcon className="h-5 w-5 " />
@@ -14,9 +14,8 @@ function Widgets() {
           placeholder="Search "
         />
       </div> */}
-      <div className="">
-        <CategoryBtns />
-      </div>
+
+      <CategoryBtns />
     </div>
   );
 }

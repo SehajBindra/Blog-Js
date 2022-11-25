@@ -1,10 +1,12 @@
 import {
   BookmarkIcon,
+  HashtagIcon,
   HomeIcon,
   PencilSquareIcon,
   UserIcon,
 } from "@heroicons/react/24/outline";
 import { signIn, signOut, useSession } from "next-auth/react";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import React from "react";
 
@@ -20,11 +22,13 @@ function Sidebar() {
   const [open, Setopen] = useRecoilState(modalState);
 
   return (
-    <div className="border-r  border-gray-800 hidden sm:col-span-2 items-center px-4 md:col-span-2 lg:col-span-2 md:items-start   sm:inline-flex flex-col">
-      <img
-        className="hidden mx-4 sm:inline-flex h-20 w-20 object cover"
+    <div className=" md:border-r   bg-black border-gray-800 hidden sm:col-span-2 items-center px-4 md:col-span-2 lg:col-span-2 md:items-start   sm:inline-flex flex-col">
+      <Image
+        height={80}
+        width={80}
+        className="hidden mx-auto sm:inline-flex object cover"
         src="https://img.myloview.com/stickers/bm-b-m-letter-logo-design-initial-letter-bm-monogram-on-black-background-b-m-logo-bm-icon-logo-mb-logo-template-mb-alphabet-letter-icon-mb-icon-mb-letter-design-on-black-background-400-210159654.jpg"
-        alt=""
+        alt="Unknown.."
       />
 
       <SidebarRow
@@ -32,17 +36,17 @@ function Sidebar() {
         Icon={HomeIcon}
         title={"Home"}
       />
-      {/* <SidebarRow Icon={HashtagIcon} title={"Explore"} /> */}
+
       {session && (
         <div
           onClick={() => Setopen(true)}
-          className="flex flex-row items-center  py-3 px-4 rounded-full cursor-pointer"
+          className="flex flex-row items-center md:px-2   py-3 lg:px-4 rounded-full cursor-pointer"
         >
-          <PencilSquareIcon className="h-7" />
-          <p className=" text-base text-left hidden md:inline-flex  ml-2 lg:text-xl group-hover:text-twitter">
+          <PencilSquareIcon className="h-7  text-[#E23E57]" />
+          <h2 className=" text-base text-left hidden md:inline-flex  ml-2 lg:text-xl group-hover:text-twitter">
             {" "}
             Write
-          </p>
+          </h2>
         </div>
       )}
       {session && (
@@ -52,6 +56,12 @@ function Sidebar() {
           title={"Saved"}
         />
       )}
+
+      <SidebarRow
+        onclick={() => router.push("/programing")}
+        Icon={HashtagIcon}
+        title={"Explore"}
+      />
       <SidebarRow
         onclick={session ? signOut : signIn}
         Icon={UserIcon}

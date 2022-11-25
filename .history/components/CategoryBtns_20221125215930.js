@@ -2,8 +2,8 @@ import { useRouter } from "next/router";
 import React from "react";
 
 const categories = [
-  { name: "Programing", link: "/programing" },
   { name: "Technology", link: "/technology" },
+  { name: "Programing", link: "/programing" },
 ];
 
 function CategoryBtns() {

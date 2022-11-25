@@ -32,7 +32,7 @@ function programing({ category }) {
         <Header />
         <Toaster />
       </div>
-      <div className="flex  items-center justify-center  top-0 sticky z-50 bg-black  py-4">
+      <div className="flex h-screen  items-center justify-center  top-0 sticky z-50 bg-black  py-4">
         {" "}
         <h2 className="text-2xl font-semibold text-[#E23E57] text-center ">
           {" "}
@@ -41,13 +41,13 @@ function programing({ category }) {
         </h2>
       </div>
 
-      <div className=" sm:hidden bg-black flex flex-col justify-center items-center pb-4">
+      <div className=" sm:hidden flex flex-col justify-center items-center mb-4">
         <CategoryBtns />
       </div>
 
       <div className="flex bg-black text-white h-screen flex-col overflow-x-auto overflow-y-auto  scrollbar-hide pb-[8rem]">
         {category.map((category) => (
-          <Category category={category} key={category._id} />
+          <Category category={category} />
         ))}
       </div>
 

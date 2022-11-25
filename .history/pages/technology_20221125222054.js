@@ -39,13 +39,13 @@ function technology({ category }) {
             <Cursor cursorColor="#E23E57" />
           </h2>
         </div>
-        <div className=" sm:hidden flex flex-col justify-center items-center mb-4">
+        <div className="flex flex-col justify-center items-center mb-4">
           <CategoryBtns />
         </div>
 
         <div className=" bg-black text-white h-screen">
           {category.map((category) => (
-            <Category category={category} key={category._id} />
+            <Category category={category} />
           ))}
         </div>
       </div>

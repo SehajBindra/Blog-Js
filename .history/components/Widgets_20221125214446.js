@@ -14,7 +14,7 @@ function Widgets() {
           placeholder="Search "
         />
       </div> */}
-      <div className="">
+      <div className="grid grid-cols-4">
         <CategoryBtns />
       </div>
     </div>

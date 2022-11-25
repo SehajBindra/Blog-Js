@@ -2,8 +2,8 @@ import { useRouter } from "next/router";
 import React from "react";
 
 const categories = [
-  { name: "Programing", link: "/programing" },
   { name: "Technology", link: "/technology" },
+  { name: "Programing", link: "/programing" },
 ];
 
 function CategoryBtns() {
@@ -16,7 +16,7 @@ function CategoryBtns() {
       <div className="flex flex-row overflow-y-scroll scrollbar-hide  md:flex  items-center space-x-2 ">
         {categories.map((category) => (
           <div
-            className="flex flex-row whitespace-nowrap  items-center my-4 space-x-4"
+            className="flex flex-row whitespace-nowrap  items-center my-4"
             key={category.name}
           >
             <button

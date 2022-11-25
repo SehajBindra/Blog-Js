@@ -9,7 +9,6 @@ import { Toaster } from "react-hot-toast";
 
 import Category from "../components/Category";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
-import CategoryBtns from "../components/CategoryBtns";
 function technology({ category }) {
   const [text] = useTypewriter({
     words: ["Explore by categories", "Discover that matters to you"],
@@ -39,13 +38,10 @@ function technology({ category }) {
             <Cursor cursorColor="#E23E57" />
           </h2>
         </div>
-        <div className=" sm:hidden flex flex-col justify-center items-center mb-4">
-          <CategoryBtns />
-        </div>
 
         <div className=" bg-black text-white h-screen">
           {category.map((category) => (
-            <Category category={category} key={category._id} />
+            <Category category={category} />
           ))}
         </div>
       </div>
