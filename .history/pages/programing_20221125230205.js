@@ -41,7 +41,7 @@ function programing({ category }) {
         </h2>
       </div>
 
-      <div className="  bg-black flex flex-col justify-center items-center ">
+      <div className="  bg-black flex flex-col justify-center items-center pb-4">
         <CategoryBtns />
       </div>
 

@@ -39,7 +39,7 @@ function technology({ category }) {
             <Cursor cursorColor="#E23E57" />
           </h2>
         </div>
-        <div className="  flex flex-col justify-center items-center align-middle mb-4">
+        <div className="  flex flex-col justify-center items-center mb-4">
           <CategoryBtns />
         </div>
 

@@ -31,7 +31,7 @@ function technology({ category }) {
           <Toaster />
         </div>
 
-        <div className="flex  items-center justify-center  top-0 sticky z-50 bg-black  py-4">
+        <div className="flex  items-center justify-center  top-0 sticky z-50 bg-black  py-2">
           {" "}
           <h2 className="text-2xl font-semibold text-[#E23E57] text-center ">
             {" "}
