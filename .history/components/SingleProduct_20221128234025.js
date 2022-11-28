@@ -1,11 +1,12 @@
 import React, { Fragment, useEffect, useMemo, useState } from "react";
-import { Menu, Transition } from "@headlessui/react";
+import { Listbox, Menu, Transition } from "@headlessui/react";
 import Modal from "../components/Modal";
 import dynamic from "next/dynamic";
 import Parser from "html-react-parser";
 
 import "react-quill/dist/quill.snow.css";
 import {
+  ChevronUpDownIcon,
   EllipsisHorizontalIcon,
   PencilSquareIcon,
   TrashIcon,
@@ -14,28 +15,42 @@ import toast from "react-hot-toast";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 import { useRouter } from "next/router";
-import { motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   addDoc,
   collection,
-  deleteDoc,
-  doc,
   onSnapshot,
   orderBy,
   query,
   serverTimestamp,
-  setDoc,
 } from "firebase/firestore";
 import { db } from "../firebase";
 import Moment from "react-moment";
+import { Fade } from "react-awesome-reveal";
+import Image from "next/image";
+
+const people = [
+  { name: "Technology" },
+  { name: "Programing" },
+  { name: "Data Science" },
+  { name: "Artificial Intelligence" },
+  { name: "Entertainment" },
+  { name: "Web-Development" },
+  { name: "Gaming" },
+  { name: "Sports" },
+  { name: "crypto" },
+  { name: "Stock market" },
+  { name: "others" },
+];
 
 function Post({ product }) {
   // React quill
-  console.log(product);
+  // console.log(product);
   const ReactQuill = useMemo(
     () => dynamic(() => import("react-quill"), { ssr: false }),
     []
   );
+  const [selectedPeople, setSelectedPeople] = useState([people[0]]);
   // Rich text Editor
   const modules = {
     toolbar: [
@@ -106,7 +121,7 @@ function Post({ product }) {
           title,
           desc,
           img,
-          category,
+          category: selectedPeople,
           userimg: session?.user.image,
         })
         .then((res) => {
@@ -162,13 +177,15 @@ function Post({ product }) {
 
       <div className="flex items-center mr-12 p-5 ">
         <div className="  flex flex-1 items-center">
-          <img
-            className="rounded-full h-12 w-12 object-cover  pointer-events-none"
+          <Image
+            height={24}
+            width={24}
+            className="rounded-full   object-cover  pointer-events-none"
             src={product.userimg}
-            alt=""
+            alt="unknown error"
           />
 
-          <p className="ml-3  capitalize font-normal truncate">
+          <p className="ml-3  truncate capitalize font-normal ">
             {product.username}
           </p>
         </div>
@@ -179,7 +196,7 @@ function Post({ product }) {
             animate={isOpen ? "open" : "closed"}
             className="menu"
           >
-            <Menu className="relative" as="div">
+            <Menu className="relative z-50" as="div">
               <>
                 <motion.div
                   onClick={() => setIsOpen(!isOpen)}
@@ -231,17 +248,13 @@ function Post({ product }) {
                             >
                               <PencilSquareIcon
                                 className={`${
-                                  active
-                                    ? "  text-red-500 transition-all duration-150 ease-in h-4 w-4 cursor-pointer"
-                                    : " text-gray-400 h-4 w-4 cursor-pointer"
+                                  active ? "activeIcon" : "notActiveIcon"
                                 }`}
                               />
 
                               <motion.li
                                 className={`${
-                                  active
-                                    ? " hover:text-red-400 rounded-md py-2 px-4 cursor-pointer transition duration-150 active:scale-90"
-                                    : "  text-white px-4 py-1   cursor-pointer"
+                                  active ? "activeBtn " : "notActiveBtn"
                                 }`}
                                 variants={itemVariants}
                               >
@@ -261,17 +274,15 @@ function Post({ product }) {
                           >
                             <TrashIcon
                               className={`${
-                                active
-                                  ? " text-red-500 transition-all duration-150 ease-in h-4 w-4 cursor-pointer"
-                                  : " text-gray-400 h-4 w-4"
+                                active ? "activeIcon" : "notActiveIcon"
                               }`}
                             />
 
                             <motion.li
                               className={`${
                                 active
-                                  ? "flex items-center space-x-2 text-red-500 transition-all duration-150 ease-in  py-2 px-4 cursor-pointer"
-                                  : "  text-white rounded-md py-2 px-4 cursor-pointer"
+                                  ? "activeBtn"
+                                  : "  notActiveBtn py-2 px-4 "
                               }`}
                               variants={itemVariants}
                             >
@@ -294,24 +305,30 @@ function Post({ product }) {
       {/* img */}
       {updateMode ? (
         <>
-          <img
-            className="object-cover w-52 h-52 rounded-md flex flex-col justify-center align-middle mx-auto  items-center"
-            src={product.img}
-            alt=""
-          />
+          <div className="flex justify-center items-center mx-auto">
+            <Image
+              width={208}
+              height={208}
+              className="object-cover  rounded-full   "
+              src={product.img}
+              alt="unknown error"
+            />
+          </div>
+
           <input
             value={img}
             onChange={(e) => setImg(e.target.value)}
             className=" bg-transparent border-1 py-2 px-4 border-b my-2 focus:ring-0 focus-within:outline-none w-full "
             type="text"
-            placeholder={`${product.img}`}
           />
         </>
       ) : (
-        <img
-          className=" rounded-md pointer-events-none  object-contain w-[40rem] "
+        <Image
+          width={640}
+          height={400}
+          className="relative rounded-lg pointer-events-none  object-cover  "
           src={product.img}
-          alt=""
+          alt="use unsplash.com for image!"
         />
       )}
 
@@ -358,10 +375,12 @@ function Post({ product }) {
           onChange={(e) => setTitle(e.target.value)}
         />
       ) : (
-        <h2 className="text-xl text-center my-2 max-w-xl sm:max-w-2xl ">
-          {" "}
-          {product.title}{" "}
-        </h2>
+        <Fade cascade damping={1e-1}>
+          <h2 className="text-xl font-semibold text-center my-2 max-w-xl sm:max-w-2xl ">
+            {" "}
+            {product.title}{" "}
+          </h2>
+        </Fade>
       )}
 
       {updateMode ? (
@@ -369,22 +388,63 @@ function Post({ product }) {
           <ReactQuill
             modules={modules}
             theme="snow"
-            placeholder="lets edit something"
             value={desc}
             onChange={setDesc}
           />
         </>
       ) : (
-        <p className="text-base break-all my-4 max-w-xl sm:max-w-2xl ">
+        <p className="text-base my-4 max-w-xl sm:max-w-2xl ">
           {" "}
           {Parser(`${product.desc}`)}{" "}
         </p>
       )}
 
       {updateMode && (
+        <Listbox
+          className="bg-gray-100 rounded-md"
+          value={selectedPeople}
+          onChange={setSelectedPeople}
+          multiple
+        >
+          {({ open }) => (
+            <>
+              <Listbox.Button className=" text-center bg-gray-100 text-black my-2 rounded-md py-2 px-4 flex flex-row items-center space-x-2 justify-center align-middle mx-auto  ">
+                {selectedPeople.map((person) => person.name).join(", ")}
+                <div className="flex flex-row items-center">
+                  <ChevronUpDownIcon
+                    className="h-5  w-5 text-gray-400"
+                    aria-hidden="true"
+                  />
+                </div>
+              </Listbox.Button>
+              <Transition
+                show={open}
+                as={Fragment}
+                leave="transition ease-in duration-100"
+                leaveFrom="opacity-100"
+                leaveTo="opacity-0"
+              >
+                <Listbox.Options className="bg-gray-100 rounded-md py-1 px-4 my-2 h-32 overflow-y-scroll scrollbar-thin  scrollbar-thumb-gray-400 scrollbar-thumb-rounded-lg">
+                  {people.map((person, i) => (
+                    <Listbox.Option
+                      key={i}
+                      value={person}
+                      className="active:bg-gray-100  my-2 rounded-sm  transition-all   flex flex-col justify-center align-middle mx-auto duration-200 active:text-black active:rounded-md  text-black"
+                    >
+                      <p className=" cursor-pointer"> {person.name} </p>
+                    </Listbox.Option>
+                  ))}
+                </Listbox.Options>
+              </Transition>
+            </>
+          )}
+        </Listbox>
+      )}
+
+      {updateMode && (
         <div>
           <button
-            className="text-sm cursor-pointer my-4 mx-auto  justify-items-center  py-2 px-4 flex flex-col  align-middle rounded-lg bg-blue-400 text-white"
+            className="text-sm cursor-pointer my-4 mx-auto  justify-items-center  py-2 px-8 flex flex-col  align-middle rounded-lg bg-blue-400 text-white"
             onClick={() => handleupdate(product._id)}
           >
             {" "}
