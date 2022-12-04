@@ -24,16 +24,17 @@ import { useSession } from "next-auth/react";
 import toast from "react-hot-toast";
 
 const people = [
-  { id: 1, name: "Technology" },
-  { id: 2, name: "Programing" },
-  { id: 3, name: "Art & Entertainment" },
-  { id: 4, name: "Sports" },
-  { id: 5, name: "Science" },
-  { id: 6, name: "crypto" },
-  { id: 7, name: "Business" },
-  { id: 8, name: "Stock market" },
-  { id: 9, name: "Web-3" },
-  { id: 10, name: "others" },
+  { name: "Technology" },
+  { name: "Programing" },
+  { name: "Data Science" },
+  { name: "Web-Development" },
+  { name: "Artificial Intelligence" },
+  { name: "Entertainment" },
+  { name: "Gaming" },
+  { name: "Sports" },
+  { name: "crypto" },
+  { name: "Stock market" },
+  { name: "others" },
 ];
 const baseUrl = "http://localhost:3000/api/products";
 const url = "https://blog-beta-hazel.vercel.app/api/products";
@@ -61,7 +62,7 @@ function Modal() {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [img, setImg] = useState("");
-
+  const [slug, setSlug] = useState("");
   const router = useRouter();
 
   const filePickerRef = useRef(null);
@@ -87,6 +88,7 @@ function Modal() {
           title,
           desc,
           img,
+          slug: title.split(" ").join("-"),
           category: selectedPeople,
           username: session?.user.name,
           userimg: session?.user.image,
@@ -97,7 +99,7 @@ function Modal() {
           dispatch(FetchSuccess(res));
         });
 
-      console.log(res);
+      // console.log(res);
 
       setTitle("");
       setDesc("");
@@ -224,47 +226,50 @@ function Modal() {
                     />
                   </div>
                 </div>
-                <Listbox
-                  className="bg-gray-100 rounded-md"
-                  value={selectedPeople}
-                  onChange={setSelectedPeople}
-                  by="id"
-                  multiple
-                >
-                  {({ open }) => (
-                    <>
-                      <Listbox.Button className=" text-center bg-gray-100 rounded-md py-2 px-4 flex flex-row items-center space-x-2 justify-center align-middle mx-auto  ">
-                        {selectedPeople.map((person) => person.name).join(", ")}
-                        <div className="flex flex-row items-center">
-                          <ChevronUpDownIcon
-                            className="h-5  w-5 text-gray-400"
-                            aria-hidden="true"
-                          />
-                        </div>
-                      </Listbox.Button>
-                      <Transition
-                        show={open}
-                        as={Fragment}
-                        leave="transition ease-in duration-100"
-                        leaveFrom="opacity-100"
-                        leaveTo="opacity-0"
-                      >
-                        <Listbox.Options className="bg-gray-100 rounded-md py-1 px-4 my-2 max-h-[4.4rem] overflow-y-scroll scrollbar-hide">
-                          {people.map((person) => (
-                            <Listbox.Option
-                              key={person.id}
-                              value={person}
-                              className="active:bg-gray-100  my-2 rounded-sm  transition-all   flex flex-col justify-center align-middle mx-auto duration-200 active:text-black active:rounded-md  text-black"
-                            >
-                              <p className=" cursor-pointer"> {person.name} </p>
-                            </Listbox.Option>
-                          ))}
-                        </Listbox.Options>
-                      </Transition>
-                    </>
-                  )}
-                </Listbox>
-
+                <h2 className="border-1 py-2 px-4 border-b my-2 mb-6 focus:ring-0 focus-within:outline-none text-gray-400 w-full text-center">
+                  Select the Category below :
+                  <Listbox
+                    className="bg-gray-100 rounded-md"
+                    value={selectedPeople}
+                    onChange={setSelectedPeople}
+                  >
+                    {({ open }) => (
+                      <>
+                        <Listbox.Button className=" text-center bg-gray-100 rounded-md py-2 px-4 flex flex-row items-center space-x-2 justify-center align-middle mx-auto  ">
+                          {selectedPeople.name}
+                          <div className="flex flex-row items-center">
+                            <ChevronUpDownIcon
+                              className="h-5  w-5 text-gray-400"
+                              aria-hidden="true"
+                            />
+                          </div>
+                        </Listbox.Button>
+                        <Transition
+                          show={open}
+                          as={Fragment}
+                          leave="transition ease-in duration-100"
+                          leaveFrom="opacity-100"
+                          leaveTo="opacity-0"
+                        >
+                          <Listbox.Options className="bg-gray-100 rounded-md py-1 px-4 my-2 max-h-[4.4rem] overflow-y-scroll scrollbar-hide">
+                            {people.map((person, i) => (
+                              <Listbox.Option
+                                key={i}
+                                value={person}
+                                className="active:bg-gray-100  my-2 rounded-sm  transition-all   flex flex-col justify-center align-middle mx-auto duration-200 active:text-black active:rounded-md  text-black"
+                              >
+                                <p className=" cursor-pointer">
+                                  {" "}
+                                  {person.name}{" "}
+                                </p>
+                              </Listbox.Option>
+                            ))}
+                          </Listbox.Options>
+                        </Transition>
+                      </>
+                    )}
+                  </Listbox>
+                </h2>
                 <div className="mt-5  sm:mt-6">
                   <button
                     type="button"

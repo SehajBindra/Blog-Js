@@ -66,7 +66,6 @@ function Post({ product }) {
   const [title, setTitle] = useState();
   const [desc, setDesc] = useState();
   const [img, setImg] = useState();
-  const [slug, setSlug] = useState();
   const [updateMode, setUpdateMode] = useState(false);
   const [category, setCategory] = useState("");
   const [comments, setComments] = useState([]);
@@ -121,7 +120,6 @@ function Post({ product }) {
           username: session?.user.name,
           title,
           desc,
-          slug: title,
           img,
           category: selectedPeople,
           userimg: session?.user.image,

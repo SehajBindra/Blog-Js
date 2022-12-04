@@ -1,3 +1,5 @@
+import axios from "axios";
+
 import Head from "next/head";
 import { useRouter } from "next/router";
 

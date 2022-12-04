@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-
 const URLSlug = require("mongoose-slug-generator");
 
 mongoose.plugin(URLSlug);
@@ -31,7 +30,7 @@ const ProductSchema = new mongoose.Schema(
       required: true,
     },
 
-    slug: { type: String, required: true },
+    slug: { type: String, slug: "title" },
 
     username: {
       type: String,

@@ -62,7 +62,7 @@ function Modal() {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [img, setImg] = useState("");
-
+  const [slug, setSlug] = useState("");
   const router = useRouter();
 
   const filePickerRef = useRef(null);
@@ -88,6 +88,7 @@ function Modal() {
           title,
           desc,
           img,
+          slug: title.split(" ").join("-"),
           category: selectedPeople,
           username: session?.user.name,
           userimg: session?.user.image,
@@ -98,7 +99,7 @@ function Modal() {
           dispatch(FetchSuccess(res));
         });
 
-      console.log(res);
+      // console.log(res);
 
       setTitle("");
       setDesc("");
