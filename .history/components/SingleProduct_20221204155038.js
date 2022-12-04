@@ -121,7 +121,7 @@ function Post({ product }) {
           username: session?.user.name,
           title,
           desc,
-          slug: title.split(" ").join("-"),
+          slug: titlesplit(" ").join("-"),
           img,
           category: selectedPeople,
           userimg: session?.user.image,
