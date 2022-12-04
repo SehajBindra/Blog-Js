@@ -73,7 +73,7 @@ function Products({ product }) {
         </Link>
 
         <div className="flex flex-col   max-w-xs  pl-4">
-          <h1 className="text-base font-semibold line-clamp-1 tracking-normal leading-relaxed  sm:text-lg   my-2">
+          <h1 className="text-base font-semibold line-clamp-1  sm:text-lg   my-2">
             {product.title}{" "}
           </h1>
 

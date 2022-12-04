@@ -73,9 +73,9 @@ function Products({ product }) {
         </Link>
 
         <div className="flex flex-col   max-w-xs  pl-4">
-          <h1 className="text-base font-semibold line-clamp-1 tracking-normal leading-relaxed  sm:text-lg   my-2">
+          <p className="text-base font-semibold line-clamp-1  sm:text-lg   my-2">
             {product.title}{" "}
-          </h1>
+          </p>
 
           {/* <h2 className="text-xs text-gray-300  line-clamp-2 my-2 sm:text-base">
             {" "}
@@ -90,7 +90,7 @@ function Products({ product }) {
               src={product.userimg}
               alt="something went wrong"
             />
-            <p className="flex-1 whitespace-normal">{product.username}</p>
+            <h3 className="flex-1 whitespace-normal">{product.username}</h3>
 
             {session && (
               <div

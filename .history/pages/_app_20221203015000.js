@@ -1,7 +1,7 @@
 import "../styles/globals.css";
 import { persistor, store } from "../redux/app/store";
 import { Provider } from "react-redux";
-
+import { NextUIProvider } from "@nextui-org/react";
 import { PersistGate } from "redux-persist/lib/integration/react";
 import { RecoilRoot } from "recoil";
 import { SessionProvider } from "next-auth/react";

@@ -185,7 +185,7 @@ function Post({ product }) {
             alt="unknown error"
           />
 
-          <p className="ml-3  truncate capitalize font-normal ">
+          <p className="ml-3 tracking-normal leading-relaxed  truncate capitalize font-normal ">
             {product.username}
           </p>
         </div>
@@ -393,7 +393,7 @@ function Post({ product }) {
           />
         </>
       ) : (
-        <h2 className="text-base tracking-normal leading-relaxed  my-4 max-w-xl sm:max-w-2xl ">
+        <h2 className="text-lg tracking-normal leading-relaxed  my-4 max-w-xl sm:max-w-2xl ">
           {" "}
           {Parser(`${product.desc}`)}{" "}
         </h2>

@@ -393,10 +393,10 @@ function Post({ product }) {
           />
         </>
       ) : (
-        <h2 className="text-base tracking-normal leading-relaxed  my-4 max-w-xl sm:max-w-2xl ">
+        <p className="text-base tracking-normal leading-relaxed  my-4 max-w-xl sm:max-w-2xl ">
           {" "}
           {Parser(`${product.desc}`)}{" "}
-        </h2>
+        </p>
       )}
 
       {updateMode && (

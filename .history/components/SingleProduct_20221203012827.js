@@ -376,7 +376,7 @@ function Post({ product }) {
         />
       ) : (
         <Fade cascade damping={1e-1}>
-          <h2 className="text-xl tracking-normal leading-relaxed font-semibold text-center my-2 max-w-xl sm:max-w-2xl ">
+          <h2 className="text-xl font-semibold text-center my-2 max-w-xl sm:max-w-2xl ">
             {" "}
             {product.title}{" "}
           </h2>
@@ -393,10 +393,10 @@ function Post({ product }) {
           />
         </>
       ) : (
-        <h2 className="text-base tracking-normal leading-relaxed  my-4 max-w-xl sm:max-w-2xl ">
+        <p className="text-base my-4 max-w-xl sm:max-w-2xl ">
           {" "}
           {Parser(`${product.desc}`)}{" "}
-        </h2>
+        </p>
       )}
 
       {updateMode && (
