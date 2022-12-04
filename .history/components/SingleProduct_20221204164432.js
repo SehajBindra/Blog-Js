@@ -38,6 +38,7 @@ const people = [
   { name: "Data Science" },
   { name: "Artificial Intelligence" },
   { name: "Entertainment" },
+
   { name: "Sports" },
   { name: "crypto" },
   { name: "Stock market" },
@@ -122,11 +123,7 @@ function Post({ product }) {
           username: session?.user.name,
           title,
           desc,
-          slug: title
-            .split(" ")
-            .join("-")
-            .toLowerCase("")
-            .replace(/[,\s,!,%,<,>,@,$,&]+|[,\s,!,%]+/g, ""),
+          slug: title.split(" ").join("-").toLowerCase(""),
           img,
           category: selectedPeople,
           userimg: session?.user.image,

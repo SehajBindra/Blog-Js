@@ -126,7 +126,7 @@ function Post({ product }) {
             .split(" ")
             .join("-")
             .toLowerCase("")
-            .replace(/[,\s,!,%,<,>,@,$,&]+|[,\s,!,%]+/g, ""),
+            .replace(/[,\s,!,%<,>,@,$]+|[,\s,!,%]+/g, ""),
           img,
           category: selectedPeople,
           userimg: session?.user.image,

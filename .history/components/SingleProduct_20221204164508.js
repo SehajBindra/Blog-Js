@@ -122,11 +122,7 @@ function Post({ product }) {
           username: session?.user.name,
           title,
           desc,
-          slug: title
-            .split(" ")
-            .join("-")
-            .toLowerCase("")
-            .replace(/[,\s,!,%,<,>,@,$,&]+|[,\s,!,%]+/g, ""),
+          slug: title.split(" ").join("-").toLowerCase("").replace(""),
           img,
           category: selectedPeople,
           userimg: session?.user.image,

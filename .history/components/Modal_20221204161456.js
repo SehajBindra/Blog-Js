@@ -26,7 +26,6 @@ import toast from "react-hot-toast";
 const people = [
   { name: "Technology" },
   { name: "Programing" },
-  { name: "React js" },
   { name: "Data Science" },
   { name: "Web-Development" },
   { name: "Artificial Intelligence" },

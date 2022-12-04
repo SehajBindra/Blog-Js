@@ -32,12 +32,11 @@ import Image from "next/image";
 const people = [
   { name: "Technology" },
   { name: "Programing" },
-  { name: "React js" },
-  { name: "Web-Development" },
-  { name: "Gaming" },
   { name: "Data Science" },
   { name: "Artificial Intelligence" },
   { name: "Entertainment" },
+  { name: "Web-Development" },
+  { name: "Gaming" },
   { name: "Sports" },
   { name: "crypto" },
   { name: "Stock market" },
@@ -126,7 +125,7 @@ function Post({ product }) {
             .split(" ")
             .join("-")
             .toLowerCase("")
-            .replace(/[,\s,!,%,<,>,@,$,&]+|[,\s,!,%]+/g, ""),
+            .remove("!,@,#,$,%,*,(,)"),
           img,
           category: selectedPeople,
           userimg: session?.user.image,
