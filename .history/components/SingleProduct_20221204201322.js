@@ -242,7 +242,7 @@ function Post({ product }) {
             ) : (
               <HeartIcon
                 onClick={likePost}
-                className="w-5 h-5 text-red-400  animate-bounce cursor-pointer"
+                className="w-5 h-5 text-red-400  cursor-pointer"
               />
             )}
           </div>
@@ -251,7 +251,7 @@ function Post({ product }) {
         <div>
           {" "}
           {likes.length > 0 && (
-            <p className="flex flex-col  font-normal  whitespace-nowrap items-center text-sm sm:text-base  ">
+            <p className="flex flex-col  whitespace-nowrap items-center text-xs sm:text-base  ">
               {" "}
               {likes.length} likes
             </p>

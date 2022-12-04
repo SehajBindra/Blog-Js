@@ -5,7 +5,6 @@ import dynamic from "next/dynamic";
 import Parser from "html-react-parser";
 
 import "react-quill/dist/quill.snow.css";
-import { HeartIcon as HeartIconFilled } from "@heroicons/react/24/solid";
 import {
   ChevronUpDownIcon,
   EllipsisHorizontalIcon,
@@ -14,7 +13,6 @@ import {
   PencilSquareIcon,
   TrashIcon,
 } from "@heroicons/react/24/outline";
-
 import toast from "react-hot-toast";
 import { useSession } from "next-auth/react";
 import axios from "axios";
@@ -215,6 +213,8 @@ function Post({ product }) {
 
   return (
     <div className="mt-1 max-w-lg tracking-normal leading-relaxed sm:max-w-xl md:max-w-2xl xl:max-w-5xl scrollbar-hide overflow-x-hidden sm:overflow-visible    text-white">
+      {/* header */}
+
       <div className="flex items-center mr-12 p-5 ">
         <div className="  flex flex-1 items-center">
           <Image
@@ -230,28 +230,28 @@ function Post({ product }) {
           </p>
         </div>
 
-        {/* like section */}
-
-        <div className=" transition duration-150  active:scale-90 ml-4 flex justify-between items-center ">
+        <div className=" ml-4 flex justify-between items-center ">
           <div className="flex   items-center ">
             {hasLiked ? (
-              <HeartIconFilled
+              <HandRaisedIcon
                 onClick={likePost}
-                className=" h-5 w-5 text-red-500   cursor-pointer"
+                className=" h-5 w-5 text-red-500    cursor-pointer"
               />
             ) : (
               <HeartIcon
                 onClick={likePost}
-                className="w-5 h-5 text-red-400  animate-bounce cursor-pointer"
+                className="w-5 h-5 text-red-400 cursor-pointer"
               />
             )}
           </div>
         </div>
 
+        {/* caption */}
+
         <div>
           {" "}
           {likes.length > 0 && (
-            <p className="flex flex-col  font-normal  whitespace-nowrap items-center text-sm sm:text-base  ">
+            <p className="flex flex-col  whitespace-nowrap items-center text-xs sm:text-base  ">
               {" "}
               {likes.length} likes
             </p>

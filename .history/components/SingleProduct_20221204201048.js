@@ -232,7 +232,7 @@ function Post({ product }) {
 
         {/* like section */}
 
-        <div className=" transition duration-150  active:scale-90 ml-4 flex justify-between items-center ">
+        <div className=" shadow-md transition duration-150 hover:shadow-xl active:scale-90 ml-4 flex justify-between items-center ">
           <div className="flex   items-center ">
             {hasLiked ? (
               <HeartIconFilled
@@ -242,7 +242,7 @@ function Post({ product }) {
             ) : (
               <HeartIcon
                 onClick={likePost}
-                className="w-5 h-5 text-red-400  animate-bounce cursor-pointer"
+                className="w-5 h-5 text-red-400 animate-pulse  cursor-pointer"
               />
             )}
           </div>
@@ -251,7 +251,7 @@ function Post({ product }) {
         <div>
           {" "}
           {likes.length > 0 && (
-            <p className="flex flex-col  font-normal  whitespace-nowrap items-center text-sm sm:text-base  ">
+            <p className="flex flex-col  whitespace-nowrap items-center text-xs sm:text-base  ">
               {" "}
               {likes.length} likes
             </p>
