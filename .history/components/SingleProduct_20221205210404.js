@@ -213,7 +213,7 @@ function Post({ product }) {
   };
 
   return (
-    <div className="mt-1 max-w-sm tracking-normal leading-relaxed sm:max-w-xl md:max-w-2xl xl:max-w-3xl scrollbar-hide overflow-x-hidden sm:overflow-visible    text-white">
+    <div className="mt-1 max-w-lg tracking-normal leading-relaxed sm:max-w-xl md:max-w-2xl xl:max-w-3xl scrollbar-hide overflow-x-hidden sm:overflow-visible    text-white">
       <div className="flex items-center mr-12 p-5 ">
         <div className="  flex flex-1 items-center">
           <Image

@@ -186,7 +186,7 @@ function Modal() {
                 <div className="mt-3 text-center sm:mt-5">
                   <Dialog.Title
                     as="h3"
-                    className="text-lg leading-6 border-b py-4 px-8 sm:px-2  border-gray-600 text-white"
+                    className="text-lg leading-6 border-b py-4 px-8 border-1 border-gray-600 text-white"
                   >
                     Create a Post
                   </Dialog.Title>
@@ -211,7 +211,7 @@ function Modal() {
                     />
                   </div>
 
-                  <div className="mt-2 ">
+                  <div className="mt-2 border-1  border-gray-600 text-white">
                     <ReactQuill
                       modules={modules}
                       theme="snow"
@@ -280,7 +280,7 @@ function Modal() {
                     type="button"
                     disabled={!img || !title || !desc || !selectedPeople}
                     onClick={uploadPost}
-                    className=" inline-flex  justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-400 font-medium text-base text-white   focus:outline-none  sm:text-sm disabled:bg-gray-600 disabled:cursor-not-allowed hover:disabled:bg-gray-600"
+                    className=" inline-flex  justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-400 font-medium text-base text-white  focus:outline-none  sm:text-sm disabled:bg-gray-600 disabled:cursor-not-allowed hover:disabled:bg-gray-600"
                   >
                     {loading ? "Uploading..." : " Post"}
                   </button>

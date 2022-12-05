@@ -7,6 +7,7 @@ import {
 import Moment from "react-moment";
 
 import { useSession } from "next-auth/react";
+import Link from "next/link";
 
 import { useRouter } from "next/router";
 import React, { useState } from "react";
@@ -56,21 +57,25 @@ function Products({ product }) {
   return (
     <>
       <div
-        onClick={() => router.push(`/product/${product._id}`)}
         key={product._id}
         className="flex flex-col  justify-center align-middle     items-center sm:flex-col py-8 px-4 sm:px-4 md:px-8   "
       >
-        <div className="mt-2 h-40 w-64 sm:w-52 sm:h-28 cursor-pointer md:h-48 md:w-80  sm:my-4">
-          <Image
-            height={260}
-            width={440}
-            className="image cursor-pointer"
-            src={product.img}
-            alt="something went wrong"
-          />
-        </div>
+        <Link href={`/product/${product._id}`}>
+          <div className="mt-2 h-40 w-64 sm:w-52 sm:h-28 cursor-pointer md:h-48 md:w-80  sm:my-4">
+            <Image
+              height={260}
+              width={440}
+              className="image cursor-pointer"
+              src={product.img}
+              alt="something went wrong"
+            />
+          </div>
+        </Link>
 
-        <div className="flex flex-col  cursor-pointer   max-w-xs  pl-4">
+        <div
+          onClick={() => router.push(`/product/${product._id}`)}
+          className="flex flex-col   max-w-xs  pl-4"
+        >
           <h1 className="text-base font-semibold line-clamp-1 tracking-normal leading-relaxed  sm:text-lg   my-2">
             {product.title}{" "}
           </h1>
@@ -116,11 +121,12 @@ function Products({ product }) {
             >
               {product.createdAt}
             </Moment>
-
-            <div className="flex flex-row whitespace-nowrap space-x-2 items-center cursor-pointer">
-              <h4>Read more</h4>
-              <ArrowLongRightIcon className="arrow animate-pulse" />
-            </div>
+            <Link href={`/product/${product._id}`}>
+              <div className="flex flex-row whitespace-nowrap space-x-2 items-center cursor-pointer">
+                <h4>Read more</h4>
+                <ArrowLongRightIcon className="arrow animate-pulse" />
+              </div>
+            </Link>
           </div>
         </div>
       </div>

@@ -179,14 +179,14 @@ function Modal() {
                     onClick={() => filePickerRef.current.click()}
                     className=" mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-black cursor-pointer"
                   >
-                    <CameraIcon className=" h-6 w-6 text-red-400" />
+                    <CameraIcon className=" h-6 w-6 text-blue-400" />
                   </div>
                 )}
 
                 <div className="mt-3 text-center sm:mt-5">
                   <Dialog.Title
                     as="h3"
-                    className="text-lg leading-6 border-b py-4 px-8 sm:px-2  border-gray-600 text-white"
+                    className="text-lg leading-6 border-b py-4 px-2 border-1  text-white"
                   >
                     Create a Post
                   </Dialog.Title>
@@ -204,14 +204,14 @@ function Modal() {
                     <input
                       value={title}
                       onChange={(e) => setTitle(e.target.value)}
-                      className="input"
+                      className="  focus:ring-0 border-b my-2 border-1 focus-within:outline-none w-full text-center"
                       type="text"
                       placeholder="Title"
                       //   ref={captionRef}
                     />
                   </div>
 
-                  <div className="mt-2 ">
+                  <div className="mt-2 border-1 border-b border-gray-600 text-white">
                     <ReactQuill
                       modules={modules}
                       theme="snow"
@@ -225,13 +225,13 @@ function Modal() {
                     <input
                       value={img}
                       onChange={(e) => setImg(e.target.value)}
-                      className=" input "
+                      className=" bg-black border-1 py-2 px-4 border-b border-gray-600 my-2 focus:ring-0 focus-within:outline-none w-full text-center "
                       type="text"
                       placeholder="Img Url"
                     />
                   </div>
                 </div>
-                <h2 className="input">
+                <h2 className="border-1 py-2 px-4 border-b my-2 mb-6 focus:ring-0 focus-within:outline-none text-white w-full text-center">
                   Select the Category below :
                   <Listbox
                     className="bg-gray-100 rounded-md"
@@ -280,7 +280,7 @@ function Modal() {
                     type="button"
                     disabled={!img || !title || !desc || !selectedPeople}
                     onClick={uploadPost}
-                    className=" inline-flex  justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-400 font-medium text-base text-white   focus:outline-none  sm:text-sm disabled:bg-gray-600 disabled:cursor-not-allowed hover:disabled:bg-gray-600"
+                    className=" inline-flex  justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-400 font-medium text-base text-white  focus:outline-none  sm:text-sm disabled:bg-gray-600 disabled:cursor-not-allowed hover:disabled:bg-gray-300"
                   >
                     {loading ? "Uploading..." : " Post"}
                   </button>

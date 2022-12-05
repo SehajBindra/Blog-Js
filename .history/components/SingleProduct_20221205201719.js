@@ -213,7 +213,7 @@ function Post({ product }) {
   };
 
   return (
-    <div className="mt-1 max-w-sm tracking-normal leading-relaxed sm:max-w-xl md:max-w-2xl xl:max-w-3xl scrollbar-hide overflow-x-hidden sm:overflow-visible    text-white">
+    <div className="mt-1 max-w-lg tracking-normal leading-relaxed sm:max-w-xl md:max-w-2xl xl:max-w-3xl scrollbar-hide overflow-x-hidden sm:overflow-visible    text-white">
       <div className="flex items-center mr-12 p-5 ">
         <div className="  flex flex-1 items-center">
           <Image
@@ -385,7 +385,7 @@ function Post({ product }) {
           <input
             value={img}
             onChange={(e) => setImg(e.target.value)}
-            className="input "
+            className=" bg-transparent border-1 py-2 px-4 border-b my-2 focus:ring-0 focus-within:outline-none w-full "
             type="text"
           />
         </>
@@ -406,7 +406,7 @@ function Post({ product }) {
           type="text"
           placeholder={product.title}
           value={title}
-          className="  input"
+          className=" my-2 sm:max-w-2xl text-center focus-within:outline-none  w-full border-1 border-b bg-transparent"
           onChange={(e) => setTitle(e.target.value)}
         />
       ) : (
@@ -479,7 +479,7 @@ function Post({ product }) {
       {updateMode && (
         <div>
           <button
-            className="text-sm font-semibold cursor-pointer my-4 mx-auto  justify-items-center  py-2 px-10 flex flex-col  align-middle rounded-lg bg-[#E23E57] text-white"
+            className="text-sm font-semibold cursor-pointer my-4 mx-auto  justify-items-center  py-2 px-10 flex flex-col  align-middle rounded-lg bg-blue-400 text-white"
             onClick={() => handleupdate(product._id)}
           >
             {" "}
@@ -518,7 +518,7 @@ function Post({ product }) {
       {/* input box */}
 
       {session && (
-        <form className="flex items-center my-5 pb-32 p-4">
+        <form className="flex items-center my-5 p-4">
           <input
             type="text"
             value={comment}
@@ -530,7 +530,7 @@ function Post({ product }) {
             type="submit"
             disabled={!comment.trim()}
             onClick={sendComment}
-            className=" font-light text-[#E23E57]"
+            className=" font-light text-blue-400"
           >
             Post
           </button>

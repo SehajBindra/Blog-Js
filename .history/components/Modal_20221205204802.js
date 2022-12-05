@@ -186,7 +186,7 @@ function Modal() {
                 <div className="mt-3 text-center sm:mt-5">
                   <Dialog.Title
                     as="h3"
-                    className="text-lg leading-6 border-b py-4 px-8 sm:px-2  border-gray-600 text-white"
+                    className="text-lg leading-6 border-b py-4 px-8 border-1 border-gray-600 text-white"
                   >
                     Create a Post
                   </Dialog.Title>
