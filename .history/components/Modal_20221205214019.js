@@ -231,48 +231,50 @@ function Modal() {
                     />
                   </div>
                 </div>
-                <h2 className="input border-none my-2">
+                <h2 className="input">
                   Select the Category below :
+                  <Listbox
+                    className="bg-gray-100 rounded-md"
+                    value={selectedPeople}
+                    onChange={setSelectedPeople}
+                  >
+                    {({ open }) => (
+                      <>
+                        <Listbox.Button className=" text-center bg-gray-100 rounded-md py-2 px-4 flex flex-row items-center space-x-2 justify-center align-middle mx-auto  ">
+                          {selectedPeople.name}
+                          <div className="flex flex-row items-center">
+                            <ChevronUpDownIcon
+                              className="h-5  w-5 text-gray-400"
+                              aria-hidden="true"
+                            />
+                          </div>
+                        </Listbox.Button>
+                        <Transition
+                          show={open}
+                          as={Fragment}
+                          leave="transition ease-in duration-100"
+                          leaveFrom="opacity-100"
+                          leaveTo="opacity-0"
+                        >
+                          <Listbox.Options className="bg-gray-100 text-black rounded-md py-1 px-4 my-2 max-h-[4.4rem] overflow-y-scroll scrollbar-hide">
+                            {people.map((person, i) => (
+                              <Listbox.Option
+                                key={i}
+                                value={person}
+                                className="active:bg-gray-100  my-2 rounded-sm  transition-all   flex flex-col justify-center align-middle mx-auto duration-200 active:text-black active:rounded-md  text-black"
+                              >
+                                <p className=" cursor-pointer">
+                                  {" "}
+                                  {person.name}{" "}
+                                </p>
+                              </Listbox.Option>
+                            ))}
+                          </Listbox.Options>
+                        </Transition>
+                      </>
+                    )}
+                  </Listbox>
                 </h2>
-                <Listbox
-                  className="bg-gray-100 rounded-md"
-                  value={selectedPeople}
-                  onChange={setSelectedPeople}
-                >
-                  {({ open }) => (
-                    <>
-                      <Listbox.Button className=" text-center text-black bg-gray-100 rounded-md py-2 px-8 flex flex-row items-center space-x-2 justify-center align-middle mx-auto  ">
-                        {selectedPeople.name}
-                        <div className="flex flex-row items-center">
-                          <ChevronUpDownIcon
-                            className="h-5  w-5 text-gray-400"
-                            aria-hidden="true"
-                          />
-                        </div>
-                      </Listbox.Button>
-                      <Transition
-                        show={open}
-                        as={Fragment}
-                        leave="transition ease-in duration-100"
-                        leaveFrom="opacity-100"
-                        leaveTo="opacity-0"
-                      >
-                        <Listbox.Options className="bg-gray-100 text-black rounded-md py-1 px-4 my-2 max-h-[4.4rem] overflow-y-scroll scrollbar-hide">
-                          {people.map((person, i) => (
-                            <Listbox.Option
-                              key={i}
-                              value={person}
-                              className="active:bg-gray-100  text-black my-2 rounded-sm  transition-all   flex flex-col justify-center align-middle mx-auto duration-200 active:text-black active:rounded-md  "
-                            >
-                              <p className=" cursor-pointer"> {person.name} </p>
-                            </Listbox.Option>
-                          ))}
-                        </Listbox.Options>
-                      </Transition>
-                    </>
-                  )}
-                </Listbox>
-
                 <div className="mt-5  sm:mt-6">
                   <button
                     type="button"

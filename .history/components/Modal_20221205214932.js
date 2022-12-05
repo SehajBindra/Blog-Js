@@ -231,7 +231,7 @@ function Modal() {
                     />
                   </div>
                 </div>
-                <h2 className="input border-none my-2">
+                <h2 className="input border-none my-4">
                   Select the Category below :
                 </h2>
                 <Listbox
@@ -241,7 +241,7 @@ function Modal() {
                 >
                   {({ open }) => (
                     <>
-                      <Listbox.Button className=" text-center text-black bg-gray-100 rounded-md py-2 px-8 flex flex-row items-center space-x-2 justify-center align-middle mx-auto  ">
+                      <Listbox.Button className=" text-center text-black bg-gray-100 rounded-md py-2 px-4 flex flex-row items-center space-x-2 justify-center align-middle mx-auto  ">
                         {selectedPeople.name}
                         <div className="flex flex-row items-center">
                           <ChevronUpDownIcon
