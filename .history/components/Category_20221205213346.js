@@ -11,7 +11,7 @@ function Category({ category }) {
   return (
     <div>
       <div
-        onClick={() => router.push(`/product/${category._id}`)}
+        onClick={() => router.push(`/product/${product._id}`)}
         key={category._id}
         className="flex flex-row bg-black    justify-center align-middle cursor-pointer  items-center sm:flex-row py-4 px-8 sm:pr-4 pr-2 "
       >
