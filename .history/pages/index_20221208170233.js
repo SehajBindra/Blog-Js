@@ -60,6 +60,7 @@ export default function Home({ products }) {
 
         <Toaster />
         <Header />
+        <SearchResults />
 
         <main className=" sm:grid sm:grid-cols-12 ">
           <Sidebar />

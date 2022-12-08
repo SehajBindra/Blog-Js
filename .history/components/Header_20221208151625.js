@@ -4,7 +4,6 @@ import { useRecoilState } from "recoil";
 import { modalState } from "../atoms/modalAtom";
 
 import {
-  BackspaceIcon,
   BookmarkIcon,
   GlobeAltIcon,
   HomeModernIcon,
@@ -15,7 +14,6 @@ import { useRouter } from "next/router";
 import { signIn, signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
-import SearchResults from "./SearchResults";
 
 function Header() {
   const { data: session, status } = useSession();
@@ -25,32 +23,29 @@ function Header() {
   const url = "https://blog-beta-hazel.vercel.app/api/search";
   const router = useRouter();
 
-  const [query, setQuery] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
+  const [query, Setquery] = useState("");
+  const [searchResults, SetsearchResults] = useState([]);
   const [open, Setopen] = useRecoilState(modalState);
 
   useEffect(() => {
-    (async () => {
+    const search = async () => {
       if (!query) {
-        setSearchResults([]);
+        SetsearchResults([]);
         return false;
       }
+
       const dev = process.env.NODE_ENV !== "production";
-      const { data } = await axios.get(`${dev ? baseUrl : url}`, {
+      const data = await axios.get(`${dev ? baseUrl : url}`, {
         params: {
           query: query,
         },
       });
-
-      setSearchResults(data);
-    })();
+      SetsearchResults(data);
+    };
+    search();
   }, [query]);
 
-  const reset = (e) => {
-    setQuery("");
-  };
-
-  // console.log(searchResults);
+  console.log(searchResults);
 
   return (
     <div className="top-0 sticky z-50 flex  h-20  justify-between bg-black overflow-y-auto  border-b border-gray-800  py-4 text-white border-1 ">
@@ -59,7 +54,7 @@ function Header() {
       <div className=" hidden sm:inline-flex items-center ">
         <p
           onClick={() => router.push("/")}
-          className=" sm:text-3xl  whitespace-nowrap cursor-pointer py-2 px-4"
+          className=" sm:text-3xl animate-pulse whitespace-nowrap cursor-pointer py-2 px-4"
         >
           {" "}
           BLOG JS
@@ -67,7 +62,7 @@ function Header() {
       </div>
       {/* center */}
 
-      <div className=" flex-grow sm:flex-grow-0 ml-2  ">
+      <div className=" flex-grow sm:flex-grow-0 ml-2 ">
         <div className=" relative  rounded-md ">
           <div className=" absolute inset-y-3  pl-2 flex items-center pointer-events-none ">
             <MagnifyingGlassIcon className="h-5  w-5 text-[#E23E57]" />
@@ -76,22 +71,11 @@ function Header() {
             className="bg-transparent   placeholder:text-white border-gray-800  w-full pl-12 mx-auto py-2 border-2 focus-within:outline-none    rounded-full"
             type="text"
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e) => Setquery(e.target.value)}
             placeholder="Search..."
           />
-
-          <div className="">
-            <SearchResults searchResults={searchResults} />
-          </div>
         </div>
       </div>
-      {/* 
-      <div className=" left-0 pl-[4rem] inset-y-3 flex-row   flex  items-center  pointer-events-none ">
-        <BackspaceIcon
-          onClick={(event) => reset(event)}
-          className="h-5 w-5 text-[#E23E57]"
-        />
-      </div> */}
 
       {session && (
         <div className=" sm:hidden    w-full  fixed left-0 bottom-0">

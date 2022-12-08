@@ -85,13 +85,13 @@ function Header() {
           </div>
         </div>
       </div>
-      {/* 
-      <div className=" left-0 pl-[4rem] inset-y-3 flex-row   flex  items-center  pointer-events-none ">
+
+      <div className=" left-0 pl-[4rem]  flex-row   flex  items-center  pointer-events-none ">
         <BackspaceIcon
           onClick={(event) => reset(event)}
           className="h-5 w-5 text-[#E23E57]"
         />
-      </div> */}
+      </div>
 
       {session && (
         <div className=" sm:hidden    w-full  fixed left-0 bottom-0">

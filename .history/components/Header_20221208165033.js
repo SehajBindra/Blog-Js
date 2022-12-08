@@ -4,7 +4,6 @@ import { useRecoilState } from "recoil";
 import { modalState } from "../atoms/modalAtom";
 
 import {
-  BackspaceIcon,
   BookmarkIcon,
   GlobeAltIcon,
   HomeModernIcon,
@@ -35,7 +34,7 @@ function Header() {
         setSearchResults([]);
         return false;
       }
-      const dev = process.env.NODE_ENV !== "production";
+
       const { data } = await axios.get(`${dev ? baseUrl : url}`, {
         params: {
           query: query,
@@ -45,12 +44,24 @@ function Header() {
       setSearchResults(data);
     })();
   }, [query]);
+  // const search = async () => {
+  //   if (!query) {
+  //     setSearchResults([]);
+  //     return false;
+  //   }
 
-  const reset = (e) => {
-    setQuery("");
-  };
+  //   const dev = process.env.NODE_ENV !== "production";
+  //   const data = await axios.get(`${dev ? baseUrl : url}`, {
+  //     params: {
+  //       query: query,
+  //     },
+  //   });
+  //   setSearchResults(data);
+  // };
+  //   search();
+  // }, [query]);
 
-  // console.log(searchResults);
+  console.log(searchResults);
 
   return (
     <div className="top-0 sticky z-50 flex  h-20  justify-between bg-black overflow-y-auto  border-b border-gray-800  py-4 text-white border-1 ">
@@ -67,7 +78,7 @@ function Header() {
       </div>
       {/* center */}
 
-      <div className=" flex-grow sm:flex-grow-0 ml-2  ">
+      <div className=" flex-grow sm:flex-grow-0 ml-2 ">
         <div className=" relative  rounded-md ">
           <div className=" absolute inset-y-3  pl-2 flex items-center pointer-events-none ">
             <MagnifyingGlassIcon className="h-5  w-5 text-[#E23E57]" />
@@ -79,19 +90,11 @@ function Header() {
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search..."
           />
-
-          <div className="">
-            <SearchResults searchResults={searchResults} />
-          </div>
+        </div>
+        <div className="flex flex-col justify-center align-middle bg-black max-h-40 rounded-md text-white">
+          <SearchResults searchResults={searchResults} />
         </div>
       </div>
-      {/* 
-      <div className=" left-0 pl-[4rem] inset-y-3 flex-row   flex  items-center  pointer-events-none ">
-        <BackspaceIcon
-          onClick={(event) => reset(event)}
-          className="h-5 w-5 text-[#E23E57]"
-        />
-      </div> */}
 
       {session && (
         <div className=" sm:hidden    w-full  fixed left-0 bottom-0">
