@@ -44,6 +44,7 @@ function Header() {
 
       setSearchResults(data);
     })();
+    setQuery("");
   }, [query]);
 
   const reset = (e) => {
@@ -69,30 +70,16 @@ function Header() {
 
       <div className=" flex-grow sm:flex-grow-0 ml-2  ">
         <div className=" relative  rounded-md ">
-          <form className="flex border-2 border-gray-800   rounded-xl px-1 py-3 ml-8 mr-5 shadow-lg items-center  ">
-            <input
-              className="flex-grow w-full placeholder-zinc-50 outline-none outline-0  focus:outline-none ml-3 bg-transparent  "
-              type="text"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search..."
-            />
-            <BackspaceIcon
-              onClick={(event) => reset(event)}
-              className="h-8 cursor-pointer mr-4 transition duration-100 transform hover:scale-125 sm:h-6 text-[#E23E57]"
-            />
-          </form>
-          {/* <div className=" absolute inset-y-3  pl-2 flex items-center pointer-events-none ">
+          <div className=" absolute inset-y-3  pl-2 flex items-center pointer-events-none ">
             <MagnifyingGlassIcon className="h-5  w-5 text-[#E23E57]" />
-          </div> */}
-
-          {/* <input
+          </div>
+          <input
             className="bg-transparent   placeholder:text-white border-gray-800  w-full pl-12 mx-auto py-2 border-2 focus-within:outline-none    rounded-full"
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search..."
-          /> */}
+          />
 
           <div className="">
             <SearchResults searchResults={searchResults} />
