@@ -69,7 +69,7 @@ function Header() {
 
       <div className=" flex-grow sm:flex-grow-0 ml-2 pb-10 ">
         <div className=" relative  rounded-md ">
-          <form className="flex border-2 border-gray-800   rounded-full px-1 py-2 ml-8 mr-5 shadow-lg items-center  ">
+          <form className="flex border-2 border-gray-800   rounded-xl px-1 py-2 ml-8 mr-5 shadow-lg items-center  ">
             <input
               className="flex-grow w-full placeholder-zinc-50 outline-none outline-0   focus:outline-none ml-2  bg-transparent  "
               type="text"
