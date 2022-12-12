@@ -9,7 +9,6 @@ import Modal from "../components/Modal";
 
 import Category from "../components/Category";
 import CategoryBtns from "../components/CategoryBtns";
-import Explore from "./../components/Explore";
 
 function programing({ category }) {
   return (
@@ -25,8 +24,6 @@ function programing({ category }) {
         <Header />
         {/* <Toaster /> */}
       </div>
-
-      <Explore />
 
       <div className="  bg-black flex flex-col justify-center items-center ">
         <CategoryBtns />

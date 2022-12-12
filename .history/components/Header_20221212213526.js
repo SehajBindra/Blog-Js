@@ -82,14 +82,30 @@ function Header() {
               className="h-8 cursor-pointer mr-4 transition duration-100 transform hover:scale-125 sm:h-6 text-[#E23E57]"
             />
           </form>
-        
+          {/* <div className=" absolute inset-y-3  pl-2 flex items-center pointer-events-none ">
+            <MagnifyingGlassIcon className="h-5  w-5 text-[#E23E57]" />
+          </div> */}
+
+          {/* <input
+            className="bg-transparent   placeholder:text-white border-gray-800  w-full pl-12 mx-auto py-2 border-2 focus-within:outline-none    rounded-full"
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search..."
+          /> */}
 
           <div className="bg-black">
             {query !== "" && <SearchResults searchResults={searchResults} />}
           </div>
         </div>
       </div>
-     
+      {/* 
+      <div className=" left-0 pl-[4rem] inset-y-3 flex-row   flex  items-center  pointer-events-none ">
+        <BackspaceIcon
+          onClick={(event) => reset(event)}
+          className="h-5 w-5 text-[#E23E57]"
+        />
+      </div> */}
 
       {session && (
         <div className=" sm:hidden    w-full  fixed left-0 bottom-0">

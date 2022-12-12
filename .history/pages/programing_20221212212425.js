@@ -4,14 +4,21 @@ import { connectToDatabase } from "../util/mongodb2";
 import Head from "next/head";
 
 import Header from "../components/Header";
+import { Toaster } from "react-hot-toast";
 
 import Modal from "../components/Modal";
 
+import { useTypewriter, Cursor } from "react-simple-typewriter";
+
 import Category from "../components/Category";
 import CategoryBtns from "../components/CategoryBtns";
-import Explore from "./../components/Explore";
 
 function programing({ category }) {
+  const [text] = useTypewriter({
+    words: ["Explore by categories", "Discover that matters to you"],
+    loop: true,
+    delaySpeed: 2600,
+  });
   return (
     <div>
       <Head>
@@ -23,10 +30,16 @@ function programing({ category }) {
       </Head>
       <div>
         <Header />
-        {/* <Toaster /> */}
+        <Toaster />
       </div>
-
-      <Explore />
+      <div className="flex  items-center justify-center  bg-black  py-4">
+        {" "}
+        <h2 className="text-xl font-semibold text-[#E23E57] text-center ">
+          {" "}
+          <span>{text}</span>
+          <Cursor cursorColor="#E23E57" />
+        </h2>
+      </div>
 
       <div className="  bg-black flex flex-col justify-center items-center ">
         <CategoryBtns />

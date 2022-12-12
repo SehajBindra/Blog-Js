@@ -11,6 +11,11 @@ import Category from "../components/Category";
 import CategoryBtns from "../components/CategoryBtns";
 import Explore from "../components/Explore";
 function technology({ category }) {
+  const [text] = useTypewriter({
+    words: ["Explore by categories", "Discover that matters to you"],
+    loop: true,
+    delaySpeed: 2600,
+  });
   return (
     <>
       <div className="bg-black h-screen overflow-y-auto">

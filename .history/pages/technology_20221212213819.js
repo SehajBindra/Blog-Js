@@ -5,12 +5,17 @@ import { connectToDatabase } from "../util/mongodb2";
 
 import Head from "next/head";
 import Header from "../components/Header";
+import { Toaster } from "react-hot-toast";
 
 import Category from "../components/Category";
-
+import { Cursor, useTypewriter } from "react-simple-typewriter";
 import CategoryBtns from "../components/CategoryBtns";
-import Explore from "../components/Explore";
 function technology({ category }) {
+  const [text] = useTypewriter({
+    words: ["Explore by categories", "Discover that matters to you"],
+    loop: true,
+    delaySpeed: 2600,
+  });
   return (
     <>
       <div className="bg-black h-screen overflow-y-auto">
@@ -23,10 +28,17 @@ function technology({ category }) {
         </Head>
         <div>
           <Header />
-          {/* <Toaster /> */}
+          <Toaster />
         </div>
 
-        <Explore />
+        <div className="flex  items-center justify-center  top-0 sticky  bg-black  py-4">
+          {" "}
+          <h2 className="text-xl font-semibold text-[#E23E57] text-center ">
+            {" "}
+            <span>{text}</span>
+            <Cursor cursorColor="#E23E57" />
+          </h2>
+        </div>
         <div className="  flex flex-col justify-center items-center align-middle mb-4">
           <CategoryBtns />
         </div>

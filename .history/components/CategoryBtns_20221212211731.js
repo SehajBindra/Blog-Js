@@ -11,6 +11,9 @@ function CategoryBtns() {
   const router = useRouter();
   return (
     <>
+      <h2 className="my-2 hidden md:inline text-white">
+        Recommended Topics ~{" "}
+      </h2>
       <div className="w-full max-w-sm px-4 py-2 sm:px-0">
         <Tab.Group>
           <Tab.List className="flex flex-row justify-center rounded-md max-w-xs bg-black space-x-2 p-1">
