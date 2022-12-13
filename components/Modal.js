@@ -93,10 +93,7 @@ function Modal() {
             .split(" ")
             .join("-")
             .toLowerCase("")
-            .replace(
-              /[,\s,!,%,<,>,@,$,&,:,;,|,/s,#,^,*,(,),]+|[,\s,!,%]+/g,
-              ""
-            ),
+            .replace(/[,\,!,%,<,>,@,$,&,:,;,|,/,#,^,*,(,),]+|[,\,!,%]+/g, ""),
           category: selectedPeople,
           username: session?.user.name,
           userimg: session?.user.image,
