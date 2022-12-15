@@ -1,0 +1,111 @@
+import Head from "next/head";
+
+import React from "react";
+
+import Header from "../components/Header";
+import Modal from "../components/Modal";
+//
+import Saved from "../components/Saved";
+
+import { connectToDatabase } from "../util/mongodb2";
+import Savepost from "./../components/Savepost";
+import { Toaster } from "react-hot-toast";
+
+function saved({ category }) {
+  // const router = useRouter();
+
+  // const { data: session } = useSession();
+  // console.log(session);
+  // console.log(category);
+
+  // const items = useSelector(selectItems);
+  // const dispatch = useDispatch();
+  // // console.log(items);
+
+  // const RemoveItemFromBasket = (_id) => {
+  //   // removing the item from Redux
+  //   dispatch(removefromBasket({ id: _id }));
+
+  //   // router.push("/saved");
+  //   toast.error("Removed from saved");
+  // };
+
+  return (
+    <>
+      <Head>
+        <title>Blog JS | Saved</title>
+        <link
+          rel="icon"
+          href="https://img.myloview.com/stickers/bm-b-m-letter-logo-design-initial-letter-bm-monogram-on-black-background-b-m-logo-bm-icon-logo-mb-logo-template-mb-alphabet-letter-icon-mb-icon-mb-letter-design-on-black-background-400-210159654.jpg"
+        />
+      </Head>
+      <div>
+        <Header />
+        <Toaster />
+        {/* <Sidebar /> */}
+      </div>
+
+      <main className="bg-black text-white h-screen mx-auto">
+        <div>
+          <h2>saved</h2>
+        </div>
+        {category?.map((category) => (
+          <Savepost key={category._id} category={category} />
+        ))}
+      </main>
+
+      <Modal />
+    </>
+  );
+}
+
+export default saved;
+
+export async function getServerSideProps(ctx) {
+  const { db } = await connectToDatabase();
+
+  const category = await db
+    .collection("products")
+    .find({})
+    .sort({ $natural: -1 })
+    .toArray();
+
+  // getting posts from specific users
+  // let headers = [];
+  // const session = await getSession({ ctx });
+  // if (session) {
+  //   headers = { Authorization: `Bearer ${session.user.name}` };
+  // }
+
+  // const category = await db
+  //   .collection("products")
+  //   .find({ username: `${session?.user.name}` })
+  //   .sort({ $natural: -1 })
+  //   .toArray();
+
+  // finding multiple items from an array using an $in operator
+  // const category = await db
+  //   .collection("products")
+  //   .find({
+  //     category: {
+  //       $in: [
+  //         { name: "Technology" },
+  //         { name: "Programing" },
+  //         { name: "React js" },
+  //       ],
+  //     },
+  //   })
+
+  return {
+    props: {
+      category: category.map((category) => ({
+        _id: category._id.toString(),
+        title: category.title.trim(),
+        img: category.img,
+        username: category.username,
+        userimg: category.userimg,
+        createdAt: category.createdAt.toISOString(),
+      })),
+    },
+  };
+}

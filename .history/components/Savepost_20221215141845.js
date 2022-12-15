@@ -1,0 +1,39 @@
+import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
+
+import React, { useEffect, useState } from "react";
+import { db } from "../firebase";
+import Saved from "./../.history/components/Saved_20221214003902";
+
+function Savepost({ category }) {
+  //   console.log(category._id);
+  //   console.log(category);
+
+  //   console.log(session);
+
+  const [savePosts, setSavePosts] = useState([]);
+
+  useEffect(() => {
+    const id = `${category._id}`;
+    // console.log(`${category._id}`);
+    onSnapshot(
+      query(
+        collection(db, "product", id, "saved"),
+        orderBy("timestamp", "desc")
+      ),
+      (snapshot) => {
+        setSavePosts(snapshot.docs);
+      }
+    );
+  }, [db]);
+
+  //   console.log(savePosts);
+  return (
+    <div>
+      {savePosts.map((posts) => (
+        <Saved posts={posts} key={posts.id} />
+      ))}
+    </div>
+  );
+}
+
+export default Savepost;
