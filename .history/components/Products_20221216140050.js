@@ -1,13 +1,14 @@
 import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
 
 import Moment from "react-moment";
-import dynamic from 'next/dynamic'
+
 import { useSession } from "next-auth/react";
-const SavedPosts = dynamic(() => import('./SavedPosts'))
+
 import { useRouter } from "next/router";
 import React from "react";
 
 import Image from "next/image";
+import SavedPosts from "./SavedPosts";
 
 function Products({ product }) {
   const router = useRouter();

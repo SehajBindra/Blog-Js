@@ -1,13 +1,14 @@
 import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
 
 import Moment from "react-moment";
-import dynamic from 'next/dynamic'
+
 import { useSession } from "next-auth/react";
-const SavedPosts = dynamic(() => import('./SavedPosts'))
+
 import { useRouter } from "next/router";
 import React from "react";
 
 import Image from "next/image";
+import SavedPosts from "./SavedPosts";
 
 function Products({ product }) {
   const router = useRouter();
@@ -27,10 +28,9 @@ function Products({ product }) {
           <Image
             height={260}
             width={440}
-            priority={true}
             className="image cursor-pointer"
             src={product.img}
-            alt="Freepik.com , Pexels.com"
+            alt="something went wrong"
           />
         </div>
 
@@ -48,7 +48,6 @@ function Products({ product }) {
             <Image
               height={24}
               width={24}
-              priority={true}
               className="rounded-full  p-1 object-cover"
               src={product.userimg}
               alt="something went wrong"
@@ -65,7 +64,7 @@ function Products({ product }) {
           <div className="flex justify-between items-center">
             <Moment
               className=" text-gray-300 my-2 truncate pr-5 text-sm "
-              format="D MMM YYYY"
+              format=" DD/YYYY/MM/"
             >
               {product.createdAt}
             </Moment>

@@ -1,14 +1,12 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 
 import { getProviders, signIn, useSession } from "next-auth/react";
-import { useRouter } from "next/router";
 
 import Header from "../components/Header";
 import Head from "next/head";
 
 function Login({ providers }) {
   const { data: session } = useSession();
-  const router = useRouter();
 
   return (
     <>
