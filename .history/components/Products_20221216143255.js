@@ -1,7 +1,7 @@
 import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
 
 import Moment from "react-moment";
-
+import dynamic from "next/dynamic";
 import { useSession } from "next-auth/react";
 
 import { useRouter } from "next/router";
