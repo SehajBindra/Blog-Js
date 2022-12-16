@@ -29,7 +29,7 @@ function ProductSection({ product }) {
             <Image
               height={150}
               width={160}
-              priority={true}
+             
               className="image"
               src={product.img}
               alt="use freepik.com for images"
