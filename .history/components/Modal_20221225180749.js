@@ -9,16 +9,10 @@ import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
 import { Dialog, Transition } from "@headlessui/react";
 import { modalState } from "../atoms/modalAtom";
-import { useDispatch } from "react-redux";
 
 import axios from "axios";
-import {
-  FetchFaliure,
-  FetchStart,
-  FetchSuccess,
-} from "../redux/slices/postSlice";
 
-import Router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 
 import { useSession } from "next-auth/react";
 import toast from "react-hot-toast";
@@ -26,6 +20,7 @@ import toast from "react-hot-toast";
 const people = [
   { name: "Technology" },
   { name: "Programing" },
+  { name: "React js" },
   { name: "Data Science" },
   { name: "Web-Development" },
   { name: "Artificial Intelligence" },
@@ -57,12 +52,11 @@ function Modal() {
   const { data: session, status } = useSession();
   const [selectedPeople, setSelectedPeople] = useState([people[0]]);
 
-  const dispatch = useDispatch();
   const [open, Setopen] = useRecoilState(modalState);
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [img, setImg] = useState("");
-
+  const [slug, setSlug] = useState("");
   const router = useRouter();
 
   const filePickerRef = useRef(null);
@@ -88,6 +82,14 @@ function Modal() {
           title,
           desc,
           img,
+          slug: title
+            .split(" ")
+            .join("-")
+            .toLowerCase("")
+            .replace(
+              /[,\,!,%,<,>,@,$,&,:,;,|,/,#,^,*,(,), ?]+|[,\,!,%,?]+/g,
+              ""
+            ),
           category: selectedPeople,
           username: session?.user.name,
           userimg: session?.user.image,
@@ -95,7 +97,6 @@ function Modal() {
         .then((res) => {
           router.push("/");
           toast.success("Posted!");
-          dispatch(FetchSuccess(res));
         });
 
       console.log(res);
@@ -109,7 +110,6 @@ function Modal() {
       setSelectedfile(null);
     } catch (error) {
       alert(error);
-      dispatch(FetchFaliure());
     }
   };
   const [selectedfile, setSelectedfile] = useState(null);
@@ -159,7 +159,7 @@ function Modal() {
             leaveFrom="opacity-100 translate-y-0 sm:scale-100"
             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
-            <div className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:py-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
+            <div className="inline-block align-bottom bg-black text-white rounded-xl px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:py-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
               <div>
                 {selectedfile ? (
                   <img
@@ -171,16 +171,16 @@ function Modal() {
                 ) : (
                   <div
                     onClick={() => filePickerRef.current.click()}
-                    className=" mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-white cursor-pointer"
+                    className=" mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-black cursor-pointer"
                   >
-                    <CameraIcon className=" h-6 w-6 text-blue-400" />
+                    <CameraIcon className=" h-6 w-6 text-red-400" />
                   </div>
                 )}
 
                 <div className="mt-3 text-center sm:mt-5">
                   <Dialog.Title
                     as="h3"
-                    className="text-lg leading-6 border-b py-4 px-2 border-1  text-gray-800"
+                    className="text-lg leading-6 border-b py-4 px-8 sm:px-2  border-gray-600 text-white"
                   >
                     Create a Post
                   </Dialog.Title>
@@ -198,14 +198,14 @@ function Modal() {
                     <input
                       value={title}
                       onChange={(e) => setTitle(e.target.value)}
-                      className="  focus:ring-0 border-b my-2 border-1 focus-within:outline-none w-full text-center"
+                      className="input"
                       type="text"
                       placeholder="Title"
                       //   ref={captionRef}
                     />
                   </div>
 
-                  <div className="mt-2">
+                  <div className="mt-2 ">
                     <ReactQuill
                       modules={modules}
                       theme="snow"
@@ -219,62 +219,60 @@ function Modal() {
                     <input
                       value={img}
                       onChange={(e) => setImg(e.target.value)}
-                      className=" border-1 py-2 px-4 border-b my-2 focus:ring-0 focus-within:outline-none w-full text-center"
+                      className=" input "
                       type="text"
                       placeholder="Img Url"
                     />
                   </div>
                 </div>
-                <h2 className="border-1 py-2 px-4 border-b my-2 mb-6 focus:ring-0 focus-within:outline-none text-gray-400 w-full text-center">
+                <h2 className="input border-none my-2">
                   Select the Category below :
-                  <Listbox
-                    className="bg-gray-100 rounded-md"
-                    value={selectedPeople}
-                    onChange={setSelectedPeople}
-                  >
-                    {({ open }) => (
-                      <>
-                        <Listbox.Button className=" text-center bg-gray-100 rounded-md py-2 px-4 flex flex-row items-center space-x-2 justify-center align-middle mx-auto  ">
-                          {selectedPeople.name}
-                          <div className="flex flex-row items-center">
-                            <ChevronUpDownIcon
-                              className="h-5  w-5 text-gray-400"
-                              aria-hidden="true"
-                            />
-                          </div>
-                        </Listbox.Button>
-                        <Transition
-                          show={open}
-                          as={Fragment}
-                          leave="transition ease-in duration-100"
-                          leaveFrom="opacity-100"
-                          leaveTo="opacity-0"
-                        >
-                          <Listbox.Options className="bg-gray-100 rounded-md py-1 px-4 my-2 max-h-[4.4rem] overflow-y-scroll scrollbar-hide">
-                            {people.map((person, i) => (
-                              <Listbox.Option
-                                key={i}
-                                value={person}
-                                className="active:bg-gray-100  my-2 rounded-sm  transition-all   flex flex-col justify-center align-middle mx-auto duration-200 active:text-black active:rounded-md  text-black"
-                              >
-                                <p className=" cursor-pointer">
-                                  {" "}
-                                  {person.name}{" "}
-                                </p>
-                              </Listbox.Option>
-                            ))}
-                          </Listbox.Options>
-                        </Transition>
-                      </>
-                    )}
-                  </Listbox>
                 </h2>
+                <Listbox
+                  className="bg-gray-100 rounded-md"
+                  value={selectedPeople}
+                  onChange={setSelectedPeople}
+                >
+                  {({ open }) => (
+                    <>
+                      <Listbox.Button className=" text-center text-black bg-gray-100 rounded-md py-2 px-8 flex flex-row items-center space-x-2 justify-center align-middle mx-auto  ">
+                        {selectedPeople.name}
+                        <div className="flex flex-row items-center">
+                          <ChevronUpDownIcon
+                            className="h-5  w-5 text-gray-400"
+                            aria-hidden="true"
+                          />
+                        </div>
+                      </Listbox.Button>
+                      <Transition
+                        show={open}
+                        as={Fragment}
+                        leave="transition ease-in duration-100"
+                        leaveFrom="opacity-100"
+                        leaveTo="opacity-0"
+                      >
+                        <Listbox.Options className="bg-gray-100 text-black rounded-md py-1 px-4 my-2 max-h-[4.4rem] overflow-y-scroll scrollbar-hide">
+                          {people.map((person, i) => (
+                            <Listbox.Option
+                              key={i}
+                              value={person}
+                              className="active:bg-gray-100  text-black my-2 rounded-sm  transition-all   flex flex-col justify-center align-middle mx-auto duration-200 active:text-black active:rounded-md  "
+                            >
+                              <p className=" cursor-pointer"> {person.name} </p>
+                            </Listbox.Option>
+                          ))}
+                        </Listbox.Options>
+                      </Transition>
+                    </>
+                  )}
+                </Listbox>
+
                 <div className="mt-5  sm:mt-6">
                   <button
                     type="button"
                     disabled={!img || !title || !desc || !selectedPeople}
                     onClick={uploadPost}
-                    className=" inline-flex  justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-400 font-medium text-base text-white  focus:outline-none  sm:text-sm disabled:bg-gray-300 disabled:cursor-not-allowed hover:disabled:bg-gray-300"
+                    className=" inline-flex  justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-400 font-medium text-base text-white   focus:outline-none  sm:text-sm disabled:bg-gray-600 disabled:cursor-not-allowed hover:disabled:bg-gray-600"
                   >
                     {loading ? "Uploading..." : " Post"}
                   </button>
