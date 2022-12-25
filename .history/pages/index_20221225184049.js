@@ -104,7 +104,7 @@ export async function getServerSideProps({ res }) {
 
   res.setHeader(
     "Cache-Control",
-    "public, s-maxage=43200, stale-while-revalidate=1"
+    "public, s-maxage=43200, stale-while-revalidate=60"
   );
 
   const products = await db
