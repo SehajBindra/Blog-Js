@@ -68,32 +68,32 @@ export default function Home({ products }) {
 
         <Toaster />
         <Header />
-        <Suspense fallback={"loading..."}>
-          <main className=" sm:grid sm:grid-cols-12 ">
-            <Sidebar />
 
-            <div className=" flex flex-row col-span-11  max-h-screen sm:col-span-8 overflow-x-scroll overflow-y-scroll scrollbar-hide">
-              {products.slice(0, 4).map((product) => (
-                <Products key={product._id} product={product} />
-              ))}
-            </div>
-            <Widgets />
-          </main>
+        <main className=" sm:grid sm:grid-cols-12 ">
+          <Sidebar />
 
-          <div className=" productSection   ">
-            {products.slice(4, visible).map((product) => (
-              <ProductSection key={product._id} product={product} />
+          <div className=" flex flex-row col-span-11  max-h-screen sm:col-span-8 overflow-x-scroll overflow-y-scroll scrollbar-hide">
+            {products.slice(0, 4).map((product) => (
+              <Products key={product._id} product={product} />
             ))}
-            <div className="flex items-center justify-center text-center flex-row mx-auto space-x-2 pb-16">
-              <button onClick={showmoreItems} className="loadMore">
-                {" "}
-                Load more{" "}
-              </button>
-
-              <ArrowDownIcon className="arrow" />
-            </div>
           </div>
-        </Suspense>
+          <Widgets />
+        </main>
+
+        <div className=" productSection   ">
+          {products.slice(4, visible).map((product) => (
+            <ProductSection key={product._id} product={product} />
+          ))}
+          <div className="flex items-center justify-center text-center flex-row mx-auto space-x-2 pb-16">
+            <button onClick={showmoreItems} className="loadMore">
+              {" "}
+              Load more{" "}
+            </button>
+
+            <ArrowDownIcon className="arrow" />
+          </div>
+        </div>
+
         <Modal />
       </div>
     </>
