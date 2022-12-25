@@ -10,15 +10,15 @@ const Modal = dynamic(() => import("../components/Modal"), {
 
 const Helmet = dynamic(() => import("react-helmet"));
 import Widgets from "../components/Widgets";
-// import Products from "../components/Products";
+import Products from "../components/Products";
 import Sidebar from "../components/Sidebar";
-const Products = dynamic(() => import("../components/Products"));
+// const Products = dynamic(() => import("../components/Products"));
 const ProductSection = dynamic(() => import("../components/ProductSection"));
 
 import { connectToDatabase } from "../util/mongodb2";
 import { useEffect, useState } from "react";
 import { ArrowDownIcon } from "@heroicons/react/24/outline";
-import { Suspense } from "react";
+// import { Suspense } from "react";
 // import ProductSection from "./../components/ProductSection";
 export default function Home({ products }) {
   // console.log(products);
@@ -67,34 +67,33 @@ export default function Home({ products }) {
 
         <Toaster />
         <Header />
-        <Suspense fallback={"Loading..."}>
-          <main className=" sm:grid sm:grid-cols-12 ">
-            <Sidebar />
 
-            <div className=" flex flex-row col-span-11  max-h-screen sm:col-span-8 overflow-x-scroll overflow-y-scroll scrollbar-hide">
-              {products.slice(0, 4).map((product) => (
-                <Products key={product._id} product={product} />
-              ))}
-            </div>
-            <Widgets />
-          </main>
+        <main className=" sm:grid sm:grid-cols-12 ">
+          <Sidebar />
 
-          <div className=" productSection   ">
-            {products.slice(4, visible).map((product) => (
-              <ProductSection key={product._id} product={product} />
+          <div className=" flex flex-row col-span-11  max-h-screen sm:col-span-8 overflow-x-scroll overflow-y-scroll scrollbar-hide">
+            {products.slice(0, 4).map((product) => (
+              <Products key={product._id} product={product} />
             ))}
-            <div className="flex items-center justify-center text-center flex-row mx-auto space-x-2 pb-16">
-              <button onClick={showmoreItems} className="loadMore">
-                {" "}
-                Load more{" "}
-              </button>
-
-              <ArrowDownIcon className="arrow" />
-            </div>
           </div>
+          <Widgets />
+        </main>
 
-          <Modal />
-        </Suspense>
+        <div className=" productSection   ">
+          {products.slice(4, visible).map((product) => (
+            <ProductSection key={product._id} product={product} />
+          ))}
+          <div className="flex items-center justify-center text-center flex-row mx-auto space-x-2 pb-16">
+            <button onClick={showmoreItems} className="loadMore">
+              {" "}
+              Load more{" "}
+            </button>
+
+            <ArrowDownIcon className="arrow" />
+          </div>
+        </div>
+
+        <Modal />
       </div>
     </>
   );
