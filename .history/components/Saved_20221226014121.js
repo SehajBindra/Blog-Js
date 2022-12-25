@@ -1,13 +1,15 @@
 import React from "react";
 import Image from "next/image";
 import { Zoom } from "react-awesome-reveal";
-
+import { BookmarkIcon, BookmarkSlashIcon } from "@heroicons/react/24/solid";
 import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
 
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { removefromBasket, selectItems } from "../redux/app/slices/SavedSlice";
+import { toast } from "react-hot-toast";
+import SavedPosts from "./SavedPosts";
 
 function Saved({}) {
   // const { data: session } = useSession();
