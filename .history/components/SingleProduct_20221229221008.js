@@ -3,7 +3,6 @@ import { Listbox, Menu, Transition } from "@headlessui/react";
 import Modal from "../components/Modal";
 import dynamic from "next/dynamic";
 import Parser from "html-react-parser";
-import { RWebShare } from "react-web-share";
 
 import "react-quill/dist/quill.snow.css";
 import { HeartIcon as HeartIconFilled } from "@heroicons/react/24/solid";
@@ -12,7 +11,6 @@ import {
   EllipsisHorizontalIcon,
   HeartIcon,
   PencilSquareIcon,
-  ShareIcon,
   TrashIcon,
 } from "@heroicons/react/24/outline";
 
@@ -77,7 +75,7 @@ function Post({ product }) {
   const [img, setImg] = useState();
   const [slug, setSlug] = useState();
   const [updateMode, setUpdateMode] = useState(false);
-  const [category, setCategory] = useState();
+  const [category, setCategory] = useState("");
   const [comments, setComments] = useState([]);
   const router = useRouter();
   const { data: session } = useSession();
@@ -116,6 +114,8 @@ function Post({ product }) {
       setDesc(data.data.data.desc);
       setTitle(data.data.data.title);
       setImg(data.data.data.img);
+      setCategory(data.data().category);
+      console.log(setCategory);
     };
     getpost();
   }, []);
@@ -375,20 +375,6 @@ function Post({ product }) {
             </Menu>
           </motion.div>
         )}
-
-        <RWebShare
-          data={{
-            text: `${product.title}`,
-            url: `/product${product._id}`,
-            title: `${product.title}`,
-          }}
-          onClick={() => console.log("shared successfully!")}
-        >
-          <div className="flex flex-row    cursor-pointer text-[#E23E57]  whitespace-nowrap items-center space-x-2 ml-4">
-            <ShareIcon className="h-4 w-4" />
-          </div>
-          {/* <button>Share 🔗</button> */}
-        </RWebShare>
       </div>
 
       {/* img */}

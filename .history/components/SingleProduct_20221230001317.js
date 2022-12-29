@@ -384,7 +384,7 @@ function Post({ product }) {
           }}
           onClick={() => console.log("shared successfully!")}
         >
-          <div className="flex flex-row    cursor-pointer text-[#E23E57]  whitespace-nowrap items-center space-x-2 ml-4">
+          <div className="flex flex-row  whitespace-nowrap items-center space-x-2 ml-4">
             <ShareIcon className="h-4 w-4" />
           </div>
           {/* <button>Share 🔗</button> */}

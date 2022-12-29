@@ -12,7 +12,6 @@ import {
   EllipsisHorizontalIcon,
   HeartIcon,
   PencilSquareIcon,
-  ShareIcon,
   TrashIcon,
 } from "@heroicons/react/24/outline";
 
@@ -218,7 +217,7 @@ function Post({ product }) {
   };
 
   return (
-    <div className="mt-1 max-w-xs tracking-normal leading-relaxed sm:max-w-xl md:max-w-2xl xl:max-w-3xl scrollbar-hide overflow-x-hidden sm:overflow-visible    text-white">
+    <div className="mt-1 max-w-xs tracking-normal leading-relaxed sm:max-w-xl md:max-w-2xl xl:max-w-3xl scrollbar-hide overflow-hidden sm:overflow-visible    text-white">
       <div className="flex items-center mr-12 p-5 ">
         <div className="  flex flex-1 items-center">
           <Image
@@ -232,6 +231,19 @@ function Post({ product }) {
           <p className="ml-3  truncate capitalize font-normal ">
             {product.username}
           </p>
+
+          <RWebShare
+            data={{
+              text: `${product.title}`,
+              url: `/product${product._id}`,
+              title: `${product.title}`,
+            }}
+            // onClick={() => console.log("shared successfully!")}
+          >
+            <button className="flex flex-row  whitespace-nowrap items-center space-x-2 ml-4">
+              Share 🔗
+            </button>
+          </RWebShare>
         </div>
 
         {/* like section */}
@@ -375,20 +387,6 @@ function Post({ product }) {
             </Menu>
           </motion.div>
         )}
-
-        <RWebShare
-          data={{
-            text: `${product.title}`,
-            url: `/product${product._id}`,
-            title: `${product.title}`,
-          }}
-          onClick={() => console.log("shared successfully!")}
-        >
-          <div className="flex flex-row    cursor-pointer text-[#E23E57]  whitespace-nowrap items-center space-x-2 ml-4">
-            <ShareIcon className="h-4 w-4" />
-          </div>
-          {/* <button>Share 🔗</button> */}
-        </RWebShare>
       </div>
 
       {/* img */}

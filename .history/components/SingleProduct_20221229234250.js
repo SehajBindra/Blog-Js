@@ -3,7 +3,7 @@ import { Listbox, Menu, Transition } from "@headlessui/react";
 import Modal from "../components/Modal";
 import dynamic from "next/dynamic";
 import Parser from "html-react-parser";
-import { RWebShare } from "react-web-share";
+import PortableText from "react-portable-text";
 
 import "react-quill/dist/quill.snow.css";
 import { HeartIcon as HeartIconFilled } from "@heroicons/react/24/solid";
@@ -12,7 +12,6 @@ import {
   EllipsisHorizontalIcon,
   HeartIcon,
   PencilSquareIcon,
-  ShareIcon,
   TrashIcon,
 } from "@heroicons/react/24/outline";
 
@@ -375,20 +374,6 @@ function Post({ product }) {
             </Menu>
           </motion.div>
         )}
-
-        <RWebShare
-          data={{
-            text: `${product.title}`,
-            url: `/product${product._id}`,
-            title: `${product.title}`,
-          }}
-          onClick={() => console.log("shared successfully!")}
-        >
-          <div className="flex flex-row    cursor-pointer text-[#E23E57]  whitespace-nowrap items-center space-x-2 ml-4">
-            <ShareIcon className="h-4 w-4" />
-          </div>
-          {/* <button>Share 🔗</button> */}
-        </RWebShare>
       </div>
 
       {/* img */}
@@ -452,7 +437,12 @@ function Post({ product }) {
       ) : (
         <div className="text-base tracking-normal leading-relaxed  my-4 max-w-xl sm:max-w-2xl ">
           {" "}
-          {Parser(`${product.desc}`)}{" "}
+          <PortableText content={product.desc}  serializers={{
+        h1: (props) => <h1 style={{ color: "red" }} {...props} />,
+        li: ({ children }) => <li className="special-list-item">{children}</li>,
+        someCustomType: YourComponent,
+      }} />
+          {/* {Parser(`${product.desc}`)}{" "} */}
         </div>
       )}
 

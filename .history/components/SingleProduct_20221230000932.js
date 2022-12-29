@@ -232,6 +232,21 @@ function Post({ product }) {
           <p className="ml-3  truncate capitalize font-normal ">
             {product.username}
           </p>
+
+          <RWebShare
+            data={{
+              text: `${product.title}`,
+              url: `/product${product._id}`,
+              title: `${product.title}`,
+            }}
+            onClick={() => console.log("shared successfully!")}
+          >
+            <div className="flex flex-row  whitespace-nowrap items-center space-x-2 ml-4">
+              <p>share</p>
+              <ShareIcon className="h-5 w-5" />
+            </div>
+            <button>Share 🔗</button>
+          </RWebShare>
         </div>
 
         {/* like section */}
@@ -375,20 +390,6 @@ function Post({ product }) {
             </Menu>
           </motion.div>
         )}
-
-        <RWebShare
-          data={{
-            text: `${product.title}`,
-            url: `/product${product._id}`,
-            title: `${product.title}`,
-          }}
-          onClick={() => console.log("shared successfully!")}
-        >
-          <div className="flex flex-row    cursor-pointer text-[#E23E57]  whitespace-nowrap items-center space-x-2 ml-4">
-            <ShareIcon className="h-4 w-4" />
-          </div>
-          {/* <button>Share 🔗</button> */}
-        </RWebShare>
       </div>
 
       {/* img */}
