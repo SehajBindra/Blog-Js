@@ -53,10 +53,10 @@ export default technology;
 export async function getServerSideProps() {
   const { db } = await connectToDatabase();
 
-  // res.setHeader(
-  //   "Cache-Control",
-  //   "public, s-maxage=43200, stale-while-revalidate=60"
-  // );
+  res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=43200, stale-while-revalidate=60"
+  );
 
   const category = await db
     .collection("products")
