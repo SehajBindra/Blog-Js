@@ -389,6 +389,7 @@ function Post({ product }) {
           </div>
           {/* <button>Share 🔗</button> */}
         </RWebShare>
+
       </div>
 
       {/* img */}
@@ -426,6 +427,7 @@ function Post({ product }) {
       {updateMode ? (
         <input
           type="text"
+         
           value={title}
           className="  input"
           onChange={(e) => setTitle(e.target.value)}
@@ -435,6 +437,8 @@ function Post({ product }) {
           <h2 className="text-xl tracking-normal leading-relaxed font-semibold text-center my-2 max-w-xl sm:max-w-2xl ">
             {" "}
             {product.title}{" "}
+            
+        {product.slug}
           </h2>
         </Fade>
       )}

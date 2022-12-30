@@ -41,6 +41,7 @@
     "recoil": "^0.7.5",
     "redux": "^4.2.0",
     "redux-persist": "^6.0.0",
+    "sharp": "^0.31.3",
     "tailwind-scrollbar": "^2.0.1",
     "tailwind-scrollbar-hide": "^1.1.7"
   },

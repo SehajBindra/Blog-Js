@@ -128,7 +128,7 @@ export async function getServerSideProps({ res }) {
         username: product.username.trim(),
         userimg: product.userimg,
         category: product.category,
-        slug: product?.slug || "undefined",
+        slug: product.slug,
         createdAt: product.createdAt.toISOString(),
       })),
     },

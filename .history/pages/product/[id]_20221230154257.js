@@ -41,17 +41,17 @@ export default ProductDetails;
 //   "User-Agent": "*",
 // },
 
-export async function getStaticPaths() {
-  return {
-    paths: [],
-    fallback: true,
-  };
-}
-export async function getStaticProps({ params }) {
+// export async function getStaticPaths() {
+//   return {
+//     paths: [],
+//     fallback: true,
+//   };
+// }
+export async function getServerSideProps({ params }) {
   const { db } = await connectToDatabase();
-  const id = params.id;
+  const slug = params.slug;
   const products = await db.collection("products").findOne(
-    { _id: new ObjectId(id) },
+    { slug: slug },
 
     {
       projection: {
@@ -60,7 +60,7 @@ export async function getStaticProps({ params }) {
         userimg: 1,
         username: 1,
         img: 1,
-        slug: 1,
+        _id: 1,
       },
     }
   );
@@ -85,5 +85,6 @@ export async function getStaticProps({ params }) {
     props: {
       product: JSON.parse(JSON.stringify(products)),
     },
+    // revalidate: 1,
   };
 }

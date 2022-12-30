@@ -4,7 +4,7 @@ import CategoryBtns from "./CategoryBtns";
 
 function Widgets() {
   return (
-    <div className="md:inline md:col-span-2     mt-2 px-2 hidden ">
+    <div className="md:inline md:col-span-2    mt-2 px-2 hidden ">
       {/* Search */}
       {/* <div className="flex items-center space-x-2 bg-transparent  rounded-full mt-2 mb-2">
         <MagnifyingGlassIcon className="h-5 w-5 " />

@@ -10,7 +10,7 @@ import { Toaster } from "react-hot-toast";
 
 function ProductDetails({ product }) {
   // console.log(product);
-  // console.log(product.slug);
+  console.log(product.slug);
   const router = useRouter();
   useEffect(() => {
     router.prefetch(`/product/${product._id}`);

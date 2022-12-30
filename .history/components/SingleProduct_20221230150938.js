@@ -389,6 +389,8 @@ function Post({ product }) {
           </div>
           {/* <button>Share 🔗</button> */}
         </RWebShare>
+
+        {product.slug}
       </div>
 
       {/* img */}
@@ -426,6 +428,7 @@ function Post({ product }) {
       {updateMode ? (
         <input
           type="text"
+          placeholder={product.title}
           value={title}
           className="  input"
           onChange={(e) => setTitle(e.target.value)}

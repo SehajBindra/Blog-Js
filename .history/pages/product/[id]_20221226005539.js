@@ -10,7 +10,6 @@ import { Toaster } from "react-hot-toast";
 
 function ProductDetails({ product }) {
   // console.log(product);
-  // console.log(product.slug);
   const router = useRouter();
   useEffect(() => {
     router.prefetch(`/product/${product._id}`);
@@ -41,13 +40,7 @@ export default ProductDetails;
 //   "User-Agent": "*",
 // },
 
-export async function getStaticPaths() {
-  return {
-    paths: [],
-    fallback: true,
-  };
-}
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
   const { db } = await connectToDatabase();
   const id = params.id;
   const products = await db.collection("products").findOne(
@@ -60,7 +53,6 @@ export async function getStaticProps({ params }) {
         userimg: 1,
         username: 1,
         img: 1,
-        slug: 1,
       },
     }
   );
