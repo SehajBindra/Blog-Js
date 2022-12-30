@@ -2,22 +2,14 @@ import React from "react";
 import { connectToDatabase } from "../util/mongodb2";
 
 import Head from "next/head";
-import dynamic from "next/dynamic";
+
 import Header from "../components/Header";
-const Modal = dynamic(() => import("../components/Modal"), {
-  ssr: false,
-});
-// import Modal from "../components/Modal";
-const Category = dynamic(() => import("../components/Category"));
-// import Category from "../components/Category";
-const CategoryBtns = dynamic(() => import("../components/CategoryBtns"), {
-  ssr: false,
-});
-// import CategoryBtns from "../components/CategoryBtns";
-// import Explore from "../components/Explore";
-const Explore = dynamic(() => import("../components/CategoryBtns"), {
-  ssr: false,
-});
+
+import Modal from "../components/Modal";
+
+import Category from "../components/Category";
+import CategoryBtns from "../components/CategoryBtns";
+import Explore from "./../components/Explore";
 
 function programing({ category }) {
   return (
