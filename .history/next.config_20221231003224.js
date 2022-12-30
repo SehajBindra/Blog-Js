@@ -80,5 +80,7 @@ module.exports = {
       "encrypted-tbn0.gstatic.com",
       "i.pinimg.com",
     ],
+
+    formats: ["image/avif", "image/webp"],
   },
 };
