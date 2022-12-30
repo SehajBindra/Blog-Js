@@ -53,7 +53,7 @@ function programing({ category }) {
 
 export default programing;
 
-export async function getServerSideProps({ res }) {
+export async function getServerSideProps() {
   const { db } = await connectToDatabase();
 
   res.setHeader(
@@ -73,7 +73,7 @@ export async function getServerSideProps({ res }) {
         _id: category._id.toString(),
         title: category.title.trim(),
         img: category.img,
-        username: category.username.trim(),
+        username: category.username,
         userimg: category.userimg,
         createdAt: category.createdAt.toISOString(),
       })),
