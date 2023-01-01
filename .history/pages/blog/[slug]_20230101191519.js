@@ -29,23 +29,22 @@ function PostDetails({ post }) {
 
 export default PostDetails;
 
-export async function getStaticPaths() {
-  return {
-    paths: [],
-    fallback: true,
-  };
-}
-export async function getStaticProps({ params }) {
+// export async function getStaticPaths() {
+//   return {
+//     paths: [],
+//     fallback: true,
+//   };
+// }
+export async function getServerSideProps({ params, res }) {
   const { db } = await connectToDatabase();
 
-  // res.setHeader(
-  //   "Cache-Control",
-  //   "public, s-maxage=43200, stale-while-revalidate=60"
-  // );
-  const slug = params.slug;
+  res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=43200, stale-while-revalidate=60"
+  );
 
   const posts = await db.collection("products").findOne(
-    { slug: slug },
+    { slug: params.slug },
 
     {
       projection: {

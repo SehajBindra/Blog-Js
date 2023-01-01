@@ -42,10 +42,9 @@ export async function getStaticProps({ params }) {
   //   "Cache-Control",
   //   "public, s-maxage=43200, stale-while-revalidate=60"
   // );
-  const slug = params.slug;
 
   const posts = await db.collection("products").findOne(
-    { slug: slug },
+    { slug: params.slug },
 
     {
       projection: {
