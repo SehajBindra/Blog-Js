@@ -59,7 +59,7 @@ export async function getStaticProps({ params }) {
         userimg: 1,
         username: 1,
         img: 1,
-        slug: 1,
+        // slug: 1,
       },
     }
   );

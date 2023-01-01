@@ -37,7 +37,7 @@ import { db } from "../firebase";
 import dynamic from "next/dynamic";
 import Moment from "react-moment";
 // import { Fade } from "react-awesome-reveal";
-// const Fade = dynamic(() => import("react-awesome-reveal"));
+const Fade = dynamic(() => import("react-awesome-reveal"));
 import Image from "next/image";
 
 // const people = [
@@ -429,12 +429,12 @@ function Post({ post }) {
           onChange={(e) => setTitle(e.target.value)}
         />
       ) : (
-        // <Fade cascade damping={1e-1}>
-        <h2 className="text-xl tracking-normal leading-relaxed font-semibold text-center my-2 max-w-xl sm:max-w-2xl ">
-          {" "}
-          {post.title}{" "}
-        </h2>
-        // </Fade>
+        <Fade cascade damping={1e-1}>
+          <h2 className="text-xl tracking-normal leading-relaxed font-semibold text-center my-2 max-w-xl sm:max-w-2xl ">
+            {" "}
+            {post.title}{" "}
+          </h2>
+        </Fade>
       )}
 
       {updateMode ? (

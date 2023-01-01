@@ -11,10 +11,6 @@ function PostDetails({ post }) {
       <div>
         <Head>
           <title>{post?.title} </title>
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-          />
           <link
             rel="icon"
             href="https://img.myloview.com/stickers/bm-b-m-letter-logo-design-initial-letter-bm-monogram-on-black-background-b-m-logo-bm-icon-logo-mb-logo-template-mb-alphabet-letter-icon-mb-icon-mb-letter-design-on-black-background-400-210159654.jpg"
@@ -59,7 +55,7 @@ export async function getStaticProps({ params }) {
         userimg: 1,
         username: 1,
         img: 1,
-        slug: 1,
+        // slug: 1,
       },
     }
   );

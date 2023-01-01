@@ -1,7 +1,6 @@
 import React, { Fragment, useEffect, useMemo, useState } from "react";
-// import { Listbox, Menu, Transition } from "@headlessui/react";
-// import Modal from "../components/Modal";
-const Modal = dynamic(() => import("../components/Modal"));
+import { Listbox, Menu, Transition } from "@headlessui/react";
+import Modal from "../components/Modal";
 // import dynamic from "next/dynamic";
 import Parser from "html-react-parser";
 import { RWebShare } from "react-web-share";
@@ -9,12 +8,12 @@ import { RWebShare } from "react-web-share";
 // import "react-quill/dist/quill.snow.css";
 import { HeartIcon as HeartIconFilled } from "@heroicons/react/24/solid";
 import {
-  // ChevronUpDownIcon,
-  // EllipsisHorizontalIcon,
+  ChevronUpDownIcon,
+  EllipsisHorizontalIcon,
   HeartIcon,
-  // PencilSquareIcon,
+  PencilSquareIcon,
   ShareIcon,
-  // TrashIcon,
+  TrashIcon,
 } from "@heroicons/react/24/outline";
 
 // import toast from "react-hot-toast";
@@ -34,10 +33,8 @@ import {
   setDoc,
 } from "firebase/firestore";
 import { db } from "../firebase";
-import dynamic from "next/dynamic";
 import Moment from "react-moment";
-// import { Fade } from "react-awesome-reveal";
-// const Fade = dynamic(() => import("react-awesome-reveal"));
+import { Fade } from "react-awesome-reveal";
 import Image from "next/image";
 
 // const people = [
@@ -61,8 +58,8 @@ function Post({ post }) {
   // const ReactQuill = useMemo(
   //   () => dynamic(() => import("react-quill"), { ssr: false }),
   //   []
-  // // );
-  // const [selectedPeople, setSelectedPeople] = useState([people[0]]);
+  // );
+  const [selectedPeople, setSelectedPeople] = useState([people[0]]);
   // Rich text Editor
   // const modules = {
   //   toolbar: [
@@ -377,6 +374,8 @@ function Post({ post }) {
         // )} */}{" "}
         <RWebShare
           data={{
+            text: `${post.title}`,
+
             url: `/blog/${post.slug}`,
             title: `${post.title}`,
           }}
@@ -429,12 +428,12 @@ function Post({ post }) {
           onChange={(e) => setTitle(e.target.value)}
         />
       ) : (
-        // <Fade cascade damping={1e-1}>
-        <h2 className="text-xl tracking-normal leading-relaxed font-semibold text-center my-2 max-w-xl sm:max-w-2xl ">
-          {" "}
-          {post.title}{" "}
-        </h2>
-        // </Fade>
+        <Fade cascade damping={1e-1}>
+          <h2 className="text-xl tracking-normal leading-relaxed font-semibold text-center my-2 max-w-xl sm:max-w-2xl ">
+            {" "}
+            {post.title}{" "}
+          </h2>
+        </Fade>
       )}
 
       {updateMode ? (

@@ -1,7 +1,6 @@
 import React, { Fragment, useEffect, useMemo, useState } from "react";
-// import { Listbox, Menu, Transition } from "@headlessui/react";
-// import Modal from "../components/Modal";
-const Modal = dynamic(() => import("../components/Modal"));
+import { Listbox, Menu, Transition } from "@headlessui/react";
+import Modal from "../components/Modal";
 // import dynamic from "next/dynamic";
 import Parser from "html-react-parser";
 import { RWebShare } from "react-web-share";
@@ -9,12 +8,12 @@ import { RWebShare } from "react-web-share";
 // import "react-quill/dist/quill.snow.css";
 import { HeartIcon as HeartIconFilled } from "@heroicons/react/24/solid";
 import {
-  // ChevronUpDownIcon,
-  // EllipsisHorizontalIcon,
+  ChevronUpDownIcon,
+  EllipsisHorizontalIcon,
   HeartIcon,
-  // PencilSquareIcon,
+  PencilSquareIcon,
   ShareIcon,
-  // TrashIcon,
+  TrashIcon,
 } from "@heroicons/react/24/outline";
 
 // import toast from "react-hot-toast";
@@ -34,26 +33,24 @@ import {
   setDoc,
 } from "firebase/firestore";
 import { db } from "../firebase";
-import dynamic from "next/dynamic";
 import Moment from "react-moment";
-// import { Fade } from "react-awesome-reveal";
-// const Fade = dynamic(() => import("react-awesome-reveal"));
+import { Fade } from "react-awesome-reveal";
 import Image from "next/image";
 
-// const people = [
-//   { name: "Technology" },
-//   { name: "Programing" },
-//   { name: "React js" },
-//   { name: "Web-Development" },
-//   { name: "Gaming" },
-//   { name: "Data Science" },
-//   { name: "Artificial Intelligence" },
-//   { name: "Entertainment" },
-//   { name: "Sports" },
-//   { name: "crypto" },
-//   { name: "Stock market" },
-//   { name: "others" },
-// ];
+const people = [
+  { name: "Technology" },
+  { name: "Programing" },
+  { name: "React js" },
+  { name: "Web-Development" },
+  { name: "Gaming" },
+  { name: "Data Science" },
+  { name: "Artificial Intelligence" },
+  { name: "Entertainment" },
+  { name: "Sports" },
+  { name: "crypto" },
+  { name: "Stock market" },
+  { name: "others" },
+];
 
 function Post({ post }) {
   // React quill
@@ -61,8 +58,8 @@ function Post({ post }) {
   // const ReactQuill = useMemo(
   //   () => dynamic(() => import("react-quill"), { ssr: false }),
   //   []
-  // // );
-  // const [selectedPeople, setSelectedPeople] = useState([people[0]]);
+  // );
+  const [selectedPeople, setSelectedPeople] = useState([people[0]]);
   // Rich text Editor
   // const modules = {
   //   toolbar: [
@@ -228,12 +225,12 @@ function Post({ post }) {
             height={24}
             width={24}
             className="rounded-full   object-cover  pointer-events-none"
-            src={post?.userimg}
+            src={post.userimg}
             alt="unknown error"
           />
 
           <p className="ml-3  truncate capitalize font-normal ">
-            {post?.username}
+            {post.username}
           </p>
         </div>
         {/* like section */}
@@ -375,8 +372,10 @@ function Post({ post }) {
             </Menu>
           </motion.div>
         // )} */}{" "}
+        */
         <RWebShare
           data={{
+            text: `${post.title}`,
             url: `/blog/${post.slug}`,
             title: `${post.title}`,
           }}
@@ -429,22 +428,22 @@ function Post({ post }) {
           onChange={(e) => setTitle(e.target.value)}
         />
       ) : (
-        // <Fade cascade damping={1e-1}>
-        <h2 className="text-xl tracking-normal leading-relaxed font-semibold text-center my-2 max-w-xl sm:max-w-2xl ">
-          {" "}
-          {post.title}{" "}
-        </h2>
-        // </Fade>
+        <Fade cascade damping={1e-1}>
+          <h2 className="text-xl tracking-normal leading-relaxed font-semibold text-center my-2 max-w-xl sm:max-w-2xl ">
+            {" "}
+            {post.title}{" "}
+          </h2>
+        </Fade>
       )}
 
       {updateMode ? (
         <>
-          {/* <ReactQuill
+          <ReactQuill
             modules={modules}
             theme="snow"
             value={desc}
             onChange={setDesc}
-          /> */}
+          />
         </>
       ) : (
         <div className="text-base tracking-normal leading-relaxed  my-4 max-w-xl sm:max-w-2xl ">
@@ -453,7 +452,7 @@ function Post({ post }) {
         </div>
       )}
 
-      {/* {updateMode && (
+      {updateMode && (
         <Listbox
           className="bg-gray-100 rounded-md"
           value={selectedPeople}
@@ -493,9 +492,9 @@ function Post({ post }) {
             </>
           )}
         </Listbox>
-      )} */}
+      )}
 
-      {/* {updateMode && (
+      {updateMode && (
         <div>
           <button
             className="text-sm font-semibold cursor-pointer my-4 mx-auto  justify-items-center  py-2 px-10 flex flex-col  align-middle rounded-lg bg-[#E23E57] text-white"
@@ -505,7 +504,7 @@ function Post({ post }) {
             Publish{" "}
           </button>
         </div>
-      )} */}
+      )}
 
       {session && (
         <div className="ml-5 max-h-20 bg-black text-white overflow-y-scroll my-2  scrollbar-hide">
