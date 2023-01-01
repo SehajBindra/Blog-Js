@@ -106,7 +106,7 @@ export default function Home({ products }) {
   );
 }
 
-export async function getServerSideProps({res}) {
+export async function getServerSideProps() {
   const { db } = await connectToDatabase();
 
   res.setHeader(

@@ -47,13 +47,16 @@ export default function Home({ products }) {
     <>
       <Head>
         <title>Blog JS | Home</title>
-
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        />
         <meta
           name="google-site-verification"
           content="28jDfp2oEibVP-WSNODioOCe6YuLFPgLOREq-GD87Uw"
         />
         <Script
-          // strategy="afterInteractive"
+          strategy="afterInteractive"
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030825364916957"
           crossorigin="anonymous"
@@ -106,13 +109,13 @@ export default function Home({ products }) {
   );
 }
 
-export async function getServerSideProps({res}) {
+export async function getStaticProps() {
   const { db } = await connectToDatabase();
 
-  res.setHeader(
-    "Cache-Control",
-    "public, s-maxage=43200, stale-while-revalidate=60"
-  );
+  // res.setHeader(
+  //   "Cache-Control",
+  //   "public, s-maxage=43200, stale-while-revalidate=60"
+  // );
 
   const products = await db
     .collection("products")

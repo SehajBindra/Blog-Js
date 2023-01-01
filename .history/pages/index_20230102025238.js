@@ -106,13 +106,13 @@ export default function Home({ products }) {
   );
 }
 
-export async function getServerSideProps({res}) {
+export async function getServerSideProps() {
   const { db } = await connectToDatabase();
 
-  res.setHeader(
-    "Cache-Control",
-    "public, s-maxage=43200, stale-while-revalidate=60"
-  );
+  // res.setHeader(
+  //   "Cache-Control",
+  //   "public, s-maxage=43200, stale-while-revalidate=60"
+  // );
 
   const products = await db
     .collection("products")
