@@ -23,7 +23,6 @@ function technology({ category }) {
       <div className="bg-black h-screen overflow-y-auto">
         <Head>
           <title>Blog JS | Technology</title>
-          <meta property="technology" content="technology - Blog JS" />
           <meta
             name="viewport"
             content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"

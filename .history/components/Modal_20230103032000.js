@@ -285,9 +285,7 @@ function Modal() {
                 <div className="mt-5  sm:mt-6">
                   <button
                     type="button"
-                    disabled={
-                      !img || !title || !desc || !selectedPeople || !slug
-                    }
+                    disabled={!img || !title || !desc || !selectedPeople}
                     onClick={uploadPost}
                     className=" inline-flex  justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-400 font-medium text-base text-white   focus:outline-none  sm:text-sm disabled:bg-gray-600 disabled:cursor-not-allowed hover:disabled:bg-gray-600"
                   >

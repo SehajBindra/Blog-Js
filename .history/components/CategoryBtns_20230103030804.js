@@ -20,7 +20,7 @@ function CategoryBtns() {
                 key={category.id}
                 className={({ selected }) =>
                   selected
-                    ? "rounded-lg bg-purple-400 px-4  py-2  text-white font-medium  focus-within:outline-none active:outline-none"
+                    ? "rounded-lg bg-purple-400 px-4  py-2  text-white  focus-within:outline-none active:outline-none"
                     : "rounded-md px-4 py-2 text-[#ff2369] hover:bg-white"
                 }
               >

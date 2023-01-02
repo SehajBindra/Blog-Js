@@ -18,10 +18,6 @@ function PostDetails({ post }) {
             name="viewport"
             content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
           />
-          <meta
-            name="description"
-            content={`Learn more about ${post?.title}`}
-          />
           <link
             rel="icon"
             href="https://img.myloview.com/stickers/bm-b-m-letter-logo-design-initial-letter-bm-monogram-on-black-background-b-m-logo-bm-icon-logo-mb-logo-template-mb-alphabet-letter-icon-mb-icon-mb-letter-design-on-black-background-400-210159654.jpg"

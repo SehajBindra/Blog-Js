@@ -55,7 +55,7 @@ export default function Home({ products }) {
         />
 
         <meta name="description" content={`welcome to blogjs.tech`} />
-        <meta name="description" content={`welcome to Blog JS`} />
+
         <meta
           name="google-site-verification"
           content="28jDfp2oEibVP-WSNODioOCe6YuLFPgLOREq-GD87Uw"
