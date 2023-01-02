@@ -60,7 +60,7 @@ function programing({ category }) {
 
 export default programing;
 
-export async function getServerSideProps({ res }) {
+export async function getStaicProps({ res }) {
   const { db } = await connectToDatabase();
 
   res.setHeader(
