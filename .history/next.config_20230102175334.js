@@ -74,7 +74,6 @@ module.exports = {
       "static.javatpoint.com",
       "cdn.w600.comps.canstockphoto.com",
       "img.freepik.com",
-      "img.freepik.com",
       "blog-c7ff.kxcdn.com",
       "imageio.forbes.com",
       "qph.cf2.quoracdn.net",
@@ -87,8 +86,8 @@ module.exports = {
 };
 
 // next.config.js
-// const withBundleAnalyzer = require("@next/bundle-analyzer")({
-//   enabled: process.env.ANALYZE === "true",
-// });
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+  enabled: process.env.ANALYZE === "true",
+});
 
-// module.exports = withBundleAnalyzer({});
+module.exports = withBundleAnalyzer({});

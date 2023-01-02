@@ -1,12 +1,9 @@
 import React from "react";
 import Head from "next/head";
-// import Header from "../../components/Header";
-import dynamic from "next/dynamic";
-const Header = dynamic(() => import("../../components/Header"));
+import Header from "../../components/Header";
 import { connectToDatabase } from "../../util/mongodb2";
-// import { Toaster } from "react-hot-toast";
-const SinglePost = dynamic(() => import("../../components/SinglePost"));
-// import SinglePost from "../../components/SinglePost";
+import { Toaster } from "react-hot-toast";
+import SinglePost from "../../components/SinglePost";
 
 function PostDetails({ post }) {
   return (
@@ -26,7 +23,7 @@ function PostDetails({ post }) {
       </div>
 
       <Header />
-      {/* <Toaster /> */}
+      <Toaster />
       <div className="h-screen overflow-x-hidden   scrollbar-hide  overflow-y-auto  py-8  px-12  bg-black  flex-col  flex align-middle  items-center text-white">
         <SinglePost post={post} />
       </div>

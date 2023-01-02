@@ -1,21 +1,23 @@
 import Head from "next/head";
 // import { Helmet } from "react-helmet";
-// import { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 import Script from "next/script";
-import dynamic from "next/dynamic";
-// import Header from "../components/Header";
 
+import Header from "../components/Header";
+import dynamic from "next/dynamic";
 const Modal = dynamic(() => import("../components/Modal"), {
   ssr: false,
 });
-const Header = dynamic(() => import("../components/Header"));
-// const Helmet = dynamic(() => import("react-helmet"));
+
+const Helmet = dynamic(() => import("react-helmet"));
 // import Widgets from "../components/Widgets";
 const Widgets = dynamic(() => import("../components/Widgets"));
 // import Products from "../components/Products";
 const Sidebar = dynamic(() => import("../components/Sidebar"));
 // import Sidebar from "../components/Sidebar";
-const Products = dynamic(() => import("../components/Products"));
+const Products = dynamic(() => import("../components/Products"), {
+  loading: () => <p>Loading...</p>,
+});
 const ProductSection = dynamic(() => import("../components/ProductSection"));
 
 import { connectToDatabase } from "../util/mongodb2";
@@ -49,10 +51,6 @@ export default function Home({ products }) {
     <>
       <Head>
         <title>Blog JS | Home</title>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-        />
 
         <meta
           name="google-site-verification"
@@ -71,14 +69,14 @@ export default function Home({ products }) {
       </Head>
 
       <div className="bg-black text-white overflow-y-scroll h-screen snap-y snap-mandatory z-0  mx-auto">
-        {/* <Helmet>
+        <Helmet>
           <meta
             name="viewport"
             content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
           />
-        </Helmet> */}
+        </Helmet>
 
-        {/* <Toaster /> */}
+        <Toaster />
         <Header />
 
         <main className=" sm:grid sm:grid-cols-12 ">

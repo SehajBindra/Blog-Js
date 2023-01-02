@@ -3,8 +3,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "analyze":  "ANALYZE=true next build"
+    "start": "next start"
   },
   "dependencies": {
     "@badrap/bar-of-progress": "^0.2.2",
