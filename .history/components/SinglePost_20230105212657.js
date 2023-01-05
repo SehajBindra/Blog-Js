@@ -10,14 +10,14 @@ import "react-quill/dist/quill.snow.css";
 import { HeartIcon as HeartIconFilled } from "@heroicons/react/24/solid";
 import {
   // ChevronUpDownIcon,
-  EllipsisHorizontalIcon,
+  // EllipsisHorizontalIcon,
   HeartIcon,
-  PencilSquareIcon,
+  // PencilSquareIcon,
   ShareIcon,
-  TrashIcon,
+  // TrashIcon,
 } from "@heroicons/react/24/outline";
 
-import toast from "react-hot-toast";
+// import toast from "react-hot-toast";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 import { useRouter } from "next/router";
@@ -133,7 +133,7 @@ function Post({ post }) {
           username: session?.user.name,
           title,
           desc,
-          // slug: title,
+          slug: title,
           // .split(" ")
           // .join("-")
           // .toLowerCase("")
@@ -376,7 +376,7 @@ function Post({ post }) {
         )}
         <RWebShare
           data={{
-            url: `/blog/${post?.slug}`,
+            url: `/blog/${post.slug}`,
             title: `${post.title}`,
           }}
           onClick={() => console.log("shared successfully!")}

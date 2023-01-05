@@ -3,10 +3,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 
 
+/* Open Sans', sans-serif; */
+
 *{
-    font-family: 'Open Sans', sans-serif;
-    
-   
+    font-family: 'Megrim', cursive;
+    src: url('/Megrim-Regular.ttf');
+    font-style: normal;
      scroll-behavior: smooth;
     -webkit-tap-highlight-color: transparent;
    

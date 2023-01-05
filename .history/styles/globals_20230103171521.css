@@ -1,12 +1,12 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&family=Source+Sans+Pro:wght@200&display=swap'); */
 
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap'); */
 
 
 *{
     font-family: 'Open Sans', sans-serif;
-    
-   
+    src: url('/OpenSans-Light.ttf');
+     font-weight: 300;
      scroll-behavior: smooth;
     -webkit-tap-highlight-color: transparent;
    

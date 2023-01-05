@@ -22,7 +22,10 @@ function PostDetails({ post }) {
             name="description"
             content={`Learn more about ${post?.title}`}
           />
-          <link rel="icon" href="/logo.jpeg" />
+          <link
+            rel="icon"
+            href="/lo"
+          />
         </Head>
       </div>
 

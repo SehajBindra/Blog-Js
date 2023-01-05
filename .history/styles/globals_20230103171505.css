@@ -1,11 +1,13 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&family=Source+Sans+Pro:wght@200&display=swap'); */
 
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap'); */
 
 
 *{
     font-family: 'Open Sans', sans-serif;
-    
+    src: url('/OpenSans-Light.ttf');
+     
+     scroll-behavior: smooth;
     -webkit-tap-highlight-color: transparent;
    
 }
@@ -42,6 +44,22 @@
 
     .image {
         @apply rounded-md hover:opacity-80  pointer-events-none  transition duration-200 ease-out  cursor-pointer  object-cover  flex-shrink-0;
+    }
+
+    .input {
+        @apply bg-black  py-2 px-4 border-b border-gray-600 my-2 focus:ring-0 focus-within:outline-none w-full text-center;
+    }
+
+    .productSection {
+        @apply flex flex-col overflow-x-hidden  mx-auto items-center  justify-center pr-10   align-middle ;
+    }
+
+    .moment {
+        @apply text-gray-300 my-2 truncate pr-5 text-sm;
+    }
+
+    .navbar{
+       @apply flex flex-row items-center space-x-2;
     }
   }
 

@@ -17,7 +17,7 @@ import {
   TrashIcon,
 } from "@heroicons/react/24/outline";
 
-import toast from "react-hot-toast";
+// import toast from "react-hot-toast";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 import { useRouter } from "next/router";

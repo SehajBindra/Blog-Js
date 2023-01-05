@@ -1,27 +1,27 @@
 import React, { Fragment, useEffect, useMemo, useState } from "react";
-import { Listbox, Menu, Transition } from "@headlessui/react";
+// import { Listbox, Menu, Transition } from "@headlessui/react";
 // import Modal from "../components/Modal";
 const Modal = dynamic(() => import("../components/Modal"));
 // import dynamic from "next/dynamic";
 import Parser from "html-react-parser";
 import { RWebShare } from "react-web-share";
 
-import "react-quill/dist/quill.snow.css";
+// import "react-quill/dist/quill.snow.css";
 import { HeartIcon as HeartIconFilled } from "@heroicons/react/24/solid";
 import {
   // ChevronUpDownIcon,
-  EllipsisHorizontalIcon,
+  // EllipsisHorizontalIcon,
   HeartIcon,
-  PencilSquareIcon,
+  // PencilSquareIcon,
   ShareIcon,
-  TrashIcon,
+  // TrashIcon,
 } from "@heroicons/react/24/outline";
 
-import toast from "react-hot-toast";
+// import toast from "react-hot-toast";
 import { useSession } from "next-auth/react";
-import axios from "axios";
+// import axios from "axios";
 import { useRouter } from "next/router";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 import {
   addDoc,
   doc,
@@ -58,22 +58,22 @@ import Image from "next/image";
 function Post({ post }) {
   // React quill
   // console.log(post);
-  const ReactQuill = useMemo(
-    () => dynamic(() => import("react-quill"), { ssr: false }),
-    []
-  );
+  // const ReactQuill = useMemo(
+  //   () => dynamic(() => import("react-quill"), { ssr: false }),
+  //   []
+  // // );
   // const [selectedPeople, setSelectedPeople] = useState([people[0]]);
   // Rich text Editor
-  const modules = {
-    toolbar: [
-      ["bold", "italic", "underline", "strike"],
-      [{ color: [] }, { background: [] }],
-      [{ script: "sub" }, { script: "super" }],
+  // const modules = {
+  //   toolbar: [
+  //     ["bold", "italic", "underline", "strike"],
+  //     [{ color: [] }, { background: [] }],
+  //     [{ script: "sub" }, { script: "super" }],
 
-      ["link", "image", "video"],
-      ["clean"],
-    ],
-  };
+  //     ["link", "image", "video"],
+  //     ["clean"],
+  //   ],
+  // };
 
   const [title, setTitle] = useState();
   const [desc, setDesc] = useState();
@@ -87,76 +87,76 @@ function Post({ post }) {
   const [comment, setComment] = useState("");
   const [likes, setLikes] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
-  const baseUrl = "http://localhost:3000/api/products";
-  const url = "https://blog-beta-hazel.vercel.app/api/products";
+  // const baseUrl = "http://localhost:3000/api/products";
+  // const url = "https://blog-beta-hazel.vercel.app/api/products";
 
   // Logic for deleting Post
-  const handleDelete = async (id) => {
-    // console.log(id);
-    try {
-      const dev = process.env.NODE_ENV !== "production";
+  // const handleDelete = async (id) => {
+  //   // console.log(id);
+  //   try {
+  //     const dev = process.env.NODE_ENV !== "production";
 
-      const res = await axios
-        .delete(`${dev ? baseUrl : url}/${id}`, {
-          data: { username: session?.user.name },
-        })
-        .then((res) => {
-          res && router.push("/");
-          toast.success("Deleted");
-        });
-    } catch (error) {
-      error && toast.error("You can only delete your post!");
-      // console.log(error);
-      // alert("you can only Delete your post!");
-    }
-  };
+  //     const res = await axios
+  //       .delete(`${dev ? baseUrl : url}/${id}`, {
+  //         data: { username: session?.user.name },
+  //       })
+  //       .then((res) => {
+  //         res && router.push("/");
+  //         toast.success("Deleted");
+  //       });
+  //   } catch (error) {
+  //     error && toast.error("You can only delete your post!");
+  //     // console.log(error);
+  //     // alert("you can only Delete your post!");
+  //   }
+  // };
 
-  useEffect(() => {
-    const getpost = async (id) => {
-      const id2 = `${post._id}`;
-      const dev = process.env.NODE_ENV !== "Production";
-      const data = await axios.get(`${dev ? baseUrl : url}/${id2}`, {});
-      setDesc(data.data.data.desc);
-      setTitle(data.data.data.title);
-      setImg(data.data.data.img);
-    };
-    getpost();
-  }, []);
+  // useEffect(() => {
+  //   const getpost = async (id) => {
+  //     const id2 = `${post._id}`;
+  //     const dev = process.env.NODE_ENV !== "Production";
+  //     const data = await axios.get(`${dev ? baseUrl : url}/${id2}`, {});
+  //     setDesc(data.data.data.desc);
+  //     setTitle(data.data.data.title);
+  //     setImg(data.data.data.img);
+  //   };
+  //   getpost();
+  // }, []);
 
-  // logic for updating a single post
-  const handleupdate = async (id) => {
-    // console.log(id);
-    try {
-      const dev = process.env.NODE_ENV !== "Production";
-      const res = await axios
-        .put(`${dev ? baseUrl : url}/${id}`, {
-          username: session?.user.name,
-          title,
-          desc,
-          // slug: title,
-          // .split(" ")
-          // .join("-")
-          // .toLowerCase("")
-          // .replace(
-          //   /[,\,!,%,<,>,@,$,&,:,;,#,*,^,(,), |,., /, ?]+|[,\,!,%, ?]+/g,
-          //   ""
-          // ),
-          img,
-          // category: selectedPeople,
-          userimg: session?.user.image,
-        })
-        .then((res) => {
-          setUpdateMode(false);
-          router.push(`/blog/${post.slug}`);
-          res && toast.success("updated");
-        });
-      // console.log(res);
-    } catch (error) {
-      error && toast.error("You can only Edit your post!");
-      // alert("You can only Edit your post!");
-      // console.log(error);
-    }
-  };
+  // // logic for updating a single post
+  // const handleupdate = async (id) => {
+  //   // console.log(id);
+  //   try {
+  //     const dev = process.env.NODE_ENV !== "Production";
+  //     const res = await axios
+  //       .put(`${dev ? baseUrl : url}/${id}`, {
+  //         username: session?.user.name,
+  //         title,
+  //         desc,
+  //         slug: title
+  //           .split(" ")
+  //           .join("-")
+  //           .toLowerCase("")
+  //           .replace(
+  //             /[,\,!,%,<,>,@,$,&,:,;,#,*,^,(,), |,., /, ?]+|[,\,!,%, ?]+/g,
+  //             ""
+  //           ),
+  //         img,
+  //         category: selectedPeople,
+  //         userimg: session?.user.image,
+  //       })
+  //       .then((res) => {
+  //         setUpdateMode(false);
+  //         router.push(`/product/${post._id.toString()}`);
+  //         res && toast.success("updated");
+  //       });
+  //     // console.log(res);
+  //   } catch (error) {
+  //     error && toast.error("You can only Edit your post!");
+  //     // alert("You can only Edit your post!");
+  //     // console.log(error);
+  //   }
+  // };
   // logic for comments
   useEffect(() => {
     const id = `/post/${post._id}`;
@@ -211,14 +211,14 @@ function Post({ post }) {
   };
 
   // animation variants for menu
-  const itemVariants = {
-    open: {
-      opacity: 1,
-      y: 0.56,
-      transition: { type: "spring", stiffness: 300, damping: 24 },
-    },
-    closed: { opacity: 0, y: 20, transition: { duration: 0.2 } },
-  };
+  // const itemVariants = {
+  //   open: {
+  //     opacity: 1,
+  //     y: 0.56,
+  //     transition: { type: "spring", stiffness: 300, damping: 24 },
+  //   },
+  //   closed: { opacity: 0, y: 20, transition: { duration: 0.2 } },
+  // };
 
   return (
     <div className="bg-black mt-1 max-w-xs tracking-normal leading-relaxed sm:max-w-xl md:max-w-2xl xl:max-w-3xl scrollbar-hide overflow-x-hidden overflow-y-visible sm:overflow-visible    text-white">
@@ -265,7 +265,7 @@ function Post({ post }) {
             </div>
           </>
         )}
-        {session && (
+        {/* {session && (
           <motion.div
             initial={false}
             animate={isOpen ? "open" : "closed"}
@@ -367,16 +367,17 @@ function Post({ post }) {
                           </div>
                         )}
                       </Menu.Item>
-                    </Menu.Items>
+                      {/* ... */}
+        {/* </Menu.Items>
                   </motion.div>
                 </motion.ul>
               </>
             </Menu>
           </motion.div>
-        )}
+        // )} */}{" "}
         <RWebShare
           data={{
-            url: `/blog/${post?.slug}`,
+            url: `/blog/${post.slug}`,
             title: `${post.title}`,
           }}
           onClick={() => console.log("shared successfully!")}
@@ -438,12 +439,12 @@ function Post({ post }) {
 
       {updateMode ? (
         <>
-          <ReactQuill
+          {/* <ReactQuill
             modules={modules}
             theme="snow"
             value={desc}
             onChange={setDesc}
-          />
+          /> */}
         </>
       ) : (
         <div className="text-base tracking-normal leading-relaxed  my-4 max-w-xl sm:max-w-2xl ">
@@ -494,7 +495,7 @@ function Post({ post }) {
         </Listbox>
       )} */}
 
-      {updateMode && (
+      {/* {updateMode && (
         <div>
           <button
             className="text-sm font-semibold cursor-pointer my-4 mx-auto  justify-items-center  py-2 px-10 flex flex-col  align-middle rounded-lg bg-[#E23E57] text-white"
@@ -504,7 +505,7 @@ function Post({ post }) {
             Publish{" "}
           </button>
         </div>
-      )}
+      )} */}
 
       {session && (
         <div className="ml-5 max-h-20 bg-black text-white overflow-y-scroll my-2  scrollbar-hide">

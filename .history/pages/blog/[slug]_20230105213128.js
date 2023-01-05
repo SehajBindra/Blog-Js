@@ -4,7 +4,7 @@ import Head from "next/head";
 import dynamic from "next/dynamic";
 const Header = dynamic(() => import("../../components/Header"));
 import { connectToDatabase } from "../../util/mongodb2";
-import { Toaster } from "react-hot-toast";
+// import { Toaster } from "react-hot-toast";
 const SinglePost = dynamic(() => import("../../components/SinglePost"));
 // import SinglePost from "../../components/SinglePost";
 
@@ -22,12 +22,15 @@ function PostDetails({ post }) {
             name="description"
             content={`Learn more about ${post?.title}`}
           />
-          <link rel="icon" href="/logo.jpeg" />
+          <link
+            rel="icon"
+            href="https://img.myloview.com/stickers/bm-b-m-letter-logo-design-initial-letter-bm-monogram-on-black-background-b-m-logo-bm-icon-logo-mb-logo-template-mb-alphabet-letter-icon-mb-icon-mb-letter-design-on-black-background-400-210159654.jpg"
+          />
         </Head>
       </div>
 
       <Header />
-      <Toaster />
+      {/* <Toaster /> */}
       <div className=" bg-black text-white items-center align-middle flex-col flex    py-8  px-12  ">
         <SinglePost post={post} />
       </div>
