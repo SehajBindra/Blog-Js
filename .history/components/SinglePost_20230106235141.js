@@ -36,7 +36,7 @@ import {
   setDoc,
 } from "firebase/firestore";
 import { db } from "../firebase";
-
+import dynamic from "next/dynamic";
 import Moment from "react-moment";
 // import { Fade } from "react-awesome-reveal";
 // const Fade = dynamic(() => import("react-awesome-reveal"));

@@ -124,16 +124,6 @@ export async function getStaticProps() {
     .sort({ $natural: -1 })
     .toArray();
 
-  const dev = process.env.NODE_ENV !== "production";
-  // const baseUrl = "http://localhost:3000/api/products";
-  // const url = "https://blog-beta-hazel.vercel.app/api/products";
-  // const url2 = "https://www.blogjs.tech/api/products";
-  // const fetchdata = await fetch(`${dev ? baseUrl || url : url2}`)
-  //   .then((res) => res.json())
-  //   .then((data) => setPosts(data));
-
-  // const fetchPosts = await fetchdata();
-
   return {
     props: {
       products: products.map((product) => ({
@@ -147,9 +137,23 @@ export async function getStaticProps() {
         slug: product.slug.trim(),
         createdAt: product.createdAt.toISOString(),
       })),
-      // fetchPosts,
     },
 
     revalidate: 1,
+  };
+}
+
+export async function getStaticProps() {
+  const dev = process.env.NODE_ENV !== "production";
+  const fetchdata = await fetch(`${dev ? baseUrl || url : url2}`)
+    .then((res) => res.json())
+    .then((data) => setPosts(data));
+
+  const fetchPosts = await fetchdata();
+
+  return {
+    props: {
+      fetchPosts,
+    },
   };
 }

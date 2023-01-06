@@ -25,10 +25,10 @@ import { ArrowDownIcon } from "@heroicons/react/24/outline";
 // import ProductSection from "./../components/ProductSection";
 export default function Home({ products }) {
   // console.log(products);
-  // const [posts, setPosts] = useState([]);
-  // const baseUrl = "http://localhost:3000/api/products";
-  // const url = "https://blog-beta-hazel.vercel.app/api/products";
-  // const url2 = "https://www.blogjs.tech/api/products";
+  const [posts, setPosts] = useState([]);
+  const baseUrl = "http://localhost:3000/api/products";
+  const url = "https://blog-beta-hazel.vercel.app/api/products";
+  const url2 = "https://www.blogjs.tech/api/products";
   const [visible, setVisible] = useState(10);
 
   // const fetchdata = async () => {
@@ -125,14 +125,14 @@ export async function getStaticProps() {
     .toArray();
 
   const dev = process.env.NODE_ENV !== "production";
-  // const baseUrl = "http://localhost:3000/api/products";
-  // const url = "https://blog-beta-hazel.vercel.app/api/products";
-  // const url2 = "https://www.blogjs.tech/api/products";
-  // const fetchdata = await fetch(`${dev ? baseUrl || url : url2}`)
-  //   .then((res) => res.json())
-  //   .then((data) => setPosts(data));
+  const baseUrl = "http://localhost:3000/api/products";
+  const url = "https://blog-beta-hazel.vercel.app/api/products";
+  const url2 = "https://www.blogjs.tech/api/products";
+  const fetchdata = await fetch(`${dev ? baseUrl || url : url2}`)
+    .then((res) => res.json())
+    .then((data) => setPosts(data));
 
-  // const fetchPosts = await fetchdata();
+  const fetchPosts = await fetchdata();
 
   return {
     props: {
@@ -147,7 +147,7 @@ export async function getStaticProps() {
         slug: product.slug.trim(),
         createdAt: product.createdAt.toISOString(),
       })),
-      // fetchPosts,
+      fetchPosts,
     },
 
     revalidate: 1,

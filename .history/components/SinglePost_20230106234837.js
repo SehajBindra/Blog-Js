@@ -4,8 +4,8 @@ import { Listbox, Menu, Transition } from "@headlessui/react";
 
 import dynamic from "next/dynamic";
 const Modal = dynamic(() => import("../components/Modal"));
-// const Parser = dynamic(() => import("html-react-parser"));
-import Parser from "html-react-parser";
+const Parser = dynamic(() => import("html-react-parser"));
+// import Parser from "html-react-parser";
 import { RWebShare } from "react-web-share";
 
 import "react-quill/dist/quill.snow.css";

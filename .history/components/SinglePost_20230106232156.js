@@ -1,10 +1,8 @@
 import React, { Fragment, useEffect, useMemo, useState } from "react";
 import { Listbox, Menu, Transition } from "@headlessui/react";
 // import Modal from "../components/Modal";
-
-import dynamic from "next/dynamic";
 const Modal = dynamic(() => import("../components/Modal"));
-// const Parser = dynamic(() => import("html-react-parser"));
+// import dynamic from "next/dynamic";
 import Parser from "html-react-parser";
 import { RWebShare } from "react-web-share";
 
@@ -36,7 +34,7 @@ import {
   setDoc,
 } from "firebase/firestore";
 import { db } from "../firebase";
-
+import dynamic from "next/dynamic";
 import Moment from "react-moment";
 // import { Fade } from "react-awesome-reveal";
 // const Fade = dynamic(() => import("react-awesome-reveal"));
@@ -115,9 +113,9 @@ function Post({ post }) {
 
   useEffect(() => {
     const getpost = async (id) => {
-      const id2 = `${post._id}`;
+      const slug = `${post.slug}`;
       const dev = process.env.NODE_ENV !== "Production";
-      const data = await axios.get(`${dev ? baseUrl : url}/${id2}`, {});
+      const data = await axios.get(`${dev ? baseUrl : url}/${slug}`, {});
       setDesc(data.data.data.desc);
       setTitle(data.data.data.title);
       setImg(data.data.data.img);

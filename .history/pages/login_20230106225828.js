@@ -1,13 +1,13 @@
 import React from "react";
 
-import { getProviders, signIn } from "next-auth/react";
+import { getProviders, signIn, useSession } from "next-auth/react";
 import dynamic from "next/dynamic";
 const Header = dynamic(() => import("../components/Header"));
 // import Header from "../components/Header";
 import Head from "next/head";
 
 function Login({ providers }) {
-  // const { data: session } = useSession();
+  const { data: session } = useSession();
 
   return (
     <>
@@ -23,7 +23,11 @@ function Login({ providers }) {
       <Header />
 
       <div className=" flex flex-col justify-center items-center min-h-screen py-2 bg-black text-white  px-14 text-center">
-        <img className="w-80" src="/logo.jpeg" alt="" />
+        <img
+          className="w-80"
+          src="https://img.myloview.com/stickers/bm-b-m-letter-logo-design-initial-letter-bm-monogram-on-black-background-b-m-logo-bm-icon-logo-mb-logo-template-mb-alphabet-letter-icon-mb-icon-mb-letter-design-on-black-background-400-210159654.jpg"
+          alt=""
+        />
 
         <div className="mt-8">
           {providers &&
