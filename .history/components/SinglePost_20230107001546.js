@@ -89,8 +89,8 @@ function Post({ post }) {
   const [comment, setComment] = useState("");
   const [likes, setLikes] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
-  const baseUrl = "http://localhost:3000/api/products";
-  const url = "https://blog-beta-hazel.vercel.app/api/products";
+  const baseUrl = "http://localhost:3000/api/blog";
+  const url = "https://blog-beta-hazel.vercel.app/api/blog";
 
   // Logic for deleting Post
   const handleDelete = async (id) => {

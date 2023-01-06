@@ -89,8 +89,8 @@ function Post({ post }) {
   const [comment, setComment] = useState("");
   const [likes, setLikes] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
-  const baseUrl = "http://localhost:3000/api/products";
-  const url = "https://blog-beta-hazel.vercel.app/api/products";
+  const baseUrl = "http://localhost:3000/api/blog";
+  const url = "https://blog-beta-hazel.vercel.app/api/blog";
 
   // Logic for deleting Post
   const handleDelete = async (id) => {
@@ -115,7 +115,7 @@ function Post({ post }) {
 
   useEffect(() => {
     const getpost = async (id) => {
-      const id2 = `${post._id.toString()}`;
+      const id2 = `${post._id}`;
       const dev = process.env.NODE_ENV !== "Production";
       const data = await axios.get(`${dev ? baseUrl : url}/${id2}`, {});
       setDesc(data.data.data.desc);
@@ -347,7 +347,7 @@ function Post({ post }) {
                       <Menu.Item>
                         {({ active }) => (
                           <div
-                            onClick={() => handleDelete(post._id.toString())}
+                            onClick={() => handleDelete(post._id)}
                             className="flex items-center flex-row"
                           >
                             <TrashIcon
