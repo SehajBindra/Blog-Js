@@ -121,7 +121,7 @@ function Post({ post }) {
       setDesc(data.data.data.desc);
       setTitle(data.data.data.title);
       setImg(data.data.data.img);
-      // console.log(data.data.data.desc);
+      console.log(data.data.data.desc);
     };
     getpost();
   }, []);
@@ -501,7 +501,7 @@ function Post({ post }) {
         <div>
           <button
             className="text-sm font-semibold cursor-pointer my-4 mx-auto  justify-items-center  py-2 px-10 flex flex-col  align-middle rounded-lg bg-[#E23E57] text-white"
-            onClick={() => handleupdate(post._id)}
+            onClick={() => handleupdate(post._id.toString())}
           >
             {" "}
             Publish{" "}

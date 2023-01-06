@@ -1,16 +1,24 @@
 import React, { Fragment, useEffect, useMemo, useState } from "react";
 import { Listbox, Menu, Transition } from "@headlessui/react";
-import Modal from "../components/Modal";
+// import Modal from "../components/Modal";
+
 import dynamic from "next/dynamic";
+const Modal = dynamic(() => import("../components/Modal"));
+// const Parser = dynamic(() => import("html-react-parser"));
 import Parser from "html-react-parser";
+import { RWebShare } from "react-web-share";
 
 import "react-quill/dist/quill.snow.css";
+import { HeartIcon as HeartIconFilled } from "@heroicons/react/24/solid";
 import {
-  ChevronUpDownIcon,
+  // ChevronUpDownIcon,
   EllipsisHorizontalIcon,
+  HeartIcon,
   PencilSquareIcon,
+  ShareIcon,
   TrashIcon,
 } from "@heroicons/react/24/outline";
+
 import toast from "react-hot-toast";
 import { useSession } from "next-auth/react";
 import axios from "axios";
@@ -18,39 +26,45 @@ import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import {
   addDoc,
+  doc,
+  deleteDoc,
   collection,
   onSnapshot,
   orderBy,
   query,
   serverTimestamp,
+  setDoc,
 } from "firebase/firestore";
 import { db } from "../firebase";
+
 import Moment from "react-moment";
-import { Fade } from "react-awesome-reveal";
+// import { Fade } from "react-awesome-reveal";
+// const Fade = dynamic(() => import("react-awesome-reveal"));
 import Image from "next/image";
 
-const people = [
-  { name: "Technology" },
-  { name: "Programing" },
-  { name: "Data Science" },
-  { name: "Artificial Intelligence" },
-  { name: "Entertainment" },
-  { name: "Web-Development" },
-  { name: "Gaming" },
-  { name: "Sports" },
-  { name: "crypto" },
-  { name: "Stock market" },
-  { name: "others" },
-];
+// const people = [
+//   { name: "Technology" },
+//   { name: "Programing" },
+//   { name: "React js" },
+//   { name: "Web-Development" },
+//   { name: "Gaming" },
+//   { name: "Data Science" },
+//   { name: "Artificial Intelligence" },
+//   { name: "Entertainment" },
+//   { name: "Sports" },
+//   { name: "crypto" },
+//   { name: "Stock market" },
+//   { name: "others" },
+// ];
 
-function Post({ product }) {
+function Post({ post }) {
   // React quill
-  // console.log(product);
+  // console.log(post);
   const ReactQuill = useMemo(
     () => dynamic(() => import("react-quill"), { ssr: false }),
     []
   );
-  const [selectedPeople, setSelectedPeople] = useState([people[0]]);
+  // const [selectedPeople, setSelectedPeople] = useState([people[0]]);
   // Rich text Editor
   const modules = {
     toolbar: [
@@ -68,7 +82,7 @@ function Post({ product }) {
   const [img, setImg] = useState();
   const [slug, setSlug] = useState();
   const [updateMode, setUpdateMode] = useState(false);
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState();
   const [comments, setComments] = useState([]);
   const router = useRouter();
   const { data: session } = useSession();
@@ -101,12 +115,13 @@ function Post({ product }) {
 
   useEffect(() => {
     const getpost = async (id) => {
-      const id2 = `${product._id}`;
-      const dev = process.env.NODE_ENV !== "production";
+      const id2 = `${post._id.toString()}`;
+      const dev = process.env.NODE_ENV !== "Production";
       const data = await axios.get(`${dev ? baseUrl : url}/${id2}`, {});
       setDesc(data.data.data.desc);
       setTitle(data.data.data.title);
       setImg(data.data.data.img);
+      console.log(data.data.data.desc);
     };
     getpost();
   }, []);
@@ -115,20 +130,27 @@ function Post({ product }) {
   const handleupdate = async (id) => {
     // console.log(id);
     try {
-      const dev = process.env.NODE_ENV !== "production";
+      const dev = process.env.NODE_ENV !== "Production";
       const res = await axios
         .put(`${dev ? baseUrl : url}/${id}`, {
           username: session?.user.name,
           title,
           desc,
-          slug: title.split(" ").join("-").toLowerCase(""),
+          // slug: title,
+          // .split(" ")
+          // .join("-")
+          // .toLowerCase("")
+          // .replace(
+          //   /[,\,!,%,<,>,@,$,&,:,;,#,*,^,(,), |,., /, ?]+|[,\,!,%, ?]+/g,
+          //   ""
+          // ),
           img,
-          category: selectedPeople,
+          // category: selectedPeople,
           userimg: session?.user.image,
         })
         .then((res) => {
           setUpdateMode(false);
-          router.push(`/product/${product._id}`);
+          router.push(`/blog/${post.slug}`);
           res && toast.success("updated");
         });
       // console.log(res);
@@ -140,7 +162,7 @@ function Post({ product }) {
   };
   // logic for comments
   useEffect(() => {
-    const id = `/product/${product._id}`;
+    const id = `/post/${post._id}`;
     onSnapshot(
       query(collection(db, id, "comments"), orderBy("timestamp", "desc")),
       (snapshot) => setComments(snapshot.docs)
@@ -152,7 +174,7 @@ function Post({ product }) {
 
     const commentToSend = comment;
     setComment("");
-    const id = `/product/${product._id}`;
+    const id = `/post/${post._id}`;
     const docref = await addDoc(collection(db, id, "comments"), {
       comment: commentToSend,
       username: session?.user.name,
@@ -162,6 +184,34 @@ function Post({ product }) {
   };
 
   const [hasLiked, setHasLiked] = useState(false);
+
+  // logic for liking a post
+  useEffect(() => {
+    const id = `/product/${post._id}`;
+    onSnapshot(collection(db, id, "likes"), (snapshot) =>
+      setLikes(snapshot.docs)
+    );
+  }, [db]);
+
+  useEffect(() => {
+    setHasLiked(
+      likes.findIndex((like) => like.id === session?.user?.name) !== -1
+    );
+  }, [likes]);
+
+  const likePost = async () => {
+    const id = `/product/${post._id}`;
+    if (hasLiked) {
+      await deleteDoc(doc(db, id, "likes", session?.user.name));
+    } else {
+      await setDoc(doc(db, id, "likes", session?.user.name), {
+        username: session?.user.name,
+        userImage: session?.user.image,
+        email: session?.user.email,
+        timestamp: serverTimestamp(),
+      });
+    }
+  };
 
   // animation variants for menu
   const itemVariants = {
@@ -174,24 +224,50 @@ function Post({ product }) {
   };
 
   return (
-    <div className="mt-1 max-w-xs tracking-normal leading-relaxed sm:max-w-xl md:max-w-2xl xl:w-5xl scrollbar-hide overflow-x-hidden sm:overflow-visible    text-white">
-      {/* header */}
-
+    <div className="bg-black mt-1 max-w-xs tracking-normal leading-relaxed sm:max-w-xl md:max-w-2xl xl:max-w-3xl scrollbar-hide overflow-x-hidden overflow-y-visible sm:overflow-visible    text-white">
       <div className="flex items-center mr-12 p-5 ">
         <div className="  flex flex-1 items-center">
           <Image
             height={24}
             width={24}
             className="rounded-full   object-cover  pointer-events-none"
-            src={product.userimg}
+            src={post?.userimg}
             alt="unknown error"
           />
 
           <p className="ml-3  truncate capitalize font-normal ">
-            {product.username}
+            {post?.username}
           </p>
         </div>
-
+        {/* like section */}
+        {session && (
+          <>
+            <div className=" transition duration-150  active:scale-90 ml-4 flex justify-between items-center ">
+              <div className="flex   items-center ">
+                {hasLiked ? (
+                  <HeartIconFilled
+                    onClick={likePost}
+                    className=" h-5 w-5 text-red-500   cursor-pointer"
+                  />
+                ) : (
+                  <HeartIcon
+                    onClick={likePost}
+                    className="w-5 h-5 text-red-400  animate-bounce cursor-pointer"
+                  />
+                )}
+              </div>
+            </div>
+            <div>
+              {" "}
+              {likes.length > 0 && (
+                <p className="flex flex-col  font-normal  whitespace-nowrap items-center text-sm sm:text-base  ">
+                  {" "}
+                  {likes.length} likes
+                </p>
+              )}
+            </div>
+          </>
+        )}
         {session && (
           <motion.div
             initial={false}
@@ -271,7 +347,7 @@ function Post({ product }) {
                       <Menu.Item>
                         {({ active }) => (
                           <div
-                            onClick={() => handleDelete(product._id)}
+                            onClick={() => handleDelete(post._id.toString())}
                             className="flex items-center flex-row"
                           >
                             <TrashIcon
@@ -294,7 +370,6 @@ function Post({ product }) {
                           </div>
                         )}
                       </Menu.Item>
-                      {/* ... */}
                     </Menu.Items>
                   </motion.div>
                 </motion.ul>
@@ -302,6 +377,18 @@ function Post({ product }) {
             </Menu>
           </motion.div>
         )}
+        <RWebShare
+          data={{
+            url: `/blog/${post?.slug}`,
+            title: `${post.title}`,
+          }}
+          onClick={() => console.log("shared successfully!")}
+        >
+          <div className="flex flex-row    cursor-pointer text-[#E23E57]  whitespace-nowrap items-center space-x-2 ml-4">
+            <ShareIcon className="h-4 w-4" />
+          </div>
+          {/* <button>Share 🔗</button> */}
+        </RWebShare>
       </div>
 
       {/* img */}
@@ -312,7 +399,7 @@ function Post({ product }) {
               width={208}
               height={208}
               className="object-cover  rounded-full   "
-              src={product.img}
+              src={post.img}
               alt="unknown error"
             />
           </div>
@@ -320,7 +407,7 @@ function Post({ product }) {
           <input
             value={img}
             onChange={(e) => setImg(e.target.value)}
-            className=" bg-transparent border-1 py-2 px-4 border-b my-2 focus:ring-0 focus-within:outline-none w-full "
+            className="input "
             type="text"
           />
         </>
@@ -329,60 +416,27 @@ function Post({ product }) {
           width={640}
           height={400}
           className="relative rounded-lg pointer-events-none  object-cover  "
-          src={product.img}
+          src={post.img}
           alt="use unsplash.com for image!"
         />
       )}
 
       {/* Buttons */}
 
-      {/* {session && ( */}
-      {/* <div className=" flex justify-between px-4 pt-4">
-          <div className="flex space-x-4">
-            {hasLiked ? (
-              <HeartIconFilled
-                onClick={likePost}
-                className=" dark:text-red-500 btn text-red-500"
-              />
-            ) : (
-              <HeartIcon onClick={likePost} className="btn" />
-            )}
-
-            <RiChat3Line className="h-7 w-7 hover:scale-125 cursor-pointer transition-all duration-150 ease-out" />
-            <PaperAirplaneIcon className="btn rotate-90" />
-          </div>
-
-          <BookmarkIcon className="btn" />
-        </div> */}
-      {/* )} */}
-
-      {/* caption */}
-
-      {/* <p className=" p-5  truncate">
-        {/* {session && ( */}
-      {/* <p>
-            {" "}
-            {likes.length > 0 && (
-              <p className=" font-semibold mb-1"> {likes.length} likes</p>
-            )}
-          </p> */}
-      {/* )} } */}
-
       {updateMode ? (
         <input
           type="text"
-          placeholder={product.title}
           value={title}
-          className=" my-2 sm:max-w-2xl text-center focus-within:outline-none  w-full border-1 border-b bg-transparent"
+          className="  input"
           onChange={(e) => setTitle(e.target.value)}
         />
       ) : (
-        <Fade cascade damping={1e-1}>
-          <h2 className="text-xl tracking-normal leading-relaxed font-semibold text-center my-2 max-w-xl sm:max-w-2xl ">
-            {" "}
-            {product.title}{" "}
-          </h2>
-        </Fade>
+        // <Fade cascade damping={1e-1}>
+        <h2 className="text-xl tracking-normal leading-relaxed font-semibold text-center my-2 max-w-xl sm:max-w-2xl ">
+          {" "}
+          {post.title}{" "}
+        </h2>
+        // </Fade>
       )}
 
       {updateMode ? (
@@ -397,11 +451,11 @@ function Post({ product }) {
       ) : (
         <div className="text-base tracking-normal leading-relaxed  my-4 max-w-xl sm:max-w-2xl ">
           {" "}
-          {Parser(`${product.desc}`)}{" "}
+          {Parser(`${post.desc}`)}{" "}
         </div>
       )}
 
-      {updateMode && (
+      {/* {updateMode && (
         <Listbox
           className="bg-gray-100 rounded-md"
           value={selectedPeople}
@@ -441,13 +495,13 @@ function Post({ product }) {
             </>
           )}
         </Listbox>
-      )}
+      )} */}
 
       {updateMode && (
         <div>
           <button
-            className="text-sm font-semibold cursor-pointer my-4 mx-auto  justify-items-center  py-2 px-10 flex flex-col  align-middle rounded-lg bg-blue-400 text-white"
-            onClick={() => handleupdate(product._id)}
+            className="text-sm font-semibold cursor-pointer my-4 mx-auto  justify-items-center  py-2 px-10 flex flex-col  align-middle rounded-lg bg-[#E23E57] text-white"
+            onClick={() => handleupdate(post._id.toString())}
           >
             {" "}
             Publish{" "}
@@ -485,7 +539,7 @@ function Post({ product }) {
       {/* input box */}
 
       {session && (
-        <form className="flex items-center my-5 p-4">
+        <form className="flex items-center my-5 pb-32 p-4">
           <input
             type="text"
             value={comment}
@@ -497,7 +551,7 @@ function Post({ product }) {
             type="submit"
             disabled={!comment.trim()}
             onClick={sendComment}
-            className=" font-light text-blue-400"
+            className=" font-light text-[#E23E57]"
           >
             Post
           </button>

@@ -130,14 +130,14 @@ function Post({ product }) {
           username: session?.user.name,
           title,
           desc,
-          slug: title
-            .split(" ")
-            .join("-")
-            .toLowerCase("")
-            .replace(
-              /[,\,!,%,<,>,@,$,&,:,;,#,*,^,(,), |, /, ?]+|[,\,!,%, ?]+/g,
-              ""
-            ),
+          // slug: title
+          //   .split(" ")
+          //   .join("-")
+          //   .toLowerCase("")
+          //   .replace(
+          //     /[,\,!,%,<,>,@,$,&,:,;,#,*,^,(,), |, /, ?]+|[,\,!,%, ?]+/g,
+          //     ""
+          //   ),
           img,
           category: selectedPeople,
           userimg: session?.user.image,
