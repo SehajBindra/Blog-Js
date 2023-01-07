@@ -22,16 +22,13 @@ function PostDetails({ post }) {
             name="description"
             content={`Learn more about ${post?.title}`}
           />
-          <link
-            rel="icon"
-            href="/logo.jpeg"
-          />
+          <link rel="icon" href="/logo.jpeg" />
         </Head>
       </div>
 
       <Header />
       <Toaster />
-      <div className=" bg-black text-white items-center align-middle flex-col flex    py-8  px-12  ">
+      <div className=" overflow-x-hidden bg-black text-white items-center align-middle flex-col flex    py-8  px-12  ">
         <SinglePost post={post} />
       </div>
     </>

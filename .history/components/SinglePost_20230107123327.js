@@ -224,7 +224,7 @@ function Post({ post }) {
   };
 
   return (
-    <div className="bg-black mt-1 max-w-xs tracking-normal leading-relaxed sm:max-w-xl md:max-w-2xl xl:max-w-3xl scrollbar-hide overflow-x-hidden overflow-y-scroll sm:overflow-visible    text-white">
+    <div className="bg-black mt-1 max-w-xs tracking-normal leading-relaxed sm:max-w-xl md:max-w-2xl xl:max-w-3xl scrollbar-hide overflow-x-hidden overflow-y-visible sm:overflow-visible    text-white">
       <div className="flex items-center mr-12 p-5 ">
         <div className="  flex flex-1 items-center">
           <Image
@@ -421,18 +421,6 @@ function Post({ post }) {
         />
       )}
 
-      {updateMode && (
-        <div  onClick={() => handleupdate(post._id)}>
-          <button
-            className="text-sm font-semibold cursor-pointer my-4 mx-auto  justify-items-center  py-2 px-10 flex flex-col  align-middle rounded-lg bg-[#E23E57] text-white"
-           
-          >
-            {" "}
-            Publish{" "}
-          </button>
-        </div>
-      )}
-
       {/* Buttons */}
 
       {updateMode ? (
@@ -508,6 +496,15 @@ function Post({ post }) {
           )}
         </Listbox>
       )} */}
+
+      {updateMode && (
+        <div onClick={() => handleupdate(post._id)}>
+          <button className="text-sm font-semibold cursor-pointer my-4 mx-auto  justify-items-center  py-2 px-10 flex flex-col  align-middle rounded-lg bg-[#E23E57] text-white">
+            {" "}
+            Publish{" "}
+          </button>
+        </div>
+      )}
 
       {session && (
         <div className="ml-5 max-h-20 bg-black text-white overflow-y-scroll my-2  scrollbar-hide">
