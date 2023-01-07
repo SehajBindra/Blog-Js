@@ -150,7 +150,7 @@ function Post({ post }) {
         })
         .then((res) => {
           setUpdateMode(false);
-          router.push(`/blog/${post.slug}`);
+          router.push(`/blog/${post._id}`);
           res && toast.success("updated");
         });
       // console.log(res);
