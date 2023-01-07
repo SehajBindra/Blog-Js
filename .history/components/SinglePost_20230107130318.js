@@ -421,6 +421,15 @@ function Post({ post }) {
         />
       )}
 
+      {updateMode && (
+        <div onClick={() => handleupdate(post._id)}>
+          <button className="text-sm font-semibold cursor-pointer my-4 mx-auto  justify-items-center  py-2 px-10 flex flex-col  align-middle rounded-lg bg-[#E23E57] text-white">
+            {" "}
+            Publish{" "}
+          </button>
+        </div>
+      )}
+
       {/* Buttons */}
 
       {updateMode ? (
@@ -452,15 +461,6 @@ function Post({ post }) {
         <div className="text-base tracking-normal leading-relaxed  my-4 max-w-xl sm:max-w-2xl ">
           {" "}
           {Parser(`${post.desc}`)}{" "}
-        </div>
-      )}
-
-      {updateMode && (
-        <div onClick={() => handleupdate(post._id)}>
-          <button className="text-sm font-semibold cursor-pointer my-4 mx-auto  justify-items-center  py-2 px-10 flex flex-col  align-middle rounded-lg bg-[#E23E57] text-white">
-            {" "}
-            Publish{" "}
-          </button>
         </div>
       )}
 
