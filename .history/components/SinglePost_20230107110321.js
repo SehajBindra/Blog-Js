@@ -90,7 +90,6 @@ function Post({ post }) {
   const [likes, setLikes] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const baseUrl = "http://localhost:3000/api/products";
-  const url2 = "https://www.blogjs.tech/api/products";
   const url = "https://blog-beta-hazel.vercel.app/api/products";
 
   // Logic for deleting Post
@@ -118,11 +117,10 @@ function Post({ post }) {
     const getpost = async (id) => {
       const id2 = `${post._id}`;
       const dev = process.env.NODE_ENV !== "production";
-      const data = await axios.get(`${dev ? baseUrl || url : url2}/${id2}`, {});
+      const data = await axios.get(`${dev ? baseUrl : url}/${id2}`, {});
       setDesc(data.data.data.desc);
       setTitle(data.data.data.title);
       setImg(data.data.data.img);
-      // console.log(id2);
     };
     getpost();
   }, []);
@@ -174,7 +172,7 @@ function Post({ post }) {
 
     const commentToSend = comment;
     setComment("");
-    const id = `/product/${post._id}`;
+    const id = `/post/${post._id}`;
     const docref = await addDoc(collection(db, id, "comments"), {
       comment: commentToSend,
       username: session?.user.name,
