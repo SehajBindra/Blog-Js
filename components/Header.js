@@ -23,7 +23,7 @@ function Header() {
 
   const baseUrl = "http://localhost:3000/api/search";
   const url = "https://blog-beta-hazel.vercel.app/api/search";
-  const url2 = "https://www.blogjs.tech/api/search";
+  const url2 = "https://blogjs.tech/api/search";
   const router = useRouter();
 
   const [query, setQuery] = useState("");
