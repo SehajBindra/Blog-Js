@@ -1,4 +1,4 @@
-import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
+import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
@@ -12,12 +12,12 @@ function Category({ category }) {
   const router = useRouter();
   return (
     <div>
-      <Zoom>
-        <div
-          onClick={() => router.push(`/blog/${category.slug}`)}
-          key={category._id}
-          className="flex flex-row bg-black    justify-center align-middle cursor-pointer  items-center sm:flex-row py-4 px-8 sm:pr-4 pr-2 "
-        >
+      <div
+        onClick={() => router.push(`/blog/${category.slug}`)}
+        key={category._id}
+        className="flex flex-row bg-black    justify-center align-middle cursor-pointer  items-center sm:flex-row py-4 px-8 sm:pr-4 pr-2 "
+      >
+        <Zoom>
           <div className=" my-4  flex-shrink-0  sm:my-8">
             <Image
               height={120}
@@ -56,12 +56,12 @@ function Category({ category }) {
 
               <div className="flex flex-row space-x-2 items-center cursor-pointer">
                 <h4 className="text-sm sm:text-base">Read more</h4>
-                <ArrowUpRightIcon className="arrow mr-4  animate-none" />
+                <ArrowLongRightIcon className="arrow mr-4 animate-pulse" />
               </div>
             </div>
           </div>
-        </div>
-      </Zoom>
+        </Zoom>
+      </div>
     </div>
   );
 }

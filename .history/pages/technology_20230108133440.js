@@ -53,8 +53,13 @@ function technology({ category }) {
 
 export default technology;
 
-export async function getStaticProps() {
+export async function getServerSideProps({ res }) {
   const { db } = await connectToDatabase();
+
+  res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=43200, stale-while-revalidate=60"
+  );
 
   const category = await db
     .collection("products")
@@ -74,7 +79,5 @@ export async function getStaticProps() {
         createdAt: category.createdAt.toISOString(),
       })),
     },
-
-    revalidate: 1,
   };
 }

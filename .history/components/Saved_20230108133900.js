@@ -27,7 +27,7 @@ function Saved({}) {
       {items.map((items) => (
         <div
           key={items.id}
-          onClick={() => router.push(`blog/${items.slug}`)}
+          onClick={() => router.push(`product/${items.id}`)}
           className="flex flex-row bg-black text-white   justify-center align-middle cursor-pointer  items-center sm:flex-row py-4 px-8 sm:pr-4 pr-2 "
         >
           <Zoom>

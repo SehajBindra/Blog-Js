@@ -1,21 +1,23 @@
 import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import { useRouter } from "next/router";
-
+import dynamic from "next/dynamic";
+const Zoom = dynamic(() => import("react-awesome-reveal"));
 import React from "react";
-import { Zoom } from "react-awesome-reveal";
-import Moment from "react-moment";
+// import { Zoom } from "react-awesome-reveal";
+const Moment = dynamic(() => import("react-moment"));
+// import Moment from "react-moment";
 
 function Category({ category }) {
   const router = useRouter();
   return (
     <div>
-      <div
-        onClick={() => router.push(`/product/${category._id}`)}
-        key={category._id}
-        className="flex flex-row bg-black    justify-center align-middle cursor-pointer  items-center sm:flex-row py-4 px-8 sm:pr-4 pr-2 "
-      >
-        <Zoom>
+      <Zoom>
+        <div
+          onClick={() => router.push(`/blog/${category.slug}`)}
+          key={category._id}
+          className="flex flex-row bg-black    justify-center align-middle cursor-pointer  items-center sm:flex-row py-4 px-8 sm:pr-4 pr-2 "
+        >
           <div className=" my-4  flex-shrink-0  sm:my-8">
             <Image
               height={120}
@@ -47,7 +49,7 @@ function Category({ category }) {
             <div className="flex justify-between items-center">
               <Moment
                 className="flex-1 text-gray-300 font-extralight ml-2 my-1 truncate pr-5 text-sm sm:text-sm "
-                fromNow
+                format="D MMM YYYY"
               >
                 {category.createdAt}
               </Moment>
@@ -58,8 +60,8 @@ function Category({ category }) {
               </div>
             </div>
           </div>
-        </Zoom>
-      </div>
+        </div>
+      </Zoom>
     </div>
   );
 }

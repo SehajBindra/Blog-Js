@@ -47,7 +47,7 @@ function programing({ category }) {
         <CategoryBtns />
       </div>
 
-      <div className="flex bg-black text-white  flex-col   scrollbar-hide pb-[8rem]">
+      <div className="flex bg-black text-white h-screen flex-col overflow-x-auto overflow-y-auto  scrollbar-hide pb-[8rem]">
         {category.map((category) => (
           <Category category={category} key={category._id} />
         ))}
