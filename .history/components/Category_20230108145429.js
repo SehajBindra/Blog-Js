@@ -48,7 +48,7 @@ function Category({ category }) {
 
             <div className="flex justify-between items-center">
               <Moment
-                className="flex-1 moment ml-2 my-1  pr-5  "
+                className="flex-1 text-gray-300 font-extralight ml-2 my-1 truncate pr-5 text-sm sm:text-sm "
                 format="D MMM YYYY"
               >
                 {category.createdAt}

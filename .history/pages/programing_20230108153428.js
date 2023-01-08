@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { connectToDatabase } from "../util/mongodb2";
-import { ArrowDownIcon } from "@heroicons/react/24/outline";
+
 import Head from "next/head";
 import dynamic from "next/dynamic";
 const Header = dynamic(() => import("../components/Header"));
@@ -10,7 +10,6 @@ const Modal = dynamic(() => import("../components/Modal"), {
 });
 // import Modal from "../components/Modal";
 const Category = dynamic(() => import("../components/Category"));
-
 // import Category from "../components/Category";
 // const CategoryBtns = dynamic(() => import("../components/CategoryBtns"), {
 //   ssr: false,
@@ -50,13 +49,13 @@ function programing({ category }) {
         <CategoryBtns />
       </div>
 
-      <div className="flex bg-black text-white  flex-col   scrollbar-hide pb-16">
+      <div className="flex bg-black text-white  flex-col   scrollbar-hide pb-[8rem]">
         {category.slice(4, visible).map((category) => (
           <Category category={category} key={category._id} />
         ))}
         <div
           onClick={showmoreItems}
-          className="flex items-center justify-center text-center flex-row mx-auto space-x-2 pb-16"
+          className="flex items-center justify-center text-center flex-row mx-auto space-x-2 pb-[8rem]"
         >
           <button className="loadMore "> Load more </button>
 
@@ -93,6 +92,6 @@ export async function getStaticProps() {
       })),
     },
 
-    revalidate: 30,
+    revalidate: 1,
   };
 }

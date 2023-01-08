@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { connectToDatabase } from "../util/mongodb2";
 import dynamic from "next/dynamic";
 import Head from "next/head";
-import { ArrowDownIcon } from "@heroicons/react/24/outline";
 const Header = dynamic(() => import("../components/Header"));
 // import Header from "../components/Header";
 // const CategoryBtns = dynamic(() => import("../components/CategoryBtns"), {
@@ -52,15 +51,14 @@ function technology({ category }) {
           {category.slice(4, visible).map((category) => (
             <Category category={category} key={category._id} />
           ))}
+        </div>
+        <div className="flex items-center justify-center text-center flex-row mx-auto space-x-2 pb-16">
+          <button onClick={showmoreItems} className="loadMore">
+            {" "}
+            Load more{" "}
+          </button>
 
-          <div
-            onClick={showmoreItems}
-            className="flex items-center justify-center text-center flex-row mx-auto space-x-2 pb-16"
-          >
-            <button className="loadMore "> Load more </button>
-
-            <ArrowDownIcon className="arrow" />
-          </div>
+          <ArrowDownIcon className="arrow" />
         </div>
       </div>
       <Modal />
@@ -92,6 +90,6 @@ export async function getStaticProps() {
       })),
     },
 
-    revalidate: 30,
+    revalidate: 1,
   };
 }

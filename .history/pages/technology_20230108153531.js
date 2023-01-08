@@ -55,7 +55,7 @@ function technology({ category }) {
 
           <div
             onClick={showmoreItems}
-            className="flex items-center justify-center text-center flex-row mx-auto space-x-2 pb-16"
+            className="flex items-center justify-center text-center flex-row mx-auto space-x-2 pb-[8rem]"
           >
             <button className="loadMore "> Load more </button>
 

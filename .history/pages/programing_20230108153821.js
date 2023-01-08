@@ -50,13 +50,13 @@ function programing({ category }) {
         <CategoryBtns />
       </div>
 
-      <div className="flex bg-black text-white  flex-col   scrollbar-hide pb-16">
+      <div className="flex bg-black text-white  flex-col   scrollbar-hide pb-[4rem]">
         {category.slice(4, visible).map((category) => (
           <Category category={category} key={category._id} />
         ))}
         <div
           onClick={showmoreItems}
-          className="flex items-center justify-center text-center flex-row mx-auto space-x-2 pb-16"
+          className="flex items-center justify-center text-center flex-row mx-auto space-x-2 pb-[8rem]"
         >
           <button className="loadMore "> Load more </button>
 

@@ -52,15 +52,14 @@ function technology({ category }) {
           {category.slice(4, visible).map((category) => (
             <Category category={category} key={category._id} />
           ))}
+        </div>
+        <div className="flex items-center justify-center text-center flex-row mx-auto space-x-2 pt-[4rem]">
+          <button onClick={showmoreItems} className="loadMore pb-[8rem]">
+            {" "}
+            Load more{" "}
+          </button>
 
-          <div
-            onClick={showmoreItems}
-            className="flex items-center justify-center text-center flex-row mx-auto space-x-2 pb-16"
-          >
-            <button className="loadMore "> Load more </button>
-
-            <ArrowDownIcon className="arrow" />
-          </div>
+          <ArrowDownIcon className="arrow" />
         </div>
       </div>
       <Modal />
@@ -92,6 +91,6 @@ export async function getStaticProps() {
       })),
     },
 
-    revalidate: 30,
+    revalidate: 1,
   };
 }

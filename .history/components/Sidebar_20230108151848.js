@@ -6,11 +6,6 @@ import {
   UserIcon,
 } from "@heroicons/react/24/outline";
 import { signIn, signOut, useSession } from "next-auth/react";
-import dynamic from "next/dynamic";
-
-const Modal = dynamic(() => import("./Modal"), {
-  ssr: false,
-});
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React from "react";
@@ -18,7 +13,7 @@ import React from "react";
 import { useRecoilState } from "recoil";
 import { modalState } from "../atoms/modalAtom";
 
-// import Modal from "./Modal";
+import Modal from "./Modal";
 import SidebarRow from "./SidebarRow";
 
 function Sidebar() {

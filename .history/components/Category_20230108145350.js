@@ -18,7 +18,7 @@ function Category({ category }) {
           key={category._id}
           className="flex flex-row bg-black    justify-center align-middle cursor-pointer  items-center sm:flex-row py-4 px-8 sm:pr-4 pr-2 "
         >
-          <div className=" my-4  flex-shrink-0  sm:my-8">
+          <div className=" my-8  flex-shrink-0  sm:my-8">
             <Image
               height={120}
               width={120}
@@ -48,7 +48,7 @@ function Category({ category }) {
 
             <div className="flex justify-between items-center">
               <Moment
-                className="flex-1 moment ml-2 my-1  pr-5  "
+                className="flex-1 text-gray-300 font-extralight ml-2 my-1 truncate pr-5 text-sm sm:text-sm "
                 format="D MMM YYYY"
               >
                 {category.createdAt}

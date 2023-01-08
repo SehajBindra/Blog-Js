@@ -9,8 +9,8 @@ import { useSession } from "next-auth/react";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import React from "react";
-const SavedPosts = dynamic(() => import("./SavedPosts"));
-// import SavedPosts from "./SavedPosts";
+// const SavedPosts = dynamic(() => import("./SavedPosts"));
+import SavedPosts from "./SavedPosts";
 import Image from "next/image";
 
 function Products({ product }) {

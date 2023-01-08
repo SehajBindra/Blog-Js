@@ -53,11 +53,11 @@ function technology({ category }) {
             <Category category={category} key={category._id} />
           ))}
 
-          <div
-            onClick={showmoreItems}
-            className="flex items-center justify-center text-center flex-row mx-auto space-x-2 pb-16"
-          >
-            <button className="loadMore "> Load more </button>
+          <div className="flex items-center justify-center text-center flex-row mx-auto space-x-2 ">
+            <button onClick={showmoreItems} className="loadMore pb-[8rem]">
+              {" "}
+              Load more{" "}
+            </button>
 
             <ArrowDownIcon className="arrow" />
           </div>
@@ -92,6 +92,6 @@ export async function getStaticProps() {
       })),
     },
 
-    revalidate: 30,
+    revalidate: 1,
   };
 }
