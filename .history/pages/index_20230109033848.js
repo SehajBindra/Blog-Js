@@ -58,8 +58,6 @@ export default function Home({ products }) {
           property="og:description"
           content="This is the  Home page of BlogJS"
         />
-        <meta property="og:image" content="/logo.jpeg" />
-        <meta property="og:url" content="https://blogjs.tech/" />
         <meta name="description" content={`welcome to blogjs.tech`} />
         <meta name="description" content={`welcome to Blog JS`} />
         <meta
