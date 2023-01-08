@@ -1,5 +1,5 @@
 import {
- 
+  ArrowLongRightIcon,
   ArrowUpRightIcon,
 } from "@heroicons/react/24/outline";
 // import { Zoom } from "react-awesome-reveal";
@@ -30,7 +30,7 @@ function ProductSection({ product }) {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           key={product._id}
-          className="flex flex-row   justify-center align-middle cursor-pointer  items-center sm:flex-row py-8 px-8 sm:pr-4 pr-2 "
+          className="flex flex-row   justify-center align-middle cursor-pointer  items-center sm:flex-row py-8 px-8 sm:pr-4 pr-8 "
         >
           <div className=" my-4  flex-shrink-0  sm:my-8">
             <Image
