@@ -162,9 +162,9 @@ function Post({ post }) {
   };
   // logic for comments
   useEffect(() => {
-    const id = `/blog/${post.slug}`;
+    const slug = `/blog/${post.slug}`;
     onSnapshot(
-      query(collection(db, id, "comments"), orderBy("timestamp", "desc")),
+      query(collection(db, slug, "comments"), orderBy("timestamp", "desc")),
       (snapshot) => setComments(snapshot.docs)
     );
   }, [db]);
@@ -174,8 +174,8 @@ function Post({ post }) {
 
     const commentToSend = comment;
     setComment("");
-    const id = `/blog/${post.slug}`;
-    const docref = await addDoc(collection(db, id, "comments"), {
+    const slug = `/blog/${post.slug}`;
+    const docref = await addDoc(collection(db, slug, "comments"), {
       comment: commentToSend,
       username: session?.user.name,
       userImage: session?.user.image,
@@ -187,8 +187,8 @@ function Post({ post }) {
 
   // logic for liking a post
   useEffect(() => {
-    const id = `/blog/${post.slug}`;
-    onSnapshot(collection(db, id, "likes"), (snapshot) =>
+    const slug = `/blog/${post.slug}`;
+    onSnapshot(collection(db, slug, "likes"), (snapshot) =>
       setLikes(snapshot.docs)
     );
   }, [db]);
@@ -200,11 +200,11 @@ function Post({ post }) {
   }, [likes]);
 
   const likePost = async () => {
-    const id = `/blog/${post.slug}`;
+    const slug = `/blog/${post.slug}`;
     if (hasLiked) {
-      await deleteDoc(doc(db, id, "likes", session?.user.name));
+      await deleteDoc(doc(db, slug, "likes", session?.user.name));
     } else {
-      await setDoc(doc(db, id, "likes", session?.user.name), {
+      await setDoc(doc(db, slug, "likes", session?.user.name), {
         username: session?.user.name,
         userImage: session?.user.image,
         email: session?.user.email,
