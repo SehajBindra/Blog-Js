@@ -1,9 +1,16 @@
 import Product from "../../models/Product";
 import { connectToDatabase } from "../../util/mongodb2";
-
+import NextCors from "nextjs-cors";
 // this one is for implementing Searching!
 
 const handler = async (req, res) => {
+  await NextCors(req, res, {
+    // Options
+    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
+    origin: "*",
+    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  });
+
   const {
     method,
     query: { query },
@@ -31,16 +38,15 @@ const handler = async (req, res) => {
         },
       },
       {
-        $limit: 20,
+        $limit: 8,
       },
       {
         $project: {
-          _id: 0,
           desc: 0,
-          slug: 0,
-          userimg: 0,
-          img: 0,
           createdAt: 0,
+          updatedAt: 0,
+
+          img: 0,
         },
       },
     ];
