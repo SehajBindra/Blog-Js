@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useMemo, useState } from "react";
-import { Menu, Transition } from "@headlessui/react";
+import { Listbox, Menu, Transition } from "@headlessui/react";
 // import Modal from "../components/Modal";
 
 import dynamic from "next/dynamic";
@@ -23,7 +23,7 @@ import toast from "react-hot-toast";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 import { useRouter } from "next/router";
-// import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   addDoc,
   doc,
@@ -80,15 +80,15 @@ function Post({ post }) {
   const [title, setTitle] = useState();
   const [desc, setDesc] = useState();
   const [img, setImg] = useState();
-
+  const [slug, setSlug] = useState();
   const [updateMode, setUpdateMode] = useState(false);
-
+  const [category, setCategory] = useState();
   const [comments, setComments] = useState([]);
   const router = useRouter();
   const { data: session } = useSession();
   const [comment, setComment] = useState("");
   const [likes, setLikes] = useState([]);
-  // const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const baseUrl = "http://localhost:3000/api/products";
   const url2 = "https://blogjs.tech/api/products";
   const url = "https://blog-beta-hazel.vercel.app/api/products";
@@ -269,32 +269,32 @@ function Post({ post }) {
           </>
         )}
         {session && (
-          // <motion.div
-          //   initial={false}
-          //   animate={isOpen ? "open" : "closed"}
-          //   className="menu"
-          // >
-          <Menu className="relative z-10" as="div">
-            <>
-              {/* <motion.div */}
-              {/* onClick={() => setIsOpen(!isOpen ? "open" : "closed")}
-                  // whileTap={{ scale: 1 }} */}
-              {/* > */}
-              <Menu.Button className="flex flex-row items-center">
-                <EllipsisHorizontalIcon className=" flex space-x-2 h-8 w-8 ml-4 items-center animate-pulse text-[#ACe5ff]" />
-              </Menu.Button>
-              {/* //  </motion.div>  */}
+          <motion.div
+            initial={false}
+            animate={isOpen ? "open" : "closed"}
+            className="menu"
+          >
+            <Menu className="relative z-10" as="div">
+              <>
+                <motion.div
+                  onClick={() => setIsOpen(!isOpen)}
+                  // whileTap={{ scale: 1 }}
+                >
+                  <Menu.Button className="flex flex-row items-center">
+                    <EllipsisHorizontalIcon className=" flex space-x-2 h-8 w-8 ml-4 items-center animate-pulse text-[#ACe5ff]" />
+                  </Menu.Button>
+                </motion.div>
 
-              <ul
-                // variants={{
-                //   open: { rotate: 360 },
-                //   closed: { rotate: 0 },
-                // }}
-                // transition={{ duration: 0.4 }}
-                // style={{ originY: 1 }}
-                className="w-40 mx-auto fixed  list-none  rounded-lg"
-              >
-                {/* <motion.div
+                <motion.ul
+                  variants={{
+                    open: { rotate: 360 },
+                    closed: { rotate: 0 },
+                  }}
+                  transition={{ duration: 0.4 }}
+                  style={{ originY: 1 }}
+                  className="w-40 mx-auto fixed  rounded-lg"
+                >
+                  <motion.div
                     variants={{
                       open: {
                         clipPath: "inset(0% 0% 0% 0% round 10px)",
@@ -315,75 +315,67 @@ function Post({ post }) {
                         },
                       },
                     }}
-                  > */}{" "}
-                <Transition
-                  as={Fragment}
-                  enter=" ease-out duration-300"
-                  enterFrom="opacity-0"
-                  enterTo="opacity-100"
-                  leave="ease-in duration-200"
-                  leaveFrom="opacity-100"
-                  leaveTo="opacity-0"
-                >
-                  <Menu.Items className="flex flex-col flex-grow-0 w-30 mr-8  sm:w-40 py-2 px-2 border border-gray-800  my-1 bg-black text-white te shadow-lg rounded-lg  ">
-                    <Menu.Item>
-                      {({ active }) => (
-                        <>
+                  >
+                    <Menu.Items className="flex flex-col flex-grow-0 w-30 mr-8  sm:w-40 py-2 px-2 border border-gray-800  my-1 bg-black text-white te shadow-lg rounded-lg  ">
+                      <Menu.Item>
+                        {({ active }) => (
+                          <>
+                            <div
+                              onClick={() => setUpdateMode(true)}
+                              className="flex flex-row items-center"
+                            >
+                              <PencilSquareIcon
+                                className={`${
+                                  active ? "activeIcon" : "notActiveIcon"
+                                }`}
+                              />
+
+                              <motion.li
+                                className={`${
+                                  active ? "activeBtn " : "notActiveBtn"
+                                }`}
+                                variants={itemVariants}
+                              >
+                                {" "}
+                                Edit{" "}
+                              </motion.li>
+                            </div>
+                          </>
+                        )}
+                      </Menu.Item>
+
+                      <Menu.Item>
+                        {({ active }) => (
                           <div
-                            onClick={() => setUpdateMode(true)}
-                            className="flex flex-row items-center"
+                            onClick={() => handleDelete(post._id)}
+                            className="flex items-center flex-row"
                           >
-                            <PencilSquareIcon
+                            <TrashIcon
                               className={`${
                                 active ? "activeIcon" : "notActiveIcon"
                               }`}
                             />
 
-                            <li
+                            <motion.li
                               className={`${
-                                active ? "activeBtn " : "notActiveBtn"
+                                active
+                                  ? "activeBtn"
+                                  : "  notActiveBtn py-2 px-4 "
                               }`}
-                              // variants={itemVariants}
+                              variants={itemVariants}
                             >
                               {" "}
-                              Edit{" "}
-                            </li>
+                              Delete{" "}
+                            </motion.li>
                           </div>
-                        </>
-                      )}
-                    </Menu.Item>
-
-                    <Menu.Item>
-                      {({ active }) => (
-                        <div
-                          onClick={() => handleDelete(post._id)}
-                          className="flex items-center flex-row"
-                        >
-                          <TrashIcon
-                            className={`${
-                              active ? "activeIcon" : "notActiveIcon"
-                            }`}
-                          />
-
-                          <li
-                            className={`${
-                              active ? "activeBtn" : "  notActiveBtn py-2 px-4 "
-                            }`}
-                            // variants={itemVariants}
-                          >
-                            {" "}
-                            Delete{" "}
-                          </li>
-                        </div>
-                      )}
-                    </Menu.Item>
-                  </Menu.Items>
-                </Transition>
-                {/* </motion.div> */}
-              </ul>
-            </>
-          </Menu>
-          // </motion.div>
+                        )}
+                      </Menu.Item>
+                    </Menu.Items>
+                  </motion.div>
+                </motion.ul>
+              </>
+            </Menu>
+          </motion.div>
         )}
         <RWebShare
           data={{

@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useMemo, useState } from "react";
-import { Menu, Transition } from "@headlessui/react";
+import { Listbox, Menu, Transition } from "@headlessui/react";
 // import Modal from "../components/Modal";
 
 import dynamic from "next/dynamic";
@@ -23,7 +23,7 @@ import toast from "react-hot-toast";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 import { useRouter } from "next/router";
-// import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   addDoc,
   doc,
@@ -88,7 +88,7 @@ function Post({ post }) {
   const { data: session } = useSession();
   const [comment, setComment] = useState("");
   const [likes, setLikes] = useState([]);
-  // const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const baseUrl = "http://localhost:3000/api/products";
   const url2 = "https://blogjs.tech/api/products";
   const url = "https://blog-beta-hazel.vercel.app/api/products";
@@ -316,6 +316,7 @@ function Post({ post }) {
                       },
                     }}
                   > */}{" "}
+                */
                 <Transition
                   as={Fragment}
                   enter=" ease-out duration-300"
