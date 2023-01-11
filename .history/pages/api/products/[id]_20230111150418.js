@@ -1,10 +1,16 @@
 import { ObjectId } from "mongodb";
 import { connectToDatabase } from "../../../util/mongodb2";
-// import NextCors from "nextjs-cors";
+import NextCors from 'nextjs-cors';
 import dbConnect from "../../../util/mongodb";
 // this one is for update, delete, get a single Product or Post by id
 
 export default async function handler(req, res) {
+  await NextCors(req, res, {
+    // Options
+    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+    origin: '*',
+    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+ });
   const {
     method,
     query: { id },

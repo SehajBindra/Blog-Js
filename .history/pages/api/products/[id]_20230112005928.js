@@ -1,6 +1,6 @@
 import { ObjectId } from "mongodb";
 import { connectToDatabase } from "../../../util/mongodb2";
-// import NextCors from "nextjs-cors";
+import NextCors from "nextjs-cors";
 import dbConnect from "../../../util/mongodb";
 // this one is for update, delete, get a single Product or Post by id
 
