@@ -43,15 +43,23 @@ function Header() {
         return false;
       }
       const dev = process.env.NODE_ENV !== "production";
-      const { data } = await axios.get(`${dev ? baseUrl : url2}`, {
-        params: {
-          query: query,
-        },
+      const { data } = await axios
+        .get(`${dev ? baseUrl : url2}`, {
+          params: {
+            query: query,
+          },
 
-        timeout: 4000,
-      });
-
-      setSearchResults(data);
+          timeout: 4000,
+        })
+        setSearchResults(data);
+        .then((res) => {
+        
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err.message);
+          console.log(err.code);
+        });
     })();
   }, [query]);
 
