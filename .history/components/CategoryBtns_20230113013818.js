@@ -13,9 +13,9 @@ function CategoryBtns() {
 
   return (
     <>
-      <div className="w-full max-w-sm px-4 py-2 sm:px-0">
+      <div className="w-full max-w-sm px-1 py-2 sm:px-0">
         <Tab.Group defaultIndex={router.query.name === "Programing" ? 0 : 1}>
-          <Tab.List className="flex flex-row overflow-x-scroll scrollbar-hide whitespace-nowrap justify-center space-x-4 rounded-md sm:grid sm:grid-cols-1  sm:gap-4 max-w-xs bg-black  p-1">
+          <Tab.List className="flex flex-row overflow-x-scroll scrollbar-hide whitespace-nowrap sm:grid-cols-1 sm:gap-4 justify-center rounded-md   max-w-xs bg-black  space-x-1 ">
             {categories.map((category) => (
               <Tab
                 onClick={() => router.push(`/Explore?name=${category.name}`)}

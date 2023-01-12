@@ -63,7 +63,7 @@ function Sidebar() {
       )}
 
       <SidebarRow
-        onclick={() => router.push(`/Explore?name=Programing`)}
+        onclick={() => router.push(`"/Explore?name="Programing"`)}
         Icon={HashtagIcon}
         title={"Explore"}
       />

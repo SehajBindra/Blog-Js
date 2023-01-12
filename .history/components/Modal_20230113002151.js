@@ -23,7 +23,7 @@ const people = [
   { name: "React js" },
   { name: "Data Science" },
   { name: "Web-Development" },
-  { name: "Bca" },
+  { name: "Bca Question Papers" },
   { name: "Artificial Intelligence" },
   { name: "Entertainment" },
   { name: "Gaming" },
