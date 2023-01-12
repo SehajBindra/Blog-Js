@@ -1,0 +1,14 @@
+# *
+User-agent: *
+Disallow: /secret
+
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://blogjs.tech
+
+# Sitemaps
+Sitemap: https://blogjs.tech/sitemap.xml
+Sitemap: https://blogjs.tech/server-sitemap-index.xml
