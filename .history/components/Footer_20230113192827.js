@@ -6,7 +6,7 @@ import { EnvelopeIcon } from "@heroicons/react/24/outline";
 function Footer() {
   const router = useRouter();
   return (
-    <div className="grid cursor-pointer whitespace-nowrap grid-cols-1 md:grid md:grid-cols-3 gap-y-10 px-20 sm:px-40 py-14 pb-28 bg-black text-white">
+    <div className="grid cursor-pointer whitespace-nowrap grid-cols-1 md:grid md:grid-cols-3 gap-y-10 px-20 sm:px-40 py-14 pb-20 bg-black text-white">
       <div className="space-y-4 text-xs text-white">
         <h5 className="font-semibold link ">Contact us</h5>
         {/* <p>Facebook </p>

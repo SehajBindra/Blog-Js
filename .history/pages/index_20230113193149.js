@@ -91,7 +91,7 @@ export default function Home({ products }) {
         <main className=" sm:grid sm:grid-cols-10 ">
           <Sidebar />
 
-          <div className=" flex flex-row col-span-8  max-h-screen sm:col-span-8  overflow-x-scroll overflow-y-scroll scrollbar-hide">
+          <div className=" flex flex-row col-span-8  max-h-screen sm:col-span-8 lg:col-span-8 overflow-x-scroll overflow-y-scroll scrollbar-hide">
             {products.slice(0, 4).map((product) => (
               <Products key={product._id} product={product} />
             ))}
