@@ -47,7 +47,7 @@ function Header() {
   // console.log(searchResults);
 
   return (
-    <div className="top-0 sticky z-50 flex  h-20  justify-between bg-black overflow-y-auto    py-4 text-white  ">
+    <div className="top-0 sticky z-50 flex  h-20  justify-between bg-black overflow-y-auto    py-4 text-white border-1 ">
       {/* left */}
 
       <div className=" hidden sm:inline-flex items-center ">
@@ -63,7 +63,7 @@ function Header() {
 
       <div className=" flex-grow sm:flex-grow-0 ml-2 pb-10 ">
         <div className=" relative  rounded-md ">
-          <form className="flex border-2 border-gray-800 xl:ml-64 lg:ml-56  rounded-full px-1 py-2 ml-2 mr-2 shadow-lg items-center  ">
+          <form className="flex border-2 border-gray-800 sm:ml-64  rounded-full px-1 py-2 ml-2 mr-2 shadow-lg items-center  ">
             <input
               className="flex-grow w-full placeholder-zinc-50 outline-none outline-0   focus:outline-none ml-2  bg-transparent  "
               type="text"

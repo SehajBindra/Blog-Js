@@ -47,7 +47,7 @@ function Header() {
   // console.log(searchResults);
 
   return (
-    <div className="top-0 sticky z-50 flex  h-20  justify-between bg-black overflow-y-auto    py-4 text-white  ">
+    <div className="top-0 sticky z-50 flex  h-20  justify-between bg-black overflow-y-auto    py-4 text-white border-1 ">
       {/* left */}
 
       <div className=" hidden sm:inline-flex items-center ">

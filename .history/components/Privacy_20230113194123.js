@@ -9,7 +9,7 @@ function Privacy() {
             Privacy Policy
           </h1>
 
-          <h2 className="h2pp whitespace-nowrap truncate ">
+          <h2 className="h2pp whitespace-nowrap translate">
             Security of Your Personal Data
           </h2>
           <p>

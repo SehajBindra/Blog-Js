@@ -52,7 +52,7 @@ function Hello({ category }) {
         <CategoryBtns />
       </div>
 
-      <div className="flex scrollbar-hide  overflow-y-scroll bg-black text-white  flex-col    pb-16">
+      <div className="flex  overflow-y-scroll bg-black text-white  flex-col    pb-16">
         {category.slice(0, visible).map((category) => (
           <Category category={category} key={category._id} />
         ))}
