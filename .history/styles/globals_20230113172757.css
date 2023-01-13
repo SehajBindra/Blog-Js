@@ -1,0 +1,78 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&family=Source+Sans+Pro:wght@200&display=swap'); */
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
+
+* {
+  font-family: "Open Sans", sans-serif;
+
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@layer components {
+
+  .link {
+    @apply underline  decoration-slate-600;
+  }
+  .navBtn {
+    @apply h-5 w-5  text-[#E23E57] animate-bounce;
+  }
+
+  .h2pp{
+    @apply text-xl text-left underline  decoration-pink-500 my-2;
+  }
+
+ 
+
+  .loadMore {
+    @apply text-white flex items-center justify-center text-center text-base sm:text-xl;
+  }
+
+  .arrow {
+    @apply text-[#E23E57] h-4 cursor-pointer animate-bounce;
+  }
+
+  .activeIcon {
+    @apply text-[#E23E57] transition-all duration-150 ease-in h-4 w-4 cursor-pointer;
+  }
+
+  .notActiveIcon {
+    @apply text-gray-400 h-4 w-4 cursor-pointer;
+  }
+
+  .activeBtn {
+    @apply flex items-center space-x-2 text-[#E23E57] transition-all duration-150 ease-in  py-2 px-4 cursor-pointer;
+  }
+
+  .notActiveBtn {
+    @apply text-white px-4 py-1   cursor-pointer;
+  }
+
+  .image {
+    @apply rounded-md hover:opacity-80  pointer-events-none  transition duration-200 ease-out  cursor-pointer  object-cover  flex-shrink-0;
+  }
+
+  .input {
+    @apply bg-black  py-2 px-4 border-b border-gray-600 my-2 focus:ring-0 focus-within:outline-none w-full text-center;
+  }
+
+  .productSection {
+    @apply flex flex-col overflow-x-hidden pr-10  mx-auto items-center  justify-center   align-middle;
+  }
+
+  .moment {
+    @apply text-gray-300 my-2 truncate pr-5 text-sm;
+  }
+
+  /* .link{
+    @apply  hover:underline hover:decoration-text-gray-400;
+  } */
+
+  .navbar {
+    @apply flex flex-row items-center space-x-2;
+  }
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
