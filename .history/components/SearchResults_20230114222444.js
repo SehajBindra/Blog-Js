@@ -6,7 +6,7 @@ function SearchResults({ searchResults }) {
   //   console.log(searchResults);
   const router = useRouter();
   return (
-    <div className=" bg-black    shadow-xl   p-4 text-white flex flex-col justify-center align-middle w-80 mx-auto rounded-md  z-10 fixed top-18 scrollbar-thumb-rounded-lg">
+    <div className=" bg-black h-40   overflow-y-auto  scrollbar-hide py-2  p-4 text-white flex flex-col justify-center align-middle w-80 mx-auto rounded-md  z-10 fixed top-16">
       {searchResults?.map(({ title, _id, username, userimg, slug }) => (
         <>
           <div

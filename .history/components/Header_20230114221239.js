@@ -5,11 +5,8 @@ import { useRouter } from "next/router";
 import { signIn, signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
-import dynamic from "next/dynamic";
-const SearchResults = dynamic(() => import("./SearchResults"));
-const MobileNavigation = dynamic(() => import("./MobileNavigation"));
-// import SearchResults from "./SearchResults";
-// import MobileNavigation from "./MobileNavigation";
+import SearchResults from "./SearchResults";
+import MobileNavigation from "./MobileNavigation";
 
 function Header() {
   const { data: session, status } = useSession();
@@ -87,7 +84,7 @@ function Header() {
             />
           </form>
 
-          <div className={!session ? "ml-0" : "bg-black ml-0 xl:ml-60"}>
+          <div className="bg-black ">
             {query !== "" && <SearchResults searchResults={searchResults} />}
           </div>
         </div>

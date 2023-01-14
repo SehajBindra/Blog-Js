@@ -1,4 +1,5 @@
 import Head from "next/head";
+
 import Script from "next/script";
 import dynamic from "next/dynamic";
 import { connectToDatabase } from "../util/mongodb2";
@@ -11,15 +12,19 @@ import { ArrowDownIcon } from "@heroicons/react/24/outline";
 // import Sidebar from "../components/Sidebar";
 // import Products from "../components/Products";
 // import Footer from "../components/Footer";
+
 // import ProductSection from "./../components/ProductSection";
 const Modal = dynamic(() => import("../components/Modal"), {
   ssr: false,
 });
 const Header = dynamic(() => import("../components/Header"));
+
 const Sidebar = dynamic(() => import("../components/Sidebar"));
+
 const Products = dynamic(() => import("../components/Products"));
 const ProductSection = dynamic(() => import("../components/ProductSection"));
 const Footer = dynamic(() => import("../components/Footer"));
+
 export default function Home({ products }) {
   // console.log(products);
   const [posts, setPosts] = useState([]);
