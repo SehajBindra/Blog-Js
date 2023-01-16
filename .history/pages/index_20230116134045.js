@@ -76,10 +76,10 @@ In addition, Blog.js website is fully integrated with Google authentication, all
 The website also has a sleek and modern design, with a focus on clean lines and a user-friendly interface. It's fully responsive, which means it works seamlessly across all devices, whether it's a desktop, laptop, tablet or mobile device.
 Overall, Blog.js website is a great choice for anyone interested in technology and programming. It offers a wealth of information, insights and community-driven content, all in a dynamic and interactive environment that is easy to navigate and use."
         />
-        <meta property="og:image" content="/logo.jpeg" />
+        <meta property="og:image" content="" />
 
         {/* <!-- Twitter --> */}
-        <meta property="twitter:card" content="/logo.jpeg" />
+        <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://blogjs.tech/" />
         <meta property="twitter:title" content="Blog JS " />
         <meta

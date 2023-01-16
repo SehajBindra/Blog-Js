@@ -31,7 +31,7 @@ function saved() {
 
   const items = useSelector(selectItems);
 
-  // console.log(items);
+  console.log(items);
 
   // const RemoveItemFromBasket = (_id) => {
   //   // removing the item from Redux
@@ -62,16 +62,13 @@ function saved() {
       </div>
 
       <main className="bg-black text-white h-screen mx-auto">
-        <div className="flex flex-row  justify-center space-x-4  align-middle items-center ">
-          <h2 className="text-xl capitalize ">saved</h2>
-          <BookmarkIcon className="h-5 w-5" />
-        </div>
-        {!items ? (
-          <div className="bg-black text-white justify-center mx-auto py-4">
-            <h2 className="">Save Your First Post Now </h2>
-          </div>
+        {!(<Saved />) ? (
+          <h2>There are no saved posts </h2>
         ) : (
-          <Saved />
+          <div className="flex flex-row  justify-center space-x-4  align-middle items-center ">
+            <h2 className="text-xl capitalize ">saved</h2>
+            <BookmarkIcon className="h-5 w-5" />
+          </div>
         )}
       </main>
 

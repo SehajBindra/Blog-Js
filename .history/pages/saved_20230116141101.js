@@ -17,8 +17,8 @@ const Saved = dynamic(() => import("../components/Saved"));
 
 import { Toaster } from "react-hot-toast";
 import { BookmarkIcon } from "@heroicons/react/24/solid";
-import { selectItems } from "../redux/app/slices/SavedSlice";
-import { useSelector } from "react-redux";
+// import { selectItems } from "../redux/app/slices/SavedSlice";
+// import { useSelector } from "react-redux";
 
 // import Saved from "../components/Saved";
 
@@ -29,9 +29,9 @@ function saved() {
   // console.log(session);
   // console.log(category);
 
-  const items = useSelector(selectItems);
+  // const items = useSelector(selectItems);
 
-  // console.log(items);
+  // // console.log(items);
 
   // const RemoveItemFromBasket = (_id) => {
   //   // removing the item from Redux
@@ -50,7 +50,7 @@ function saved() {
           content="width=device-width, initial-scale=1.0, maximum-scale=5.0"
         />
         <meta
-          property="Saved"
+          property="programing"
           content="The Blog.js saved page is a feature that allows users to save posts they are interested in and come back to them later. It has real-time functionality that updates the saved posts in real-time, so users can see their saved posts as soon as they save them. The page is easy to navigate, allowing users to view and organize their saved posts. It also allows users to delete the posts they no longer want to keep. The design is simple and clean, making it easy for users to find the posts they've saved"
         />
         <link rel="icon" href="/logo.jpeg" />
@@ -66,13 +66,11 @@ function saved() {
           <h2 className="text-xl capitalize ">saved</h2>
           <BookmarkIcon className="h-5 w-5" />
         </div>
-        {!items ? (
-          <div className="bg-black text-white justify-center mx-auto py-4">
-            <h2 className="">Save Your First Post Now </h2>
-          </div>
-        ) : (
-          <Saved />
-        )}
+        {/* {category?.map((category) => (
+          <Savepost key={category._id} category={category} />
+        ))} */}
+
+        <Saved />
       </main>
 
       <Modal />
