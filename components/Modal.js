@@ -83,7 +83,7 @@ function Modal() {
           title,
           desc,
           img,
-          // slug: slug,
+          slug: slug,
           // .split(" ")
           // .join("-")
           // .toLowerCase("")

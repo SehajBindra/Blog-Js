@@ -23,9 +23,11 @@ const people = [
   { name: "React js" },
   { name: "Data Science" },
   { name: "Web-Development" },
+  { name: "Bca" },
   { name: "Artificial Intelligence" },
   { name: "Entertainment" },
   { name: "Gaming" },
+
   { name: "Sports" },
   { name: "crypto" },
   { name: "Stock market" },
@@ -72,7 +74,6 @@ function Modal() {
   const uploadPost = async (e) => {
     if (loading) return;
     setLoading(true);
-    dispatch(FetchStart());
 
     try {
       const dev = process.env.NODE_ENV !== "production";
@@ -82,14 +83,14 @@ function Modal() {
           title,
           desc,
           img,
-          slug: title
-            .split(" ")
-            .join("-")
-            .toLowerCase("")
-            .replace(
-              /[,\,!,%,<,>,@,$,&,:,;,|,/,#,^,*,(,), ?]+|[,\,!,%,?]+/g,
-              ""
-            ),
+          slug: slug,
+          // .split(" ")
+          // .join("-")
+          // .toLowerCase("")
+          // .replace(
+          //   /[,\,!,%,<,>,@,$,&,:,;,|,/,#,^,*,(,), ?]+|[,\,!,%,?]+/g,
+          //   ""
+          // ),
           category: selectedPeople,
           username: session?.user.name,
           userimg: session?.user.image,
@@ -205,6 +206,22 @@ function Modal() {
                     />
                   </div>
 
+                  <div className="mt-2">
+                    <input
+                      value={slug}
+                      onChange={(e) => setSlug(e.target.value)}
+                      className="input"
+                      type="text"
+                      placeholder="slug"
+                      //   ref={captionRef}
+                    />
+
+                    <p className="text-sm text-gray-400 line-clamp-2">
+                      Note: Slug should be small and descriptive for ex:
+                      /blog/what-is-ai
+                    </p>
+                  </div>
+
                   <div className="mt-2 ">
                     <ReactQuill
                       modules={modules}
@@ -270,7 +287,9 @@ function Modal() {
                 <div className="mt-5  sm:mt-6">
                   <button
                     type="button"
-                    disabled={!img || !title || !desc || !selectedPeople}
+                    disabled={
+                      !img || !title || !desc || !selectedPeople || !slug
+                    }
                     onClick={uploadPost}
                     className=" inline-flex  justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-400 font-medium text-base text-white   focus:outline-none  sm:text-sm disabled:bg-gray-600 disabled:cursor-not-allowed hover:disabled:bg-gray-600"
                   >
