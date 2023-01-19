@@ -6,12 +6,12 @@ export const getServerSideProps = async (ctx) => {
   const { data } = res.data;
   const fields = data.map((item) => ({
     loc: `https://blogjs.tech/blog/${item.slug}`,
-    lastmod: item.lastmod ? item.updatedAt : item.createdAt,
+    lastmod: item.lastmod ? item.createdAt : item.updatedAt,
     priority: 0.7,
     changefreq: "daily",
   }));
 
-  // console.log({ fields });
+  console.log({ fields });
   return getServerSideSitemap(ctx, fields);
 };
 

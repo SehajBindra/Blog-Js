@@ -1,12 +1,16 @@
-import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
+import {
+  // ArrowLongRightIcon,
+  ArrowUpRightIcon,
+} from "@heroicons/react/24/outline";
 
-import Moment from "react-moment";
-import dynamic from "next/dynamic";
+// import Moment from "react-moment";
+const Moment = dynamic(() => import("react-moment"));
 import { useSession } from "next-auth/react";
-
+import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import React from "react";
-import SavedPosts from "./SavedPosts";
+const SavedPosts = dynamic(() => import("./SavedPosts"));
+// import SavedPosts from "./SavedPosts";
 import Image from "next/image";
 
 function Products({ product }) {
@@ -19,9 +23,9 @@ function Products({ product }) {
   return (
     <>
       <div
+        onClick={() => router.push(`/blog/${product.slug}`)}
         key={product._id}
-        onClick={() => router.push(`/product/${product._id}`)}
-        className="flex flex-col  justify-center align-middle     items-center sm:flex-col py-8 px-4 sm:px-4 md:px-8   "
+        className="flex flex-col  justify-center align-middle     items-center  py-8 px-4 sm:px-4 md:px-8   "
       >
         <div className="mt-2 h-40 w-64 sm:w-52 sm:h-28 cursor-pointer md:h-48 md:w-80  sm:my-4">
           <Image
@@ -29,12 +33,12 @@ function Products({ product }) {
             width={440}
             className="image cursor-pointer"
             src={product.img}
-            alt="Freepik.com , Pexels.com"
+            alt="Post Image"
           />
         </div>
 
         <div className="flex flex-col  cursor-pointer   max-w-xs  pl-4">
-          <h1 className="text-base font-semibold line-clamp-1 tracking-normal leading-relaxed  sm:text-lg   my-2">
+          <h1 className="text-base font-semibold line-clamp-2    sm:text-lg   my-2">
             {product.title}{" "}
           </h1>
 
@@ -47,11 +51,11 @@ function Products({ product }) {
             <Image
               height={24}
               width={24}
-              className="rounded-full  p-1 object-cover"
+              className="rounded-full  object-cover"
               src={product.userimg}
-              alt="something went wrong"
+              alt="User Image"
             />
-            <p className="flex-1 whitespace-normal">{product.username}</p>
+            <p className="flex-1  whitespace-nowrap">{product.username}</p>
 
             {session && (
               <>
@@ -61,16 +65,13 @@ function Products({ product }) {
           </div>
 
           <div className="flex justify-between items-center">
-            <Moment
-              className=" text-gray-300 my-2 truncate pr-5 text-sm "
-              format="D MMM YYYY"
-            >
+            <Moment className=" moment " format="D MMM YYYY">
               {product.createdAt}
             </Moment>
 
-            <div className="flex flex-row whitespace-nowrap space-x-2 items-center cursor-pointer">
+            <div className="flex  whitespace-nowrap space-x-2 items-center cursor-pointer">
               <p>Read more</p>
-              <ArrowLongRightIcon className="arrow animate-pulse" />
+              <ArrowUpRightIcon className="arrow   animate-none " />
             </div>
           </div>
         </div>

@@ -38,7 +38,7 @@ function Products({ product }) {
         </div>
 
         <div className="flex flex-col  cursor-pointer   max-w-xs  pl-4">
-          <h1 className="text-base font-semibold line-clamp-1    sm:text-lg   my-2">
+          <h1 className="text-base font-semibold line-clamp-2    sm:text-lg   my-2">
             {product.title}{" "}
           </h1>
 

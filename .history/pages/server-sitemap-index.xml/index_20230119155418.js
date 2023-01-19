@@ -1,6 +1,8 @@
 import axios from "axios";
 import { getServerSideSitemap } from "next-sitemap";
 
+
+
 export const getServerSideProps = async (ctx) => {
   const res = await axios.get(`https://blogjs.tech/api/products`);
   const { data } = res.data;
@@ -11,7 +13,8 @@ export const getServerSideProps = async (ctx) => {
     changefreq: "daily",
   }));
 
-  // console.log({ fields });
+  
+    console.log({ fields });
   return getServerSideSitemap(ctx, fields);
 };
 
