@@ -2,4 +2,5 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <sitemap><loc>https://blogjs.tech/sitemap-0.xml</loc></sitemap>
 <sitemap><loc>https://blogjs.tech/server-sitemap-index.xml</loc></sitemap>
+<sitemap><loc>https://blogjs.tech/category-index.xml</loc></sitemap>
 </sitemapindex>

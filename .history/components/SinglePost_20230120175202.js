@@ -116,7 +116,7 @@ function Post({ post }) {
 
   useEffect(() => {
     const getpost = async (id) => {
-      const id2 = `${post?._id}`;
+      const id2 = `${post._id}`;
       const dev = process.env.NODE_ENV !== "production";
       const data = await axios.get(`${dev ? baseUrl : url || url2}/${id2}`, {});
       setDesc(data.data.data.desc);

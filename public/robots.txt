@@ -12,3 +12,4 @@ Host: https://blogjs.tech
 # Sitemaps
 Sitemap: https://blogjs.tech/sitemap.xml
 Sitemap: https://blogjs.tech/server-sitemap-index.xml
+Sitemap: https://blogjs.tech/category-index.xml

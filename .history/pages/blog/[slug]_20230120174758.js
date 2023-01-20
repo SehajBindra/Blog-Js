@@ -14,15 +14,15 @@ function PostDetails({ post }) {
       <div>
         <Head>
           {/* <!-- Primary Meta Tags --> */}
-          <title>{` ${post?.title}`} </title>
-          <meta name="title" content={` ${post?.title}`} />
-          <meta name="description" content={` ${post?.desc}`} />
+          <title>{post?.title} </title>
+          <meta name="title" content="Blog JS " />
+          <meta name="description" content="" />
 
           {/* <!-- Open Graph / Facebook --> */}
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://blogjs.tech/" />
-          <meta property="og:title" content={` ${post?.title}`} />
-          <meta property="og:description" content={` ${post?.desc}`} />
+          <meta property="og:title" content="Blog JS " />
+          <meta property="og:description" content="" />
           <meta property="og:image" content="/logo.jpeg" />
 
           {/* <!-- Twitter --> */}
@@ -31,10 +31,10 @@ function PostDetails({ post }) {
             property="twitter:url"
             content={`https://blogjs.tech/blog/${post?.slug}`}
           />
-          <meta property="twitter:title" content={` ${post?.title}`} />
-          <meta property="twitter:description" content={` ${post?.desc}`} />
+          <meta property="twitter:title" content=" " />
+          <meta property="twitter:description" content="" />
           <meta property="twitter:image" content="/logo.jpeg"></meta>
-          <title>{` ${post?.title}`} </title>
+          <title>{post?.title} </title>
           <meta
             name="viewport"
             content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
@@ -47,7 +47,7 @@ function PostDetails({ post }) {
       <Header />
       <Toaster />
       <div className=" bg-black text-white items-center align-middle flex-col flex    py-8  px-12  ">
-        <SinglePost post={post} />
+        <SinglePost post={post} key={post._id} />
       </div>
     </>
   );
@@ -88,7 +88,15 @@ export async function getStaticProps({ params }) {
 
   return {
     props: {
-      post: JSON.parse(JSON.stringify(posts)),
+      post: posts?.map((post) => ({
+        _id: post._id.toString(),
+        title: post.title.trim(),
+        img: post.img,
+        slug: post.slug.trim(),
+        username: post.username.trim(),
+        userimg: post.userimg,
+        createdAt: post.createdAt.toISOString(),
+      })),
     },
     revalidate: 1,
   };

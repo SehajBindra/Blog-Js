@@ -116,7 +116,7 @@ function Post({ post }) {
 
   useEffect(() => {
     const getpost = async (id) => {
-      const id2 = `${post?._id}`;
+      const id2 = `${post._id}`;
       const dev = process.env.NODE_ENV !== "production";
       const data = await axios.get(`${dev ? baseUrl : url || url2}/${id2}`, {});
       setDesc(data.data.data.desc);
@@ -150,7 +150,7 @@ function Post({ post }) {
         })
         .then((res) => {
           setUpdateMode(false);
-          router.push(`/blog/${post?.slug}`);
+          router.push(`/blog/${post.slug}`);
           res && toast.success("updated");
         });
       // console.log(res);
@@ -162,7 +162,7 @@ function Post({ post }) {
   };
   // logic for comments
   useEffect(() => {
-    const id = `/blog/${post?.slug}`;
+    const id = `/blog/${post.slug}`;
     onSnapshot(
       query(collection(db, id, "comments"), orderBy("timestamp", "desc")),
       (snapshot) => setComments(snapshot.docs)
@@ -174,7 +174,7 @@ function Post({ post }) {
 
     const commentToSend = comment;
     setComment("");
-    const id = `/blog/${post?.slug}`;
+    const id = `/blog/${post.slug}`;
     const docref = await addDoc(collection(db, id, "comments"), {
       comment: commentToSend,
       username: session?.user.name,
@@ -187,7 +187,7 @@ function Post({ post }) {
 
   // logic for liking a post
   useEffect(() => {
-    const id = `/blog/${post?.slug}`;
+    const id = `/blog/${post.slug}`;
     onSnapshot(collection(db, id, "likes"), (snapshot) =>
       setLikes(snapshot.docs)
     );
@@ -200,7 +200,7 @@ function Post({ post }) {
   }, [likes]);
 
   const likePost = async () => {
-    const id = `/blog/${post?.slug}`;
+    const id = `/blog/${post.slug}`;
     if (hasLiked) {
       await deleteDoc(doc(db, id, "likes", session?.user.name));
     } else {
@@ -225,7 +225,7 @@ function Post({ post }) {
 
   return (
     <div className="bg-black mt-1 max-w-xs tracking-normal leading-relaxed sm:max-w-xl md:max-w-2xl xl:max-w-3xl scrollbar-hide overflow-x-hidden overflow-y-scroll sm:overflow-visible    text-white">
-      <div key={post?._id.toString()} className="flex items-center mr-12 p-5 ">
+      <div key={post._id.toString()} className="flex items-center mr-12 p-5 ">
         <div className="  flex flex-1 items-center">
           <Image
             height={24}

@@ -15,7 +15,7 @@ function PostDetails({ post }) {
         <Head>
           {/* <!-- Primary Meta Tags --> */}
           <title>{` ${post?.title}`} </title>
-          <meta name="title" content={` ${post?.title}`} />
+          <meta name="title" content="Blog JS " />
           <meta name="description" content={` ${post?.desc}`} />
 
           {/* <!-- Open Graph / Facebook --> */}

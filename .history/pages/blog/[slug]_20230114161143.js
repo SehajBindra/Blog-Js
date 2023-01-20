@@ -13,33 +13,15 @@ function PostDetails({ post }) {
     <>
       <div>
         <Head>
-          {/* <!-- Primary Meta Tags --> */}
-          <title>{` ${post?.title}`} </title>
-          <meta name="title" content={` ${post?.title}`} />
-          <meta name="description" content={` ${post?.desc}`} />
-
-          {/* <!-- Open Graph / Facebook --> */}
-          <meta property="og:type" content="website" />
-          <meta property="og:url" content="https://blogjs.tech/" />
-          <meta property="og:title" content={` ${post?.title}`} />
-          <meta property="og:description" content={` ${post?.desc}`} />
-          <meta property="og:image" content="/logo.jpeg" />
-
-          {/* <!-- Twitter --> */}
-          <meta property="twitter:card" content="/logo.jpeg" />
-          <meta
-            property="twitter:url"
-            content={`https://blogjs.tech/blog/${post?.slug}`}
-          />
-          <meta property="twitter:title" content={` ${post?.title}`} />
-          <meta property="twitter:description" content={` ${post?.desc}`} />
-          <meta property="twitter:image" content="/logo.jpeg"></meta>
-          <title>{` ${post?.title}`} </title>
+          <title>{post?.title} </title>
           <meta
             name="viewport"
             content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
           />
-          <meta name="description" content={` ${post?.desc}`} />
+          <meta
+            name="description"
+            content={`Learn more about ${post?.title}`}
+          />
           <link rel="icon" href="/logo.jpeg" />
         </Head>
       </div>
