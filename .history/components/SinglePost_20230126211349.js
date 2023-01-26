@@ -7,9 +7,10 @@ const Modal = dynamic(() => import("../components/Modal"));
 // const Parser = dynamic(() => import("html-react-parser"));
 import Parser from "html-react-parser";
 import { RWebShare } from "react-web-share";
-
+import hljs from "highlight.js";
 import "react-quill/dist/quill.core.css";
-
+// import 'react-quill/dist/quill.bubble.css'
+import "highlight.js/styles/darcula.css";
 // import "react-quill/dist/quill.snow.css";
 import "react-quill/dist/quill.bubble.css";
 import { HeartIcon as HeartIconFilled } from "@heroicons/react/24/solid";
@@ -70,15 +71,49 @@ function Post({ post }) {
   // const [selectedPeople, setSelectedPeople] = useState([people[0]]);
   // Rich text Editor
   const modules = {
+    syntax: {
+      highlight: (text) => hljs.highlightAuto(text).value,
+    },
     toolbar: [
-      ["bold", "italic", "underline", "strike"],
-      [{ color: [] }, { background: [] }],
-      [{ script: "sub" }, { script: "super" }],
-
+      ["bold", "italic", "underline", "blockquote"],
+      [{ list: "ordered" }, { list: "bullet" }],
       ["link", "image", "video"],
       ["clean"],
+      ["code-block"],
     ],
+    clipboard: {
+      matchVisual: false,
+    },
+    // toolbar: [
+    //   [{ header: [1, 2, 3, 4, 5, 6, false] }],
+    //   ["bold", "italic", "underline", "strike"],
+    //   [{ color: [] }, { background: [] }],
+    //   [{ script: "sub" }, { script: "super" }],
+    //   ["blockquote", "code-block"],
+    //   [{ list: "ordered" }, { list: "bullet" }],
+    //   [{ indent: "-1" }, { indent: "+1" }, { align: [] }],
+    //   ["link", "image", "video"],
+    //   ["clean"],
+    // ],
   };
+
+  const formats = [
+    "header",
+    "font",
+    "size",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "blockquote",
+    "list",
+    "bullet",
+    "indent",
+    "link",
+    "image",
+    "video",
+    "code-block",
+  ];
 
   const [title, setTitle] = useState();
   const [desc, setDesc] = useState();
@@ -455,6 +490,7 @@ function Post({ post }) {
           <ReactQuill
             modules={modules}
             theme="bubble"
+            formats={formats}
             value={desc}
             onChange={setDesc}
           />

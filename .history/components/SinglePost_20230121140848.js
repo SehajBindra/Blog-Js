@@ -8,10 +8,7 @@ const Modal = dynamic(() => import("../components/Modal"));
 import Parser from "html-react-parser";
 import { RWebShare } from "react-web-share";
 
-import "react-quill/dist/quill.core.css";
-
-// import "react-quill/dist/quill.snow.css";
-import "react-quill/dist/quill.bubble.css";
+import "react-quill/dist/quill.snow.css";
 import { HeartIcon as HeartIconFilled } from "@heroicons/react/24/solid";
 import {
   // ChevronUpDownIcon,
@@ -454,7 +451,7 @@ function Post({ post }) {
         <>
           <ReactQuill
             modules={modules}
-            theme="bubble"
+            theme="snow"
             value={desc}
             onChange={setDesc}
           />

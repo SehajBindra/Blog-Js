@@ -10,6 +10,7 @@ import { RWebShare } from "react-web-share";
 
 import "react-quill/dist/quill.core.css";
 
+
 // import "react-quill/dist/quill.snow.css";
 import "react-quill/dist/quill.bubble.css";
 import { HeartIcon as HeartIconFilled } from "@heroicons/react/24/solid";
@@ -71,10 +72,13 @@ function Post({ post }) {
   // Rich text Editor
   const modules = {
     toolbar: [
+      [{ header: [1, 2, 3, 4, 5, 6, true] }],
       ["bold", "italic", "underline", "strike"],
       [{ color: [] }, { background: [] }],
       [{ script: "sub" }, { script: "super" }],
-
+      ["blockquote", "code-block"],
+      [{ list: "ordered" }, { list: "bullet" }],
+      [{ indent: "-1" }, { indent: "+1" }, { align: [] }],
       ["link", "image", "video"],
       ["clean"],
     ],

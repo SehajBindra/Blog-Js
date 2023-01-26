@@ -56,7 +56,11 @@ export default function Home({ products }) {
         <meta
           name="description"
           content="Blog.js is a cutting-edge technology and programming blog website that utilizes the power of the Blog.js JavaScript library to deliver a seamless and dynamic user experience. The website is focused on providing the latest news, tutorials, and insights on the world of technology and programming.
-         "
+          One of the standout features of the Blog.js website is its real-time functionality. Users can interact with the website in real-time, with the ability to like, comment and save posts, making the website feel more like a community rather than a static blog.
+          The website also has a dynamic page routing system that allows users to easily navigate through a large number of posts, making it easy to find what they're looking for. The website also has a powerful search functionallity that allows users to quickly find specific posts or articles based on keywords, categories or tags.
+          In addition, Blog.js website is fully integrated with Google authentication, allowing users to sign in to the website using their Google account, making it easy for users to create an account and start interacting with the community.
+          The website also has a sleek and modern design, with a focus on clean lines and a user-friendly interface. It's fully responsive, which means it works seamlessly across all devices, whether it's a desktop, laptop, tablet or mobile device.
+          Overall, Blog.js website is a great choice for anyone interested in technology and programming. It offers a wealth of information, insights and community-driven content, all in a dynamic and interactive environment that is easy to navigate and use."
         />
 
         {/* <!-- Open Graph / Facebook --> */}
@@ -66,7 +70,11 @@ export default function Home({ products }) {
         <meta
           property="og:description"
           content="Blog.js is a cutting-edge technology and programming blog website that utilizes the power of the Blog.js JavaScript library to deliver a seamless and dynamic user experience. The website is focused on providing the latest news, tutorials, and insights on the world of technology and programming.
-"
+One of the standout features of the Blog.js website is its real-time functionality. Users can interact with the website in real-time, with the ability to like, comment and save posts, making the website feel more like a community rather than a static blog.
+The website also has a dynamic page routing system that allows users to easily navigate through a large number of posts, making it easy to find what they're looking for. The website also has a powerful search functionallity that allows users to quickly find specific posts or articles based on keywords, categories or tags.
+In addition, Blog.js website is fully integrated with Google authentication, allowing users to sign in to the website using their Google account, making it easy for users to create an account and start interacting with the community.
+The website also has a sleek and modern design, with a focus on clean lines and a user-friendly interface. It's fully responsive, which means it works seamlessly across all devices, whether it's a desktop, laptop, tablet or mobile device.
+Overall, Blog.js website is a great choice for anyone interested in technology and programming. It offers a wealth of information, insights and community-driven content, all in a dynamic and interactive environment that is easy to navigate and use."
         />
         <meta property="og:image" content="/logo.jpeg" />
 
@@ -77,7 +85,11 @@ export default function Home({ products }) {
         <meta
           property="twitter:description"
           content="Blog.js is a cutting-edge technology and programming blog website that utilizes the power of the Blog.js JavaScript library to deliver a seamless and dynamic user experience. The website is focused on providing the latest news, tutorials, and insights on the world of technology and programming.
-"
+One of the standout features of the Blog.js website is its real-time functionality. Users can interact with the website in real-time, with the ability to like, comment and save posts, making the website feel more like a community rather than a static blog.
+The website also has a dynamic page routing system that allows users to easily navigate through a large number of posts, making it easy to find what they're looking for. The website also has a powerful search functionallity that allows users to quickly find specific posts or articles based on keywords, categories or tags.
+In addition, Blog.js website is fully integrated with Google authentication, allowing users to sign in to the website using their Google account, making it easy for users to create an account and start interacting with the community.
+The website also has a sleek and modern design, with a focus on clean lines and a user-friendly interface. It's fully responsive, which means it works seamlessly across all devices, whether it's a desktop, laptop, tablet or mobile device.
+Overall, Blog.js website is a great choice for anyone interested in technology and programming. It offers a wealth of information, insights and community-driven content, all in a dynamic and interactive environment that is easy to navigate and use."
         />
         <meta property="twitter:image" content="/logo.jpeg"></meta>
 
@@ -92,7 +104,7 @@ export default function Home({ products }) {
           crossorigin="anonymous"
         />
 
-        <link rel="icon" href="/logo.jpeg" />
+        <link rel="icon" href="/88.jpeg" />
       </Head>
 
       <div className="bg-black text-white overflow-y-scroll h-screen snap-y snap-mandatory z-0  mx-auto">
