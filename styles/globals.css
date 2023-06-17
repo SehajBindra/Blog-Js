@@ -15,7 +15,7 @@
     @apply hover:underline  hover:decoration-slate-600;
   }
   .navBtn {
-    @apply h-5 w-5  text-[#E23E57] animate-bounce;
+    @apply h-5 w-5  text-[#E23E57] ;
   }
 
   .h2pp{

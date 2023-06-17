@@ -21,7 +21,7 @@ function MobileNavigation() {
         <div className="flex bg-black h-16  rounded-t-md  text-white px-16  justify-evenly cursor-pointer  flex-row items-center ">
           <ul className=" list-none text-sm flex justify-between space-x-4 py-2 px-4 sm:px-8 sm:space-x-8 ">
             <div onClick={() => router.push("/")} className="navbar">
-              <HomeModernIcon className="navBtn animate-pulse" />
+              <HomeModernIcon className="navBtn " />
               <li> Home</li>
             </div>
 
@@ -34,12 +34,12 @@ function MobileNavigation() {
               onClick={() => router.push(`/explore/category/Programing`)}
               className="navbar"
             >
-              <GlobeAltIcon className="navBtn animate-spin" />
+              <GlobeAltIcon className="navBtn " />
               <li> Explore </li>
             </div>
 
             <div onClick={() => router.push("/saved")} className="navbar">
-              <BookmarkIcon className="navBtn animate-pulse" />
+              <BookmarkIcon className="navBtn " />
               <li> Saved</li>
             </div>
           </ul>
