@@ -1,4 +1,7 @@
 module.exports = {
+  devServer: {
+    hot: false
+  },
   async headers() {
     return [
       {

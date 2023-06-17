@@ -137,34 +137,40 @@ export default function Home({ products }) {
     </>
   );
 }
-
 export async function getStaticProps() {
   const { db } = await connectToDatabase();
-  // res.setHeader(
-  //   "Cache-Control",
-  //   "public, s-maxage=43200, stale-while-revalidate=60"
-  // );
-  const products = await db
+
+  const productsCursor = db
     .collection("products")
-    .find({})
-    .sort({ $natural: -1 })
-    .toArray();
+    .find(
+      {},
+      {
+        projection: {
+          title: 1,
+          img: 1,
+          username: 1,
+          userimg: 1,
+          slug: 1,
+          createdAt: 1,
+        },
+      }
+    )
+    .sort({ $natural: -1 });
+
+  const products = await productsCursor.toArray();
 
   return {
     props: {
       products: products.map((product) => ({
         _id: product._id.toString(),
         title: product.title,
-        // desc: product.desc.trim(),
         img: product.img,
         username: product.username.trim(),
         userimg: product.userimg,
-        // category: product.category,
         slug: product.slug,
         createdAt: product.createdAt.toISOString(),
       })),
     },
-
     revalidate: 1,
   };
 }
